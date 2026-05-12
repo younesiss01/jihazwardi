@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#FDF2F0" />
+  <title>شكراً — وردي Wardi</title>
+  <meta name="description" content="تم استلام طلبج بنجاح. فريق وردي يجهز الطلب الآن." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800&family=El+Messiri:wght@500;600;700&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@0.487.0/dist/umd/lucide.min.js" defer></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            rosegold: '#E7BCB1',
+            palepink: '#FDF2F0',
+            berry: '#3D1228',
+            berrysoft: '#5B2340',
+            cream: '#FFFCFB',
+          },
+          fontFamily: {
+            arabic: ['Tajawal', 'system-ui', 'sans-serif'],
+            display: ['El Messiri', 'Tajawal', 'serif'],
+          },
+          boxShadow: {
+            soft: '0 22px 50px -28px rgba(61,18,40,0.28)',
+            card: '0 16px 40px -24px rgba(231,188,177,0.45)',
+          },
+          borderRadius: {
+            '2xl': '1rem',
+            '3xl': '1.35rem',
+          },
+          animation: {
+            'pulse-elegant': 'pulseElegant 2.75s cubic-bezier(.4,0,.6,1) infinite',
+          },
+          keyframes: {
+            pulseElegant: {
+              '0%, 100%': { boxShadow: '0 0 0 0 rgba(34,160,114,0.45)' },
+              '50%': { boxShadow: '0 0 0 16px rgba(34,160,114,0)' },
+            },
+          },
+        },
+      },
+    };
+  </script>
+  <style>
+    html { scroll-behavior: smooth; }
+    body { font-family: Tajawal, system-ui, sans-serif; }
+    .observe { opacity: 0; transform: translateY(20px); transition: opacity 0.75s cubic-bezier(.22,.9,.42,1), transform 0.75s cubic-bezier(.22,.9,.42,1); }
+    .observe.is-visible { opacity: 1; transform: translateY(0); }
+    .sticky-order { backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
+    .gradient-page {
+      background: radial-gradient(120% 80% at 50% -20%, rgba(231,188,177,.42) 0%, transparent 50%),
+                  linear-gradient(180deg, #FDF2F0 0%, #FFFCFB 45%, #fdf8fa 100%);
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+      .observe { opacity: 1; transform: none; }
+    }
+  </style>
+</head>
+<body class="gradient-page min-h-screen text-berry antialiased">
+  <header class="sticky top-0 z-10 border-b border-rosegold/25 bg-white/85 sticky-order shadow-sm">
+    <div class="mx-auto flex max-w-3xl flex-wrap items-center justify-between gap-3 px-4 py-3 sm:px-6">
+      <a href="index.html" class="flex items-center gap-2 rounded-2xl focus:outline-none focus-visible:ring-2 focus-visible:ring-rosegold focus-visible:ring-offset-2">
+        <span class="inline-flex h-9 w-9 items-center justify-center rounded-2xl bg-palepink text-rosegold shadow-card ring-1 ring-rosegold/30">
+          <i data-lucide="heart-pulse" class="h-[1.125rem] w-[1.125rem] stroke-[2] text-berry"></i>
+        </span>
+        <div>
+          <p class="font-display text-sm font-bold leading-tight text-berry"><span lang="ar">وردي</span> <span class="font-semibold tracking-wide text-rosegold" lang="en">Wardi</span></p>
+          <p class="text-[11px] text-berrysoft/80">شكراً لثقتج</p>
+        </div>
+      </a>
+      <a href="index.html" class="text-xs font-bold text-berrysoft underline decoration-rosegold/50 decoration-2 underline-offset-4 transition hover:text-berry">الرئيسية</a>
+    </div>
+  </header>
+
+  <main class="mx-auto max-w-3xl px-4 pb-16 pt-10 sm:px-6 sm:pb-20 sm:pt-14">
+    <div class="flex flex-col items-center text-center">
+      <!-- Success icon: green check + subtle heart pulse accent -->
+      <div class="observe relative flex h-28 w-28 items-center justify-center sm:h-32 sm:w-32">
+        <span class="absolute inset-0 rounded-full bg-emerald-500/20 animate-pulse-elegant" aria-hidden="true"></span>
+        <span class="absolute -right-1 -top-1 flex h-10 w-10 items-center justify-center rounded-2xl border-2 border-white bg-palepink text-rosegold shadow-card ring-1 ring-rosegold/30" aria-hidden="true">
+          <i data-lucide="heart-pulse" class="h-5 w-5 stroke-[2] text-berry"></i>
+        </span>
+        <span class="relative flex h-24 w-24 items-center justify-center rounded-full border-4 border-white bg-gradient-to-br from-emerald-400 to-emerald-700 shadow-[0_20px_50px_-20px_rgba(16,120,80,0.55)] sm:h-28 sm:w-28">
+          <i data-lucide="check" class="h-12 w-12 stroke-[3] text-white sm:h-14 sm:w-14" aria-hidden="true"></i>
+        </span>
+      </div>
+
+      <h1 class="observe mt-10 font-display text-2xl font-bold leading-snug text-berry sm:text-3xl">
+        تم استلام طلبكِ بنجاح! شكراً لثقتكِ في وردي
+      </h1>
+      <p class="observe mt-5 max-w-xl text-[0.98rem] leading-relaxed text-berrysoft sm:text-[1.05rem]">
+        فريقنا الآن يجهز طلبكِ بحب.. صرتِ على بعد خطوة واحدة من الراحة الدائمة.
+      </p>
+    </div>
+
+    <!-- Next steps -->
+    <section class="observe mt-12 sm:mt-14" aria-labelledby="steps-title">
+      <h2 id="steps-title" class="font-display text-lg font-bold text-berry sm:text-xl">الخطوات الجاية</h2>
+      <ol class="mt-6 space-y-4">
+        <li class="flex gap-4 rounded-3xl border border-white/80 bg-white/90 p-5 shadow-card backdrop-blur-sm">
+          <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl bg-rosegold/25 font-display text-base font-bold text-berry ring-1 ring-rosegold/35">١</span>
+          <p class="pt-0.5 text-[0.95rem] leading-relaxed text-berrysoft">
+            <span class="font-bold text-berry">تأكيد الطلب:</span> سيتصل بكِ فريقنا خلال 24 ساعة لتأكيد العنوان وموعد التسليم.
+          </p>
+        </li>
+        <li class="flex gap-4 rounded-3xl border border-white/80 bg-white/90 p-5 shadow-card backdrop-blur-sm">
+          <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl bg-rosegold/25 font-display text-base font-bold text-berry ring-1 ring-rosegold/35">٢</span>
+          <p class="pt-0.5 text-[0.95rem] leading-relaxed text-berrysoft">
+            <span class="font-bold text-berry">التجهيز والشحن:</span> سيتم فحص جهازكِ وتغليفه بعناية لضمان وصوله بأفضل حالة.
+          </p>
+        </li>
+        <li class="flex gap-4 rounded-3xl border border-white/80 bg-white/90 p-5 shadow-card backdrop-blur-sm">
+          <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl bg-rosegold/25 font-display text-base font-bold text-berry ring-1 ring-rosegold/35">٣</span>
+          <p class="pt-0.5 text-[0.95rem] leading-relaxed text-berrysoft">
+            <span class="font-bold text-berry">الدفع عند الاستلام:</span> بالطريقة الي تريحك نقدا او بالبطاقة كما تبي.
+          </p>
+        </li>
+      </ol>
+    </section>
+
+    <!-- Wardi tip -->
+    <div class="observe mt-10 rounded-3xl border border-rosegold/35 bg-gradient-to-br from-palepink via-white to-rosegold/15 p-6 shadow-soft sm:p-8">
+      <div class="flex flex-col gap-3 sm:flex-row-reverse sm:items-start sm:gap-4">
+        <span class="mx-auto flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-white text-rosegold shadow-sm ring-1 ring-rosegold/30 sm:mx-0">
+          <i data-lucide="sparkles" class="h-6 w-6 text-berry"></i>
+        </span>
+        <div class="text-center sm:text-right">
+          <p class="font-display text-base font-bold text-berry sm:text-lg">نصيحة وردي</p>
+          <p class="mt-2 text-[0.95rem] leading-relaxed text-berrysoft">
+            لأمانكِ، لا تستخدمي الجهاز أثناء النوم، وتأكدي من عدم ملامسته لأي قطع معدنية في الملابس.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="observe mt-10 flex justify-center">
+      <a href="index.html" class="inline-flex w-full max-w-sm items-center justify-center rounded-2xl bg-berry px-6 py-3.5 text-[0.95rem] font-bold text-white shadow-soft transition hover:bg-rose-950 focus:outline-none focus-visible:ring-2 focus-visible:ring-rosegold focus-visible:ring-offset-2 sm:w-auto animate-pulse-elegant">
+        العودة للرئيسية
+      </a>
+    </div>
+  </main>
+
+  <footer class="border-t border-rosegold/20 bg-white/80 py-8 text-center text-[11px] text-berrysoft">
+    <p>وردي Wardi — رعاية أنيقة لراحتج</p>
+  </footer>
+
+  <script>
+    function bootIcons() {
+      if (typeof lucide !== 'undefined' && typeof lucide.createIcons === 'function') {
+        lucide.createIcons();
+      }
+    }
+    document.addEventListener('DOMContentLoaded', function () {
+      bootIcons();
+      var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (!reduced && 'IntersectionObserver' in window) {
+        var els = document.querySelectorAll('.observe');
+        var obs = new IntersectionObserver(function (entries, o) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('is-visible');
+              o.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.12, rootMargin: '0px 0px -4% 0px' });
+        els.forEach(function (el) { obs.observe(el); });
+      } else {
+        document.querySelectorAll('.observe').forEach(function (el) { el.classList.add('is-visible'); });
+      }
+    });
+  </script>
+</body>
+</html>

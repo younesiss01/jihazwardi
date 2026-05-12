@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#FDF2F0" />
+  <title>وردي Wardi — راحة طبيعية لفترة الدورة | الكويت</title>
+  <meta name="description" content="تقنية التسخين السريعة والمساج لراحة فورية بدون مسكنات. توصيل سريع ومجاني — الدفع عند الاستلام." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800&family=El+Messiri:wght@500;600;700&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@0.487.0/dist/umd/lucide.min.js" defer></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            rosegold: '#E7BCB1',
+            palepink: '#FDF2F0',
+            berry: '#3D1228',
+            berrysoft: '#5B2340',
+            cream: '#FFFCFB',
+          },
+          fontFamily: {
+            arabic: ['Tajawal', 'system-ui', 'sans-serif'],
+            display: ['El Messiri', 'Tajawal', 'serif'],
+          },
+          boxShadow: {
+            soft: '0 22px 50px -28px rgba(61,18,40,0.28)',
+            card: '0 16px 40px -24px rgba(231,188,177,0.45)',
+          },
+          borderRadius: {
+            '2xl': '1rem',
+            '3xl': '1.35rem',
+          },
+          animation: {
+            'fade-up': 'fadeUp 0.85s cubic-bezier(.22,.9,.42,1) forwards',
+            'pulse-elegant': 'pulseElegant 2.75s cubic-bezier(.4,0,.6,1) infinite',
+            'sheen': 'sheen 3.2s linear infinite',
+          },
+          keyframes: {
+            fadeUp: {
+              '0%': { opacity: '0', transform: 'translateY(22px)' },
+              '100%': { opacity: '1', transform: 'translateY(0)' },
+            },
+            pulseElegant: {
+              '0%, 100%': { boxShadow: '0 0 0 0 rgba(231,188,177,0.55)' },
+              '50%': { boxShadow: '0 0 0 12px rgba(231,188,177,0)' },
+            },
+            sheen: {
+              '0%': { transform: 'translateX(-140%) skewX(-12deg)' },
+              '100%': { transform: 'translateX(180%) skewX(-12deg)' },
+            },
+          },
+        },
+      },
+    };
+  </script>
+  <style>
+    html { scroll-behavior: smooth; }
+    body { font-family: Tajawal, system-ui, sans-serif; }
+    . { opacity: 0; transform: translateY(24px); transition: opacity 0.8s cubic-bezier(.22,.9,.42,1), transform 0.8s cubic-bezier(.22,.9,.42,1); }
+    ..is-visible { opacity: 1; transform: translateY(0); }
+    details summary::-webkit-details-marker { display: none; }
+    .sticky-order { backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
+    .gradient-hero {
+      background: radial-gradient(120% 80% at 10% -10%, rgba(231,188,177,.45) 0%, transparent 55%),
+                  radial-gradient(90% 60% at 100% 0%, rgba(253,242,240,.98) 0%, #FDF2F0 45%, #FFFCFB 100%);
+    }
+    .grain {
+      pointer-events: none;
+      opacity: .04;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+      . { opacity: 1; transform: none; }
+    }
+  </style>
+</head>
+<body class="bg-cream text-berry antialiased overflow-x-hidden">
+  <!-- Top bar -->
+  <header class="relative z-20 border-b border-rosegold/25 bg-white/80 sticky top-0 sticky-order shadow-sm">
+    <div class="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-2 px-4 py-3 sm:px-6">
+      <div class="flex items-center gap-2">
+        <span class="inline-flex h-9 w-9 items-center justify-center rounded-2xl bg-palepink text-rosegold shadow-card ring-1 ring-rosegold/30">
+          <i data-lucide="heart-pulse" class="h-[1.125rem] w-[1.125rem] stroke-[2] text-berry"></i>
+        </span>
+        <div>
+          <p class="font-display text-sm font-bold leading-tight text-berry"><span lang="ar">وردي</span> <span class="font-semibold tracking-wide text-rosegold" lang="en">Wardi</span></p>
+          <p class="text-[11px] text-berrysoft/80">طبّي أنيق • للكويت 🇰🇼</p>
+        </div>
+      </div>
+      <a href="#order" class="inline-flex items-center gap-2 rounded-2xl bg-rosegold px-4 py-2 text-sm font-bold text-white shadow-soft transition hover:bg-rose-300 hover:text-berry focus:outline-none focus-visible:ring-2 focus-visible:ring-rosegold focus-visible:ring-offset-2">
+        اطلبي الآن — الدفع عند الاستلام
+      </a>
+    </div>
+  </header>
+
+  <main>
+    <!-- 1 Hero -->
+    <section class="relative isolate overflow-hidden gradient-hero">
+      <div class="grain absolute inset-0"></div>
+      <div class="relative mx-auto flex max-w-6xl flex-col gap-10 px-4 pb-14 pt-8 sm:flex-row-reverse sm:flex-wrap sm:items-start sm:gap-12 sm:px-6 sm:pb-20 sm:pt-14 lg:gap-16">
+        <div class="min-w-0 flex-1 space-y-6 sm:space-y-7  sm:flex-[1_1_calc(50%-1.25rem)]">
+          <!-- Medical-grade pre-headline badge -->
+          <div class="relative overflow-hidden rounded-2xl border border-emerald-800/35 bg-gradient-to-br from-emerald-50 via-white to-slate-50 p-[1px] shadow-[0_20px_50px_-32px_rgba(16,60,52,0.35)] ring-1 ring-white/70">
+            <div class="flex flex-wrap items-start gap-3 rounded-[0.9375rem] bg-gradient-to-l from-emerald-900/[0.04] via-white to-transparent px-4 py-3 sm:items-center">
+              <span class="inline-flex shrink-0 items-center gap-1.5 rounded-xl border border-emerald-700/20 bg-emerald-800/[0.08] px-2.5 py-1 text-[10px] font-extrabold uppercase tracking-[0.14em] text-emerald-900 sm:text-[11px]" lang="ar">ترخيص طبي*</span>
+              <p class="min-w-[12rem] flex-1 text-[0.8rem] font-semibold leading-relaxed text-berry sm:text-[0.9rem]">
+                حصرياً الجهاز الوحيد المرخص من الأطباء متوفر الآن
+              </p>
+              <span class="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border border-rosegold/40 bg-rosegold/15 text-rosegold">
+                <i data-lucide="award" class="h-[1.125rem] w-[1.125rem] stroke-[2.5]"></i>
+              </span>
+            </div>
+          </div>
+          <h1 class="font-display text-[1.65rem] font-bold leading-snug tracking-tight text-berry sm:text-3xl md:text-[2rem] lg:text-[2.25rem]">
+            كيف تتخلصي من الألم الفضيع وتخلي فترة الدورة عندك كباقي الأيام؟
+          </h1>
+          <p class="max-w-xl text-[0.95rem] leading-relaxed text-berrysoft sm:text-[1.05rem]">
+            بديل الإبر والبروفين اللي &quot;يشفط&quot; الألم بفضل تقنية التسخين والمساج المطوّرة. خفيف، خفي، ومصمم ليكون رفيجج بالدوّام والجامعة بدون ما أحد يلاحظ.
+          </p>
+        </div>
+
+        <!-- Hero image placeholder -->
+        <div class="min-w-0 flex-1  sm:flex-[1_1_calc(50%-1.25rem)]">
+          <div class="relative mx-auto aspect-[4/5] w-full max-w-md overflow-hidden rounded-3xl border border-white/80 bg-white shadow-card ring-1 ring-rosegold/35 sm:aspect-[5/6] lg:max-w-none">
+            <img
+              src="images/hero.webp"
+              alt="صورة عالية الجودة — سيدة خليجية واضحة ومريحة بحزمة راحة بطنية فاخرة."
+              width="720"
+              height="900"
+              fetchpriority="high"
+              decoding="async"
+              class="h-full w-full object-cover"
+            />
+            <div class="absolute inset-x-5 bottom-5 rounded-2xl border border-white/60 bg-white/90 p-3 text-[11px] text-berrysoft shadow-soft backdrop-blur-sm sm:inset-x-6 sm:p-4 sm:text-xs">
+              <p class="font-semibold text-berry"><i data-lucide="badge-check" class="mb-1 inline-block h-4 w-4 align-middle text-emerald-600"></i> مظهر مخملي خافت — مصمم ليخليك تعملي شغلك براحة</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Feature stats: full width row — below image on mobile, spans row on desktop -->
+        <dl class=" grid w-full grid-cols-2 gap-3 text-center sm:order-last sm:flex-[1_1_100%] sm:basis-full sm:grid-cols-4 sm:gap-4 sm:text-start">
+          <div class="rounded-2xl border border-white/70 bg-white/80 p-3 shadow-soft backdrop-blur-sm sm:p-3.5">
+            <dt class="flex items-center justify-center gap-1 text-[11px] text-berrysoft sm:justify-start">
+              <i data-lucide="cpu" class="h-3.5 w-3.5 text-rosegold" aria-hidden="true"></i>
+              تشغيل ذكي
+            </dt>
+            <dd class="mt-1 text-sm font-bold text-berry">مستقر وآمن</dd>
+          </div>
+          <div class="rounded-2xl border border-white/70 bg-white/80 p-3 shadow-soft backdrop-blur-sm sm:p-3.5">
+            <dt class="flex items-center justify-center gap-1 text-[11px] text-berrysoft sm:justify-start">
+              <i data-lucide="flame" class="h-3.5 w-3.5 text-rosegold" aria-hidden="true"></i>
+              تسخين سريع
+            </dt>
+            <dd class="mt-1 text-sm font-bold text-berry">٣ ثواني</dd>
+          </div>
+          <div class="rounded-2xl border border-white/70 bg-white/80 p-3 shadow-soft backdrop-blur-sm sm:p-3.5">
+            <dt class="flex items-center justify-center gap-1 text-[11px] text-berrysoft sm:justify-start">
+              <i data-lucide="battery-charging" class="h-3.5 w-3.5 text-rosegold" aria-hidden="true"></i>
+              بطارية
+            </dt>
+            <dd class="mt-1 text-sm font-bold text-berry">حتى ~٣ ساعات*</dd>
+          </div>
+          <div class="rounded-2xl border border-white/70 bg-white/80 p-3 shadow-soft backdrop-blur-sm sm:p-3.5">
+            <dt class="flex items-center justify-center gap-1 text-[11px] text-berrysoft sm:justify-start">
+              <i data-lucide="truck" class="h-3.5 w-3.5 text-rosegold" aria-hidden="true"></i>
+              الشحن
+            </dt>
+            <dd class="mt-1 text-sm font-bold text-berry">مجاني 🇰🇼</dd>
+          </div>
+        </dl>
+      </div>
+    </section>
+
+    <!-- 2 Testimonials -->
+    <section id="reviews" class="border-t border-palepink bg-palepink/60 py-14 sm:py-20">
+      <div class="mx-auto max-w-6xl px-4 sm:px-6">
+        <header class="mb-10 flex flex-col gap-4 sm:mb-12 sm:flex-row-reverse sm:items-end sm:justify-between ">
+          <span class="inline-flex h-10 w-10 items-center justify-center rounded-2xl bg-white text-rosegold shadow-card ring-1 ring-rosegold/30">
+            <i data-lucide="notebook-pen" class="h-5 w-5 text-berry"></i>
+          </span>
+          <div>
+            <h2 class="font-display text-2xl font-bold text-berry sm:text-3xl">شنو يقول أخواتنا؟</h2>
+          </div>
+        </header>
+
+        <div class="grid gap-5 md:grid-cols-3">
+          <!-- نورة -->
+          <article class=" flex flex-col rounded-3xl border border-white/80 bg-white p-6 shadow-soft">
+            <div class="flex items-center gap-3">
+              <div class="flex h-12 w-12 items-center justify-center rounded-2xl bg-palepink text-berry shadow-inner">
+                <span class="text-lg font-bold">ن</span>
+              </div>
+              <div>
+                <h3 class="font-bold text-berry">نورة</h3>
+                <p class="text-xs text-berrysoft/90">طالبة جامعة</p>
+              </div>
+            </div>
+            <p class="mt-5 text-[0.95rem] leading-relaxed text-berrysoft">
+              أنا قبل كنت أتلخبط بين المحاضرة والحمام ومخدّة أسبيرين وإياها. اليوم بحط الحزام، أشغله، وبكل أريحية أكمل اليوم؛ الألم كان يغرز مثل معزّ وبعد أول يوم حسيت إن الموضوع مسؤول ومضبوط.
+            </p>
+            <div class="mt-auto flex gap-1 pt-4 text-rosegold">
+              <i data-lucide="star" class="h-4 w-4 fill-current"></i>
+              <i data-lucide="star" class="h-4 w-4 fill-current"></i>
+              <i data-lucide="star" class="h-4 w-4 fill-current"></i>
+              <i data-lucide="star" class="h-4 w-4 fill-current"></i>
+              <i data-lucide="star" class="h-4 w-4 fill-current"></i>
+            </div>
+          </article>
+          <!-- سارة -->
+          <article class=" flex flex-col rounded-3xl border border-white/80 bg-white p-6 shadow-soft">
+            <div class="flex items-center gap-3">
+              <div class="flex h-12 w-12 items-center justify-center rounded-2xl bg-palepink text-berry shadow-inner">
+                <span class="text-lg font-bold">س</span>
+              </div>
+              <div>
+                <h3 class="font-bold text-berry">سارة</h3>
+                <p class="text-xs text-berrysoft/90">موظفة</p>
+              </div>
+            </div>
+            <p class="mt-5 text-[0.95rem] leading-relaxed text-berrysoft">
+              بشغلي المواعيد ماكو مهرب منها، والبروفين صار جزء لا يُتقطع عن روتيني وبعد لا يفعّل. الحزام فاجأني؛ يسخّن بسرعة، والحركة طبيعية تحت العباءة والملابس، وما يطق صوت عالي يزعج المكتب.
+            </p>
+            <div class="mt-auto flex gap-1 pt-4 text-rosegold">
+              <i data-lucide="star" class="h-4 w-4 fill-current"></i>
+              <i data-lucide="star" class="h-4 w-4 fill-current"></i>
+              <i data-lucide="star" class="h-4 w-4 fill-current"></i>
+              <i data-lucide="star" class="h-4 w-4 fill-current"></i>
+              <i data-lucide="star" class="h-4 w-4 fill-current"></i>
+            </div>
+          </article>
+          <!-- أم جاسم -->
+          <article class=" flex flex-col rounded-3xl border border-white/80 bg-white p-6 shadow-soft">
+            <div class="flex items-center gap-3">
+              <div class="flex h-12 w-12 items-center justify-center rounded-2xl bg-palepink text-berry shadow-inner">
+                <span class="text-lg font-bold">أ</span>
+              </div>
+              <div>
+                <h3 class="font-bold text-berry">أم جاسم</h3>
+                <p class="text-xs text-berrysoft/90">ربّة منزل</p>
+              </div>
+            </div>
+            <p class="mt-5 text-[0.95rem] leading-relaxed text-berrysoft">
+              أنا من النوع اللي يقول &quot;أعدوج هو المسكنات&quot;، وكل شهر أحس إن رحمي فيه سكاكين تقطع. الحزام صار لي مثل رفيجة صامتة: ألبسه وأنا أطبخ وأروّح الأولاد، ومعلوم يطمن لأن الموثوقية والجودة ظاهرة.
+            </p>
+            <div class="mt-auto flex gap-1 pt-4 text-rosegold">
+              <i data-lucide="star" class="h-4 w-4 fill-current"></i>
+              <i data-lucide="star" class="h-4 w-4 fill-current"></i>
+              <i data-lucide="star" class="h-4 w-4 fill-current"></i>
+              <i data-lucide="star" class="h-4 w-4 fill-current"></i>
+              <i data-lucide="star" class="h-4 w-4 fill-current"></i>
+            </div>
+          </article>
+        </div>
+        <div class=" mt-10 flex justify-center border-t border-white/60 pt-10">
+          <a href="#order" class="inline-flex w-full max-w-md items-center justify-center rounded-2xl bg-berry px-6 py-3.5 text-center text-[0.95rem] font-bold text-white shadow-soft transition hover:bg-rose-950 focus:outline-none focus-visible:ring-2 focus-visible:ring-rosegold focus-visible:ring-offset-2 sm:w-auto animate-pulse-elegant">
+            أريد تجربة الجهاز الآن
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3 Pain points -->
+    <section aria-labelledby="pain-title" class="relative overflow-hidden border-y border-red-900/15 bg-gradient-to-br from-[#fdf0f3] via-[#fce8ec] to-[#fddfe5] py-14 sm:py-20">
+      <div class="pointer-events-none absolute -left-20 top-16 h-64 w-64 rounded-full bg-red-600/15 blur-3xl"></div>
+      <div class="pointer-events-none absolute -right-28 bottom-0 h-72 w-72 rounded-full bg-rose-950/15 blur-3xl"></div>
+      <div class="relative mx-auto max-w-6xl px-4 sm:px-6">
+        <div class=" mx-auto max-w-3xl text-center">
+          <span class="mx-auto mb-5 inline-flex h-11 w-11 items-center justify-center rounded-2xl border border-white/70 bg-white/90 text-red-900 shadow-soft">
+            <i data-lucide="triangle-alert" class="h-5 w-5"></i>
+          </span>
+          <h2 id="pain-title" class="font-display text-2xl font-bold leading-snug text-berry sm:text-3xl">
+            هل أنتِ ممن &quot;يشوفون الموت&quot; كل شهر؟
+          </h2>
+          <p class="mt-6 text-[1.02rem] leading-relaxed text-berry sm:text-[1.08rem]">
+            بعض الأيام ماكو وسط: كلّ لحمة من تحت وحسّ كأن فرّاش سكاكين يقطّع الرحم، والحل الوحيد يصير &quot;أعدوج هو المسكنات&quot; لين نفضّ المواعيد ونكمّ الشغل؛ وهالشي خلّى أجسادنا وأعصابنا يدفعون ثمن اليأس كل شهر مرّة بعد مرّة.
+          </p>
+          <p class="mx-auto mt-5 max-w-2xl text-[0.95rem] leading-relaxed text-red-950/85">
+            أنتِ مش كسولة، ومش حسّاسة أكثر من اللازم — جسمچ يطلق إنذار حقيقي؛ والسؤال: تبين تنزفين وقتچ على ألم ماكو له داعي، وتكملين حياتج بحل طبيعي يحترم ظروف الدوام والبيت؟
+          </p>
+          <p class="mt-8 text-xs text-red-950/65">مساحة أمينة للمجموعة الي تحسّ بتعب شهري ثقيل — ومش وحيدة.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="before-after" class="py-12 bg-white">
+      <div class="mx-auto max-w-xl px-4 sm:px-6">
+          <div class="text-center mb-8">
+              <h3 class="font-display text-2xl font-black text-berry">الفرق الواضح من أول استخدام 👀</h3>
+          </div>
+          <div class="relative overflow-hidden rounded-[2rem] border border-rosegold/10 shadow-lg p-2">
+              <img src="images/imagesbefore-after.webp" alt="Wardi Period Pain Relief Before and After Kuwait" class="w-full rounded-3xl object-cover h-auto" />
+          </div>
+      </div>
+  </section>
+
+    <!-- 4 Product & benefits -->
+    <section id="product" class="bg-cream py-14 sm:py-20">
+      <div class="mx-auto max-w-6xl px-4 sm:px-6">
+        <div class=" mx-auto max-w-5xl space-y-4 lg:space-y-5">
+            <h3 class="font-display text-lg font-bold text-berry">شو راح تستفيدين من هالجهاز؟</h3>
+            <div class="grid gap-4 sm:grid-cols-2">
+              <div class="rounded-3xl border border-white/70 bg-white p-5 shadow-soft">
+                <i data-lucide="timer" class="mb-3 h-6 w-6 text-rosegold"></i>
+                <p class="font-bold text-berry">سرّج الصغير</p>
+                <p class="mt-2 text-sm leading-relaxed text-berrysoft">خفي تماماً تحت الملابس، عيشي يومج بكامل أناقتج وثقتج بدون ما أحد يلاحظ إنج لابسته.</p>
+              </div>
+              <div class="rounded-3xl border border-white/70 bg-white p-5 shadow-soft">
+                <i data-lucide="move" class="mb-3 h-6 w-6 text-rosegold"></i>
+                <p class="font-bold text-berry">مزاجج دايم رايق</p>
+                <p class="mt-2 text-sm leading-relaxed text-berrysoft">الوجع يخرّب المود، وردي يسحب التوتر ويخليج هادية ومركزة في دوامج ومع أهلج.</p>
+              </div>
+              <div class="rounded-3xl border border-white/70 bg-white p-5 shadow-soft">
+                <i data-lucide="leaf" class="mb-3 h-6 w-6 text-rosegold"></i>
+                <p class="font-bold text-berry">يومج ما يضيع</p>
+                <p class="mt-2 text-sm leading-relaxed text-berrysoft">لا تأجلين طلعة ولا تغيبين عن الجامعة. خليج دايم في قلب الحدث وبكامل طاقتج.</p>
+              </div>
+              <div class="rounded-3xl border border-white/70 bg-white p-5 shadow-soft">
+                <i data-lucide="gem" class="mb-3 h-6 w-6 text-rosegold"></i>
+                <p class="font-bold text-berry">وداعاً للحوسة</p>
+                <p class="mt-2 text-sm leading-relaxed text-berrysoft">بديل أنيق وعصري للقربة الحارة والمطارة التقليدية اللي تخرّب شكلج وتدمر لبسج.</p>
+              </div>
+              <div class="rounded-3xl border border-white/70 bg-white p-5 shadow-soft">
+                <i data-lucide="waves" class="mb-3 h-6 w-6 text-rosegold"></i>
+                <p class="font-bold text-berry">صحتج.. استثمارج الأول</p>
+                <p class="mt-2 text-sm leading-relaxed text-berrysoft">انسي كثرة المسكنات والحبوب اللي تتعب جسمج ومعدتج. وردي هو الحل الطبيعي اللي يريحج بأمان، لأن جسمج يستاهل عناية ذكية تدوم معاج لسنوات.</p>
+              </div>
+            </div>
+          </div>
+      </div>
+    </section>
+
+    <!-- ليش وردي هو اختيارج الأول؟ — معرض صور + تسميات -->
+    <section class="border-t border-rosegold/20 bg-gradient-to-b from-white to-palepink/25 py-14 sm:py-20" aria-labelledby="why-wardi-first-title therapeutic-temps-title">
+      <div class="mx-auto max-w-6xl px-4 sm:px-6">
+        <header class=" mb-8 sm:mb-10">
+          <h2 id="why-wardi-first-title" class="font-display text-2xl font-bold text-berry sm:text-3xl">ليش وردي هو اختيارج الأول؟</h2>
+        </header>
+
+        <div
+          class=" mb-10 overflow-hidden rounded-3xl border border-rosegold/35 bg-gradient-to-br from-white via-palepink/70 to-rosegold/25 p-1 shadow-card sm:mb-12"
+          aria-labelledby="therapeutic-temps-title"
+        >
+          <div class="rounded-[1.2rem] bg-gradient-to-l from-white/95 via-white to-palepink/40 px-5 py-6 sm:px-7 sm:py-8">
+            <div class="mb-5 flex flex-wrap items-center gap-3 sm:mb-6">
+              <span class="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-rosegold/30 to-rosegold/10 text-berry shadow-sm ring-1 ring-rosegold/35">
+                <i data-lucide="thermometer" class="h-6 w-6 stroke-[2.25]" aria-hidden="true"></i>
+              </span>
+              <h3 id="therapeutic-temps-title" class="font-display text-lg font-bold text-berry sm:text-xl">مستويات الحرارة العلاجية</h3>
+            </div>
+            <ul class="font-arabic space-y-3 sm:space-y-4" dir="rtl">
+              <li class="flex flex-wrap items-center gap-3 rounded-2xl border border-white/90 bg-white/90 px-4 py-3.5 shadow-sm backdrop-blur-sm sm:gap-4 sm:px-5 sm:py-4">
+                <span class="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-palepink text-rosegold ring-1 ring-rosegold/25" aria-hidden="true">
+                  <i data-lucide="flame" class="h-[1.125rem] w-[1.125rem] stroke-[2.25]"></i>
+                </span>
+                <span class="shrink-0 text-xl font-extrabold leading-none tracking-tight text-berry tabular-nums sm:text-2xl" dir="ltr">50°C</span>
+                <span class="min-w-[12rem] flex-1 text-sm font-medium leading-relaxed text-berrysoft sm:text-[0.95rem]">للعناية بالرحم (٣ أيام قبل الدورة).</span>
+              </li>
+              <li class="flex flex-wrap items-center gap-3 rounded-2xl border border-white/90 bg-white/90 px-4 py-3.5 shadow-sm backdrop-blur-sm sm:gap-4 sm:px-5 sm:py-4">
+                <span class="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-palepink text-rosegold ring-1 ring-rosegold/25" aria-hidden="true">
+                  <i data-lucide="flame" class="h-[1.125rem] w-[1.125rem] stroke-[2.25]"></i>
+                </span>
+                <span class="shrink-0 text-xl font-extrabold leading-none tracking-tight text-berry tabular-nums sm:text-2xl" dir="ltr">55°C</span>
+                <span class="min-w-[12rem] flex-1 text-sm font-medium leading-relaxed text-berrysoft sm:text-[0.95rem]">للاستخدام اليومي أثناء الدورة.</span>
+              </li>
+              <li class="flex flex-wrap items-center gap-3 rounded-2xl border border-white/90 bg-white/90 px-4 py-3.5 shadow-sm backdrop-blur-sm sm:gap-4 sm:px-5 sm:py-4">
+                <span class="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-rosegold/25 text-berry ring-1 ring-rosegold/40" aria-hidden="true">
+                  <i data-lucide="flame" class="h-5 w-5 stroke-[2.5]"></i>
+                </span>
+                <span class="shrink-0 text-xl font-extrabold leading-none tracking-tight text-berry tabular-nums sm:text-2xl" dir="ltr">60°C</span>
+                <span class="min-w-[12rem] flex-1 text-sm font-medium leading-relaxed text-berrysoft sm:text-[0.95rem]">لتسكين الآلام الشديدة والتقلّصات القوية.</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class=" grid grid-cols-1 gap-8 md:grid-cols-2 md:gap-8 lg:grid-cols-5 lg:gap-8">
+          <figure class="flex h-full flex-col gap-4 p-2">
+            <div class="overflow-hidden rounded-2xl bg-white shadow-[0_12px_40px_-12px_rgba(61,18,40,0.22)] ring-1 ring-rosegold/20">
+              <img src="images/images3.webp" alt="" width="640" height="480" loading="lazy" decoding="async" class="aspect-[4/3] w-full object-cover" />
+            </div>
+            <figcaption class="font-arabic flex flex-col gap-2 px-2 py-2 text-center">
+              <span class="text-base font-bold leading-snug text-berry sm:text-[1.05rem]">راحة مخملية..</span>
+              <span class="text-[0.8rem] font-light leading-relaxed text-berrysoft sm:text-[0.85rem]">ملمس ناعم يخليج تنسين إنج لابسته طول اليوم</span>
+            </figcaption>
+          </figure>
+          <figure class="flex h-full flex-col gap-4 p-2">
+            <div class="overflow-hidden rounded-2xl bg-white shadow-[0_12px_40px_-12px_rgba(61,18,40,0.22)] ring-1 ring-rosegold/20">
+              <img src="images/images2.webp" alt="" width="640" height="480" loading="lazy" decoding="async" class="aspect-[4/3] w-full object-cover" />
+            </div>
+            <figcaption class="font-arabic flex flex-col gap-2 px-2 py-2 text-center">
+              <span class="text-base font-bold leading-snug text-berry sm:text-[1.05rem]">جودة تعيش معاج..</span>
+              <span class="text-[0.8rem] font-light leading-relaxed text-berrysoft sm:text-[0.85rem]">تصميم متان ومقاوم للماء وسهل التنظيف بلمحة</span>
+            </figcaption>
+          </figure>
+          <figure class="flex h-full flex-col gap-4 p-2">
+            <div class="overflow-hidden rounded-2xl bg-white shadow-[0_12px_40px_-12px_rgba(61,18,40,0.22)] ring-1 ring-rosegold/20">
+              <img src="images/images1.webp" alt="" width="640" height="480" loading="lazy" decoding="async" class="aspect-[4/3] w-full object-cover" />
+            </div>
+            <figcaption class="font-arabic flex flex-col gap-2 px-2 py-2 text-center">
+              <span class="text-base font-bold leading-snug text-berry sm:text-[1.05rem]">وداعاً للألم فوراً..</span>
+              <span class="text-[0.8rem] font-light leading-relaxed text-berrysoft sm:text-[0.85rem]">تسخين ذكي يريحج في ثواني وبطارية تدوم معاج</span>
+            </figcaption>
+          </figure>
+          <figure class="flex h-full flex-col gap-4 p-2">
+            <div class="overflow-hidden rounded-2xl bg-white shadow-[0_12px_40px_-12px_rgba(61,18,40,0.22)] ring-1 ring-rosegold/20">
+              <img src="images/images5.webp" alt="" width="640" height="480" loading="lazy" decoding="async" class="aspect-[4/3] w-full object-cover" />
+            </div>
+            <figcaption class="font-arabic flex flex-col gap-2 px-2 py-2 text-center">
+              <span class="text-base font-bold leading-snug text-berry sm:text-[1.05rem]">جاهز دايماً..</span>
+              <span class="text-[0.8rem] font-light leading-relaxed text-berrysoft sm:text-[0.85rem]">يشحن من أي مكان وحجمه يطيح بشنطتج بكل خفة</span>
+            </figcaption>
+          </figure>
+          <figure class="flex h-full flex-col gap-4 p-2">
+            <div class="overflow-hidden rounded-2xl bg-white shadow-[0_12px_40px_-12px_rgba(61,18,40,0.22)] ring-1 ring-rosegold/20">
+              <img src="images/images4.jpg.jpeg" alt="" width="640" height="480" loading="lazy" decoding="async" class="aspect-[4/3] w-full object-cover" />
+            </div>
+            <figcaption class="font-arabic flex flex-col gap-2 px-2 py-2 text-center">
+              <span class="text-base font-bold leading-snug text-berry sm:text-[1.05rem]">حياتج ما توقف..</span>
+              <span class="text-[0.8rem] font-light leading-relaxed text-berrysoft sm:text-[0.85rem]">كملي دوامج وطلعاتج براحة تامة وين ما كنتي</span>
+            </figcaption>
+          </figure>
+        </div>
+
+        <div class="mt-10 flex w-full justify-center px-4 sm:mt-14">
+          <a href="#order" class="inline-flex w-full max-w-lg items-center justify-center rounded-full bg-gradient-to-br from-[#4d1635] to-[#2d0d1f] py-5 px-8 text-center text-lg font-black text-white shadow-[0_15px_35px_rgba(77,22,53,0.4)] transition-all duration-300 hover:scale-[1.02] active:scale-95 sm:text-xl">
+              أريد الاستثمار في صحتي والتخلص من الألم الآن 
+          </a>
+      </div>
+    </section>
+
+
+    <!-- Usage recommendations -->
+    <section aria-labelledby="usage-title" class="bg-white py-12 sm:py-16">
+      <div class="mx-auto max-w-3xl px-4 sm:px-6">
+        <h2 id="usage-title" class=" font-display text-xl font-bold text-berry sm:text-2xl">توصيات هامة للاستخدام</h2>
+        <ul class=" mt-6 space-y-4 rounded-3xl border border-red-900/10 bg-[#fff8f8] p-6 shadow-inner sm:p-8">
+          <li class="flex gap-3 text-[0.95rem] leading-relaxed text-berry">
+            <span class="mt-1 flex h-7 w-7 shrink-0 items-center justify-center rounded-xl bg-red-900/10 text-red-900">
+              <i data-lucide="moon-off" class="h-4 w-4" aria-hidden="true"></i>
+            </span>
+            <span>لا يستخدم أثناء النوم.</span>
+          </li>
+          <li class="flex gap-3 text-[0.95rem] leading-relaxed text-berry">
+            <span class="mt-1 flex h-7 w-7 shrink-0 items-center justify-center rounded-xl bg-red-900/10 text-red-900">
+              <i data-lucide="shirt" class="h-4 w-4" aria-hidden="true"></i>
+            </span>
+            <span>لا يوضع مباشرة فوق الملابس التي تحتوي على أجزاء معدنية.</span>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 6 Guarantee -->
+    <section class="bg-gradient-to-b from-white to-palepink/80 py-14 sm:py-20">
+      <div class="mx-auto max-w-4xl px-4 sm:px-6">
+        <div class=" rounded-3xl border border-yellow-900/25 bg-[#fffdfa] px-6 py-8 shadow-soft sm:px-10 sm:py-10">
+          <div class="flex flex-col items-start gap-5 sm:flex-row-reverse sm:items-center sm:gap-8">
+            <div class="mx-auto inline-flex h-20 w-20 shrink-0 items-center justify-center rounded-3xl bg-gradient-to-br from-[#fcdca4] via-[#f9c56c] to-[#e89b42] shadow-card ring-[3px] ring-yellow-900/35 sm:mx-0">
+              <!-- Golden shield lucide styled -->
+              <i data-lucide="shield" class="h-10 w-10 fill-yellow-800 text-yellow-950"></i>
+            </div>
+            <div class="flex-1 text-center sm:text-right">
+              <h2 class="font-display text-2xl font-bold text-berry sm:text-[1.65rem]">اختبريه بحذركم — وفالكم الراحة</h2>
+              <p class="mt-4 text-[1rem] leading-relaxed text-berrysoft">
+                افحصي جهازچ عند الاستلام؛ وإذا ما عجبگ، لا تدفعين <span class="font-bold text-berry">فلس واحد</span>.
+              </p>
+              <p class="mt-3 text-[0.95rem] leading-relaxed text-berrysoft">
+                بالإضافة: ضمان فني عملي خلال <span class="font-bold text-berry">١٤ يومًا</span> لمتابعة تجربة مريحة بما يخدم صحتكم.
+              </p>
+              <div class="mt-6 flex justify-center sm:justify-end">
+                <span class="inline-flex items-center gap-1 rounded-2xl bg-emerald-50 px-4 py-2 text-xs font-bold text-emerald-900 ring-1 ring-emerald-200"><i data-lucide="truck-electric" class="h-4 w-4"></i> مستلمين بتسليم مهذب</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 7 Offer -->
+    <section id="offer" class="relative px-4 py-12 sm:px-6">
+      <div class="relative mx-auto max-w-xl overflow-hidden rounded-[2.5rem] bg-[#3d122b] p-8 text-center shadow-2xl border-2 border-rosegold/20">
+          
+          <div class="mb-6 flex flex-col items-center gap-3">
+              <span class="text-4xl animate-bounce">🎁</span>
+              <h2 class="text-lg font-bold text-white leading-tight">
+                  أهدي الثاني لمن تحبين؛ وثبتي راحتكم اليوم.<br>
+                  <span class="text-rosegold text-xl">“Buy 1 Get 1 FREE”</span>
+              </h2>
+          </div>
+  
+          <div class="relative mb-6 rounded-3xl bg-black/30 p-6 border border-white/10">
+              <div class="flex items-center justify-center gap-6">
+                  <div class="text-right opacity-50">
+                      <p class="text-xs text-white">بدلاً من</p>
+                      <p class="text-xl text-white line-through font-bold">40 د.ك</p>
+                  </div>
+                  <div class="h-12 w-[1px] bg-white/20"></div>
+                  <div class="text-left">
+                      <p class="text-[2.8rem] font-black text-white leading-none">21 <span class="text-sm">د.ك</span></p>
+                  </div>
+              </div>
+              
+              <div class="mt-4 inline-flex items-center gap-2 rounded-xl bg-white/5 px-4 py-2 text-[0.8rem] font-bold text-green-400 border border-green-400/20">
+                  <span class="relative flex h-2 w-2">
+                      <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                      <span class="relative inline-flex rounded-full h-2 w-2 bg-green-400"></span>
+                  </span>
+                  🚚 التوصيل مجاني لجميع مناطق الكويت
+              </div>
+          </div>
+  
+          <div class="space-y-3 mb-8">
+              <div class="flex items-center justify-center gap-2 rounded-2xl border border-yellow-500/30 bg-yellow-500/10 px-3 py-2.5 text-[0.75rem] font-bold text-yellow-200">
+                  <i data-lucide="triangle-alert" class="w-4 h-4"></i>
+                  متبقي 14 جهاز فقط في مخازننا بالكويت
+              </div>
+              
+              <div class="rounded-2xl bg-red-600/90 px-3 py-2.5 text-[0.75rem] font-bold text-white shadow-inner">
+                  العرض ينتهي خلال 24 ساعة أو نفاذ الكمية ⏳
+              </div>
+          </div>
+   
+      </div>
+  </section>
+  <div class="py-10 bg-white">
+    <div class="mx-auto max-w-lg px-4 text-center">
+                
+        <div class="relative overflow-hidden rounded-[2.5rem] border border-rosegold/10 shadow-2xl bg-[#fdf2f2] p-2">
+            <img src="images/Gift.webp" 
+                 alt="Wardi Premium Gift Offer Kuwait" 
+                 class="w-full h-auto rounded-[2rem] object-cover" />
+            
+            <div class="absolute inset-0 bg-gradient-to-t from-black/5 to-transparent pointer-events-none"></div>
+        </div>
+        
+        <p class="mt-4 px-6 text-[0.8rem] leading-relaxed text-berry/60 font-bold italic">
+          * الـصـورة لـغـرض الـتـوضـيـح؛ الـتـغـلـيـف الـفـعـلي قـد يـخـتـلف اختلافا بـسـيطـاً.
+      </p>
+
+        <div class="mt-8 animate-bounce opacity-20">
+            <i data-lucide="chevron-down" class="mx-auto w-6 h-6 text-berry"></i>
+        </div>
+    </div>
+</div>
+    <!-- 9 Order form -->
+    <section id="order" class="py-20 px-4 bg-white">
+      <div class="mx-auto max-w-lg">
+        <div style="background-color: #3d122b;" class="rounded-[3rem] p-8 sm:p-11 shadow-2xl border border-[#ead1c1]/10">
+          
+          <div class="text-center mb-10">
+            <h2 class="text-3xl font-black text-[#ead1c1] leading-tight mb-3">ثبتي طلبج — والباقي علينا 🇰🇼</h2>
+            <p class="text-[#ead1c1]/60 text-xs font-bold uppercase tracking-[0.2em]">توصيل مجاني ودفع عند الاستلام</p>
+          </div>
+    
+          <form id="orderForm" class="space-y-6">
+            <div>
+              <label class="block mr-2 mb-2 text-[0.7rem] font-bold text-[#ead1c1]/80 uppercase">الاسم بالكامل</label>
+              <input type="text" id="nameInput" required
+                     style="background-color: #fef9f9;"
+                     class="w-full rounded-2xl px-6 py-5 text-right outline-none text-[#3d122b] font-bold text-lg" 
+                     placeholder="اكتبي اسمج بالكامل" />
+            </div>
+    
+            <div>
+              <label class="block mr-2 mb-2 text-[0.7rem] font-bold text-[#ead1c1]/80 uppercase">رقم الهاتف</label>
+              <div class="relative">
+                <input type="tel" id="phoneInput" required dir="ltr"
+                       style="background-color: #fef9f9;"
+                       class="w-full rounded-2xl pl-20 pr-6 py-5 outline-none text-[#3d122b] font-bold text-lg" 
+                       placeholder="9xxxxxxx" />
+                <span class="absolute left-6 top-1/2 -translate-y-1/2 text-[#3d122b] font-black border-r border-[#3d122b]/10 pr-4">+965</span>
+              </div>
+            </div>
+    
+            <div class="pt-6">
+              <button type="button" id="submitBtn" onclick="sendOrder(event)" 
+                      style="background-color: #ead1c1;"
+                      class="w-full py-6 rounded-3xl text-[#3d122b] font-black text-2xl shadow-xl hover:scale-[1.02] active:scale-95 transition-all">
+                تأكيد الطلب الآن 🛍️
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+    <!-- FAQ -->
+    <section class="bg-white py-14 sm:py-20">
+      <div class="mx-auto max-w-3xl px-4 sm:px-6">
+        <h2 class=" font-display text-2xl font-bold text-center text-berry sm:text-3xl">الاسئلة الأكثر تكراراً.</h2>
+
+        <div class=" mt-8 divide-y divide-rosegold/20 rounded-3xl border border-rosegold/25 bg-white shadow-soft">
+          <details class="group px-6 py-4 open:bg-palepink/40">
+            <summary class="flex cursor-pointer list-none items-start justify-between gap-3 text-[0.95rem] font-bold text-berry">
+              <span>هل التسخين آمن ومافي خطر بالحرق؟</span>
+              <i data-lucide="plus" class="mt-1 h-4 w-4 shrink-0 text-rosegold transition-transform group-open:rotate-45"></i>
+            </summary>
+            <p class="mt-3 pb-2 text-[0.9rem] leading-relaxed text-berrysoft">
+              التسخين مصمّم ليكون ضمن نطاق دافئ مريح، مع إعدادات يمكنكم خفّض مستواها وقت الحاجة. ننصح بمراقبة أوّل تجربة وعدم تشغيله لفترات ممتدة بلا انقطاع، خصوصًا إذا جلدكم حسّاس وقت الدورة؛ وبالتالي تتحكمّين بالجدول والشدّ خطوة بخطوة.
+            </p>
+          </details>
+          <details class="group px-6 py-4 open:bg-palepink/40">
+            <summary class="flex cursor-pointer list-none items-start justify-between gap-3 text-[0.95rem] font-bold text-berry">
+              <span>يقدر ينلبس تحت الثياب من غير ما يطلع؟</span>
+              <i data-lucide="plus" class="mt-1 h-4 w-4 shrink-0 text-rosegold transition-transform group-open:rotate-45"></i>
+            </summary>
+            <p class="mt-3 pb-2 text-[0.9rem] leading-relaxed text-berrysoft">
+              نعم؛ الحزام نحيف نسبياً وفيه استقرار بحيث لا يعبّط على قصّة العباءة أو البلوزة الساترة؛ وفيه قطع تساعد عدم الانزلاق بشكل بارز خارج القماش الي تلبسونه فوق الجهاز.
+            </p>
+          </details>
+          <details class="group px-6 py-4 open:bg-palepink/40">
+            <summary class="flex cursor-pointer list-none items-start justify-between gap-3 text-[0.95rem] font-bold text-berry">
+              <span>في صوت وقت المسّاج ولا عادي الوضع بالمكان العامّ؟</span>
+              <i data-lucide="plus" class="mt-1 h-4 w-4 shrink-0 text-rosegold transition-transform group-open:rotate-45"></i>
+            </summary>
+            <p class="mt-3 pb-2 text-[0.9rem] leading-relaxed text-berrysoft">
+              أغلب تجارب مستخدمينا ذكرت إن مستواه منخفض مقارنة أجهزة تقليدية، ومجموعتنا هالشي مهتمّة فيها لأجل صمت المكتبات والصفوف؛ وفيكم تبتعدون أكثر بحسب طبقتكم الخارجية.
+            </p>
+          </details>
+          <details class="group px-6 py-4 open:bg-palepink/40 rounded-b-[1.05rem]">
+            <summary class="flex cursor-pointer list-none items-start justify-between gap-3 text-[0.95rem] font-bold text-berry">
+              <span>هل يأثر على البشرة وتنشّف المنطقة؟</span>
+              <i data-lucide="plus" class="mt-1 h-4 w-4 shrink-0 text-rosegold transition-transform group-open:rotate-45"></i>
+            </summary>
+            <p class="mt-3 pb-2 text-[0.9rem] leading-relaxed text-berrysoft">
+              المواد المركّزة على احتكاك البشرة ناعمة وتهدف لتقليل الاحترياق الناتج عن مكوّنات خَشنة؛ ومع ذلك ننصح بحذافة إزالة جهاز لفترات وترطيب المنطقة بروتينكم المعتاد، خصوصًا إذا عندكم إكزيما نشطة وقت استشارة طبيّة.
+            </p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+
+  
+  </main>
+  
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script>
+    lucide.createIcons();
+  </script>
+  
+  </body>
+  </html>
+
+  <!-- Sticky bottom strip -->
+  <div class="pointer-events-none fixed inset-x-0 bottom-0 z-30 pb-[env(safe-area-inset-bottom,0)]">
+    <div class="pointer-events-auto mx-auto max-w-xl px-3 pb-4 sm:px-6">
+      <div class="rounded-3xl border border-white/40 bg-white/94 px-4 py-3 shadow-[0_-20px_50px_-32px_rgba(61,18,40,0.55)] backdrop-blur-xl">
+        <div class="flex flex-col gap-3 sm:flex-row-reverse sm:items-center sm:justify-between">
+          <div class="text-center text-[11px] text-berrysoft sm:text-right">
+            <p class="font-bold text-berry">٢١ د.ك — أخذ وحيد وفالكم ثانيًا</p>
+            <p>ينتهي العرض خلال ٢٤ ساعة</p>
+          </div>
+          <a href="#order" class="inline-flex w-full items-center justify-center rounded-2xl bg-rosegold px-4 py-3 text-[0.9rem] font-extrabold text-berry shadow-soft transition hover:bg-[#efbbae] animate-pulse-elegant focus:outline-none focus-visible:ring-2 focus-visible:ring-berry focus-visible:ring-offset-2 sm:w-auto">
+            ادخلي لتعبئة الطلب
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="border-t border-rosegold/20 bg-white pb-[7.75rem] pt-12 text-[11px] text-berrysoft sm:pb-28">
+    <div class="mx-auto max-w-6xl px-4 sm:px-6">
+      <p class="leading-relaxed">هذه الصفحة لأغراض تسويق الكترونية مبنية حسب المتطلبات الفنية المتفق عليها. الجهاز والمزايا تخضع لتوضيحات الصانع وفريق التسليم وقت التأكيد. للاستخدام المناسب دائمًا راجعوا التعليمات المرفقة.</p>
+      <div class="mt-6 flex flex-wrap justify-center gap-4 text-[11px] font-semibold">
+        <a href="#reviews" class="text-rose-600 hover:text-berry">مراجعات الخوّات</a>
+        <a href="#product" class="text-rose-600 hover:text-berry">تفاصيل المنتوج</a>
+        <a href="#offer" class="text-rose-600 hover:text-berry">العرض اليومي</a>
+      </div>
+      <p class="mt-6 text-center font-display text-[0.7rem] text-berrysoft/70">وردي Wardi • Royal Feminine Medical — Kuwait</p>
+    </div>
+  </footer>
+
+  </main> <script src="https://unpkg.com/lucide@latest"></script>
+  <script>
+    lucide.createIcons();
+  </script>
+<script>
+  function sendOrder(event) {
+      event.preventDefault();
+  
+      // جلب البيانات من الخانات
+      const name = document.getElementById('nameInput').value;
+      const phone = document.getElementById('phoneInput').value;
+      const btn = document.getElementById('submitBtn');
+  
+      // ⚠️ الرابط الأخير اللي درناه (تأكد أنه هو نفسه اللي عندك)
+      const scriptURL = "https://script.google.com/macros/s/AKfycbwOWZ3EdqXlQfU9jy1CzfprfNfFeFwLqVhufSQDuxGUZ_Npcb7lwjduAYL2izd15h0_/exec";
+  
+      if (!name || !phone) {
+          alert("يرجى ملء البيانات");
+          return;
+      }
+  
+      if(btn) {
+          btn.innerText = "جاري التأكيد...";
+          btn.disabled = true;
+      }
+  
+      // إرسال البيانات (طريقة GET هي الأكثر استقراراً)
+      fetch(`${scriptURL}?name=${encodeURIComponent(name)}&phone=${encodeURIComponent(phone)}`, {
+          mode: 'no-cors',
+          method: 'GET'
+      });
+  
+      // تحويل لصفحة الشكر بعد ثانية
+      setTimeout(function() {
+          window.location.href = "thank-you.html";
+      }, 1000); 
+  }
+  </script>
+  </body>
+  </html>
