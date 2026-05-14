@@ -683,40 +683,42 @@
   <script>
     lucide.createIcons();
   </script>
- </script>
-function doPost(e) {
-  var sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
-  var data = JSON.parse(e.postData.contents);
-  
-  // 1. تسجيل في قوقل شيت
-  sheet.appendRow([new Date(), data.name, data.phone, data.address, data.city, "New Order"]);
+<script>
+async function sendOrder(event) {
+    if (event) event.preventDefault();
+    
+    // 1. جلب البيانات من الخانات
+    const name = document.querySelector('input[placeholder*="الاسم"]')?.value;
+    const phone = document.querySelector('input[placeholder*="الهاتف"]')?.value;
 
-  // 2. الإرسال لـ COD Network من سيرفر قوقل (باي باي CORS)
-  var codUrl = 'https://api.cod.network/v1/orders';
-  var payload = {
-    "customer_name": data.name,
-    "customer_phone": data.phone,
-    "customer_address": "Kuwait City",
-    "city": "Kuwait",
-    "country_code": "KW",
-    "items": [{ "product_ref": 13830, "sku": "MP-7HSMXZLK2KH5", "quantity": 1, "price": 21 }]
-  };
+    if (!name || !phone) { 
+        alert("يرجى إدخال الاسم ورقم الهاتف!"); 
+        return; 
+    }
 
-  var options = {
-    'method' : 'post',
-    'contentType': 'application/json',
-    'headers': { 'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczpcL1wvYXBpLmNvZC5uZXR3b3JrXC9hcGlcL3YyXC9zZWxsZXJcL2FwaS10b2tlblwvZ2VuZXJhdGUiLCJpYXQiOjE3Nzg2MTI2OTgsImV4cCI6MTc4MTM4MTc3OCwibmJmIjoxNzc4Nzg5Nzc4LCJqdGkiOiJIN1Zua25oS21pSksxZUdnIiwic3ViIjo5MTkzOCwicHJ2IjoiMmMxODI3MTgyNWFjM2Q1YzdiNjVkMjU0ZjBhNDMzNDU1MjFjNmE5ZiJ9.hFv0an_pZxGBZBFWDziKNzNkTOa5DwLKGfLE1FQSeEQ' },
-    'payload' : JSON.stringify(payload),
-    'muteHttpExceptions': true
-  };
+    const btn = document.querySelector('button') || document.querySelector('.btn');
+    if(btn) btn.innerText = "جاري التحميل...";
 
-  try {
-    UrlFetchApp.fetch(codUrl, options);
-    return ContentService.createTextOutput("success").setMimeType(ContentService.MimeType.TEXT);
-  } catch (err) {
-    return ContentService.createTextOutput("error").setMimeType(ContentService.MimeType.TEXT);
-  }
+    try {
+        // 2. نبعثو للرابط تاع قوقل سكريبت (تأكد بلي هادا هو الرابط تاعك)
+        await fetch('https://script.google.com/macros/s/AKfycbwOWZ3EdqXlQfU9jy1CzfprfNfFeFwLqVhufSQDuxGUZ_Npcb7lwjduAYL2izd15h0_/exec', {
+            method: 'POST',
+            mode: 'no-cors', 
+            body: JSON.stringify({ name: name, phone: phone })
+        });
+
+        // 3. التحويل لصفحة الشكر
+        window.location.href = "thank-you.html";
+    } catch (e) {
+        window.location.href = "thank-you.html";
+    }
 }
-  </script>
+
+// ربط الزر بالكود
+window.onload = () => {
+    const btn = document.querySelector('button') || document.querySelector('.btn');
+    if(btn) btn.onclick = sendOrder;
+};
+</script>
   </body>
   </html>
