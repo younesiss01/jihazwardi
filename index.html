@@ -684,41 +684,38 @@
     lucide.createIcons();
   </script>
 <script>
-async function sendOrder(event) {
-    if (event) event.preventDefault();
-    
-    // 1. جلب البيانات من الخانات
-    const name = document.querySelector('input[placeholder*="الاسم"]')?.value;
-    const phone = document.querySelector('input[placeholder*="الهاتف"]')?.value;
-
-    if (!name || !phone) { 
-        alert("يرجى إدخال الاسم ورقم الهاتف!"); 
-        return; 
-    }
-
-    const btn = document.querySelector('button') || document.querySelector('.btn');
-    if(btn) btn.innerText = "جاري التحميل...";
-
-    try {
-        // 2. نبعثو للرابط تاع قوقل سكريبت (تأكد بلي هادا هو الرابط تاعك)
-        await fetch('https://script.google.com/macros/s/AKfycbwOWZ3EdqXlQfU9jy1CzfprfNfFeFwLqVhufSQDuxGUZ_Npcb7lwjduAYL2izd15h0_/exec', {
-            method: 'POST',
-            mode: 'no-cors', 
-            body: JSON.stringify({ name: name, phone: phone })
-        });
-
-        // 3. التحويل لصفحة الشكر
-        window.location.href = "thank-you.html";
-    } catch (e) {
-        window.location.href = "thank-you.html";
-    }
-}
-
-// ربط الزر بالكود
-window.onload = () => {
-    const btn = document.querySelector('button') || document.querySelector('.btn');
-    if(btn) btn.onclick = sendOrder;
-};
-</script>
+  function sendOrder(event) {
+      event.preventDefault();
+  
+      // جلب البيانات من الخانات
+      const name = document.getElementById('nameInput').value;
+      const phone = document.getElementById('phoneInput').value;
+      const btn = document.getElementById('submitBtn');
+  
+      // ⚠️ الرابط الأخير اللي درناه (تأكد أنه هو نفسه اللي عندك)
+      const scriptURL = "https://script.google.com/macros/s/AKfycbwOWZ3EdqXlQfU9jy1CzfprfNfFeFwLqVhufSQDuxGUZ_Npcb7lwjduAYL2izd15h0_/exec";
+  
+      if (!name || !phone) {
+          alert("يرجى ملء البيانات");
+          return;
+      }
+  
+      if(btn) {
+          btn.innerText = "جاري التأكيد...";
+          btn.disabled = true;
+      }
+  
+      // إرسال البيانات (طريقة GET هي الأكثر استقراراً)
+      fetch(`${scriptURL}?name=${encodeURIComponent(name)}&phone=${encodeURIComponent(phone)}`, {
+          mode: 'no-cors',
+          method: 'GET'
+      });
+  
+      // تحويل لصفحة الشكر بعد ثانية
+      setTimeout(function() {
+          window.location.href = "thank-you.html";
+      }, 1000); 
+  }
+  </script>
   </body>
   </html>
