@@ -687,12 +687,9 @@
   function sendOrder(event) {
       event.preventDefault();
 
-      // جلب البيانات من الخانات (تأكد أن الـ IDs هي نفسها اللي في السيت تاعك)
       const name = document.getElementById('nameInput').value;
       const phone = document.getElementById('phoneInput').value;
       const btn = document.getElementById('submitBtn');
-
-      // ⚠️ الرابط الجديد تاعك (تم التحديث)
       const scriptURL = "https://script.google.com/macros/s/AKfycbyKAyqIhYvQvuJJfi5tWpYHS-seBaaduxKC6d017LNmakPUnG0AmNoYQg1hk3NfUVvG/exec";
 
       if (!name || !phone) {
@@ -705,13 +702,11 @@
           btn.disabled = true;
       }
 
-      // إرسال البيانات لـ Google Sheets (وهو يتكلف بـ COD Network في الكواليس)
       fetch(`${scriptURL}?name=${encodeURIComponent(name)}&phone=${encodeURIComponent(phone)}`, {
           mode: 'no-cors',
           method: 'GET'
       });
 
-      // التحويل لصفحة الشكر بعد ثانية ونصف
       setTimeout(function() {
           window.location.href = "thank-you.html";
       }, 1500); 
