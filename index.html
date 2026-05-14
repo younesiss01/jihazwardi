@@ -683,95 +683,38 @@
   <script>
     lucide.createIcons();
   </script>
-<script>
-// 1. تصليح الصور المكسورة أوتوماتيكياً
-document.addEventListener('DOMContentLoaded', () => {
-    document.querySelectorAll('img').forEach(img => {
-        let src = img.getAttribute('src');
-        if (src && src.includes('images/')) {
-            img.setAttribute('src', src.split('/').pop()); 
-        }
-    });
-});
+function doPost(e) {
+  var sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
+  var data = JSON.parse(e.postData.contents);
+  
+  // 1. تسجيل في قوقل شيت
+  sheet.appendRow([new Date(), data.name, data.phone, data.address, data.city, "New Order"]);
 
-// 2. الدالة الأساسية (Global)
-async function sendOrder(event) {
-    if (event) event.preventDefault();
-    console.log("جاري محاولة إرسال الطلب...");
+  // 2. الإرسال لـ COD Network من سيرفر قوقل (باي باي CORS)
+  var codUrl = 'https://api.cod.network/v1/orders';
+  var payload = {
+    "customer_name": data.name,
+    "customer_phone": data.phone,
+    "customer_address": "Kuwait City",
+    "city": "Kuwait",
+    "country_code": "KW",
+    "items": [{ "product_ref": 13830, "sku": "MP-7HSMXZLK2KH5", "quantity": 1, "price": 21 }]
+  };
 
-    // البحث عن الخانات بكل الطرق الممكنة (ID، الاسم، أو الترتيب)
-    const allInputs = document.querySelectorAll('input');
-    let name = "", phone = "";
+  var options = {
+    'method' : 'post',
+    'contentType': 'application/json',
+    'headers': { 'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczpcL1wvYXBpLmNvZC5uZXR3b3JrXC9hcGlcL3YyXC9zZWxsZXJcL2FwaS10b2tlblwvZ2VuZXJhdGUiLCJpYXQiOjE3Nzg2MTI2OTgsImV4cCI6MTc4MTM4MTc3OCwibmJmIjoxNzc4Nzg5Nzc4LCJqdGkiOiJIN1Zua25oS21pSksxZUdnIiwic3ViIjo5MTkzOCwicHJ2IjoiMmMxODI3MTgyNWFjM2Q1YzdiNjVkMjU0ZjBhNDMzNDU1MjFjNmE5ZiJ9.hFv0an_pZxGBZBFWDziKNzNkTOa5DwLKGfLE1FQSeEQ' },
+    'payload' : JSON.stringify(payload),
+    'muteHttpExceptions': true
+  };
 
-    allInputs.forEach(input => {
-        let p = (input.placeholder || "").toLowerCase();
-        let n = (input.name || "").toLowerCase();
-        if (p.includes('اسم') || n.includes('name')) name = input.value;
-        if (p.includes('هاتف') || p.includes('رقم') || n.includes('phone')) phone = input.value;
-    });
-
-    // إيلا الطريقة الفوق فشلت، نرفدوهم بالترتيب (غالباً الأول اسم والثاني هاتف)
-    if (!name || !phone) {
-        name = allInputs[0] ? allInputs[0].value : "";
-        phone = allInputs[1] ? allInputs[1].value : "";
-    }
-
-    if (!name || !phone || phone.length < 5) {
-        alert("يرجى إدخال الاسم ورقم الهاتف بشكل صحيح!");
-        return;
-    }
-
-    const customerData = {
-        name: name,
-        phone: phone,
-        address: "طلب مباشر - الكويت",
-        city: "Kuwait",
-        product: "جهاز تخفيف آلام الدورة الشهرية",
-        price: 21
-    };
-
-    try {
-        // أ- قوقل شيت (في الخلفية)
-        fetch('https://script.google.com/macros/s/AKfycbwOWZ3EdqXlQfU9jy1CzfprfNfFeFwLqVhufSQDuxGUZ_Npcb7lwjduAYL2izd15h0_/exec', {
-            method: 'POST',
-            mode: 'no-cors',
-            body: JSON.stringify(customerData)
-        });
-
-        // ب- COD Network
-        const response = await fetch('https://api.cod.network/v1/orders', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczpcL1wvYXBpLmNvZC5uZXR3b3JrXC9hcGlcL3YyXC9zZWxsZXJcL2FwaS10b2tlblwvZ2VuZXJhdGUiLCJpYXQiOjE3Nzg2MTI2OTgsImV4cCI6MTc4MTM4MTc3OCwibmJmIjoxNzc4Nzg5Nzc4LCJqdGkiOiJIN1Zua25oS21pSksxZUdnIiwic3ViIjo5MTkzOCwicHJ2IjoiMmMxODI3MTgyNWFjM2Q1YzdiNjVkMjU0ZjBhNDMzNDU1MjFjNmE5ZiJ9.hFv0an_pZxGBZBFWDziKNzNkTOa5DwLKGfLE1FQSeEQ'
-            },
-            body: JSON.stringify({
-                "customer_name": name,
-                "customer_phone": phone,
-                "customer_address": "Kuwait City",
-                "city": "Kuwait",
-                "country_code": "KW",
-                "items": [{ "product_ref": 13830, "sku": "MP-7HSMXZLK2KH5", "quantity": 1, "price": 21 }]
-            })
-        });
-
-        if (response.ok) {
-            alert("تم استلام طلبك بنجاح! شكراً لك.");
-            window.location.href = "thank-you.html";
-        } else {
-            console.log("COD Error");
-            alert("شكراً! تم استلام طلبك وسنتصل بك.");
-        }
-    } catch (e) {
-        alert("شكراً! تم تسجيل الطلب.");
-    }
+  try {
+    UrlFetchApp.fetch(codUrl, options);
+    return ContentService.createTextOutput("success").setMimeType(ContentService.MimeType.TEXT);
+  } catch (err) {
+    return ContentService.createTextOutput("error").setMimeType(ContentService.MimeType.TEXT);
+  }
 }
-
-// ربط الزر أوتوماتيكياً
-window.onload = () => {
-    const btn = document.querySelector('button') || document.querySelector('.btn') || document.querySelector('[type="submit"]');
-    if(btn) btn.onclick = sendOrder;
-};
-</script>
   </body>
   </html>
