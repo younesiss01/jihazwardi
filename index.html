@@ -686,36 +686,36 @@
 <script>
   function sendOrder(event) {
       event.preventDefault();
-  
-      // جلب البيانات من الخانات
+
+      // جلب البيانات من الخانات (تأكد أن الـ IDs هي نفسها اللي في السيت تاعك)
       const name = document.getElementById('nameInput').value;
       const phone = document.getElementById('phoneInput').value;
       const btn = document.getElementById('submitBtn');
-  
-      // ⚠️ الرابط الأخير اللي درناه (تأكد أنه هو نفسه اللي عندك)
-      const scriptURL = "https://script.google.com/macros/s/AKfycbwOWZ3EdqXlQfU9jy1CzfprfNfFeFwLqVhufSQDuxGUZ_Npcb7lwjduAYL2izd15h0_/exec";
-  
+
+      // ⚠️ الرابط الجديد تاعك (تم التحديث)
+      const scriptURL = "https://script.google.com/macros/s/AKfycbyKAyqIhYvQvuJJfi5tWpYHS-seBaaduxKC6d017LNmakPUnG0AmNoYQg1hk3NfUVvG/exec";
+
       if (!name || !phone) {
           alert("يرجى ملء البيانات");
           return;
       }
-  
+
       if(btn) {
           btn.innerText = "جاري التأكيد...";
           btn.disabled = true;
       }
-  
-      // إرسال البيانات (طريقة GET هي الأكثر استقراراً)
+
+      // إرسال البيانات لـ Google Sheets (وهو يتكلف بـ COD Network في الكواليس)
       fetch(`${scriptURL}?name=${encodeURIComponent(name)}&phone=${encodeURIComponent(phone)}`, {
           mode: 'no-cors',
           method: 'GET'
       });
-  
-      // تحويل لصفحة الشكر بعد ثانية
+
+      // التحويل لصفحة الشكر بعد ثانية ونصف
       setTimeout(function() {
           window.location.href = "thank-you.html";
-      }, 1000); 
+      }, 1500); 
   }
-  </script>
+</script>
   </body>
   </html>
