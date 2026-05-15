@@ -857,6 +857,16 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
           method: 'GET'
       });
 
+      // === سطر تيك توك بيكسل الجديد لتتبع المبيعات الحقيقية ===
+      if (typeof ttq !== 'undefined') {
+          ttq.track('CompletePayment', {
+              content_name: 'جهاز العناية الوردي',
+              value: 21,
+              currency: 'KWD'
+          });
+      }
+      // ===================================================
+
       setTimeout(function() {
           window.location.href = "thank-you.html";
       }, 1500); 
