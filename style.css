@@ -43,7 +43,6 @@ a[href="#order"], button[id="submitBtn"] {
   0%, 100% { transform: translateY(-10%); }
   50% { transform: translateY(0); }
 }
-/* الظهور السريع والثابت للشريط السفلي بلا ما يثقل غوغل */
 .safe-sticky-bar {
   position: fixed !important;
   bottom: 0 !important;
