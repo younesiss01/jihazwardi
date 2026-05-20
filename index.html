@@ -27,8 +27,78 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800&family=El+Messiri:wght@500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
-<script src="https://twcdn.prod.unwrapped.dev/tailwindcss/v3.4.1.js"></script>
-<link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            rosegold: '#E7BCB1',
+            palepink: '#FDF2F0',
+            berry: '#3D1228',
+            berrysoft: '#5B2340',
+            cream: '#FFFCFB',
+          },
+          fontFamily: {
+            arabic: ['Tajawal', 'system-ui', 'sans-serif'],
+            display: ['El Messiri', 'Tajawal', 'serif'],
+          },
+          boxShadow: {
+            soft: '0 22px 50px -28px rgba(61,18,40,0.28)',
+            card: '0 16px 40px -24px rgba(231,188,177,0.45)',
+          },
+          borderRadius: {
+            '2xl': '1rem',
+            '3xl': '1.35rem',
+          },
+          animation: {
+            'fade-up': 'fadeUp 0.85s cubic-bezier(.22,.9,.42,1) forwards',
+            'pulse-elegant': 'pulseElegant 2.75s cubic-bezier(.4,0,.6,1) infinite',
+            'sheen': 'sheen 3.2s linear infinite',
+          },
+          keyframes: {
+            fadeUp: {
+              '0%': { opacity: '0', transform: 'translateY(22px)' },
+              '100%': { opacity: '1', transform: 'translateY(0)' },
+            },
+            pulseElegant: {
+              '0%, 100%': { boxShadow: '0 0 0 0 rgba(231,188,177,0.55)' },
+              '50%': { boxShadow: '0 0 0 12px rgba(231,188,177,0)' },
+            },
+            sheen: {
+              '0%': { transform: 'translateX(-140%) skewX(-12deg)' },
+              '100%': { transform: 'translateX(180%) skewX(-12deg)' },
+            },
+          },
+        },
+      },
+    };
+  </script>
+  <style>
+    html { scroll-behavior: smooth; }
+    body { font-family: Tajawal, system-ui, sans-serif; }
+    . { opacity: 0; transform: translateY(24px); transition: opacity 0.8s cubic-bezier(.22,.9,.42,1), transform 0.8s cubic-bezier(.22,.9,.42,1); }
+    ..is-visible { opacity: 1; transform: translateY(0); }
+    details summary::-webkit-details-marker { display: none; }
+    .sticky-order { backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
+    .gradient-hero {
+      background: radial-gradient(120% 80% at 10% -10%, rgba(231,188,177,.45) 0%, transparent 55%),
+                  radial-gradient(90% 60% at 100% 0%, rgba(253,242,240,.98) 0%, #FDF2F0 45%, #FFFCFB 100%);
+    }
+    .grain {
+      pointer-events: none;
+      opacity: .04;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+      . { opacity: 1; transform: none; }
+    }
+  </style>
 </head>
 <body class="bg-cream text-berry antialiased overflow-x-hidden">
   <header class="relative z-20 border-b border-rosegold/25 bg-white/80 sticky top-0 sticky-order shadow-sm">
@@ -42,8 +112,8 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
           <p class="text-[11px] text-berrysoft/80">طبّي أنيق • للكويت 🇰🇼</p>
         </div>
       </div>
-<a href="#order" style="background-color: #E7BCB1; color: #3D1228; opacity: 1 !important; display: inline-flex !important;" class="inline-flex items-center gap-2 rounded-2xl px-4 py-2 text-sm font-bold shadow-soft transition hover:bg-rose-300 focus:outline-none">
-      اطلبي الآن — الدفع عند الاستلام
+      <a href="#order" class="inline-flex items-center gap-2 rounded-2xl bg-rosegold px-4 py-2 text-sm font-bold text-white shadow-soft transition hover:bg-rose-300 hover:text-berry focus:outline-none focus-visible:ring-2 focus-visible:ring-rosegold focus-visible:ring-offset-2">
+        اطلبي الآن — الدفع عند الاستلام
       </a>
     </div>
   </header>
@@ -210,7 +280,8 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
           </div>
         </div>
         <div class=" mt-10 flex justify-center border-t border-white/60 pt-10">
-<a href="#order" style="background-color: #3D1228 !important; color: #FFFCFB !important; opacity: 1 !important; display: inline-flex !important; visibility: visible !important;" class="inline-flex w-full max-w-md items-center justify-center rounded-2xl px-6 py-3.5 text-center text-lg font-bold shadow-lg transition hover:bg-[#5B2340]">أريد تجربة الجهاز الآن</a>
+          <a href="#order" class="inline-flex w-full max-w-md items-center justify-center rounded-2xl bg-berry px-6 py-3.5 text-center text-[0.95rem] font-bold text-white shadow-soft transition hover:bg-rose-950 focus:outline-none focus-visible:ring-2 focus-visible:ring-rosegold focus-visible:ring-offset-2 sm:w-auto animate-pulse-elegant">
+            أريد تجربة الجهاز الآن
           </a>
         </div>
       </div>
@@ -250,7 +321,7 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
               أنتِ مو كسولة، ولا تتدلعين..
             </p>
             <p class="mt-3 text-[0.98rem] leading-relaxed text-red-950/85">
-              جسمج قاعد يطلق إنذار حقيقي. السؤال هو: تبين تضيعين أيامج على ألم ماله داعي، ولا تبدين حياتج بحل طبيعي يحترم ظروفج في البيت والدوام؟
+              جسمج قاعد يطلق إنذار حقيقي. السؤال هو: تبين تضيعين أيامج على ألم ماله داعي، ولا تبدين حياتج بحل طبيعي يحترم ظروفج في البيت والدوام Paj؟
             </p>
           </div>
 
@@ -322,7 +393,7 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
     <section id="product" class="bg-cream py-14 sm:py-20">
       <div class="mx-auto max-w-6xl px-4 sm:px-6">
         <div class=" mx-auto max-w-5xl space-y-4 lg:space-y-5">
-            <h3 class="font-display text-lg font-bold text-berry">شو راح تستفيدين من هالجهاز؟</h3>
+            <h3 class="font-display text-lg font-bold text-berry">شو راح تستفيدين من هالجهاز?</h3>
             <div class="grid gap-4 sm:grid-cols-2">
               <div class="rounded-3xl border border-white/70 bg-white p-5 shadow-soft">
                 <i data-lucide="timer" class="mb-3 h-6 w-6 text-rosegold"></i>
@@ -336,7 +407,7 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
               </div>
               <div class="rounded-3xl border border-white/70 bg-white p-5 shadow-soft">
                 <i data-lucide="leaf" class="mb-3 h-6 w-6 text-rosegold"></i>
-                <p class="font-bold text-berry">يومج ملكج، مو ملك الألم</p>
+                <p class="font-bold text-berry">يومج ملكج, مو ملك الألم</p>
                 <p class="mt-2 text-sm leading-relaxed text-berrysoft">لا تكنسلين مواعيدج ولا تأجلين طلعاتج، مع وردي خليج دايم في قلب الحدث وبكامل طاقتج.</p>
               </div>
               <div class="rounded-3xl border border-white/70 bg-white p-5 shadow-soft">
@@ -490,7 +561,7 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
             <span class="mt-1 flex h-7 w-7 shrink-0 items-center justify-center rounded-xl bg-red-900/10 text-red-900">
               <i data-lucide="shirt" class="h-4 w-4" aria-hidden="true"></i>
             </span>
-            <span>يفضل لبسه فوق ملابس قطنية ناعمة خالية من الأزرار أو السحابات المعدنية.</span>
+            <span>يفضل لبسه فوق ملابس قطنية ناعمة خالية من الأزر أو السحابات المعدنية.</span>
           </li>
         </ul>
       </div>
@@ -631,15 +702,15 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
     </section>
   </main>
 
-<div class="fixed inset-x-0 bottom-0 pb-[env(safe-area-inset-bottom,0)] safe-sticky-bar">
-  <div class="pointer-events-auto mx-auto max-w-xl px-3 pb-4 sm:px-6">
+  <div class="pointer-events-none fixed inset-x-0 bottom-0 z-30 pb-[env(safe-area-inset-bottom,0)]">
+    <div class="pointer-events-auto mx-auto max-w-xl px-3 pb-4 sm:px-6">
       <div class="rounded-3xl border border-white/40 bg-white/94 px-4 py-3 shadow-[0_-20px_50px_-32px_rgba(61,18,40,0.55)] backdrop-blur-xl">
         <div class="flex flex-col gap-3 sm:flex-row-reverse sm:items-center sm:justify-between">
           <div class="text-center text-[11px] text-berrysoft sm:text-right">
             <p class="font-bold text-berry">٢١ د.ك — أخذ وحيد وفالكم ثانيًا</p>
             <p>ينتهي العرض خلال ٢٤ ساعة</p>
           </div>
-<a href="#order" style="background-color: #E7BCB1 !important; color: #3D1228 !important; opacity: 1 !important; display: inline-flex !important; visibility: visible !important;" class="inline-flex w-full items-center justify-center rounded-2xl px-4 py-3 text-[0.9rem] font-extrabold shadow-md transition hover:bg-[#efbbae]">ادخل لتعبئة الطلب</a>
+          <a href="#order" class="inline-flex w-full items-center justify-center rounded-2xl bg-rosegold px-4 py-3 text-[0.9rem] font-extrabold text-berry shadow-soft transition hover:bg-[#efbbae] animate-pulse-elegant focus:outline-none focus-visible:ring-2 focus-visible:ring-berry focus-visible:ring-offset-2 sm:w-auto">ادخل لتعبئة الطلب</a>
         </div>
       </div>
     </div>
@@ -657,11 +728,9 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
     </div>
   </footer>
 
-  <script src="https://cdn.jsdelivr.net/npm/lucide@0.487.0/dist/umd/lucide.min.js" defer></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
   <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      if (typeof lucide !== 'undefined') lucide.createIcons();
-    });
+    lucide.createIcons();
   </script>
   <script>
   function sendOrder(event) {
