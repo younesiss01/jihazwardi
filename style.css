@@ -14,35 +14,7 @@ details summary::-webkit-details-marker { display: none; }
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
-/* إصلاح وفكسي أزرار الـ Call To Action ديفينيتيف */
-a[href="#order"], button[id="submitBtn"] {
-  opacity: 1 !important;
-  visibility: visible !important;
-  transform: none !important;
-  display: inline-flex !important;
-  align-items: center;
-  justify-content: center;
-}
-
-/* أنيميشن نبض خفيف وأنيق بلا ما يخفي الزر */
-.animate-pulse-elegant {
-  animation: pulseElegant 2s infinite !important;
-}
-
-@keyframes pulseElegant {
-  0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(231, 188, 177, 0.7); }
-  70% { transform: scale(1.02); box-shadow: 0 0 0 10px rgba(231, 188, 177, 0); }
-  100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(231, 188, 177, 0); }
-}
-
-.animate-bounce {
-  animation: bounce 1s infinite !important;
-}
-
-@keyframes bounce {
-  0%, 100% { transform: translateY(-10%); }
-  50% { transform: translateY(0); }
-}
+/* الظهور السريع والثابت للشريط السفلي بلا ما يثقل غوغل */
 .safe-sticky-bar {
   position: fixed !important;
   bottom: 0 !important;
