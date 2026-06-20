@@ -842,13 +842,16 @@
     function bootIcons() {
       if (typeof lucide !== 'undefined' && lucide.createIcons) lucide.createIcons();
     }
+
     function selectOffer(packageValue, scrollToForm) {
       var cards = document.querySelectorAll('.offer-card');
       var pkgInput = document.getElementById('packageInput');
+      
       cards.forEach(function (card) {
         var match = card.getAttribute('data-package') === packageValue;
         card.classList.toggle('offer-card-selected', match);
       });
+      
       if (pkgInput) {
         for (var i = 0; i < pkgInput.options.length; i++) {
           if (pkgInput.options[i].value === packageValue) {
@@ -857,6 +860,7 @@
           }
         }
       }
+      
       if (scrollToForm) {
         var orderEl = document.getElementById('order');
         if (orderEl) orderEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -881,16 +885,82 @@
 
     function sendOrder(event) {
       event.preventDefault();
+      
+      // جلب البيانات من الفورم
       var name = document.getElementById('nameInput').value;
       var phone = document.getElementById('phoneInput').value;
-      var pkg = document.getElementById('packageInput').value;
+      
+      // جلب العنوان (استعملنا كود آمن في حال ماكانش input تاع العنوان في الـ HTML)
+      var addressEl = document.getElementById('addressInput');
+      var address = addressEl ? addressEl.value : "";
+      
+      // جلب العرض المختار
+      var pkg = document.getElementById('packageInput').value; 
       var btn = document.getElementById('submitBtn');
       var scriptURL = 'https://script.google.com/macros/s/AKfycbwOWZ3EdqXlQfU9jy1CzfprfNfFeFwLqVhufSQDuxGUZ_Npcb7lwjduAYL2izd15h0_/exec';
-      if (!name || !phone) { alert('يرجى ملء البيانات'); return; }
-      if (btn) { btn.innerText = 'جاري التأكيد...'; btn.disabled = true; }
-      fetch(scriptURL + '?name=' + encodeURIComponent(name) + '&phone=' + encodeURIComponent(phone) + '&package=' + encodeURIComponent(pkg), { mode: 'no-cors', method: 'GET' });
-      setTimeout(function () { window.location.href = 'thank-you.html'; }, 1000);
+
+      if (!name || !phone) { 
+          alert('يرجى ملء البيانات (الاسم ورقم الهاتف)'); 
+          return; 
+      }
+      
+      if (btn) { 
+          btn.innerText = 'جاري التأكيد...'; 
+          btn.disabled = true; 
+      }
+
+      // تحليل العرض المختار لاستخراج الكمية، السعر، والملاحظات
+      var quantity = "1";
+      var price = "299";
+      var notes = "جهاز واحد + هدية مساج القدم";
+
+      if (pkg.includes("499") || pkg.includes("جهازين")) {
+          quantity = "2";
+          price = "499";
+          notes = "عرض جهازين + هديتين مجانا";
+      } else if (pkg.includes("629") || pkg.includes("3")) {
+          quantity = "3";
+          price = "629";
+          notes = "عرض العائلة (3 اجهزة + 3 هدايا)";
+      }
+
+      // المتغيرات الثابتة الخاصة بالشيت
+      var country = "Qatar";
+      var url = window.location.href;
+      var sku = "اكتب_السكيو_هنا";
+      var Product = "اكتب_اسم_المنتج_هنا"; // ⚠️ لا تنسى تغيير اسم المنتج
+      var currency = "ريال قطري";
+
+      // دمج كل المتغيرات في الرابط باش تروح مباشرة لأعمدة الشيت
+      var params = '?country=' + encodeURIComponent(country) + 
+                   '&name=' + encodeURIComponent(name) + 
+                   '&phone=' + encodeURIComponent(phone) + 
+                   '&address=' + encodeURIComponent(address) + 
+                   '&url=' + encodeURIComponent(url) + 
+                   '&sku=' + encodeURIComponent(sku) + 
+                   '&Product=' + encodeURIComponent(Product) + 
+                   '&quantity=' + encodeURIComponent(quantity) + 
+                   '&price=' + encodeURIComponent(price) + 
+                   '&currency=' + encodeURIComponent(currency) + 
+                   '&notes=' + encodeURIComponent(notes);
+
+      // إرسال البيانات
+      fetch(scriptURL + params, { mode: 'no-cors', method: 'GET' });
+
+      // بيكسل تيك توك (يشتغل إذا كان مركب في الصفحة)
+      if (typeof ttq !== 'undefined') {
+          ttq.track('CompletePayment', {
+              content_name: Product,
+              value: Number(price),
+              currency: 'QAR'
+          });
+      }
+
+      // التحويل لصفحة الشكر
+      setTimeout(function () { 
+          window.location.href = 'thank-you.html'; 
+      }, 1500);
     }
-  </script>
+</script>
 </body>
 </html>
