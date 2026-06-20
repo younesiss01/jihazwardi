@@ -837,49 +837,6 @@
     <p class="mt-1">Original Japanese Shiatsu Technology — Qatar 🇶🇦</p>
     <p class="mt-4 px-4 leading-relaxed opacity-70">هذه الصفحة لأغراض تسويق إلكتروني. الجهاز والمزايا تخضع لتوضيحات الصانع وقت التأكيد.</p>
   </footer>
-
-<script>
-    function sendOrder(event) {
-      event.preventDefault();
-      
-      var name = document.getElementById('nameInput') ? document.getElementById('nameInput').value : '';
-      var phone = document.getElementById('phoneInput') ? document.getElementById('phoneInput').value : '';
-      var address = document.getElementById('addressInput') ? document.getElementById('addressInput').value : '';
-      var pkg = document.getElementById('packageInput') ? document.getElementById('packageInput').value : '';
-      var btn = document.getElementById('submitBtn');
-      
-      // ضع الرابط الجديد الذي حصلت عليه من الـ Apps Script هنا
-      var scriptURL = 'YOUR_NEW_WEB_APP_URL_HERE';
-      
-      if (!name || !phone) { alert('يرجى ملء البيانات'); return; }
-      if (btn) { btn.innerText = 'جاري التأكيد...'; btn.disabled = true; }
-
-      var quantity = "1";
-      var price = "299";
-      var notes = "جهاز واحد + هدية مساج القدم";
-
-      if (pkg.includes("499") || pkg.includes("جهازين")) {
-          quantity = "2"; price = "499"; notes = "عرض جهازين + هديتين مجانا";
-      } else if (pkg.includes("629") || pkg.includes("3")) {
-          quantity = "3"; price = "629"; notes = "عرض العائلة (3 اجهزة + 3 هدايا)";
-      }
-
-      var params = '?OrderDate=' + encodeURIComponent(new Date().toLocaleString("en-GB")) +
-                   '&country=' + encodeURIComponent('قطر') +
-                   '&name=' + encodeURIComponent(name) +
-                   '&phone=' + encodeURIComponent(phone) +
-                   '&address=' + encodeURIComponent(address) +
-                   '&url=' + encodeURIComponent(window.location.href) +
-                   '&sku=' + encodeURIComponent('MP-7HSMXZLK') +
-                   '&Product=' + encodeURIComponent('جهاز العناية الوردي') +
-                   '&quantity=' + encodeURIComponent(quantity) +
-                   '&price=' + encodeURIComponent(price) +
-                   '&currency=' + encodeURIComponent('ريال قطري') +
-                   '&notes=' + encodeURIComponent(notes);
-
-      fetch(scriptURL + params, { mode: 'no-cors', method: 'GET' });
-      setTimeout(function () { window.location.href = 'thank-you.html'; }, 1500);
-    }
-</script>
+  
 </body>
 </html>
