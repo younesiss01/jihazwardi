@@ -838,74 +838,82 @@
     <p class="mt-4 px-4 leading-relaxed opacity-70">هذه الصفحة لأغراض تسويق إلكتروني. الجهاز والمزايا تخضع لتوضيحات الصانع وقت التأكيد.</p>
   </footer>
  <script>
-   function sendOrder(event) {
-    event.preventDefault();
-    
-    // 1. جلب البيانات من المدخلات
-    var name = document.getElementById('nameInput').value;
-    var phone = document.getElementById('phoneInput').value;
-    var addressEl = document.getElementById('addressInput');
-    var address = addressEl ? addressEl.value : "";
-    var pkg = document.getElementById('packageInput').value; 
-    var btn = document.getElementById('submitBtn');
-    
-    // الرابط (تأكد أنه هو الرابط الصحيح بعد آخر Deploy)
-    var scriptURL = 'https://script.google.com/macros/s/AKfycbwOWZ3EdqXlQfU9jy1CzfprfNfFeFwLqVhufSQDuxGUZ_Npcb7lwjduAYL2izd15h0_/exec';
+    function sendOrder(event) {
+        if (event) event.preventDefault();
+        
+        // 1. جلب البيانات من المدخلات (تأكد أن الـ IDs في الـ HTML تطابق هذه)
+        var nameInput = document.getElementById('nameInput');
+        var phoneInput = document.getElementById('phoneInput');
+        var addressInput = document.getElementById('addressInput');
+        var pkgInput = document.getElementById('packageInput');
+        var btn = document.getElementById('submitBtn');
 
-    if (!name || !phone) { 
-        alert('يرجى ملء البيانات (الاسم ورقم الهاتف)'); 
-        return; 
+        if (!nameInput || !phoneInput) {
+            console.error("عناصر الإدخال غير موجودة");
+            return;
+        }
+
+        var name = nameInput.value;
+        var phone = phoneInput.value;
+        var address = addressInput ? addressInput.value : "";
+        var pkg = pkgInput ? pkgInput.value : "";
+
+        // الرابط الخاص بك
+        var scriptURL = 'https://script.google.com/macros/s/AKfycbwOWZ3EdqXlQfU9jy1CzfprfNfFeFwLqVhufSQDuxGUZ_Npcb7lwjduAYL2izd15h0_/exec';
+
+        if (!name || !phone) { 
+            alert('يرجى ملء البيانات (الاسم ورقم الهاتف)'); 
+            return; 
+        }
+        
+        if (btn) { 
+            btn.innerText = 'جاري التأكيد...'; 
+            btn.disabled = true; 
+        }
+
+        // 2. تحديد الكمية والسعر (بشكل آمن)
+        var quantity = "1";
+        var price = "299";
+        var notes = "جهاز واحد + هدية مساج القدم";
+
+        if (pkg.includes("499") || pkg.includes("جهازين")) {
+            quantity = "2";
+            price = "499";
+            notes = "عرض جهازين + هديتين مجانا";
+        } else if (pkg.includes("629") || pkg.includes("3")) {
+            quantity = "3";
+            price = "629";
+            notes = "عرض العائلة (3 اجهزة + 3 هدايا)";
+        }
+
+        // 3. تجهيز الرابط
+        var params = '?OrderDate=' + encodeURIComponent(new Date().toLocaleString("en-GB")) + 
+                     '&country=' + encodeURIComponent("Qatar") + 
+                     '&name=' + encodeURIComponent(name) + 
+                     '&phone=' + encodeURIComponent(phone) + 
+                     '&address=' + encodeURIComponent(address) + 
+                     '&url=' + encodeURIComponent(window.location.href) + 
+                     '&sku=' + encodeURIComponent("MP-G98UMZW3AUMD") + 
+                     '&Product=' + encodeURIComponent("Neck And Shoulder Massager") + 
+                     '&quantity=' + encodeURIComponent(quantity) + 
+                     '&price=' + encodeURIComponent(price) + 
+                     '&currency=' + encodeURIComponent("ريال قطري") + 
+                     '&notes=' + encodeURIComponent(notes);
+
+        // 4. الإرسال
+        fetch(scriptURL + params, { mode: 'no-cors', method: 'GET' });
+
+        // بيكسل تيك توك
+        if (typeof ttq !== 'undefined') {
+            ttq.track('CompletePayment', {
+                content_name: 'Neck And Shoulder Massager',
+                value: Number(price),
+                currency: 'QAR'
+            });
+        }
+
+        setTimeout(function () { window.location.href = 'thank-you.html'; }, 1500);
     }
-    
-    if (btn) { 
-        btn.innerText = 'جاري التأكيد...'; 
-        btn.disabled = true; 
-    }
-
-    // 2. تحديد الكمية والسعر والملاحظات ديناميكياً
-    var quantity = "1";
-    var price = "299";
-    var notes = "جهاز واحد + هدية مساج القدم";
-
-    if (pkg.includes("499") || pkg.includes("جهازين")) {
-        quantity = "2";
-        price = "499";
-        notes = "عرض جهازين + هديتين مجانا";
-    } else if (pkg.includes("629") || pkg.includes("3")) {
-        quantity = "3";
-        price = "629";
-        notes = "عرض العائلة (3 اجهزة + 3 هدايا)";
-    }
-
-    // 3. تجهيز المتغيرات للترتيب (A إلى L)
-    var params = '?OrderDate=' + encodeURIComponent(new Date().toLocaleString("en-GB")) + 
-                 '&country=' + encodeURIComponent("Qatar") + 
-                 '&name=' + encodeURIComponent(name) + 
-                 '&phone=' + encodeURIComponent(phone) + 
-                 '&address=' + encodeURIComponent(address) + 
-                 '&url=' + encodeURIComponent(window.location.href) + 
-                 '&sku=' + encodeURIComponent("MP-G98UMZW3AUMD") + 
-                 '&Product=' + encodeURIComponent("Neck And Shoulder Massager") + 
-                 '&quantity=' + encodeURIComponent(quantity) + 
-                 '&price=' + encodeURIComponent(price) + 
-                 '&currency=' + encodeURIComponent("ريال قطري") + 
-                 '&notes=' + encodeURIComponent(notes);
-
-    // 4. الإرسال
-    fetch(scriptURL + params, { mode: 'no-cors', method: 'GET' });
-
-    // بيكسل تيك توك
-    if (typeof ttq !== 'undefined') {
-        ttq.track('CompletePayment', {
-            content_name: 'Neck And Shoulder Massager',
-            value: Number(price),
-            currency: 'QAR'
-        });
-    }
-
-    setTimeout(function () { window.location.href = 'thank-you.html'; }, 1500);
-}
-</script> 
-  
+</script>
 </body>
 </html>
