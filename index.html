@@ -839,61 +839,10 @@
   </footer>
 
 <script>
-    function bootIcons() {
-      if (typeof lucide !== 'undefined' && lucide.createIcons) lucide.createIcons();
-    }
-
-    function selectOffer(packageValue, scrollToForm) {
-      var cards = document.querySelectorAll('.offer-card');
-      var pkgInput = document.getElementById('packageInput');
-      cards.forEach(function (card) {
-        var match = card.getAttribute('data-package') === packageValue;
-        card.classList.toggle('offer-card-selected', match);
-      });
-      if (pkgInput) {
-        for (var i = 0; i < pkgInput.options.length; i++) {
-          if (pkgInput.options[i].value === packageValue) {
-            pkgInput.selectedIndex = i;
-            break;
-          }
-        }
-      }
-      if (scrollToForm) {
-        var orderEl = document.getElementById('order');
-        if (orderEl) orderEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }
-    }
-
-    document.addEventListener('DOMContentLoaded', function () {
-      bootIcons();
-      selectOffer('629 — 3 اجهزة + 3 هدايا EMS', false);
-      var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      if (!reduced && 'IntersectionObserver' in window) {
-        var obs = new IntersectionObserver(function (entries, o) {
-          entries.forEach(function (e) {
-            if (e.isIntersecting) { e.target.classList.add('is-visible'); o.unobserve(e.target); }
-          });
-        }, { threshold: 0.1 });
-        document.querySelectorAll('.observe').forEach(function (el) { obs.observe(el); });
-      } else {
-        document.querySelectorAll('.observe').forEach(function (el) { el.classList.add('is-visible'); });
-      }
-    });
-
-    // دالة لاستخراج تاريخ اليوم والوقت أوتوماتيكياً
-    function getCurrentDateTime() {
-        var now = new Date();
-        var day = String(now.getDate()).padStart(2, '0');
-        var month = String(now.getMonth() + 1).padStart(2, '0');
-        var year = now.getFullYear();
-        var hours = String(now.getHours()).padStart(2, '0');
-        var minutes = String(now.getMinutes()).padStart(2, '0');
-        return day + '/' + month + '/' + year + ' ' + hours + ':' + minutes;
-    }
-
     function sendOrder(event) {
       event.preventDefault();
       
+      // جلب البيانات من الفورم
       var name = document.getElementById('nameInput') ? document.getElementById('nameInput').value : '';
       var phone = document.getElementById('phoneInput') ? document.getElementById('phoneInput').value : '';
       var address = document.getElementById('addressInput') ? document.getElementById('addressInput').value : '';
@@ -905,30 +854,30 @@
       if (!name || !phone) { alert('يرجى ملء البيانات'); return; }
       if (btn) { btn.innerText = 'جاري التأكيد...'; btn.disabled = true; }
 
-      // برمجة الكمية (1, 2, 3) والسعر والملاحظات حسب اختيار الزبون
+      // تحديد القيم بناءً على العرض المختار
       var quantity = "1";
       var price = "299";
       var notes = "جهاز واحد + هدية مساج القدم";
 
-      if (pkg.includes("499") || pkg.includes("جهازين") || pkg.includes("اثنين")) {
+      if (pkg.includes("499") || pkg.includes("جهازين")) {
           quantity = "2";
           price = "499";
           notes = "عرض جهازين + هديتين مجانا";
-      } else if (pkg.includes("629") || pkg.includes("3") || pkg.includes("ثلاثة") || pkg.includes("العائلة")) {
+      } else if (pkg.includes("629") || pkg.includes("3")) {
           quantity = "3";
           price = "629";
           notes = "عرض العائلة (3 اجهزة + 3 هدايا)";
       }
 
-      // تجهيز الـ 12 خانة بنفس ترتيب الشيت بالضبط (مهم جداً لعدم تداخل الأعمدة)
-      var OrderDate = getCurrentDateTime();
-      var country = "Qatar";
+      // المتغيرات الثابتة
+      var OrderDate = new Date().toLocaleString("en-GB"); // تاريخ اليوم
+      var country = "قطر"; 
       var url = window.location.href;
-      var sku = "MP-7HSMXZLK"; // ⚠️ ضع الـ SKU الجديد هنا
-      var Product = "جهاز العناية الوردي"; // ⚠️ ضع اسم المنتج
+      var sku = "MP-7HSMXZLK"; 
+      var Product = "جهاز العناية الوردي"; 
       var currency = "ريال قطري";
 
-      // دمج المتغيرات بالترتيب: 1.التاريخ > 2.البلد > 3.الاسم > 4.الرقم > 5.العنوان > 6.الرابط > 7.السكيو > 8.المنتج > 9.الكمية > 10.السعر > 11.العملة > 12.الملاحظات
+      // الترتيب الصحيح للمتغيرات (مطابق لأعمدة الشيت من A إلى L)
       var params = '?OrderDate=' + encodeURIComponent(OrderDate) +
                    '&country=' + encodeURIComponent(country) +
                    '&name=' + encodeURIComponent(name) +
@@ -942,7 +891,7 @@
                    '&currency=' + encodeURIComponent(currency) +
                    '&notes=' + encodeURIComponent(notes);
 
-      // إرسال الطلب
+      // إرسال البيانات
       fetch(scriptURL + params, { mode: 'no-cors', method: 'GET' });
 
       // بيكسل تيك توك
