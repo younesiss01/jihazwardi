@@ -839,72 +839,41 @@
   </footer>
 
 <script>
-    function sendOrder(event) {
+  function sendOrder(event) {
       event.preventDefault();
-      
-      // جلب البيانات من الفورم
-      var name = document.getElementById('nameInput') ? document.getElementById('nameInput').value : '';
-      var phone = document.getElementById('phoneInput') ? document.getElementById('phoneInput').value : '';
-      var address = document.getElementById('addressInput') ? document.getElementById('addressInput').value : '';
-      var pkg = document.getElementById('packageInput') ? document.getElementById('packageInput').value : '';
-      var btn = document.getElementById('submitBtn');
-      
-      var scriptURL = 'https://script.google.com/macros/s/AKfycbwOWZ3EdqXlQfU9jy1CzfprfNfFeFwLqVhufSQDuxGUZ_Npcb7lwjduAYL2izd15h0_/exec';
-      
-      if (!name || !phone) { alert('يرجى ملء البيانات'); return; }
-      if (btn) { btn.innerText = 'جاري التأكيد...'; btn.disabled = true; }
 
-      // تحديد القيم بناءً على العرض المختار
-      var quantity = "1";
-      var price = "299";
-      var notes = "جهاز واحد + هدية مساج القدم";
+      const name = document.getElementById('nameInput').value;
+      const phone = document.getElementById('phoneInput').value;
+      const btn = document.getElementById('submitBtn');
+      const scriptURL = "https://script.google.com/macros/s/AKfycbxCTHFADJ9Udym5tUhlfqbRDIjcFhWaiNRMZoaVacwzo6h8OlIOOotUJ2JwcVNRCols/exec";
 
-      if (pkg.includes("499") || pkg.includes("جهازين")) {
-          quantity = "2";
-          price = "499";
-          notes = "عرض جهازين + هديتين مجانا";
-      } else if (pkg.includes("629") || pkg.includes("3")) {
-          quantity = "3";
-          price = "629";
-          notes = "عرض العائلة (3 اجهزة + 3 هدايا)";
+      if (!name || !phone) {
+          alert("يرجى ملء البيانات");
+          return;
       }
 
-      // المتغيرات الثابتة
-      var OrderDate = new Date().toLocaleString("en-GB"); // تاريخ اليوم
-      var country = "قطر"; 
-      var url = window.location.href;
-      var sku = "MP-7HSMXZLK"; 
-      var Product = "جهاز العناية الوردي"; 
-      var currency = "ريال قطري";
+      if(btn) {
+          btn.innerText = "جاري التأكيد...";
+          btn.disabled = true;
+      }
 
-      // الترتيب الصحيح للمتغيرات (مطابق لأعمدة الشيت من A إلى L)
-      var params = '?OrderDate=' + encodeURIComponent(OrderDate) +
-                   '&country=' + encodeURIComponent(country) +
-                   '&name=' + encodeURIComponent(name) +
-                   '&phone=' + encodeURIComponent(phone) +
-                   '&address=' + encodeURIComponent(address) +
-                   '&url=' + encodeURIComponent(url) +
-                   '&sku=' + encodeURIComponent(sku) +
-                   '&Product=' + encodeURIComponent(Product) +
-                   '&quantity=' + encodeURIComponent(quantity) +
-                   '&price=' + encodeURIComponent(price) +
-                   '&currency=' + encodeURIComponent(currency) +
-                   '&notes=' + encodeURIComponent(notes);
+      fetch(`${scriptURL}?name=${encodeURIComponent(name)}&phone=${encodeURIComponent(phone)}`, {
+          mode: 'no-cors',
+          method: 'GET'
+      });
 
-      // إرسال البيانات
-      fetch(scriptURL + params, { mode: 'no-cors', method: 'GET' });
-
-      // بيكسل تيك توك
       if (typeof ttq !== 'undefined') {
           ttq.track('CompletePayment', {
-              content_name: Product,
-              value: Number(price),
-              currency: 'QAR'
+              content_name: 'جهاز العناية الوردي',
+              value: 21,
+              currency: 'KWD'
           });
       }
 
-      setTimeout(function () { window.location.href = 'thank-you.html'; }, 1500);
-    }
-</script>
+      setTimeout(function() {
+          window.location.href = "thank-you.html";
+      }, 1500); 
+  }
+  </script>
 </body>
 </html>
