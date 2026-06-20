@@ -838,7 +838,7 @@
     <p class="mt-4 px-4 leading-relaxed opacity-70">هذه الصفحة لأغراض تسويق إلكتروني. الجهاز والمزايا تخضع لتوضيحات الصانع وقت التأكيد.</p>
   </footer>
 
-  <script>
+<script>
     function bootIcons() {
       if (typeof lucide !== 'undefined' && lucide.createIcons) lucide.createIcons();
     }
@@ -846,12 +846,10 @@
     function selectOffer(packageValue, scrollToForm) {
       var cards = document.querySelectorAll('.offer-card');
       var pkgInput = document.getElementById('packageInput');
-      
       cards.forEach(function (card) {
         var match = card.getAttribute('data-package') === packageValue;
         card.classList.toggle('offer-card-selected', match);
       });
-      
       if (pkgInput) {
         for (var i = 0; i < pkgInput.options.length; i++) {
           if (pkgInput.options[i].value === packageValue) {
@@ -860,7 +858,6 @@
           }
         }
       }
-      
       if (scrollToForm) {
         var orderEl = document.getElementById('order');
         if (orderEl) orderEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -883,71 +880,72 @@
       }
     });
 
+    // دالة لاستخراج تاريخ اليوم والوقت أوتوماتيكياً
+    function getCurrentDateTime() {
+        var now = new Date();
+        var day = String(now.getDate()).padStart(2, '0');
+        var month = String(now.getMonth() + 1).padStart(2, '0');
+        var year = now.getFullYear();
+        var hours = String(now.getHours()).padStart(2, '0');
+        var minutes = String(now.getMinutes()).padStart(2, '0');
+        return day + '/' + month + '/' + year + ' ' + hours + ':' + minutes;
+    }
+
     function sendOrder(event) {
       event.preventDefault();
       
-      // جلب البيانات من الفورم
-      var name = document.getElementById('nameInput').value;
-      var phone = document.getElementById('phoneInput').value;
-      
-      // جلب العنوان (استعملنا كود آمن في حال ماكانش input تاع العنوان في الـ HTML)
-      var addressEl = document.getElementById('addressInput');
-      var address = addressEl ? addressEl.value : "";
-      
-      // جلب العرض المختار
-      var pkg = document.getElementById('packageInput').value; 
+      var name = document.getElementById('nameInput') ? document.getElementById('nameInput').value : '';
+      var phone = document.getElementById('phoneInput') ? document.getElementById('phoneInput').value : '';
+      var address = document.getElementById('addressInput') ? document.getElementById('addressInput').value : '';
+      var pkg = document.getElementById('packageInput') ? document.getElementById('packageInput').value : '';
       var btn = document.getElementById('submitBtn');
-      var scriptURL = 'https://script.google.com/macros/s/AKfycbwOWZ3EdqXlQfU9jy1CzfprfNfFeFwLqVhufSQDuxGUZ_Npcb7lwjduAYL2izd15h0_/exec';
-
-      if (!name || !phone) { 
-          alert('يرجى ملء البيانات (الاسم ورقم الهاتف)'); 
-          return; 
-      }
       
-      if (btn) { 
-          btn.innerText = 'جاري التأكيد...'; 
-          btn.disabled = true; 
-      }
+      var scriptURL = 'https://script.google.com/macros/s/AKfycbwOWZ3EdqXlQfU9jy1CzfprfNfFeFwLqVhufSQDuxGUZ_Npcb7lwjduAYL2izd15h0_/exec';
+      
+      if (!name || !phone) { alert('يرجى ملء البيانات'); return; }
+      if (btn) { btn.innerText = 'جاري التأكيد...'; btn.disabled = true; }
 
-      // تحليل العرض المختار لاستخراج الكمية، السعر، والملاحظات
+      // برمجة الكمية (1, 2, 3) والسعر والملاحظات حسب اختيار الزبون
       var quantity = "1";
       var price = "299";
       var notes = "جهاز واحد + هدية مساج القدم";
 
-      if (pkg.includes("499") || pkg.includes("جهازين")) {
+      if (pkg.includes("499") || pkg.includes("جهازين") || pkg.includes("اثنين")) {
           quantity = "2";
           price = "499";
           notes = "عرض جهازين + هديتين مجانا";
-      } else if (pkg.includes("629") || pkg.includes("3")) {
+      } else if (pkg.includes("629") || pkg.includes("3") || pkg.includes("ثلاثة") || pkg.includes("العائلة")) {
           quantity = "3";
           price = "629";
           notes = "عرض العائلة (3 اجهزة + 3 هدايا)";
       }
 
-      // المتغيرات الثابتة الخاصة بالشيت
+      // تجهيز الـ 12 خانة بنفس ترتيب الشيت بالضبط (مهم جداً لعدم تداخل الأعمدة)
+      var OrderDate = getCurrentDateTime();
       var country = "Qatar";
       var url = window.location.href;
-      var sku = "اكتب_السكيو_هنا";
-      var Product = "اكتب_اسم_المنتج_هنا"; // ⚠️ لا تنسى تغيير اسم المنتج
+      var sku = "MP-7HSMXZLK"; // ⚠️ ضع الـ SKU الجديد هنا
+      var Product = "جهاز العناية الوردي"; // ⚠️ ضع اسم المنتج
       var currency = "ريال قطري";
 
-      // دمج كل المتغيرات في الرابط باش تروح مباشرة لأعمدة الشيت
-      var params = '?country=' + encodeURIComponent(country) + 
-                   '&name=' + encodeURIComponent(name) + 
-                   '&phone=' + encodeURIComponent(phone) + 
-                   '&address=' + encodeURIComponent(address) + 
-                   '&url=' + encodeURIComponent(url) + 
-                   '&sku=' + encodeURIComponent(sku) + 
-                   '&Product=' + encodeURIComponent(Product) + 
-                   '&quantity=' + encodeURIComponent(quantity) + 
-                   '&price=' + encodeURIComponent(price) + 
-                   '&currency=' + encodeURIComponent(currency) + 
+      // دمج المتغيرات بالترتيب: 1.التاريخ > 2.البلد > 3.الاسم > 4.الرقم > 5.العنوان > 6.الرابط > 7.السكيو > 8.المنتج > 9.الكمية > 10.السعر > 11.العملة > 12.الملاحظات
+      var params = '?OrderDate=' + encodeURIComponent(OrderDate) +
+                   '&country=' + encodeURIComponent(country) +
+                   '&name=' + encodeURIComponent(name) +
+                   '&phone=' + encodeURIComponent(phone) +
+                   '&address=' + encodeURIComponent(address) +
+                   '&url=' + encodeURIComponent(url) +
+                   '&sku=' + encodeURIComponent(sku) +
+                   '&Product=' + encodeURIComponent(Product) +
+                   '&quantity=' + encodeURIComponent(quantity) +
+                   '&price=' + encodeURIComponent(price) +
+                   '&currency=' + encodeURIComponent(currency) +
                    '&notes=' + encodeURIComponent(notes);
 
-      // إرسال البيانات
+      // إرسال الطلب
       fetch(scriptURL + params, { mode: 'no-cors', method: 'GET' });
 
-      // بيكسل تيك توك (يشتغل إذا كان مركب في الصفحة)
+      // بيكسل تيك توك
       if (typeof ttq !== 'undefined') {
           ttq.track('CompletePayment', {
               content_name: Product,
@@ -956,10 +954,7 @@
           });
       }
 
-      // التحويل لصفحة الشكر
-      setTimeout(function () { 
-          window.location.href = 'thank-you.html'; 
-      }, 1500);
+      setTimeout(function () { window.location.href = 'thank-you.html'; }, 1500);
     }
 </script>
 </body>
