@@ -3,842 +3,894 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="theme-color" content="#FFFFFF" />
-  <title>شياتسو Shiatsu — جهاز المساج الحراري الاحترافي | قطر</title>
-  <meta name="description" content="تقنية التدليك شياتسو والحرارة العميقة لراحة فورية من آلام الرقبة والظهر. توصيل سريع ومجاني في قطر — الدفع عند الاستلام." />
-  
-  <link rel="preload" fetchpriority="high" as="image" href="hero.webp" type="image/webp"> 
-  <link rel="stylesheet" href="style.css">
+  <meta name="theme-color" content="#1C1C1E" />
+  <title>ZENKO زِنكو — مساج شياتسو ياباني أصلي | قطر</title>
+  <meta name="description" content="اكتشف التقنية اليابانية المبتكرة لتخلص من تشنج الرقبة والظهر. توصيل سريع في قطر — ضمان كامل." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@0.487.0/dist/umd/lucide.min.js" defer></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            ink: '#1C1C1E',
+            inksoft: '#3A3A3C',
+            sand: '#F5F0E8',
+            sanddeep: '#E8DFD0',
+            zen: '#E8611A',
+            zenhover: '#D45412',
+            cream: '#FDFBF7',
+            leather: '#C4A882',
+          },
+          fontFamily: {
+            arabic: ['Tajawal', 'system-ui', 'sans-serif'],
+            brand: ['DM Sans', 'Tajawal', 'sans-serif'],
+          },
+          boxShadow: {
+            premium: '0 32px 64px -24px rgba(28,28,30,0.28)',
+            glow: '0 0 0 1px rgba(232,97,26,0.15), 0 20px 50px -20px rgba(232,97,26,0.35)',
+            card: '0 16px 48px -20px rgba(28,28,30,0.12)',
+          },
+          animation: {
+            'fade-up': 'fadeUp 0.9s cubic-bezier(.22,.9,.42,1) forwards',
+            'pulse-zen': 'pulseZen 2.8s cubic-bezier(.4,0,.6,1) infinite',
+          },
+          keyframes: {
+            fadeUp: {
+              '0%': { opacity: '0', transform: 'translateY(28px)' },
+              '100%': { opacity: '1', transform: 'translateY(0)' },
+            },
+            pulseZen: {
+              '0%, 100%': { boxShadow: '0 0 0 0 rgba(232,97,26,0.45)' },
+              '50%': { boxShadow: '0 0 0 14px rgba(232,97,26,0)' },
+            },
+          },
+        },
+      },
+    };
+  </script>
   <style>
     html { scroll-behavior: smooth; }
     body { font-family: Tajawal, system-ui, sans-serif; }
-    details summary::-webkit-details-marker { display: none; }
-    .sticky-order { backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
-    .gradient-hero {
-      background: radial-gradient(120% 80% at 10% -10%, rgba(15, 23, 42, 0.05) 0%, transparent 55%),
-                  radial-gradient(90% 60% at 100% 0%, rgba(248, 250, 252, 0.98) 0%, #F8FAFC 45%, #FFFFFF 100%);
+    .observe { opacity: 0; transform: translateY(24px); transition: opacity 0.85s cubic-bezier(.22,.9,.42,1), transform 0.85s cubic-bezier(.22,.9,.42,1); }
+    .observe.is-visible { opacity: 1; transform: translateY(0); }
+    .sticky-bar { backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); }
+    .hero-gradient {
+      background:
+        radial-gradient(ellipse 80% 60% at 80% 0%, rgba(232,97,26,0.08) 0%, transparent 55%),
+        radial-gradient(ellipse 70% 50% at 0% 100%, rgba(196,168,130,0.15) 0%, transparent 50%),
+        linear-gradient(180deg, #FDFBF7 0%, #F5F0E8 100%);
     }
-    .grain {
-      pointer-events: none;
-      opacity: .01;
-      background-image: linear-gradient(rgba(0,0,0,0.02) 1px, transparent 1px);
-      background-size: 100% 4px;
+    .dark-section {
+      background: linear-gradient(165deg, #1C1C1E 0%, #2C2C2E 50%, #1C1C1E 100%);
     }
-    .safe-sticky-bar {
-      position: fixed !important;
-      bottom: 0 !important;
-      left: 0 !important;
-      right: 0 !important;
-      z-index: 99999 !important;
-      opacity: 1 !important;
+    .img-frame {
+      background: linear-gradient(145deg, #fff 0%, #F5F0E8 100%);
+    }
+    .feature-row { display: flex; flex-direction: column; gap: 1.25rem; }
+    @media (max-width: 1023px) {
+      .feature-row-a { flex-direction: row; align-items: center; gap: 0.85rem; }
+      .feature-row-b { flex-direction: row-reverse; align-items: center; gap: 0.85rem; }
+      .feature-row .img-frame { flex: 0 0 40%; max-width: 40%; }
+      .feature-row .img-frame img { aspect-ratio: 1; }
+      .feature-row > .flex { flex: 1 1 0%; min-width: 0; }
+      .feature-row > .flex p { font-size: 0.82rem !important; line-height: 1.55; }
+    }
+    @media (min-width: 1024px) {
+      .feature-row-a { flex-direction: row; align-items: center; }
+      .feature-row-b { flex-direction: row-reverse; align-items: center; }
+      .feature-row-a > *, .feature-row-b > * { flex: 1 1 0%; min-width: 0; }
+      .feature-row .img-frame img { aspect-ratio: 4/3; }
+    }
+    .offer-card {
+      cursor: pointer;
+      transition: border-color 0.28s ease, box-shadow 0.28s ease, transform 0.28s ease;
+      border: 1px solid rgba(255,255,255,0.15);
+    }
+    .offer-card-selected {
+      border: 2px solid #E8611A !important;
+      box-shadow: 0 0 0 1px rgba(232,97,26,0.2), 0 20px 50px -20px rgba(232,97,26,0.45);
+    }
+    @media (min-width: 1024px) {
+      .offer-card-selected { transform: scale(1.03) translateY(-4px); }
+    }
+    .offer-card-visual {
+      min-height: 7rem;
+      background: rgba(255,255,255,0.06);
+      border: 1px dashed rgba(232,97,26,0.35);
+    }
+    .offer-badge-popular {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      white-space: nowrap;
+      background: linear-gradient(135deg, #E8611A 0%, #FF8C42 100%);
+      box-shadow: 0 4px 20px rgba(232,97,26,0.55), 0 0 0 2px rgba(255,255,255,0.15);
+      animation: badgePulse 2.4s ease-in-out infinite;
+    }
+    @keyframes badgePulse {
+      0%, 100% { transform: translateX(-50%) scale(1); }
+      50% { transform: translateX(-50%) scale(1.04); }
+    }
+    .offer-limited-text {
+      white-space: nowrap;
+      font-size: clamp(0.95rem, 3.5vw, 1.15rem);
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+      .observe { opacity: 1; transform: none; }
     }
   </style>
-
-  <script>
-    let ttqLoaded = false;
-    function initTikTok() {
-      if (ttqLoaded) return;
-      ttqLoaded = true;
-      
-      !function (w, d, t) {
-        w.TiktokAnalyticsObject=t;var ttq=w[t]=w[t]||[];ttq.methods=["page","track","identify","instances","debug","on","off","once","ready","alias","group","enableCookie","disableCookie","holdConsent","revokeConsent","grantConsent"],ttq.setAndDefer=function(t,e){t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}};for(var i=0;i<ttq.methods.length;i++)ttq.setAndDefer(ttq,ttq.methods[i]);ttq.instance=function(t){for(
-        var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n]);return e},ttq.load=function(e,n){var r="https://analytics.tiktok.com/i18n/pixel/events.js",o=n&&n.partner;ttq._i=ttq._i||{},ttq._i[e]=[],ttq._i[e]._u=r,ttq._t=ttq._t||{},ttq._t[e]=+new Date,ttq._o=ttq._o||{},ttq._o[e]=n||{};n=document.createElement("script")
-        ;n.type="text/javascript",n.async=!0,n.src=r+"?sdkid="+e+"&lib="+t;e=document.getElementsByTagName("script")[0];e.parentNode.insertBefore(n,e)};
-        ttq.load('D83Q0KRC77U9FQKB75PG');
-        ttq.page();
-      }(window, document, 'ttq');
-      
-      if (typeof ttq !== 'undefined') {
-        ttq.track('ViewContent', {
-          content_id: 'MP-7HSMXZLK2KH5',
-          content_type: 'product',
-          content_name: 'جهاز مساج شياتسو الحراري',
-          value: 299,
-          currency: 'QAR'
-        });
-      }
-    }
-
-    ['scroll', 'mousemove', 'touchstart'].forEach(function(e) {
-      window.addEventListener(e, initTikTok, { once: true });
-    });
-  </script>
 </head>
-<body class="bg-cream text-berry antialiased overflow-x-hidden">
-  <header class="relative z-20 border-b border-palepink bg-white/80 sticky top-0 sticky-order shadow-sm">
-    <div class="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-2 px-4 py-3 sm:px-6">
-      <div class="flex items-center gap-2">
-        <span class="inline-flex h-9 w-9 items-center justify-center rounded-2xl bg-palepink text-rosegold shadow-card ring-1 ring-slate-200">
-          <i data-lucide="activity" class="h-[1.125rem] w-[1.125rem] stroke-[2] text-berry"></i>
-        </span>
+<body class="bg-cream text-ink antialiased overflow-x-hidden">
+
+  <!-- Header -->
+  <header class="sticky top-0 z-50 border-b border-sanddeep/60 bg-white/90 sticky-bar">
+    <div class="mx-auto flex max-w-6xl items-center justify-between gap-3 px-4 py-3 sm:px-6">
+      <a href="#" class="flex items-center gap-3">
+        <span class="flex h-10 w-10 items-center justify-center rounded-xl bg-ink font-brand text-sm font-bold tracking-widest text-white">ZK</span>
         <div>
-          <p class="font-display text-sm font-bold leading-tight text-berry"><span lang="ar">شياتسو</span> <span class="font-semibold tracking-wide text-rosegold" lang="en">Shiatsu</span></p>
-          <p class="text-[11px] text-berrysoft/80">جودة طبية • لقطر 🇶🇦</p>
+          <p class="font-brand text-lg font-bold tracking-tight text-ink">ZENKO <span class="font-arabic text-base font-extrabold text-zen">زِنكو</span></p>
+          <p class="text-[10px] font-medium uppercase tracking-[0.18em] text-inksoft/70">Original Japanese Shiatsu™</p>
         </div>
-      </div>
-      <a href="#order" class="inline-flex items-center gap-2 rounded-2xl bg-rosegold px-4 py-2 text-sm font-bold text-white shadow-soft transition hover:opacity-90 focus:outline-none focus-visible:ring-2 focus-visible:ring-rosegold focus-visible:ring-offset-2">
-        اطلب الآن — الدفع عند الاستلام
       </a>
+      <div class="flex items-center gap-2 sm:gap-3">
+        <span class="hidden text-xs font-bold text-inksoft sm:inline">🇶🇦 قطر — توصيل سريع</span>
+        <a href="#offer" class="inline-flex items-center rounded-xl bg-zen px-4 py-2.5 text-sm font-extrabold text-white shadow-glow transition hover:bg-zenhover focus:outline-none focus-visible:ring-2 focus-visible:ring-zen focus-visible:ring-offset-2">
+          اطلب الحين
+        </a>
+      </div>
     </div>
   </header>
 
   <main>
-    <section class="relative isolate overflow-hidden gradient-hero">
-      <div class="grain absolute inset-0"></div>
-      <div class="relative mx-auto flex max-w-6xl flex-col gap-10 px-4 pb-14 pt-8 sm:flex-row-reverse sm:flex-wrap sm:items-start sm:gap-12 sm:px-6 sm:pb-20 sm:pt-14 lg:gap-16">
-        <div class="min-w-0 flex-1 space-y-6 sm:space-y-7 sm:flex-[1_1_calc(50%-1.25rem)]">
-          <div class="relative overflow-hidden rounded-2xl border border-slate-200 bg-gradient-to-br from-slate-50 via-white to-slate-100 p-[1px] shadow-soft ring-1 ring-white/70">
-            <div class="flex flex-wrap items-start gap-3 rounded-[0.9375rem] bg-gradient-to-l from-slate-100/[0.4] via-white to-transparent px-4 py-3 sm:items-center">
-              <span class="inline-flex shrink-0 items-center gap-1.5 rounded-xl border border-emerald-700/20 bg-emerald-800/[0.08] px-2.5 py-1 text-[10px] font-extrabold uppercase tracking-[0.14em] text-emerald-900 sm:text-[11px]" lang="ar">معتمد ومجرب*</span>
-              <p class="min-w-[12rem] flex-1 text-[0.8rem] font-semibold leading-relaxed text-berry sm:text-[0.9rem]">
-                انضم لأكثر من 5,000 عميل في قطر تخلصوا من آلام الرقبة والظهر...
-              </p>
-              <span class="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border border-slate-200 bg-slate-50 text-rosegold">
-                <i data-lucide="award" class="h-[1.125rem] w-[1.125rem] stroke-[2.5]"></i>
-              </span>
-            </div>
-          </div>
-          <h1 class="font-display text-[1.65rem] font-bold leading-snug tracking-tight text-berry sm:text-3xl md:text-[2rem] lg:text-[2.25rem]">
-اكتشف السر الياباني الي يقطع إشارات الألم والتيبس عنك فوراً..
+
+    <!-- Hero -->
+    <section class="hero-gradient relative overflow-hidden border-b border-sanddeep/40 py-10 sm:py-16">
+      <div class="mx-auto max-w-6xl px-4 sm:px-6">
+        <!-- النصوص فوق الصورة دائماً -->
+        <div class="observe mx-auto mb-8 max-w-3xl space-y-5 text-center sm:mb-10 sm:text-right">
+          <p class="inline-flex items-center gap-2 rounded-full border border-zen/25 bg-white/80 px-4 py-1.5 text-xs font-bold text-zen shadow-sm">
+            <span class="h-1.5 w-1.5 rounded-full bg-zen animate-pulse"></span>
+            انضم لأكثر من 5,000 عميل في قطر تخلصوا من آلام الرقبة والظهر...
+          </p>
+          <h1 class="text-[1.65rem] font-black leading-snug text-ink sm:text-3xl lg:text-[2.15rem]">
+            اكتشف التقنية اليابانية المبتكرة التي تخلص أعصاب رقبتك وظهرك من التشنج المزمن..
           </h1>
-          <p class="max-w-xl text-[0.95rem] leading-relaxed text-berrysoft sm:text-[1.05rem]">
-تخلص من عوار الأبهر وتشنج فقرات ظهرك و رقبتك في 15 دقيقة فقط.. وبدون مسكنات تضر معدتك أو مصاريف عيادات تسرق جيبك!
+          <p class="text-base font-medium leading-relaxed text-inksoft sm:text-xl">
+            اينما كنت بدون مسكنات بدون عيادات بدون مواعيد
           </p>
         </div>
-
-        <div class="min-w-0 flex-1 sm:flex-[1_1_calc(50%-1.25rem)]">
-          <div class="relative mx-auto aspect-[4/5] w-full max-w-md overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-card ring-1 ring-slate-100 sm:aspect-[5/6] lg:max-w-none">
-            <img src="hero.webp" fetchpriority="high" decoding="sync" alt="جهاز مساج الرقبة والظهر في قطر" width="720" height="900" class="h-full w-full object-cover" />
-          </div>
-        </div>
-        
-<section class="py-20 px-4 md:px-6 flex justify-center w-full bg-[#fcf8f7]" dir="rtl">
-  <div class="w-full max-w-3xl relative overflow-hidden text-berry">
-    
-    <div class="relative z-10 space-y-12">
-      
-     <div class="text-center animate-fade-up" style="display: block !important; clear: both !important; margin-bottom: 30px !important;">
-  <div class="inline-block rounded-2xl py-5 px-8 max-w-2xl mx-auto" 
-       style="background-color: #e6f4ea !important; border: 2px solid #059669 !important; box-shadow: 0 20px 45px -10px rgba(5, 150, 105, 0.45) !important;">
-    <h3 class="font-display text-2xl md:text-3xl font-black text-emerald-950 tracking-wide leading-tight m-0">
-      صديقي.. خذ ثانية واحدة وصارح نفسك الحين:
-    </h3>
-  </div>
-</div>
-      
- <div class="space-y-4 w-full max-w-2xl mx-auto text-right px-4" style="display: block !important; clear: both !important; margin-top: 35px !important; margin-bottom: 35px !important;">
-  
-  <div class="flex items-start gap-3 justify-start">
-    <span class="text-xl md:text-2xl select-none pt-0.5">🥱</span>
-    <p class="text-black font-extrabold text-lg md:text-xl leading-relaxed m-0 flex-1">
-      إلى متى وأنت تصحى من النوم وجسمك <span class="text-red-600 font-black">مكسر وتعبان</span>؟
-    </p>
-  </div>
-  
-  <div class="flex items-start gap-3 justify-start">
-    <span class="text-xl md:text-2xl select-none pt-0.5">💸</span>
-    <p class="text-black font-extrabold text-lg md:text-xl leading-relaxed m-0 flex-1">
-      كم مرة رحت لمركز مساج أو عيادة، تدفع 300 ريال فكل جلسة.. وتطلع بدون أي تحسّن! <span class="text-black font-black underline decoration-red-500 decoration-4"></span> 
-      
-    </p>
-  </div>
-  
-  <div class="flex items-start gap-3 justify-start">
-    <span class="text-xl md:text-2xl select-none pt-0.5">💊</span>
-    <p class="text-black font-extrabold text-lg md:text-xl leading-relaxed m-0 flex-1">
-      كم حبة <span class="text-red-600 font-black">مسكن</span> بلعت وللحين العوار يلاحقك ويخنق أنفاسك؟
-    </p>
-  </div>
-  
-  <div class="flex items-start gap-3 justify-start">
-    <span class="text-xl md:text-2xl select-none pt-0.5">😷</span>
-    <p class="text-black font-extrabold text-lg md:text-xl leading-relaxed m-0 flex-1">
-      إلى متى تعاني في صمت وتوهم نفسك أن الألم راح يختفي لوحده؟
-    </p>
-  </div>
-
-</div>
-      
-<div class="max-w-xl mx-auto bg-white border border-slate-200/60 p-3 rounded-2xl shadow-[0_10px_25px_-10px_rgba(0,0,0,0.05)]" style="display: block !important; clear: both !important; margin-top: 40px !important; margin-bottom: 40px !important;">
-  <div class="bg-slate-50 rounded-xl border-2 border-dashed border-slate-300 flex flex-col items-center justify-between p-6 group hover:bg-slate-100/50 transition-all duration-300 aspect-[3/4]" style="aspect-ratio: 3 / 4 !important; width: 100% !important;">
-    
-    <div class="w-full text-center pt-2">
-      <span class="text-xs font-bold text-slate-400 tracking-widest uppercase">شرح توضيحي</span>
-    </div>
-
-    <img src="YOUR_PAIN_DIAGRAM_IMAGE.png" alt="شرح ألم التشنج العضلي" class="w-full max-w-[280px] h-auto object-contain drop-shadow-md transition-transform group-hover:scale-105 duration-300 my-auto">
-    
-    <span class="text-xs md:text-sm text-rose-500 font-black text-center leading-tight bg-rose-50 px-4 py-2.5 rounded-lg border border-rose-100 shadow-sm w-full mb-2">
-      ⚠️ التشنج المستمر يضغط على الفقرات ويسبب انحناء الجسم لقُدام
-    </span>
-    
-  </div>
-</div>
-<div class="space-y-5 max-w-2xl mx-auto">
-  
-  <div class="p-5 rounded-xl flex items-start gap-4 shadow-[0_8px_20px_-6px_rgba(220,38,38,0.15)] hover:scale-[1.01] transition-all duration-300 w-full max-w-2xl mx-auto" 
-       style="display: flex !important; clear: both !important; margin-top: 15px !important; margin-bottom: 25px !important; background-color: #fbe3df !important; border: 2px solid #991b1b !important;">
-    <span class="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-red-100 text-red-600 font-bold border border-red-200 shadow-sm select-none">
-      <i data-lucide="frown" class="w-5 h-5 stroke-[2.5]"></i>
-    </span>
-    <p class="text-base text-berry font-medium leading-relaxed pt-0.5 m-0 text-right flex-1">
-     تصحى بجسم متيبس كالصخرة.. عوار حاد يضيق نفسك ويكرهك ببداية يومك <span class="text-red-900 font-black"></span>
-    </p>
-  </div>
-
-  <div class="p-5 rounded-xl flex items-start gap-4 shadow-[0_8px_20px_-6px_rgba(220,38,38,0.15)] hover:scale-[1.01] transition-all duration-300 w-full max-w-2xl mx-auto" 
-       style="display: flex !important; clear: both !important; margin-top: 15px !important; margin-bottom: 25px !important; background-color: #fbe3df !important; border: 2px solid #991b1b !important;">
-    <span class="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-red-100 text-red-600 font-bold border border-red-200 shadow-sm select-none">
-      <i data-lucide="frown" class="w-5 h-5 stroke-[2.5]"></i>
-    </span>
-    <p class="text-base text-berry font-medium leading-relaxed pt-0.5 m-0 text-right flex-1">
-      تجلس <span class="text-red-900 font-black">9 ساعات كاملة</span>  <span class="text-red-600 font-black"> بكراسي متعبة.. ينتهي دوامك وفقرات رقبتك تتفتت حرفياً</span>.
-    </p>
-  </div>
-
-  <div class="p-5 rounded-xl flex items-start gap-4 shadow-[0_8px_20px_-6px_rgba(220,38,38,0.15)] hover:scale-[1.01] transition-all duration-300 w-full max-w-2xl mx-auto" 
-       style="display: flex !important; clear: both !important; margin-top: 15px !important; margin-bottom: 35px !important; background-color: #fbe3df !important; border: 2px solid #991b1b !important;">
-    <span class="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-red-100 text-red-600 font-bold border border-red-200 shadow-sm select-none">
-      <i data-lucide="frown" class="w-5 h-5 stroke-[2.5]"></i>
-    </span>
-    <p class="text-base text-berry font-medium leading-relaxed pt-0.5 m-0 text-right flex-1">
-      تضطر تعدل كرسي السيارة <span class="text-red-900 font-black">كل ثلث ساعة</span> عشان تهرب من الوجع وتشنج الأكتاف.
-    </p>
-  </div>
-
-</div>
-      </div> 
-      
-  <div class="rounded-2xl p-6 w-full max-w-2xl mx-auto shadow-[0_12px_25px_-10px_rgba(220,38,38,0.15)] text-right" 
-     style="display: block !important; clear: both !important; margin-top: 40px !important; margin-bottom: 35px !important; background-color: #fbe3df !important; border: 2px solid #991b1b !important;">
-  <p class="text-black font-bold text-sm md:text-base leading-relaxed m-0">
-    الحقيقة المرة اللي يخفيها عنك الأطباء: <span class="text-red-700 font-black underline decoration-red-500/20">المسكنات قاعدة تخدر أعصابك مؤقتاً</span>، بينما فقراتك جالسة تتصلب وتتشنج يوم بعد يوم والحل الوحيد هو العمليات الجراحية المكلفة.
-  </p>
-</div>
-    <div class="max-w-xl mx-auto bg-white border border-slate-200/60 p-3 rounded-2xl shadow-[0_10px_25px_-10px_rgba(0,0,0,0.05)]" style="display: block !important; clear: both !important; margin-top: 40px !important; margin-bottom: 40px !important;">
-  <div class="bg-slate-50 rounded-xl border-2 border-dashed border-slate-300 flex flex-col items-center justify-between p-6 group hover:bg-slate-100/50 transition-all duration-300 aspect-[3/4]" style="aspect-ratio: 3 / 4 !important; width: 100% !important;">
-  
-      <div class="rounded-[2rem] p-8 sm:p-12 text-center w-full max-w-2xl mx-auto" 
-     style="display: block !important; clear: both !important; margin-top: 45px !important; margin-bottom: 20px !important; background-color: #e6f4ea !important; border: 2px solid #059669 !important; box-shadow: 0 20px 45px -10px rgba(5, 150, 105, 0.45) !important;">
-  <p class="text-emerald-950 font-display text-xl sm:text-2xl md:text-3xl font-black tracking-wide leading-snug m-0">
-    إذا كنت ملتزماً اليوم بإنهاء this العذاب.. جهاز شياتسو الذكي يعطيك الحل النهائي الحين.
-  </p>
-</div>
-    
-  
-    </div> 
-  </div>
-</section>
-
-        <dl class="grid w-full grid-cols-2 gap-3 text-center sm:order-last sm:flex-[1_1_100%] sm:basis-full sm:grid-cols-4 sm:gap-4 sm:text-start">
-          <div class="rounded-2xl border border-slate-100 bg-white/80 p-3 shadow-soft backdrop-blur-sm sm:p-3.5">
-            <dt class="flex items-center justify-center gap-1 text-[11px] text-berrysoft sm:justify-start">
-              <i data-lucide="flame" class="h-3.5 w-3.5 text-rosegold" aria-hidden="true"></i>
-              حرارة علاجية
-            </dt>
-            <dd class="mt-1 text-sm font-bold text-berry">استرخاء عميق للعضلات</dd>
-          </div>
-          <div class="rounded-2xl border border-slate-100 bg-white/80 p-3 shadow-soft backdrop-blur-sm sm:p-3.5">
-            <dt class="flex items-center justify-center gap-1 text-[11px] text-berrysoft sm:justify-start">
-              <i data-lucide="rotate-cw" class="h-3.5 w-3.5 text-rosegold" aria-hidden="true"></i>
-              8 عقد تدليك
-            </dt>
-            <dd class="mt-1 text-sm font-bold text-berry">تقنية شياتسو الدوارة</dd>
-          </div>
-          <div class="rounded-2xl border border-slate-100 bg-white/80 p-3 shadow-soft backdrop-blur-sm sm:p-3.5">
-            <dt class="flex items-center justify-center gap-1 text-[11px] text-berrysoft sm:justify-start">
-              <i data-lucide="car" class="h-3.5 w-3.5 text-rosegold" aria-hidden="true"></i>
-              متعدد الاستخدام
-            </dt>
-            <dd class="mt-1 text-sm font-bold text-berry">للسيارة، البيت والمكتب</dd>
-          </div>
-          <div class="rounded-2xl border border-slate-100 bg-white/80 p-3 shadow-soft backdrop-blur-sm sm:p-3.5">
-            <dt class="flex items-center justify-center gap-1 text-[11px] text-berrysoft sm:justify-start">
-              <i data-lucide="truck" class="h-3.5 w-3.5 text-rosegold" aria-hidden="true"></i>
-              التوصيل
-            </dt>
-            <dd class="mt-1 text-sm font-bold text-berry">سريع ومجاني بقطر</dd>
-          </div>
-        </dl>
-      </div>
-    
-    <section id="reviews" class="border-t border-slate-200 bg-palepink/60 py-14 sm:py-20">
-      <div class="mx-auto max-w-6xl px-4 sm:px-6">
-        <header class="mb-10 flex flex-col gap-4 sm:mb-12 sm:flex-row-reverse sm:items-end sm:justify-between">
-          <span class="inline-flex h-10 w-10 items-center justify-center rounded-2xl bg-white text-rosegold shadow-card ring-1 ring-slate-200">
-            <i data-lucide="message-square-quote" class="h-5 w-5 text-berry"></i>
-          </span>
-          <div>
-            <h2 class="font-display text-2xl font-bold text-berry sm:text-3xl">ماذا يقول عملاؤنا؟</h2>
-          </div>
-        </header>
-
-        <div class="grid gap-5 md:grid-cols-3">
-          <article class="flex flex-col rounded-3xl border border-slate-100 bg-white p-6 shadow-soft">
-            <div class="flex items-center gap-3">
-              <div class="flex h-12 w-12 items-center justify-center rounded-2xl bg-palepink text-berry shadow-inner">
-                <span class="text-lg font-bold">ج</span>
-              </div>
-              <div>
-                <h3 class="font-bold text-berry">جاسم</h3>
-                <p class="text-xs text-berrysoft/90">موظف حكومي</p>
-              </div>
-            </div>
-            <p class="mt-5 text-[0.95rem] leading-relaxed text-berrysoft">
-             فك أزمة، أخليه معي بالسيارة بعد الدوام ويريحني من ألم الظهر والرقبة بشكل فوري، أحس براحة عجيبة قبل لا أوصل للبيت.
-            </p>
-            <div class="mt-auto flex gap-1 pt-4 text-amber-400">
-              <i data-lucide="star" class="h-4 w-4 fill-current"></i>
-              <i data-lucide="star" class="h-4 w-4 fill-current"></i>
-              <i data-lucide="star" class="h-4 w-4 fill-current"></i>
-              <i data-lucide="star" class="h-4 w-4 fill-current"></i>
-              <i data-lucide="star" class="h-4 w-4 fill-current"></i>
-            </div>
-          </article>
-
-          <article class="flex flex-col rounded-3xl border border-slate-100 bg-white p-6 shadow-soft">
-            <div class="flex items-center gap-3">
-              <div class="flex h-12 w-12 items-center justify-center rounded-2xl bg-palepink text-berry shadow-inner">
-                <span class="text-lg font-bold">س</span>
-              </div>
-              <div>
-                <h3 class="font-bold text-berry">سارة</h3>
-                <p class="text-xs text-berrysoft/90">محاسبة</p>
-              </div>
-            </div>
-            <p class="mt-5 text-[0.95rem] leading-relaxed text-berrysoft">
-              بشغلي الجلوس على المكتب طويل ومجهد جداً. الجهاز فاجأني؛ تدليك عميق وحرارة مريحة، صرت أستخدمه يومياً وأنا أشتغل بدون ما يزعجني.
-            </p>
-            <div class="mt-auto flex gap-1 pt-4 text-amber-400">
-              <i data-lucide="star" class="h-4 w-4 fill-current"></i>
-              <i data-lucide="star" class="h-4 w-4 fill-current"></i>
-              <i data-lucide="star" class="h-4 w-4 fill-current"></i>
-              <i data-lucide="star" class="h-4 w-4 fill-current"></i>
-              <i data-lucide="star" class="h-4 w-4 fill-current"></i>
-            </div>
-          </article>
-
-          <article class="flex flex-col rounded-3xl border border-slate-100 bg-white p-6 shadow-soft">
-            <div class="flex items-center gap-3">
-              <div class="flex h-12 w-12 items-center justify-center rounded-2xl bg-palepink text-berry shadow-inner">
-                <span class="text-lg font-bold">أ</span>
-              </div>
-              <div>
-                <h3 class="font-bold text-berry">أبو خالد</h3>
-                <p class="text-xs text-berrysoft/90">متقاعد</p>
-              </div>
-            </div>
-            <p class="mt-5 text-[0.95rem] leading-relaxed text-berrysoft">
-              كنت أعاني من شد عضلي مزمن في الأكتاف بسبب العمر والجهد. الجهاز صار لي مثل أخصائي علاج طبيعي بالبيت، جودة ممتازة وتصميم يريح.
-            </p>
-            <div class="mt-auto flex gap-1 pt-4 text-amber-400">
-              <i data-lucide="star" class="h-4 w-4 fill-current"></i>
-              <i data-lucide="star" class="h-4 w-4 fill-current"></i>
-              <i data-lucide="star" class="h-4 w-4 fill-current"></i>
-              <i data-lucide="star" class="h-4 w-4 fill-current"></i>
-              <i data-lucide="star" class="h-4 w-4 fill-current"></i>
-            </div>
-          </article>
-        </div>
-
-        <div class="mt-10 mb-8 px-4">
-          <div class="flex items-center justify-center gap-3 rounded-2xl border border-slate-300 bg-slate-100 px-4 py-3.5 text-center shadow-sm">
-              <span class="text-xl">⚠️</span>
-              <p class="text-[0.95rem] font-bold text-berry leading-relaxed m-0">
-                  تنبيه: متبقي <span class="text-rosegold underline decoration-2">14 جهازاً فقط</span> في مخازننا بقطر.. اطلب قبل نفاذ الدفعة!
-              </p>
-          </div>
-        </div>
-
-        <div class="mt-10 flex justify-center border-t border-slate-200 pt-10">
-          <a href="#order" class="inline-flex w-full max-w-md items-center justify-center rounded-2xl bg-berry px-6 py-3.5 text-center text-[0.95rem] font-bold text-white shadow-soft transition hover:opacity-90 focus:outline-none focus-visible:ring-2 focus-visible:ring-rosegold focus-visible:ring-offset-2 sm:w-auto">
-            أريد تجربة الجهاز الآن
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <section aria-labelledby="pain-title" class="relative overflow-hidden border-y border-slate-200 bg-gradient-to-br from-slate-50 via-slate-100 to-slate-200 py-14 sm:py-20">
-      <div class="relative mx-auto max-w-6xl px-4 sm:px-6">
-        <div class="mx-auto max-w-3xl text-center">
-          <span class="mx-auto mb-5 inline-flex h-11 w-11 items-center justify-center rounded-2xl border border-white/70 bg-white/90 text-berry shadow-soft">
-            <i data-lucide="activity" class="h-5 w-5"></i>
-          </span>
-          
-          <h2 id="pain-title" class="font-display text-2xl font-bold leading-snug text-berry sm:text-3xl">
-            هل تعاني من آلام الرقبة والظهر بشكل يومي؟
-          </h2>
-
-          <div class="mt-8 space-y-4 text-right inline-block">
-            <div class="flex items-start gap-3 text-berry">
-              <span class="mt-1 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-slate-200 text-rosegold text-xs">✔</span>
-              <p class="text-[1.02rem] leading-relaxed">تحس بـ <strong>شد عضلي مزعج</strong> يمنعك من النوم براحة أو التركيز في عملك؟</p>
-            </div>
-            <div class="flex items-start gap-3 text-berry">
-              <span class="mt-1 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-slate-200 text-rosegold text-xs">✔</span>
-              <p class="text-[1.02rem] leading-relaxed">تضطر لتأجيل مهامك وتلغي خططك لأن <strong>الألم والإرهاق</strong> يسيطران عليك؟</p>
-            </div>
-            <div class="flex items-start gap-3 text-berry">
-              <span class="mt-1 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-slate-200 text-rosegold text-xs">✔</span>
-              <p class="text-[1.02rem] leading-relaxed">مليت من <strong>المسكنات واللصقات</strong> التي لا تعطي سوى راحة مؤقتة بدون حل جذري؟</p>
+        <!-- صورة المنتج -->
+        <div class="observe mx-auto max-w-2xl lg:max-w-3xl">
+          <div class="img-frame relative overflow-hidden rounded-3xl p-3 shadow-premium ring-1 ring-sanddeep/80">
+            <img
+              src="images/product-hero.png"
+              alt="ZENKO — جهاز مساج شياتسو ياباني أصلي"
+              width="800"
+              height="700"
+              fetchpriority="high"
+              decoding="async"
+              class="w-full rounded-2xl object-contain"
+            />
+            <div class="absolute bottom-5 left-5 right-5 rounded-2xl bg-ink/90 px-4 py-3 text-center backdrop-blur-sm">
+              <p class="font-brand text-xs font-bold uppercase tracking-widest text-sand">Premium Grade</p>
+              <p class="mt-0.5 text-sm font-bold text-white">تكنولوجيا شياتسو يابانية أصلية</p>
             </div>
           </div>
-
-          <div class="mt-10 rounded-2xl bg-white/70 p-6 backdrop-blur-sm border border-white/60 shadow-sm">
-            <p class="text-[1.05rem] font-bold leading-relaxed text-berry">
-              أنت لا تبالغ في ألمك..
-            </p>
-            <p class="mt-3 text-[0.98rem] leading-relaxed text-berrysoft">
-              جسمك يطلق إنذاراً حقيقياً يحتاج للعناية. السؤال هو: هل ستستمر في المعاناة، أم ستختار حلاً طبياً وعملياً يريحك في بيتك أو مكتبك؟
-            </p>
-          </div>
-
-          <p class="mt-8 text-xs font-medium text-berrysoft tracking-wide">
-            صحتك هي استثمارك الأول — الحل الجذري لألم العضلات أصبح بين يديك.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <section id="before-after" class="py-12 bg-white">
-      <div class="mx-auto max-w-xl px-4 sm:px-6">
-          <div class="text-center mb-8">
-              <h3 class="font-display text-2xl font-black text-berry">من 'تعب وإرهاق' دائم.. إلى يوم كامل من النشاط والراحة.</h3>
-          </div>
-          <div class="relative overflow-hidden rounded-[2rem] border border-slate-100 shadow-lg p-2">
-            <img src="imagesbefore-after.webp" loading="lazy" alt="جهاز مساج الرقبة قبل وبعد" class="w-full rounded-3xl object-cover h-auto" />
-          </div>
-      </div>
-    </section>
-
-    <section class="py-12 bg-white">
-      <div class="max-w-4xl mx-auto px-4">
-        <h2 class="text-center font-bold text-2xl text-berry mb-10 sm:text-3xl">الفرق الذي سيغير حياتك..</h2>
-        <div class="grid grid-cols-2 gap-2 sm:gap-6">
-          <div class="rounded-3xl border-2 border-emerald-200 bg-emerald-50/50 p-4 sm:p-8 shadow-sm">
-            <div class="mb-6 text-center">
-              <span class="inline-block rounded-full bg-emerald-600 px-4 py-1 text-sm font-bold text-white shadow-md">مع جهاز المساج ✨</span>
-            </div>
-            <ul class="space-y-5">
-              <li class="flex items-start gap-2 text-right">
-                <span class="text-emerald-600 font-bold text-lg">✓</span>
-                <p class="text-[0.9rem] sm:text-[1rem] font-bold text-emerald-950">استرخاء عميق بلمسة زر.</p>
-              </li>
-              <li class="flex items-start gap-2 text-right">
-                <span class="text-emerald-600 font-bold text-lg">✓</span>
-                <p class="text-[0.9rem] sm:text-[1rem] font-bold text-emerald-950">بديل عملي وآمن 100% لجلسات المساج المكلفة.</p>
-              </li>
-              <li class="flex items-start gap-2 text-right">
-                <span class="text-emerald-600 font-bold text-lg">✓</span>
-                <p class="text-[0.9rem] sm:text-[1rem] font-bold text-emerald-950">نشاط وطاقة طوال اليوم.</p>
-              </li>
-            </ul>
-          </div>
-          <div class="rounded-3xl border border-gray-200 bg-gray-50 p-4 sm:p-8 opacity-80">
-            <div class="mb-6 text-center">
-              <span class="inline-block rounded-full bg-gray-400 px-4 py-1 text-sm font-bold text-white">قبل الجهاز ❌</span>
-            </div>
-            <ul class="space-y-5">
-              <li class="flex items-start gap-2 text-right">
-                <span class="text-red-500 font-bold">✕</span>
-                <p class="text-[0.85rem] sm:text-[0.95rem] text-gray-600">ألم وتشنجات في الرقبة والأكتاف.</p>
-              </li>
-              <li class="flex items-start gap-2 text-right">
-                <span class="text-red-500 font-bold">✕</span>
-                <p class="text-[0.85rem] sm:text-[0.95rem] text-gray-600">صداع وتوتر بسبب العضلات المشدودة.</p>
-              </li>
-              <li class="flex items-start gap-2 text-right">
-                <span class="text-red-500 font-bold">✕</span>
-                <p class="text-[0.85rem] sm:text-[0.95rem] text-gray-600">إرهاق يمنعك من الاستمتاع بيومك.</p>
-              </li>
-            </ul>
-          </div>
-        </div>
-        <p class="mt-8 text-center text-sm font-medium text-berrysoft italic">"القرار بيدك.. هل تختار الاستمرار بالمعاناة أم الاستثمار في راحتك؟"</p>
-      </div>
-    </section> 
-
-    <section id="product" class="bg-palepink py-14 sm:py-20">
-      <div class="mx-auto max-w-6xl px-4 sm:px-6">
-        <div class="mx-auto max-w-5xl space-y-4 lg:space-y-5">
-            <h3 class="font-display text-lg font-bold text-berry">ماذا ستستفيد من هذا الجهاز؟</h3>
-            <div class="grid gap-4 sm:grid-cols-2">
-              <div class="rounded-3xl border border-slate-200 bg-white p-5 shadow-soft">
-                <i data-lucide="layers" class="mb-3 h-6 w-6 text-rosegold"></i>
-                <p class="font-bold text-berry">تصميم مريح وعملي</p>
-                <p class="mt-2 text-sm leading-relaxed text-berrysoft">تصميم هندسي على شكل U يناسب انحناءات الرقبة والظهر، مريح جداً للاستخدام في أي وضعية.</p>
-              </div>
-              <div class="rounded-3xl border border-slate-200 bg-white p-5 shadow-soft">
-                <i data-lucide="smile" class="mb-3 h-6 w-6 text-rosegold"></i>
-                <p class="font-bold text-berry">أعصاب هادئة ومزاج رايق</p>
-                <p class="mt-2 text-sm leading-relaxed text-berrysoft">يسحب التشنجات بلطف ويحسن الدورة الدموية، مما يجعلك هادئاً ومركزاً في عملك ومع عائلتك.</p>
-              </div>
-              <div class="rounded-3xl border border-slate-200 bg-white p-5 shadow-soft">
-                <i data-lucide="sun" class="mb-3 h-6 w-6 text-rosegold"></i>
-                <p class="font-bold text-berry">يومك ملكك، وليس ملك الألم</p>
-                <p class="mt-2 text-sm leading-relaxed text-berrysoft">لا تؤجل مواعيدك أو تلغي خططك، كن دائماً في قمة نشاطك وكامل طاقتك.</p>
-              </div>
-              <div class="rounded-3xl border border-slate-200 bg-white p-5 shadow-soft">
-                <i data-lucide="cpu" class="mb-3 h-6 w-6 text-rosegold"></i>
-                <p class="font-bold text-berry">تكنولوجيا ذكية تحترم وقتك</p>
-                <p class="mt-2 text-sm leading-relaxed text-berrysoft">8 عقد تدليك ذكية مع خاصية الدوران العكسي والحرارة، لتعطيك إحساس مساج الأيدي البشرية.</p>
-              </div>
-              <div class="rounded-3xl border border-slate-200 bg-white p-5 shadow-soft">
-                <i data-lucide="heart" class="mb-3 h-6 w-6 text-rosegold"></i>
-                <p class="font-bold text-berry">صحتك.. استثمارك الأول</p>
-                <p class="mt-2 text-sm leading-relaxed text-berrysoft">أرح جسمك من التعب والمسكنات، هذا الجهاز هو حل طبيعي ينهي الوجع ويحفظ صحتك على المدى البعيد.</p>
-              </div>
-            </div>
-          </div>
-      </div>
-    </section>
-
-    <section class="border-t border-slate-200 bg-gradient-to-b from-white to-slate-50 py-14 sm:py-20" aria-labelledby="why-wardi-first-title therapeutic-temps-title">
-      <div class="mx-auto max-w-6xl px-4 sm:px-6">
-        <header class="mb-8 sm:mb-10">
-          <h2 id="why-wardi-first-title" class="font-display text-2xl font-bold text-berry sm:text-3xl">السر في التفاصيل: لماذا هذا الجهاز هو الأكثر طلباً في قطر؟</h2>
-        </header>
-
-        <div class="mb-10 overflow-hidden rounded-3xl border border-slate-200 bg-gradient-to-br from-white via-slate-50 to-slate-100 p-1 shadow-card sm:mb-12" aria-labelledby="therapeutic-temps-title">
-          <div class="rounded-[1.2rem] bg-white px-5 py-6 sm:px-7 sm:py-8">
-            <div class="mb-5 flex flex-wrap items-center gap-3 sm:mb-6">
-              <span class="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-slate-100 text-berry shadow-sm ring-1 ring-slate-200">
-                <i data-lucide="settings" class="h-6 w-6 stroke-[2.25]" aria-hidden="true"></i>
-              </span>
-              <h3 id="therapeutic-temps-title" class="font-display text-lg font-bold text-berry sm:text-xl">تقنيات التدليك المتقدمة</h3>
-            </div>
-            <ul class="font-arabic space-y-3 sm:space-y-4" dir="rtl">
-              <li class="flex flex-wrap items-center gap-3 rounded-2xl border border-slate-100 bg-slate-50 px-4 py-3.5 shadow-sm sm:gap-4 sm:px-5 sm:py-4">
-                <span class="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-white text-rosegold ring-1 ring-slate-200" aria-hidden="true">
-                  <i data-lucide="rotate-cw" class="h-[1.125rem] w-[1.125rem] stroke-[2.25]"></i>
-                </span>
-                <span class="shrink-0 text-xl font-extrabold leading-none tracking-tight text-berry sm:text-2xl">شياتسو عميق</span>
-                <span class="min-w-[12rem] flex-1 text-sm font-medium leading-relaxed text-berrysoft sm:text-[0.95rem]">8 عقد تدليك ثلاثية الأبعاد تحاكي حركة أصابع أخصائي المساج.</span>
-              </li>
-              <li class="flex flex-wrap items-center gap-3 rounded-2xl border border-slate-100 bg-slate-50 px-4 py-3.5 shadow-sm sm:gap-4 sm:px-5 sm:py-4">
-                <span class="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-white text-rosegold ring-1 ring-slate-200" aria-hidden="true">
-                  <i data-lucide="flame" class="h-[1.125rem] w-[1.125rem] stroke-[2.25]"></i>
-                </span>
-                <span class="shrink-0 text-xl font-extrabold leading-none tracking-tight text-berry sm:text-2xl">حرارة علاجية</span>
-                <span class="min-w-[12rem] flex-1 text-sm font-medium leading-relaxed text-berrysoft sm:text-[0.95rem]">تسخين بالأشعة تحت الحمراء لتحسين الدورة الدموية واسترخاء العضلات.</span>
-              </li>
-              <li class="flex flex-wrap items-center gap-3 rounded-2xl border border-slate-100 bg-slate-50 px-4 py-3.5 shadow-sm sm:gap-4 sm:px-5 sm:py-4">
-                <span class="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-slate-200 text-berry ring-1 ring-slate-300" aria-hidden="true">
-                  <i data-lucide="shield-check" class="h-5 w-5 stroke-[2.5]"></i>
-                </span>
-                <span class="shrink-0 text-xl font-extrabold leading-none tracking-tight text-berry sm:text-2xl">تصميم ذكي</span>
-                <span class="min-w-[12rem] flex-1 text-sm font-medium leading-relaxed text-berrysoft sm:text-[0.95rem]">مؤقت أمان ذكي يفصل تلقائياً بعد 15 دقيقة لضمان حمايتك.</span>
-              </li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="grid grid-cols-1 gap-8 md:grid-cols-2 md:gap-8 lg:grid-cols-5 lg:gap-8">
-          <figure class="flex h-full flex-col gap-4 p-2">
-            <div class="overflow-hidden rounded-2xl bg-white shadow-soft ring-1 ring-slate-200">
-              <img src="images3.webp" alt="" width="640" height="480" loading="lazy" decoding="async" class="aspect-[4/3] w-full object-cover" />
-            </div>
-            <figcaption class="font-arabic flex flex-col gap-2 px-2 py-2 text-center">
-              <span class="text-base font-bold leading-snug text-berry sm:text-[1.05rem]">راحة فائقة..</span>
-              <span class="text-[0.8rem] font-light leading-relaxed text-berrysoft sm:text-[0.85rem]">جلد PU عالي الجودة وشبكة تهوية تمنع التعرق</span>
-            </figcaption>
-          </figure>
-          <figure class="flex h-full flex-col gap-4 p-2">
-            <div class="overflow-hidden rounded-2xl bg-white shadow-soft ring-1 ring-slate-200">
-              <img src="images2.webp" alt="" width="640" height="480" loading="lazy" decoding="async" class="aspect-[4/3] w-full object-cover" />
-            </div>
-            <figcaption class="font-arabic flex flex-col gap-2 px-2 py-2 text-center">
-              <span class="text-base font-bold leading-snug text-berry sm:text-[1.05rem]">جودة تدوم..</span>
-              <span class="text-[0.8rem] font-light leading-relaxed text-berrysoft sm:text-[0.85rem]">تصميم متين، سهل التنظيف بمسحة خفيفة</span>
-            </figcaption>
-          </figure>
-          <figure class="flex h-full flex-col gap-4 p-2">
-            <div class="overflow-hidden rounded-2xl bg-white shadow-soft ring-1 ring-slate-200">
-              <img src="images1.webp" alt="" width="640" height="480" loading="lazy" decoding="async" class="aspect-[4/3] w-full object-cover" />
-            </div>
-            <figcaption class="font-arabic flex flex-col gap-2 px-2 py-2 text-center">
-              <span class="text-base font-bold leading-snug text-berry sm:text-[1.05rem]">وداعاً للألم..</span>
-              <span class="text-[0.8rem] font-light leading-relaxed text-berrysoft sm:text-[0.85rem]">مساج عميق وحرارة ذكية تريحك في دقائق</span>
-            </figcaption>
-          </figure>
-          <figure class="flex h-full flex-col gap-4 p-2">
-            <div class="overflow-hidden rounded-2xl bg-white shadow-soft ring-1 ring-slate-200">
-              <img src="images5.webp" alt="" width="640" height="480" loading="lazy" decoding="async" class="aspect-[4/3] w-full object-cover" />
-            </div>
-            <figcaption class="font-arabic flex flex-col gap-2 px-2 py-2 text-center">
-              <span class="text-base font-bold leading-snug text-berry sm:text-[1.05rem]">جاهز دائماً..</span>
-              <span class="text-[0.8rem] font-light leading-relaxed text-berrysoft sm:text-[0.85rem]">يمكن تشغيله في المنزل أو عبر مقبس السيارة بكل سهولة</span>
-            </figcaption>
-          </figure>
-          <figure class="flex h-full flex-col gap-4 p-2">
-            <div class="overflow-hidden rounded-2xl bg-white shadow-soft ring-1 ring-slate-200">
-              <img src="images4.jpg.jpeg" alt="" width="640" height="480" loading="lazy" decoding="async" class="aspect-[4/3] w-full object-cover" />
-            </div>
-            <figcaption class="font-arabic flex flex-col gap-2 px-2 py-2 text-center">
-              <span class="text-base font-bold leading-snug text-berry sm:text-[1.05rem]">استرخاء أينما كنت..</span>
-              <span class="text-[0.8rem] font-light leading-relaxed text-berrysoft sm:text-[0.85rem]">استخدمه في المكتب، أثناء القيادة، أو عند مشاهدة التلفاز</span>
-            </figcaption>
-          </figure>
-        </div>
-
-        <div class="mt-10 flex w-full justify-center px-4 sm:mt-14">
-          <a href="#order" class="inline-flex w-full max-w-lg items-center justify-center rounded-full bg-berry py-5 px-8 text-center text-lg font-black text-white shadow-soft transition-all duration-300 hover:scale-[1.02] active:scale-95 sm:text-xl">
-              أريد الاستثمار في صحتي والتخلص من الألم الآن 
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <section class="py-10 bg-slate-50 border-y border-slate-200">
-      <div class="max-w-2xl mx-auto px-4 text-center">
-        <span class="inline-flex items-center gap-1.5 rounded-full bg-white px-3 py-1 text-xs font-bold text-slate-700 border border-slate-200 mb-5">
-          <span class="h-1.5 w-1.5 rounded-full bg-rosegold"></span>
-          جهاز مصرح ومعتمد رسمياً
-        </span>
-        <h3 class="font-display text-xl font-bold text-berry mb-6">أعلى معايير الأمان العالمية بين يديك 🛡️</h3>
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          <div class="flex items-center gap-3.5 bg-white p-4 rounded-2xl border border-slate-100 shadow-sm text-right">
-            <div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-berry font-display font-black text-white text-sm tracking-wider shadow-sm">CE</div>
-            <div>
-              <h4 class="text-[0.95rem] font-bold text-berry">اعتماد CE الأوروبي</h4>
-              <p class="text-xs text-berrysoft mt-1 leading-relaxed">يضمن مطابقة الجهاز لأعلى مواصفات السلامة والأمان الصحي الأوروبية.</p>
-            </div>
-          </div>
-          <div class="flex items-center gap-3.5 bg-white p-4 rounded-2xl border border-slate-100 shadow-sm text-right">
-            <div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-berry font-display font-black text-white text-xs tracking-tight shadow-sm">RoHS</div>
-            <div>
-              <h4 class="text-[0.95rem] font-bold text-berry">شهادة RoHS الدولية</h4>
-              <p class="text-xs text-berrysoft mt-1 leading-relaxed">تؤكد خلو المنتج تماماً من المواد الضارة، ليكون آمن 100% على بشرتك.</p>
+          <div class="mt-6 flex flex-col items-center gap-4 sm:mt-8">
+            <a href="#offer" class="inline-flex w-full max-w-sm items-center justify-center rounded-2xl bg-zen px-8 py-4 text-base font-extrabold text-white shadow-glow transition hover:bg-zenhover animate-pulse-zen">
+              اطلب الحين
+            </a>
+            <div class="flex items-center gap-2 text-sm font-bold text-inksoft">
+              <i data-lucide="shield-check" class="h-4 w-4 text-emerald-600"></i>
+              CE • RoHS • ضمان كامل
             </div>
           </div>
         </div>
       </div>
     </section>
-    
-    <section aria-labelledby="usage-title" class="bg-white py-12 sm:py-16">
+
+    <!-- Pain points -->
+    <section class="dark-section py-14 text-white sm:py-20">
       <div class="mx-auto max-w-3xl px-4 sm:px-6">
-        <h2 id="usage-title" class="font-display text-xl font-bold text-berry sm:text-2xl">توصيات هامة للاستخدام</h2>
-        <ul class="mt-6 space-y-4 rounded-3xl border border-slate-200 bg-slate-50 p-6 shadow-inner sm:p-8">
-          <li class="flex gap-3 text-[0.95rem] leading-relaxed text-berry">
-            <span class="mt-1 flex h-7 w-7 shrink-0 items-center justify-center rounded-xl bg-white text-berry border border-slate-200">
-              <i data-lucide="clock" class="h-4 w-4" aria-hidden="true"></i>
-            </span>
-            <span>لأمانك التام، استمتع بجلسات المساج وأنت مستيقظ (يفصل الجهاز تلقائياً بعد 15 دقيقة).</span>
+        <div class="observe space-y-8">
+          <p class="text-center text-lg font-bold text-sand sm:text-xl">صديقي.. خذ ثانية واحدة وصارح نفسك الحين:</p>
+          <ul class="space-y-5">
+            <li class="flex gap-4 rounded-2xl border border-white/10 bg-white/5 p-5 backdrop-blur-sm">
+              <span class="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-zen/20 text-zen"><i data-lucide="moon" class="h-4 w-4"></i></span>
+              <p class="text-[0.98rem] leading-relaxed text-white/90">إلى متى وأنت تصحى من النوم وجسمك مكسر وتعبان؟</p>
+            </li>
+            <li class="flex gap-4 rounded-2xl border border-white/10 bg-white/5 p-5 backdrop-blur-sm">
+              <span class="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-zen/20 text-zen"><i data-lucide="banknote" class="h-4 w-4"></i></span>
+              <p class="text-[0.98rem] leading-relaxed text-white/90">كم مرة رحت لمركز مساج أو عيادة، تدفع 300 ريال فكل جلسة.. وتطلع بدون أي تحسّن!</p>
+            </li>
+            <li class="flex gap-4 rounded-2xl border border-white/10 bg-white/5 p-5 backdrop-blur-sm">
+              <span class="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-zen/20 text-zen"><i data-lucide="pill" class="h-4 w-4"></i></span>
+              <p class="text-[0.98rem] leading-relaxed text-white/90">كم حبة مسكن بلعت وللحين العوار يلاحقك ويخنق أنفاسك؟</p>
+            </li>
+            <li class="flex gap-4 rounded-2xl border border-white/10 bg-white/5 p-5 backdrop-blur-sm">
+              <span class="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-zen/20 text-zen"><i data-lucide="heart-crack" class="h-4 w-4"></i></span>
+              <p class="text-[0.98rem] leading-relaxed text-white/90">لى متى تعاني في صمت وتوهم نفسك أن الألم راح يختفي لوحده؟</p>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- تبين هاد المعانات — صورة فقط -->
+    <section class="bg-sand py-10 sm:py-14" aria-label="تبين هاد المعانات">
+      <div class="observe mx-auto max-w-5xl px-4 sm:px-6">
+        <div class="img-frame overflow-hidden rounded-3xl shadow-premium ring-1 ring-sanddeep/60">
+          <img
+            src="images/experts-hero.jpg"
+            alt="تبين هاد المعانات"
+            width="1200"
+            height="675"
+            loading="lazy"
+            decoding="async"
+            class="w-full object-cover"
+            onerror="this.src='images/pain-life.jpg'; this.onerror=null;"
+          />
+        </div>
+      </div>
+    </section>
+
+    <!-- Warning -->
+    <section class="border-y border-red-900/20 bg-red-950 py-12 sm:py-16">
+      <div class="observe mx-auto max-w-3xl px-4 text-center sm:px-6">
+        <h2 class="mb-6 inline-flex items-center gap-2 rounded-full bg-red-500/20 px-5 py-2 text-sm font-black uppercase tracking-widest text-red-300">
+          <i data-lucide="alert-triangle" class="h-4 w-4"></i>
+          تحذير
+        </h2>
+        <p class="text-[1.05rem] font-bold leading-[2] text-red-100 sm:text-lg">
+          الحقيقة المرة اللي يخفيها عنك الأطباء: المسكنات قاعدة تخدر أعصابك مؤقتاً، بينما فقراتك جالسة تتصلب وتتشنج يوم بعد يوم واذا غفلت عنها راح يبقى الحل الوحيد هو العمليات الجراحية المكلفة.
+        </p>
+      </div>
+    </section>
+
+    <!-- Solution -->
+    <section class="hero-gradient py-14 sm:py-20">
+      <div class="observe mx-auto max-w-4xl space-y-8 px-4 text-center sm:px-6">
+        <h2 class="text-2xl font-black text-ink sm:text-4xl">لا تقلق… نحن هنا لنكسر سلسلة المعانات</h2>
+        <p class="text-[1.02rem] leading-[2] text-inksoft sm:text-lg">
+          جهاز الشياتسو هذا صُنع بناءً على دراسة سريرية فاليابان شملت 57,000 شخص يعانون من مشاكل وتشنج الرقبة الحاد و الام الظهر و الكتفين ، ليعطيك &quot;البديل الطبي والمنزلي الدائم&quot; وبقوة عجن حقيقية تحاكي أصابع الخبراء تماماً  هو الحل النهائي المصمم ليعيد الحيوية لظهرك ورقبتك في جلسة 15 دقيقة فقط يوميا.
+        </p>
+      </div>
+    </section>
+
+    <!-- Three experts photo -->
+    <section class="bg-white py-12 sm:py-16">
+      <div class="observe mx-auto max-w-5xl px-4 sm:px-6">
+        <div class="img-frame overflow-hidden rounded-3xl shadow-premium ring-1 ring-sanddeep/60">
+          <img
+            src="images/experts-three.jpg"
+            alt="ثلاث خبراء مساج يابانيين ينصحون بالجهاز"
+            width="1200"
+            height="675"
+            loading="lazy"
+            class="aspect-video w-full object-cover"
+            onerror="this.src='images/product-hero.png'; this.classList.add('object-contain','p-10','bg-sand');"
+          />
+        </div>
+      </div>
+    </section>
+
+    <!-- Benefits -->
+    <section id="benefits" class="bg-ink py-14 text-white sm:py-20">
+      <div class="mx-auto max-w-4xl px-4 sm:px-6">
+        <h2 class="observe mb-10 text-center text-2xl font-black text-sand sm:text-3xl">تخلصك من هالالام راح يغير حياتك 180 درجة</h2>
+        <ul class="observe grid gap-4 sm:grid-cols-2">
+          <li class="flex gap-3 rounded-2xl border border-white/10 bg-white/5 p-5"><i data-lucide="check-circle" class="mt-0.5 h-5 w-5 shrink-0 text-zen"></i><span class="text-[0.95rem] leading-relaxed">تصير تنام بعمق ما تحتاج كل شوي يصحيك الالم</span></li>
+          <li class="flex gap-3 rounded-2xl border border-white/10 bg-white/5 p-5"><i data-lucide="check-circle" class="mt-0.5 h-5 w-5 shrink-0 text-zen"></i><span class="text-[0.95rem] leading-relaxed">تصير دايم نشط و نفسيتك طالعة ما في شيء يزعجك</span></li>
+          <li class="flex gap-3 rounded-2xl border border-white/10 bg-white/5 p-5"><i data-lucide="check-circle" class="mt-0.5 h-5 w-5 shrink-0 text-zen"></i><span class="text-[0.95rem] leading-relaxed">تزيد تركيزك و انتاجيتك فشغلك</span></li>
+          <li class="flex gap-3 rounded-2xl border border-white/10 bg-white/5 p-5"><i data-lucide="check-circle" class="mt-0.5 h-5 w-5 shrink-0 text-zen"></i><span class="text-[0.95rem] leading-relaxed">تطلع و تكشت و تسوي كل شي كان مانعك منه الالم</span></li>
+          <li class="flex gap-3 rounded-2xl border border-white/10 bg-white/5 p-5"><i data-lucide="check-circle" class="mt-0.5 h-5 w-5 shrink-0 text-zen"></i><span class="text-[0.95rem] leading-relaxed">استرخاء تام و اعادة شحن الطاقة بعد التعب</span></li>
+          <li class="flex gap-3 rounded-2xl border border-white/10 bg-white/5 p-5 sm:col-span-2"><i data-lucide="check-circle" class="mt-0.5 h-5 w-5 shrink-0 text-zen"></i><span class="text-[0.95rem] leading-relaxed">تحل اصل المشكل و ما تقعد تعتمد على المسكنات و تخدع نفسك</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Relaxed Gulf person -->
+    <section class="bg-sand py-12 sm:py-16">
+      <div class="observe mx-auto max-w-5xl px-4 sm:px-6">
+        <div class="img-frame overflow-hidden rounded-3xl shadow-card">
+          <img
+            src="images/relaxed-gulf.jpg"
+            alt="شخص خليجي مرتاح والجهاز ظاهر"
+            width="1200"
+            height="675"
+            loading="lazy"
+            class="aspect-video w-full object-cover"
+            onerror="this.src='images/product-hero.png'; this.classList.add('object-contain','p-12');"
+          />
+        </div>
+      </div>
+    </section>
+
+    <!-- Reviews -->
+    <section id="reviews" class="bg-white py-14 sm:py-20">
+      <div class="mx-auto max-w-5xl px-4 sm:px-6">
+        <h2 class="observe mb-10 text-center text-2xl font-black text-ink sm:text-3xl">وش يقولون عملاؤنا في قطر؟</h2>
+        <div class="observe grid gap-6 sm:grid-cols-3">
+          <article class="flex flex-col rounded-3xl border border-sanddeep/70 bg-sand/30 p-6 shadow-card">
+            <div class="mb-4 flex gap-0.5 text-zen" aria-label="5 نجوم">
+              <i data-lucide="star" class="h-4 w-4 fill-zen stroke-zen"></i>
+              <i data-lucide="star" class="h-4 w-4 fill-zen stroke-zen"></i>
+              <i data-lucide="star" class="h-4 w-4 fill-zen stroke-zen"></i>
+              <i data-lucide="star" class="h-4 w-4 fill-zen stroke-zen"></i>
+              <i data-lucide="star" class="h-4 w-4 fill-zen stroke-zen"></i>
+            </div>
+            <p class="flex-1 text-sm leading-relaxed text-inksoft">&quot;كنت أدفع 300 ريال كل أسبوع عند مركز مساج.. بعد ZENKO صرت أستخدمه يومياً بالبيت وبالسيارة. رقبتي ما تشنج مثل قبل، وأهم شي توقفت عن المسكنات.&quot;</p>
+            <div class="mt-5 flex items-center gap-3 border-t border-sanddeep/60 pt-4">
+              <span class="flex h-10 w-10 items-center justify-center rounded-full bg-ink text-xs font-black text-white">ف.ع</span>
+              <div><p class="text-sm font-bold text-ink">فهد العبدالله</p><p class="text-xs text-inksoft/70">الدوحة 🇶🇦</p></div>
+            </div>
+          </article>
+          <article class="flex flex-col rounded-3xl border border-sanddeep/70 bg-sand/30 p-6 shadow-card">
+            <div class="mb-4 flex gap-0.5 text-zen" aria-label="5 نجوم">
+              <i data-lucide="star" class="h-4 w-4 fill-zen stroke-zen"></i>
+              <i data-lucide="star" class="h-4 w-4 fill-zen stroke-zen"></i>
+              <i data-lucide="star" class="h-4 w-4 fill-zen stroke-zen"></i>
+              <i data-lucide="star" class="h-4 w-4 fill-zen stroke-zen"></i>
+              <i data-lucide="star" class="h-4 w-4 fill-zen stroke-zen"></i>
+            </div>
+            <p class="flex-1 text-sm leading-relaxed text-inksoft">&quot;اشتريته لوالدتي وياي. هي تعاني من ألم الظهر من سنين. الجلسة 15 دقيقة قبل النوم غيّرت نومها بالكامل. الجهاز خفيف وما يزعج.&quot;</p>
+            <div class="mt-5 flex items-center gap-3 border-t border-sanddeep/60 pt-4">
+              <span class="flex h-10 w-10 items-center justify-center rounded-full bg-zen text-xs font-black text-white">ن.م</span>
+              <div><p class="text-sm font-bold text-ink">نورة المري</p><p class="text-xs text-inksoft/70">الريان 🇶🇦</p></div>
+            </div>
+          </article>
+          <article class="flex flex-col rounded-3xl border border-sanddeep/70 bg-sand/30 p-6 shadow-card">
+            <div class="mb-4 flex gap-0.5 text-zen" aria-label="5 نجوم">
+              <i data-lucide="star" class="h-4 w-4 fill-zen stroke-zen"></i>
+              <i data-lucide="star" class="h-4 w-4 fill-zen stroke-zen"></i>
+              <i data-lucide="star" class="h-4 w-4 fill-zen stroke-zen"></i>
+              <i data-lucide="star" class="h-4 w-4 fill-zen stroke-zen"></i>
+              <i data-lucide="star" class="h-4 w-4 fill-zen stroke-zen"></i>
+            </div>
+            <p class="flex-1 text-sm leading-relaxed text-inksoft">&quot;دوامي 9 ساعات قدام الكمبيوتر. كنت كل يوم أرجع البيت وظهري مكسر. الحين أستخدم ZENKO بالمكتب وبالسيارة. فرق كبير على تركيزي وإنتاجيتي.&quot;</p>
+            <div class="mt-5 flex items-center gap-3 border-t border-sanddeep/60 pt-4">
+              <span class="flex h-10 w-10 items-center justify-center rounded-full bg-ink text-xs font-black text-white">خ.س</span>
+              <div><p class="text-sm font-bold text-ink">خالد السليطي</p><p class="text-xs text-inksoft/70">الوكرة 🇶🇦</p></div>
+            </div>
+          </article>
+        </div>
+        <div class="observe mt-10 flex justify-center">
+          <a href="#offer" class="inline-flex w-full max-w-md items-center justify-center rounded-2xl bg-zen px-8 py-4 text-base font-extrabold text-white shadow-glow transition hover:bg-zenhover animate-pulse-zen">
+            اريد تجربة الجهاز الان
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Features — zigzag mobile + desktop -->
+    <section id="features" class="bg-sand py-14 sm:py-24">
+      <div class="mx-auto max-w-6xl px-4 sm:px-6">
+        <h2 class="observe mx-auto mb-14 max-w-3xl text-center text-xl font-black leading-relaxed text-ink sm:text-2xl lg:text-3xl">
+          و هذا بفضل اهتمام الخبراء بالتفاصيل الكبيرة و الصغيرة و اخرجو تكنولوجيا متكاملة
+        </h2>
+
+        <div class="space-y-12 sm:space-y-16 lg:space-y-20">
+
+          <div class="observe feature-row feature-row-a gap-6 lg:gap-14">
+            <div class="img-frame overflow-hidden rounded-3xl shadow-premium ring-1 ring-sanddeep/60">
+              <img src="images/feature-1.jpg" alt="" width="640" height="480" loading="lazy" class="aspect-[4/3] w-full object-cover" onerror="this.src='images/product-hero.png'; this.classList.add('object-contain','p-6','bg-sand');" />
+            </div>
+            <div class="flex flex-col justify-center gap-3 px-1">
+              <span class="inline-flex w-fit items-center gap-2 rounded-full bg-zen/10 px-3 py-1 text-xs font-bold text-zen"><i data-lucide="circle-dot" class="h-3.5 w-3.5"></i>01</span>
+              <p class="text-[1.05rem] font-bold leading-relaxed text-ink sm:text-lg">6 رؤوس لتوفير تدليك يحاكي لمسة يد خبير المساج الحقيقي</p>
+            </div>
+          </div>
+
+          <div class="observe feature-row feature-row-b gap-6 lg:gap-14">
+            <div class="img-frame overflow-hidden rounded-3xl shadow-premium ring-1 ring-sanddeep/60">
+              <img src="images/feature-2.jpg" alt="" width="640" height="480" loading="lazy" class="aspect-[4/3] w-full object-cover" onerror="this.src='images/product-hero.png'; this.classList.add('object-contain','p-6','bg-sand');" />
+            </div>
+            <div class="flex flex-col justify-center gap-3 px-1">
+              <span class="inline-flex w-fit items-center gap-2 rounded-full bg-zen/10 px-3 py-1 text-xs font-bold text-zen"><i data-lucide="zap" class="h-3.5 w-3.5"></i>02</span>
+              <p class="text-[1.05rem] font-bold leading-relaxed text-ink sm:text-lg">محرك قوي تصله بالكهرباء ليعطيك تدليك مكثف و كباقي الاجهزة الاخرى</p>
+            </div>
+          </div>
+
+          <div class="observe feature-row feature-row-a gap-6 lg:gap-14">
+            <div class="img-frame overflow-hidden rounded-3xl shadow-premium ring-1 ring-sanddeep/60">
+              <img src="images/feature-3.jpg" alt="" width="640" height="480" loading="lazy" class="aspect-[4/3] w-full object-cover" onerror="this.src='images/product-hero.png'; this.classList.add('object-contain','p-6','bg-sand');" />
+            </div>
+            <div class="flex flex-col justify-center gap-3 px-1">
+              <span class="inline-flex w-fit items-center gap-2 rounded-full bg-zen/10 px-3 py-1 text-xs font-bold text-zen"><i data-lucide="timer-off" class="h-3.5 w-3.5"></i>03</span>
+              <p class="text-[1.05rem] font-bold leading-relaxed text-ink sm:text-lg">تقنية ذكية تخليه ينطفئ كل 15 دقيقة حفاظا على سلامتك و يمكنك اعادة تشغيله</p>
+            </div>
+          </div>
+
+          <div class="observe feature-row feature-row-b gap-6 lg:gap-14">
+            <div class="img-frame overflow-hidden rounded-3xl shadow-premium ring-1 ring-sanddeep/60">
+              <img src="images/feature-4.jpg" alt="" width="640" height="480" loading="lazy" class="aspect-[4/3] w-full object-cover" onerror="this.src='images/product-hero.png'; this.classList.add('object-contain','p-6','bg-sand');" />
+            </div>
+            <div class="flex flex-col justify-center gap-3 px-1">
+              <span class="inline-flex w-fit items-center gap-2 rounded-full bg-zen/10 px-3 py-1 text-xs font-bold text-zen"><i data-lucide="feather" class="h-3.5 w-3.5"></i>04</span>
+              <p class="text-[1.05rem] font-bold leading-relaxed text-ink sm:text-lg">خفيف الوزن تقدر تاخذه معك اينتما تريد و تستمتع بالمساج</p>
+            </div>
+          </div>
+
+          <div class="observe feature-row feature-row-a gap-6 lg:gap-14">
+            <div class="img-frame overflow-hidden rounded-3xl shadow-premium ring-1 ring-sanddeep/60">
+              <img src="images/feature-5.jpg" alt="" width="640" height="480" loading="lazy" class="aspect-[4/3] w-full object-cover" onerror="this.src='images/product-hero.png'; this.classList.add('object-contain','p-6','bg-sand');" />
+            </div>
+            <div class="flex flex-col justify-center gap-3 px-1">
+              <span class="inline-flex w-fit items-center gap-2 rounded-full bg-zen/10 px-3 py-1 text-xs font-bold text-zen"><i data-lucide="plug" class="h-3.5 w-3.5"></i>05</span>
+              <p class="text-[1.05rem] font-bold leading-relaxed text-ink sm:text-lg">فيه منفذ كهرباء منزلي و فيه منفذ كهبرائي للسيارة عن طريق ولاعة السجائر</p>
+            </div>
+          </div>
+
+          <div class="observe feature-row feature-row-b gap-6 lg:gap-14">
+            <div class="img-frame overflow-hidden rounded-3xl shadow-premium ring-1 ring-sanddeep/60">
+              <img src="images/feature-6.jpg" alt="" width="640" height="480" loading="lazy" class="aspect-[4/3] w-full object-cover" onerror="this.src='images/product-hero.png'; this.classList.add('object-contain','p-6','bg-sand');" />
+            </div>
+            <div class="flex flex-col justify-center gap-3 px-1">
+              <span class="inline-flex w-fit items-center gap-2 rounded-full bg-zen/10 px-3 py-1 text-xs font-bold text-zen"><i data-lucide="sliders-horizontal" class="h-3.5 w-3.5"></i>06</span>
+              <p class="text-[1.05rem] font-bold leading-relaxed text-ink sm:text-lg">مصمم ليعطيك راحة و مرونة في الاستخدام</p>
+            </div>
+          </div>
+
+          <div class="observe feature-row feature-row-a gap-6 lg:gap-14">
+            <div class="img-frame overflow-hidden rounded-3xl shadow-premium ring-1 ring-sanddeep/60">
+              <img src="images/feature-7.jpg" alt="" width="640" height="480" loading="lazy" class="aspect-[4/3] w-full object-cover" onerror="this.src='images/product-hero.png'; this.classList.add('object-contain','p-6','bg-sand');" />
+            </div>
+            <div class="flex flex-col justify-center gap-3 px-1">
+              <span class="inline-flex w-fit items-center gap-2 rounded-full bg-zen/10 px-3 py-1 text-xs font-bold text-zen"><i data-lucide="gauge" class="h-3.5 w-3.5"></i>07</span>
+              <p class="text-[1.05rem] font-bold leading-relaxed text-ink sm:text-lg">3 مستويات للسرعة تتحكم فيها بسهولة حسب حاجتك</p>
+            </div>
+          </div>
+
+          <div class="observe feature-row feature-row-b gap-6 lg:gap-14">
+            <div class="img-frame overflow-hidden rounded-3xl shadow-premium ring-1 ring-sanddeep/60">
+              <img src="images/feature-8.jpg" alt="" width="640" height="480" loading="lazy" class="aspect-[4/3] w-full object-cover" onerror="this.src='images/product-hero.png'; this.classList.add('object-contain','p-6','bg-sand');" />
+            </div>
+            <div class="flex flex-col justify-center gap-3 px-1">
+              <span class="inline-flex w-fit items-center gap-2 rounded-full bg-zen/10 px-3 py-1 text-xs font-bold text-zen"><i data-lucide="award" class="h-3.5 w-3.5"></i>08</span>
+              <p class="text-[1.05rem] font-bold leading-relaxed text-ink sm:text-lg">عالي الجودة لييعطيك مساج ناعم بدون ازعاج او الم</p>
+            </div>
+          </div>
+
+          <div class="observe feature-row feature-row-a gap-6 lg:gap-14">
+            <div class="img-frame overflow-hidden rounded-3xl shadow-premium ring-1 ring-sanddeep/60">
+              <img src="images/feature-9.jpg" alt="" width="640" height="480" loading="lazy" class="aspect-[4/3] w-full object-cover" onerror="this.src='images/product-hero.png'; this.classList.add('object-contain','p-6','bg-sand');" />
+            </div>
+            <div class="flex flex-col justify-center gap-3 px-1">
+              <span class="inline-flex w-fit items-center gap-2 rounded-full bg-zen/10 px-3 py-1 text-xs font-bold text-zen"><i data-lucide="hand" class="h-3.5 w-3.5"></i>09</span>
+              <p class="text-[1.05rem] font-bold leading-relaxed text-ink sm:text-lg">سهل الاستخدام — تحكم كامل بـ 3 أزرار فقط بدون تعقيد أو قوائم طويلة</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Certificates -->
+    <section class="border-y border-sanddeep/60 bg-sand py-14 sm:py-20">
+      <div class="observe mx-auto max-w-4xl px-4 sm:px-6">
+        <h2 class="mb-10 text-center text-xl font-black text-ink sm:text-2xl">شهادات الجودة والأمان</h2>
+        <div class="grid gap-6 sm:grid-cols-2">
+          <div class="rounded-3xl border border-emerald-200/80 bg-white p-6 shadow-card sm:p-8">
+            <div class="mb-4 flex items-center gap-3">
+              <span class="flex h-12 w-12 items-center justify-center rounded-2xl bg-emerald-50 text-emerald-600 ring-1 ring-emerald-200">
+                <i data-lucide="shield-check" class="h-6 w-6"></i>
+              </span>
+              <div>
+                <p class="font-brand text-[10px] font-bold uppercase tracking-[0.2em] text-emerald-700">Certified</p>
+                <p class="text-xl font-black text-ink">شهادة CE</p>
+              </div>
+            </div>
+            <p class="text-sm leading-relaxed text-inksoft">
+              شهادة أوروبية معترف بها عالمياً تثبت أن الجهاز آمن كهربائياً وصحياً للاستخدام اليومي — معايير سلامة صارمة قبل وصوله ليدك.
+            </p>
+          </div>
+          <div class="rounded-3xl border border-emerald-200/80 bg-white p-6 shadow-card sm:p-8">
+            <div class="mb-4 flex items-center gap-3">
+              <span class="flex h-12 w-12 items-center justify-center rounded-2xl bg-emerald-50 text-emerald-600 ring-1 ring-emerald-200">
+                <i data-lucide="leaf" class="h-6 w-6"></i>
+              </span>
+              <div>
+                <p class="font-brand text-[10px] font-bold uppercase tracking-[0.2em] text-emerald-700">Compliant</p>
+                <p class="text-xl font-black text-ink">شهادة RoHS</p>
+              </div>
+            </div>
+            <p class="text-sm leading-relaxed text-inksoft">
+              تعني أن مكونات الجهاز خالية من المواد الكيميائية الضارة — راحة بال إضافية لأنك تستخدمه قرب جسمك كل يوم.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- How to use -->
+    <section class="bg-white py-12 sm:py-16">
+      <div class="observe mx-auto max-w-3xl px-4 sm:px-6">
+        <h2 class="mb-8 text-center text-xl font-black text-ink sm:text-2xl">توصيات الاستعمال:</h2>
+        <ul class="space-y-4">
+          <li class="flex gap-4 rounded-2xl border border-sanddeep/70 bg-sand/40 p-5 shadow-sm">
+            <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-zen/15 text-zen"><i data-lucide="clock" class="h-5 w-5"></i></span>
+            <p class="text-sm leading-relaxed text-inksoft"><span class="font-bold text-ink">15 دقيقة يومياً:</span> استخدم الجهاز جلسة واحدة يومياً (15 دقيقة كحد أقصى) على منطقة الرقبة والكتفين — الجهاز ينطفئ تلقائياً حفاظاً على سلامتك ويمكنك إعادة تشغيله.</p>
           </li>
-          <li class="flex gap-3 text-[0.95rem] leading-relaxed text-berry">
-            <span class="mt-1 flex h-7 w-7 shrink-0 items-center justify-center rounded-xl bg-white text-berry border border-slate-200">
-              <i data-lucide="check-circle-2" class="h-4 w-4" aria-hidden="true"></i>
-            </span>
-            <span>يمكن استخدامه للرقبة، الأكتاف، أسفل الظهر، البطن، وحتى الفخذين والساقين.</span>
+          <li class="flex gap-4 rounded-2xl border border-sanddeep/70 bg-sand/40 p-5 shadow-sm">
+            <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-zen/15 text-zen"><i data-lucide="moon-off" class="h-5 w-5"></i></span>
+            <p class="text-sm leading-relaxed text-inksoft"><span class="font-bold text-ink">لا تستخدمه أثناء النوم:</span> ابدأ بمستوى سرعة منخفض وزِد تدريجياً حسب راحتك. لا تنام وأنت لابس الجهاز، ولا تستخدمه على جلد مجروح أو ملتهب.</p>
           </li>
         </ul>
       </div>
     </section>
 
-    <section class="bg-palepink py-14 sm:py-20">
-      <div class="mx-auto max-w-4xl px-4 sm:px-6">
-        <div class="rounded-3xl border border-slate-200 bg-white px-6 py-8 shadow-soft sm:px-10 sm:py-10">
-          <div class="flex flex-col items-start gap-5 sm:flex-row-reverse sm:items-center sm:gap-8">
-            <div class="mx-auto inline-flex h-20 w-20 shrink-0 items-center justify-center rounded-3xl bg-slate-100 shadow-sm ring-[3px] ring-slate-200 sm:mx-0">
-              <i data-lucide="shield-check" class="h-10 w-10 text-berry"></i>
+    <!-- Warranty — premium -->
+    <section class="relative overflow-hidden bg-ink py-16 sm:py-24">
+      <div class="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_70%_60%_at_50%_0%,rgba(232,97,26,0.12),transparent)]"></div>
+      <div class="observe relative mx-auto max-w-4xl px-4 sm:px-6">
+        <div class="overflow-hidden rounded-[2rem] border border-white/10 bg-gradient-to-b from-white/10 to-white/5 p-8 shadow-premium backdrop-blur-sm sm:p-12">
+          <div class="mb-8 flex flex-col items-center text-center">
+            <span class="mb-4 flex h-16 w-16 items-center justify-center rounded-2xl bg-zen/20 text-zen ring-1 ring-zen/30">
+              <i data-lucide="shield" class="h-8 w-8"></i>
+            </span>
+            <h2 class="text-2xl font-black text-sand sm:text-3xl">الضمان:</h2>
+            <p class="mt-2 font-brand text-xs font-bold uppercase tracking-[0.2em] text-zen">100% Money-Back Guarantee</p>
+          </div>
+          <p class="text-center text-[1.05rem] font-bold leading-[2] text-white/90 sm:text-lg">
+            لاننا نثق في جودة جهازنا نقدملك لك ضمان كامل سواءا واجهت مشكل فالجهاز او لم تحصل على النتائج التي و عدناك بها فنحن مستعدون لنرجع لك اموالك كاملة
+          </p>
+          <div class="mt-8 grid gap-4 sm:grid-cols-3">
+            <div class="rounded-2xl border border-white/10 bg-white/5 px-4 py-4 text-center">
+              <i data-lucide="rotate-ccw" class="mx-auto mb-2 h-5 w-5 text-zen"></i>
+              <p class="text-xs font-bold text-white/80">استرجاع كامل</p>
             </div>
-            <div class="flex-1 text-center sm:text-right">
-              <h2 class="font-display text-2xl font-bold text-berry sm:text-[1.65rem]">جرب الجهاز بقلب مطمئن – ثقتك مكفولة</h2>
-              <p class="mt-4 text-[1rem] leading-relaxed text-berrysoft">افحص الجهاز عند الاستلام؛ وإذا لم يعجبك، لا تدفع <span class="font-bold text-berry">فلس واحد</span>.</p>
-              <p class="mt-3 text-[0.95rem] leading-relaxed text-berrysoft">بالإضافة: ضمان فني عملي خلال <span class="font-bold text-berry">١٤ يومًا</span> لمتابعة تجربة مريحة.</p>
-              <p class="mt-3 text-[0.95rem] leading-relaxed text-berrysoft">فإذا واجهت أي مشكلة في الجهاز أو لم ترضيك النتائج نحن مستعدون لإرجاع أموالك كاملة.</p>
-              <div class="mt-6 flex justify-center sm:justify-end">
-                <span class="inline-flex items-center gap-1 rounded-2xl bg-emerald-50 px-4 py-2 text-xs font-bold text-emerald-900 ring-1 ring-emerald-200"><i data-lucide="truck-electric" class="h-4 w-4"></i> مستلمين بتسليم مهذب</span>
-              </div>
+            <div class="rounded-2xl border border-white/10 bg-white/5 px-4 py-4 text-center">
+              <i data-lucide="badge-check" class="mx-auto mb-2 h-5 w-5 text-zen"></i>
+              <p class="text-xs font-bold text-white/80">ضمان النتائج</p>
+            </div>
+            <div class="rounded-2xl border border-white/10 bg-white/5 px-4 py-4 text-center">
+              <i data-lucide="headphones" class="mx-auto mb-2 h-5 w-5 text-zen"></i>
+              <p class="text-xs font-bold text-white/80">دعم ما بعد البيع</p>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <section id="offer" class="relative px-4 py-12 sm:px-6">
-      <div class="relative mx-auto max-w-xl overflow-hidden rounded-[2.5rem] bg-berry p-8 text-center shadow-2xl border border-slate-700">
-          <div class="mb-6 flex flex-col items-center gap-3">
-              <span class="text-4xl">🎁</span>
-              <h2 class="text-lg font-bold text-white leading-tight">
-                   أهدي الثاني لمن يعز عليك.. شريك حياتك، والدك، أو زميلك بالعمل، وعيشوا الراحة معاً اليوم!<br>
-                  <span class="text-rosegold text-xl mt-2 block">“عرض خاص ولفترة محدودة”</span>
-              </h2>
+    <!-- Commitment — premium focus -->
+    <section class="relative overflow-hidden bg-ink py-16 sm:py-24">
+      <div class="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(232,97,26,0.08),transparent_65%)]"></div>
+      <div class="observe relative mx-auto max-w-3xl px-4 sm:px-6">
+        <div class="relative overflow-hidden rounded-[2rem] border border-zen/30 bg-gradient-to-br from-ink via-[#2a2a2c] to-ink p-[1px] shadow-glow">
+          <div class="rounded-[1.95rem] bg-ink px-6 py-10 sm:px-12 sm:py-14">
+            <div class="mb-8 flex justify-center">
+              <span class="flex h-14 w-14 items-center justify-center rounded-full border-2 border-zen/40 bg-zen/10">
+                <i data-lucide="heart-handshake" class="h-7 w-7 text-zen"></i>
+              </span>
+            </div>
+            <blockquote class="text-center">
+              <p class="text-[1.1rem] font-black leading-[2.1] text-white sm:text-xl lg:text-[1.35rem]">
+                &gt; &quot;خذ ثانية واحدة وفكر.. أليست صحتك وراحتك أهم من أي شيء آخر؟ إذا كنت ملتزماً اليوم بالتوقف عن تجرع الحبوب والمسكنات، وتريد حلاً حقيقياً يعيد لجسدك عافيته و تتفادى العمليات .. فنحن نلتزم معك بالنتيجة و لك الضمان
+              </p>
+            </blockquote>
+            <div class="mt-8 flex justify-center">
+              <a href="#offer" class="inline-flex items-center gap-2 rounded-2xl bg-zen px-8 py-4 text-sm font-black text-white shadow-glow transition hover:bg-zenhover">
+                ابدأ التزامك اليوم
+                <i data-lucide="arrow-left" class="h-4 w-4"></i>
+              </a>
+            </div>
           </div>
-          <div class="relative mb-6 rounded-3xl bg-slate-800 p-6 border border-slate-600">
-              <div class="flex items-center justify-center gap-6">
-                  <div class="text-right opacity-50">
-                      <p class="text-xs text-white">بدلاً من</p>
-                      <p class="text-xl text-white line-through font-bold">500 ر.ق</p>
-                  </div>
-                  <div class="h-12 w-[1px] bg-white/20"></div>
-                  <div class="text-left">
-                      <p class="text-[2.8rem] font-black text-white leading-none">299 <span class="text-sm">ر.ق</span></p>
-                  </div>
-              </div>
-              <div class="mt-4 inline-flex items-center gap-2 rounded-xl bg-white/5 px-4 py-2 text-[0.8rem] font-bold text-rosegold border border-rosegold/30">
-                  <span class="relative flex h-2 w-2">
-                      <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-rosegold opacity-75"></span>
-                      <span class="relative inline-flex rounded-full h-2 w-2 bg-rosegold"></span>
-                  </span>
-                  🚚 التوصيل مجاني لجميع مناطق قطر
-              </div>
-          </div>
-          <div class="space-y-3 mb-8">
-              <div class="flex items-center justify-center gap-2 rounded-2xl border border-slate-500 bg-slate-700 px-3 py-2.5 text-[0.75rem] font-bold text-white">
-                  <i data-lucide="triangle-alert" class="w-4 h-4"></i>متبقي 14 جهاز فقط في مخازننا بقطر
-              </div>
-              <div class="rounded-2xl bg-slate-600 px-3 py-2.5 text-[0.75rem] font-bold text-white shadow-inner">العرض ينتهي خلال 24 ساعة أو نفاذ الكمية ⏳</div>
-          </div>
+        </div>
       </div>
     </section>
 
-    <div class="py-10 bg-white">
-      <div class="mx-auto max-w-lg px-4 text-center">
-          <div class="relative overflow-hidden rounded-[2.5rem] border border-slate-200 shadow-2xl bg-slate-50 p-2">
-              <img src="Gift.webp" loading="lazy" decoding="async" alt="Premium Gift Offer" class="w-full h-auto rounded-[2rem] object-cover" />
-              <div class="absolute inset-0 bg-gradient-to-t from-black/5 to-transparent pointer-events-none"></div>
-          </div>
-          <p class="mt-4 px-6 text-[0.8rem] leading-relaxed text-berrysoft font-bold italic">* الـصـورة لـغـرض الـتـوضـيـح؛ الـتـغـلـيـف الـفـعـلي قـد يـخـتـلف اختلافا بـسـيطـاً.</p>
-          <div class="mt-8 opacity-40">
-              <i data-lucide="chevron-down" class="mx-auto w-6 h-6 text-berry"></i>
-          </div>
-      </div>
-    </div>
+    <!-- Offer — premium pricing showcase -->
+    <section id="offer" class="relative overflow-hidden bg-ink py-16 text-white sm:py-24">
+      <div class="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_50%_-20%,rgba(232,97,26,0.18),transparent)]"></div>
+      <div class="relative mx-auto max-w-6xl px-4 sm:px-6">
 
-    <section id="order" class="py-20 px-4 bg-white">
-      <div class="mx-auto max-w-lg">
-        <div class="bg-berry rounded-[3rem] p-8 sm:p-11 shadow-2xl border border-slate-700">
-          <div class="text-center mb-10">
-            <h2 class="text-3xl font-black text-white leading-tight mb-3">ثبت طلبك الآن.. والباقي علينا</h2>
-            <p class="text-slate-300 text-xs font-bold uppercase tracking-[0.2em]">توصيل سريع و مجاني ودفع بعد الاستلام و فحص الجهاز</p>
-          </div>
-          <form id="orderForm" class="space-y-6">
-            <div>
-              <label for="nameInput" class="block mr-2 mb-2 text-[0.7rem] font-bold text-slate-300 uppercase">الاسم بالكامل</label>
-              <input type="text" id="nameInput" required class="w-full rounded-2xl px-6 py-5 text-right outline-none text-berry bg-white font-bold text-lg" placeholder="اكتب اسمك بالكامل" />
-            </div>
-            <div>
-              <label for="phoneInput" class="block mr-2 mb-2 text-[0.7rem] font-bold text-slate-300 uppercase">رقم الهاتف</label>
-              <div class="relative">
-                <input type="tel" id="phoneInput" required dir="ltr" class="w-full rounded-2xl pl-20 pr-6 py-5 outline-none text-berry bg-white font-bold text-lg" placeholder="xxxxxxx" />
-                <span class="absolute left-6 top-1/2 -translate-y-1/2 text-berry font-black border-r border-slate-300 pr-4">+974</span>
+        <!-- Value headline -->
+        <div class="observe mx-auto mb-12 max-w-3xl text-center sm:mb-16">
+          <p class="offer-limited-text mb-4 inline-block rounded-full bg-zen/20 px-5 py-2 text-base font-black text-zen sm:text-lg">عرض محدود ينتهي اليوم</p>
+          <h2 class="text-2xl font-black leading-snug text-white sm:text-3xl lg:text-4xl">
+            جلسات مساج يابانية وين ما كنت — بسعر أقل من جلسة واحدة
+          </h2>
+          <p class="mt-5 text-sm leading-relaxed text-white/65 sm:text-base">
+            لذلك، لن نبيعك جهاز مساج عادي راح تحصل جلسات ماساج يابانية وينما كمنت بسعر اقل من جلسة المساج الواحدة فالمراكز و تطلع بلا فايدههنا أنت تشتري جهازاً يدوم معك لسنوات.
+          </p>
+        </div>
+
+        <!-- Pricing cards: 299 | 629 (وسط — الأكثر طلباً) | 499 -->
+        <div class="observe grid gap-6 lg:grid-cols-3 lg:gap-5 lg:items-end" id="offerCards">
+
+          <!-- Tier 1 — 299 -->
+          <article
+            class="offer-card flex flex-col rounded-3xl bg-white/5 p-6 backdrop-blur-sm sm:p-7 lg:order-1"
+            data-package="299 — جهاز واحد + هدية EMS"
+            role="button"
+            tabindex="0"
+            onclick="selectOffer('299 — جهاز واحد + هدية EMS', false)"
+            onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();selectOffer('299 — جهاز واحد + هدية EMS',false);}"
+          >
+            <div class="offer-card-visual mb-5 overflow-hidden rounded-2xl">
+              <img src="images/offer-pack-299.jpg" alt="صورة عرض 299" width="400" height="280" loading="lazy" class="h-full min-h-[7rem] w-full object-cover" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
+              <div class="hidden min-h-[7rem] flex-col items-center justify-center gap-1 px-3 text-center text-white/35">
+                <i data-lucide="image-plus" class="h-6 w-6 text-zen/50"></i>
+                <p class="text-[10px] font-bold">images/offer-pack-299.jpg</p>
               </div>
             </div>
-            <div class="pt-6">
-              <button type="button" id="submitBtn" onclick="sendOrder(event)" class="w-full bg-rosegold py-6 rounded-3xl text-white font-black text-2xl shadow-card hover:opacity-90 active:scale-95 transition-all">تأكيد الطلب بـ 299 ر.ق فقط 🎁</button>
+            <div class="mb-5 flex items-end justify-between gap-2 border-b border-white/10 pb-5">
+              <div>
+                <p class="font-brand text-[10px] font-bold uppercase tracking-widest text-white/50">Bundle 01</p>
+                <p class="mt-1 text-sm font-bold text-sand">طوق الراحة الذكي</p>
+              </div>
+              <span class="rounded-full bg-emerald-500/20 px-2.5 py-1 text-[10px] font-black text-emerald-300">وفر 50%</span>
             </div>
+            <div class="mb-1 flex items-baseline gap-2">
+              <span class="text-4xl font-black tabular-nums text-white sm:text-5xl">299</span>
+              <span class="text-sm font-bold text-white/70">ريال</span>
+            </div>
+            <p class="text-sm text-white/40 line-through">598 ريال</p>
+            <div class="my-5 flex items-start gap-3 rounded-2xl border border-white/10 bg-white/5 p-4">
+              <span class="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-white/10 text-zen"><i data-lucide="gift" class="h-4 w-4"></i></span>
+              <p class="text-sm font-medium leading-relaxed text-white/85">
+                ؛ اليوم إذا استثمرت في راحتك وحصلت على طوق الراحة الذكي بـ 299 ريال فقط (بدل 598 ريال).. راح نرسل لك جهاز مساج القدمين الكهربائي الذكي (EMS) بقيمة 120 ريال كـ هدية مجانية 100% من عندنا!
+              </p>
+            </div>
+            <ul class="mb-6 space-y-2 text-xs text-white/60">
+              <li class="flex items-center gap-2"><i data-lucide="check" class="h-3.5 w-3.5 text-zen"></i>جهاز شياتسو × 1</li>
+              <li class="flex items-center gap-2"><i data-lucide="check" class="h-3.5 w-3.5 text-zen"></i>هدية EMS (120 ريال)</li>
+            </ul>
+            <a href="#order" onclick="event.stopPropagation(); selectOffer('299 — جهاز واحد + هدية EMS', true);" class="mt-auto block rounded-2xl border border-white/25 py-4 text-center text-sm font-black text-white transition hover:border-zen hover:bg-zen/10">اختر هذا العرض</a>
+          </article>
+
+          <!-- Tier 3 — عرض العائلة — الأكثر طلباً -->
+          <article
+            class="offer-card offer-card-selected relative flex flex-col overflow-hidden rounded-3xl bg-gradient-to-b from-white/10 to-white/5 p-6 sm:p-7 lg:order-2"
+            data-package="629 — 3 اجهزة + 3 هدايا EMS"
+            role="button"
+            tabindex="0"
+            onclick="selectOffer('629 — 3 اجهزة + 3 هدايا EMS', false)"
+            onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();selectOffer('629 — 3 اجهزة + 3 هدايا EMS',false);}"
+          >
+            <span class="offer-badge-popular absolute left-1/2 top-0 z-10 -translate-x-1/2 -translate-y-1/2 rounded-full px-5 py-2 text-sm font-black text-white sm:px-6 sm:text-base">
+              <i data-lucide="flame" class="h-4 w-4 sm:h-5 sm:w-5"></i>
+              الأكثر طلباً
+            </span>
+            <div class="offer-card-visual mb-5 overflow-hidden rounded-2xl ring-1 ring-zen/30">
+              <img src="images/offer-pack-629.jpg" alt="صورة عرض العائلة" width="400" height="280" loading="lazy" class="h-full min-h-[7rem] w-full object-cover" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
+              <div class="hidden min-h-[7rem] flex-col items-center justify-center gap-1 px-3 text-center text-white/35">
+                <i data-lucide="image-plus" class="h-6 w-6 text-zen/50"></i>
+                <p class="text-[10px] font-bold">images/offer-pack-629.jpg</p>
+              </div>
+            </div>
+            <div class="mb-5 flex items-end justify-between gap-2 border-b border-white/10 pb-5 pt-2">
+              <div>
+                <p class="font-brand text-[10px] font-bold uppercase tracking-widest text-white/50">Bundle 03</p>
+                <p class="mt-1 text-sm font-bold text-sand">عرض العائلة</p>
+              </div>
+              <span class="rounded-full bg-emerald-500/20 px-2.5 py-1 text-[10px] font-black text-emerald-300">وفر 671 ريال</span>
+            </div>
+            <div class="mb-1 flex items-baseline gap-2">
+              <span class="text-4xl font-black tabular-nums text-zen sm:text-5xl">629</span>
+              <span class="text-sm font-bold text-white/70">ريال</span>
+            </div>
+            <p class="text-sm text-white/40 line-through">1300 ريال</p>
+            <div class="my-5 flex items-start gap-3 rounded-2xl border border-zen/30 bg-zen/10 p-4">
+              <span class="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-zen/25 text-zen"><i data-lucide="home" class="h-4 w-4"></i></span>
+              <p class="text-sm font-medium leading-relaxed text-white/90">
+                خذ ثلاث اجهزة ب 629 ريال بدل 1300 ريال و احصل على ثلاث اجهزة تدليك القدم مجانا
+              </p>
+            </div>
+            <ul class="mb-6 space-y-2 text-xs text-white/60">
+              <li class="flex items-center gap-2"><i data-lucide="check" class="h-3.5 w-3.5 text-zen"></i>جهاز شياتسو × 3</li>
+              <li class="flex items-center gap-2"><i data-lucide="check" class="h-3.5 w-3.5 text-zen"></i>مساج قدم EMS × 3 مجاناً</li>
+              <li class="flex items-center gap-2"><i data-lucide="check" class="h-3.5 w-3.5 text-zen"></i>توصيل قطر — دفع عند الاستلام</li>
+            </ul>
+            <a href="#order" onclick="event.stopPropagation(); selectOffer('629 — 3 اجهزة + 3 هدايا EMS', true);" class="mt-auto block rounded-2xl bg-zen py-4 text-center text-sm font-black text-white transition hover:bg-zenhover">اختر عرض العائلة</a>
+          </article>
+
+          <!-- Tier 2 — 499 -->
+          <article
+            class="offer-card flex flex-col rounded-3xl bg-white/5 p-6 backdrop-blur-sm sm:p-7 lg:order-3"
+            data-package="499 — جهازين + هديتين EMS"
+            role="button"
+            tabindex="0"
+            onclick="selectOffer('499 — جهازين + هديتين EMS', false)"
+            onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();selectOffer('499 — جهازين + هديتين EMS',false);}"
+          >
+            <div class="offer-card-visual mb-5 overflow-hidden rounded-2xl">
+              <img src="images/offer-pack-499.jpg" alt="صورة عرض 499" width="400" height="280" loading="lazy" class="h-full min-h-[7rem] w-full object-cover" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
+              <div class="hidden min-h-[7rem] flex-col items-center justify-center gap-1 px-3 text-center text-white/35">
+                <i data-lucide="image-plus" class="h-6 w-6 text-zen/50"></i>
+                <p class="text-[10px] font-bold">images/offer-pack-499.jpg</p>
+              </div>
+            </div>
+            <div class="mb-5 flex items-end justify-between gap-2 border-b border-white/10 pb-5">
+              <div>
+                <p class="font-brand text-[10px] font-bold uppercase tracking-widest text-white/50">Bundle 02</p>
+                <p class="mt-1 text-sm font-bold text-sand">لك و لشخص عزيز</p>
+              </div>
+              <span class="rounded-full bg-white/10 px-2.5 py-1 text-[10px] font-black text-white/70">وفر 501 ريال</span>
+            </div>
+            <div class="mb-1 flex items-baseline gap-2">
+              <span class="text-4xl font-black tabular-nums text-white sm:text-5xl">499</span>
+              <span class="text-sm font-bold text-white/70">ريال</span>
+            </div>
+            <p class="text-sm text-white/40 line-through">1000 ريال</p>
+            <div class="my-5 flex items-start gap-3 rounded-2xl border border-white/10 bg-white/5 p-4">
+              <span class="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-white/10 text-zen"><i data-lucide="users" class="h-4 w-4"></i></span>
+              <p class="text-sm font-medium leading-relaxed text-white/85">
+                خذ جهاز لك و جهاز لشخص عزيز عليك ب 499 ريال بدل 1000 ريال مع جهازين تدليك القدم مجانا
+              </p>
+            </div>
+            <ul class="mb-6 space-y-2 text-xs text-white/60">
+              <li class="flex items-center gap-2"><i data-lucide="check" class="h-3.5 w-3.5 text-zen"></i>جهاز شياتسو × 2</li>
+              <li class="flex items-center gap-2"><i data-lucide="check" class="h-3.5 w-3.5 text-zen"></i>مساج قدم EMS × 2 مجاناً</li>
+            </ul>
+            <a href="#order" onclick="event.stopPropagation(); selectOffer('499 — جهازين + هديتين EMS', true);" class="mt-auto block rounded-2xl border border-white/25 py-4 text-center text-sm font-black text-white transition hover:border-zen hover:bg-zen/10">اختر هذا العرض</a>
+          </article>
+        </div>
+
+        <!-- Stock alert -->
+        <div class="observe mt-10 flex items-start gap-4 rounded-2xl border border-red-500/40 bg-red-500/10 px-5 py-5 sm:mt-12 sm:px-6">
+          <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-red-500/20 text-lg">🚨</span>
+          <p class="text-sm font-bold leading-relaxed text-red-200 sm:text-base">
+            تنبيه صارم: الستوك المتبقي في مستودع قطر هو 47 حبة فقط بسبب الإقبال الكبير هذا الأسبوع. اطلب الحين قبل نفاد الكمية
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Order form -->
+    <section id="order" class="bg-sand py-16 sm:py-24">
+      <div class="mx-auto max-w-lg px-4 sm:px-6">
+        <div class="observe overflow-hidden rounded-[2rem] bg-ink p-8 shadow-premium sm:p-10">
+          <div class="mb-8 text-center">
+            <p class="font-brand text-xs font-bold uppercase tracking-[0.2em] text-zen">ZENKO Official</p>
+            <h2 class="mt-2 text-2xl font-black text-white sm:text-3xl">ثبت طلبك — والباقي علينا 🇶🇦</h2>
+            <p class="mt-2 text-sm text-white/60">توصيل سريع في قطر — الدفع عند الاستلام</p>
+          </div>
+
+          <form id="orderForm" class="space-y-5">
+            <div>
+              <label class="mb-2 block text-xs font-bold text-white/70">اختر العرض</label>
+              <select id="packageInput" required class="w-full rounded-xl border-0 bg-white px-4 py-4 text-sm font-bold text-ink outline-none ring-2 ring-transparent focus:ring-zen">
+                <option value="299 — جهاز واحد + هدية EMS">299 ريال — جهاز + هدية مساج القدم</option>
+                <option value="499 — جهازين + هديتين EMS">499 ريال — جهازين + هديتين مجانا</option>
+                <option value="629 — 3 اجهزة + 3 هدايا EMS" selected>629 ريال — عرض العائلة (3 اجهزة + 3 هدايا)</option>
+              </select>
+            </div>
+            <div>
+              <label class="mb-2 block text-xs font-bold text-white/70">الاسم بالكامل</label>
+              <input type="text" id="nameInput" required class="w-full rounded-xl border-0 bg-white px-4 py-4 text-right font-bold text-ink outline-none ring-2 ring-transparent focus:ring-zen" placeholder="اكتب اسمك بالكامل" />
+            </div>
+            <div>
+              <label class="mb-2 block text-xs font-bold text-white/70">رقم الهاتف</label>
+              <div class="relative">
+                <input type="tel" id="phoneInput" required dir="ltr" class="w-full rounded-xl border-0 bg-white py-4 pl-20 pr-4 font-bold text-ink outline-none ring-2 ring-transparent focus:ring-zen" placeholder="3xxxxxxx" />
+                <span class="absolute left-4 top-1/2 -translate-y-1/2 border-r border-ink/10 pr-3 font-black text-ink">+974</span>
+              </div>
+            </div>
+            <button type="button" id="submitBtn" onclick="sendOrder(event)" class="mt-2 w-full rounded-2xl bg-zen py-5 text-lg font-black text-white shadow-glow transition hover:bg-zenhover active:scale-[0.98]">
+              تأكيد الطلب الآن
+            </button>
           </form>
         </div>
       </div>
     </section>
 
-    <section class="bg-white py-14 sm:py-20">
+    <!-- FAQ -->
+    <section id="faq" class="bg-white py-14 sm:py-20">
       <div class="mx-auto max-w-3xl px-4 sm:px-6">
-        <h2 class="font-display text-2xl font-bold text-center text-berry sm:text-3xl">الاسئلة الأكثر تكراراً.</h2>
-        <div class="mt-8 divide-y divide-slate-200 rounded-3xl border border-slate-200 bg-white shadow-soft">
-          <details class="group px-6 py-4 open:bg-slate-50">
-            <summary class="flex cursor-pointer list-none items-start justify-between gap-3 text-[0.95rem] font-bold text-berry">
-              <span>هل التسخين آمن ولا يسبب حروق؟</span>
-              <i data-lucide="plus" class="mt-1 h-4 w-4 shrink-0 text-berry transition-transform group-open:rotate-45"></i>
+        <h2 class="observe mb-8 text-center text-2xl font-black text-ink sm:text-3xl">الأسئلة الشائعة</h2>
+        <div class="observe divide-y divide-sanddeep/80 rounded-3xl border border-sanddeep/70 bg-sand/20 shadow-card">
+          <details class="group px-6 py-5 open:bg-white">
+            <summary class="flex cursor-pointer list-none items-start justify-between gap-3 text-[0.95rem] font-bold text-ink">
+              <span>هل الجهاز آمن للاستخدام اليومي؟</span>
+              <i data-lucide="plus" class="mt-1 h-4 w-4 shrink-0 text-zen transition-transform group-open:rotate-45"></i>
             </summary>
-            <p class="mt-3 pb-2 text-[0.9rem] leading-relaxed text-berrysoft">آمن 100%. الجهاز مبرمج بتقنية ذكية تثبت الحرارة وتفصل تلقائياً بعد 15 دقيقة لحمايتك من أي إجهاد حراري.</p>
+            <p class="mt-3 pb-1 text-sm leading-relaxed text-inksoft">نعم، الجهاز معتمد CE و RoHS وينطفئ تلقائياً كل 15 دقيقة حفاظاً على سلامتك. ننصح بجلسة 15 دقيقة يومياً وعدم استخدامه أثناء النوم.</p>
           </details>
-          <details class="group px-6 py-4 open:bg-slate-50">
-            <summary class="flex cursor-pointer list-none items-start justify-between gap-3 text-[0.95rem] font-bold text-berry">
-              <span>هل يمكن تشغيله في السيارة؟</span>
-              <i data-lucide="plus" class="mt-1 h-4 w-4 shrink-0 text-berry transition-transform group-open:rotate-45"></i>
+          <details class="group px-6 py-5 open:bg-white">
+            <summary class="flex cursor-pointer list-none items-start justify-between gap-3 text-[0.95rem] font-bold text-ink">
+              <span>هل أقدر أستخدمه بالسيارة؟</span>
+              <i data-lucide="plus" class="mt-1 h-4 w-4 shrink-0 text-zen transition-transform group-open:rotate-45"></i>
             </summary>
-            <p class="mt-3 pb-2 text-[0.9rem] leading-relaxed text-berrysoft">نعم بالتأكيد! يأتي الجهاز مع محول خاص للسيارة لتتمتع بالمساج أثناء القيادة الطويلة أو الزحام.</p>
+            <p class="mt-3 pb-1 text-sm leading-relaxed text-inksoft">أكيد، يجي مع منفذ كهرباء منزلي ومنفذ للسيارة عن طريق ولاعة السجائر — مثالي للدوام والتنقلات الطويلة في قطر.</p>
           </details>
-          <details class="group px-6 py-4 open:bg-slate-50">
-            <summary class="flex cursor-pointer list-none items-start justify-between gap-3 text-[0.95rem] font-bold text-berry">
-              <span>هل يناسب مناطق أخرى غير الرقبة؟</span>
-              <i data-lucide="plus" class="mt-1 h-4 w-4 shrink-0 text-berry transition-transform group-open:rotate-45"></i>
+          <details class="group px-6 py-5 open:bg-white">
+            <summary class="flex cursor-pointer list-none items-start justify-between gap-3 text-[0.95rem] font-bold text-ink">
+              <span>كيف التوصيل والدفع في قطر؟</span>
+              <i data-lucide="plus" class="mt-1 h-4 w-4 shrink-0 text-zen transition-transform group-open:rotate-45"></i>
             </summary>
-            <p class="mt-3 pb-2 text-[0.9rem] leading-relaxed text-berrysoft">نعم، تصميمه المرن يسمح باستخدامه لأسفل الظهر، الأكتاف، البطن، وحتى الفخذين والساقين.</p>
+            <p class="mt-3 pb-1 text-sm leading-relaxed text-inksoft">نوصل لك داخل قطر بسرعة، والدفع عند الاستلام — نقداً أو بالبطاقة كما تبي. فريقنا يتصل فيك خلال 24 ساعة لتأكيد العنوان.</p>
           </details>
-          <details class="group px-6 py-4 open:bg-slate-50 rounded-b-[1.05rem]">
-            <summary class="flex cursor-pointer list-none items-start justify-between gap-3 text-[0.95rem] font-bold text-berry">
-              <span>كم مدة الجلسة الموصى بها؟</span>
-              <i data-lucide="plus" class="mt-1 h-4 w-4 shrink-0 text-berry transition-transform group-open:rotate-45"></i>
+          <details class="group px-6 py-5 open:bg-white rounded-b-[1.05rem]">
+            <summary class="flex cursor-pointer list-none items-start justify-between gap-3 text-[0.95rem] font-bold text-ink">
+              <span>وش الضمان إذا ما نفع معي؟</span>
+              <i data-lucide="plus" class="mt-1 h-4 w-4 shrink-0 text-zen transition-transform group-open:rotate-45"></i>
             </summary>
-            <p class="mt-3 pb-2 text-[0.9rem] leading-relaxed text-berrysoft">ننصح بـ 15 دقيقة للجلسة الواحدة. الجهاز مزود بمؤقت ذكي يفصل تلقائياً بعد هذه المدة لضمان سلامتك وعدم إجهاد العضلات.</p>
+            <p class="mt-3 pb-1 text-sm leading-relaxed text-inksoft">نحن نثق بجودة ZENKO — إذا واجهت مشكلة بالجهاز أو ما حصلت النتائج اللي وعدناك فيها، نرجع لك فلوسك كاملة بدون أي تعقيد.</p>
           </details>
         </div>
       </div>
     </section>
+
   </main>
 
-  <div class="fixed inset-x-0 bottom-0 z-30 pb-[env(safe-area-inset-bottom,0)] safe-sticky-bar">
-    <div class="mx-auto max-w-xl px-3 pb-4 sm:px-6">
-      <div class="rounded-3xl border border-slate-200 bg-white/95 px-4 py-3 shadow-soft backdrop-blur-xl">
-        <div class="flex flex-col gap-3 sm:flex-row-reverse sm:items-center sm:justify-between">
-          <div class="text-center text-[11px] text-berrysoft sm:text-right">
-            <p class="font-bold text-berry">299 ر.ق — الدفع عند الاستلام</p>
-            <p>ينتهي العرض خلال ٢٤ ساعة</p>
-          </div>
-          <a href="#order" class="inline-flex w-full items-center justify-center rounded-2xl bg-rosegold px-4 py-3 text-[0.9rem] font-extrabold text-white shadow-soft transition hover:opacity-90 focus:outline-none focus-visible:ring-2 focus-visible:ring-rosegold focus-visible:ring-offset-2 sm:w-auto">اطلب الآن</a>
+  <!-- Sticky CTA -->
+  <div class="pointer-events-none fixed inset-x-0 bottom-0 z-40 pb-[env(safe-area-inset-bottom,0)]">
+    <div class="pointer-events-auto mx-auto max-w-xl px-3 pb-4">
+      <div class="flex items-center justify-between gap-3 rounded-2xl border border-sanddeep/80 bg-white/95 px-4 py-3 shadow-premium backdrop-blur-xl">
+        <div class="text-xs font-bold text-ink">
+          <p class="text-zen">عرض العائلة 629 ر.ق</p>
+          <p class="text-inksoft/80">47 حبة متبقية 🇶🇦</p>
         </div>
+        <a href="#offer" class="shrink-0 rounded-xl bg-zen px-5 py-3 text-sm font-extrabold text-white shadow-glow animate-pulse-zen">اطلب الحين</a>
       </div>
     </div>
   </div>
 
-  <footer class="border-t border-slate-200 bg-white pb-[7.75rem] pt-12 text-[11px] text-berrysoft sm:pb-28">
-    <div class="mx-auto max-w-6xl px-4 sm:px-6">
-      <p class="leading-relaxed">هذه الصفحة لأغراض تسويق الكترونية مبنية حسب المتطلبات الفنية المتفق عليها. الجهاز والمزايا تخضع لتوضيحات الصانع وفريق التسليم وقت التأكيد. للاستخدام المناسب دائمًا راجعوا التعليمات المرفقة.</p>
-      <div class="mt-6 flex flex-wrap justify-center gap-4 text-[11px] font-semibold">
-        <a href="#reviews" class="text-berry hover:text-rosegold">مراجعات العملاء</a>
-        <a href="#product" class="text-berry hover:text-rosegold">تفاصيل المنتوج</a>
-        <a href="#offer" class="text-berry hover:text-rosegold">العرض اليومي</a>
-      </div>
-      <p class="mt-6 text-center font-display text-[0.7rem] text-berrysoft/70">ريلاكس Relax • Premium Health & Wellness — Qatar</p>
-    </div>
+  <footer class="border-t border-sanddeep/60 bg-white pb-28 pt-10 text-center text-xs text-inksoft">
+    <p class="font-brand font-bold tracking-widest text-ink">ZENKO™</p>
+    <p class="mt-1">Original Japanese Shiatsu Technology — Qatar 🇶🇦</p>
+    <p class="mt-4 px-4 leading-relaxed opacity-70">هذه الصفحة لأغراض تسويق إلكتروني. الجهاز والمزايا تخضع لتوضيحات الصانع وقت التأكيد.</p>
   </footer>
 
-  <script src="https://unpkg.com/lucide@latest" defer></script>
   <script>
-    document.addEventListener("DOMContentLoaded", function() {
-      lucide.createIcons();
-    });
-  </script>
-  
-  <script>
-  function sendOrder(event) {
-      event.preventDefault();
-
-      const name = document.getElementById('nameInput').value;
-      const phone = document.getElementById('phoneInput').value;
-      const btn = document.getElementById('submitBtn');
-      const scriptURL = "https://script.google.com/macros/s/AKfycbxCTHFADJ9Udym5tUhlfqbRDIjcFhWaiNRMZoaVacwzo6h8OlIOOotUJ2JwcVNRCols/exec";
-
-      if (!name || !phone) {
-          alert("يرجى ملء البيانات");
-          return;
-      }
-
-      if(btn) {
-          btn.innerText = "جاري التأكيد...";
-          btn.disabled = true;
-      }
-
-      fetch(`${scriptURL}?name=${encodeURIComponent(name)}&phone=${encodeURIComponent(phone)}`, {
-          mode: 'no-cors',
-          method: 'GET'
+    function bootIcons() {
+      if (typeof lucide !== 'undefined' && lucide.createIcons) lucide.createIcons();
+    }
+    function selectOffer(packageValue, scrollToForm) {
+      var cards = document.querySelectorAll('.offer-card');
+      var pkgInput = document.getElementById('packageInput');
+      cards.forEach(function (card) {
+        var match = card.getAttribute('data-package') === packageValue;
+        card.classList.toggle('offer-card-selected', match);
       });
-
-      if (typeof ttq !== 'undefined') {
-          ttq.track('CompletePayment', {
-              content_name: 'جهاز مساج شياتسو الحراري',
-              value: 299,
-              currency: 'QAR'
-          });
+      if (pkgInput) {
+        for (var i = 0; i < pkgInput.options.length; i++) {
+          if (pkgInput.options[i].value === packageValue) {
+            pkgInput.selectedIndex = i;
+            break;
+          }
+        }
       }
+      if (scrollToForm) {
+        var orderEl = document.getElementById('order');
+        if (orderEl) orderEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }
 
-      setTimeout(function() {
-          window.location.href = "thank-you.html";
-      }, 1500); 
-  }
+    document.addEventListener('DOMContentLoaded', function () {
+      bootIcons();
+      selectOffer('629 — 3 اجهزة + 3 هدايا EMS', false);
+      var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (!reduced && 'IntersectionObserver' in window) {
+        var obs = new IntersectionObserver(function (entries, o) {
+          entries.forEach(function (e) {
+            if (e.isIntersecting) { e.target.classList.add('is-visible'); o.unobserve(e.target); }
+          });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.observe').forEach(function (el) { obs.observe(el); });
+      } else {
+        document.querySelectorAll('.observe').forEach(function (el) { el.classList.add('is-visible'); });
+      }
+    });
+
+    function sendOrder(event) {
+      event.preventDefault();
+      var name = document.getElementById('nameInput').value;
+      var phone = document.getElementById('phoneInput').value;
+      var pkg = document.getElementById('packageInput').value;
+      var btn = document.getElementById('submitBtn');
+      var scriptURL = 'https://script.google.com/macros/s/AKfycbwOWZ3EdqXlQfU9jy1CzfprfNfFeFwLqVhufSQDuxGUZ_Npcb7lwjduAYL2izd15h0_/exec';
+      if (!name || !phone) { alert('يرجى ملء البيانات'); return; }
+      if (btn) { btn.innerText = 'جاري التأكيد...'; btn.disabled = true; }
+      fetch(scriptURL + '?name=' + encodeURIComponent(name) + '&phone=' + encodeURIComponent(phone) + '&package=' + encodeURIComponent(pkg), { mode: 'no-cors', method: 'GET' });
+      setTimeout(function () { window.location.href = 'thank-you.html'; }, 1000);
+    }
   </script>
 </body>
 </html>
