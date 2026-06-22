@@ -1,23 +1,38 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="theme-color" content="#1C1C1E" />
-  <title>ZENKO زِنكو — مساج شياتسو ياباني أصلي | قطر</title>
-  <meta name="description" content="اكتشف التقنية اليابانية المبتكرة لتخلص من تشنج الرقبة والظهر. توصيل سريع في قطر — ضمان كامل." />
-  
-<!-- تحميل الخطوط والستايل بعد تحميل الصفحة (Non-blocking) -->
-<link rel="preload" href="style.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-<noscript><link rel="stylesheet" href="style.css"></noscript>
-<script>
-  window.addEventListener('load', () => {
-    const s = document.createElement('script');
-    s.src = "https://unpkg.com/lucide@0.487.0/dist/umd/lucide.min.js";
-    s.onload = () => lucide.createIcons();
-    document.body.appendChild(s);
-  });
-</script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#1C1C1E" />
+    <title>ZENKO زِنكو — مساج شياتسو ياباني أصلي | قطر</title>
+    <meta name="description" content="اكتشف التقنية اليابانية المبتكرة لتخلص من تشنج الرقبة والظهر. توصيل سريع في قطر - ضمان كامل" />
+
+    <!-- 1. تحميل صورة الـ Hero فوراً (أهم عنصر في الصفحة) -->
+    <link rel="preload" href="hero.webp" as="image" fetchpriority="high">
+
+    <!-- 2. دمج الـ CSS الأساسي (Critical CSS) هنا مباشرة -->
+    <style>
+        body { font-family: Tajawal, system-ui, sans-serif; margin: 0; background: #FDFBF7; color: #1C1C1E; }
+        .sticky-order { backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
+        /* أضف هنا أي تنسيق تحتاجه للعناصر الموجودة في أول شاشة فقط */
+    </style>
+
+    <!-- 3. تحميل باقي الـ CSS في الخلفية (لتخفيف الحمل) -->
+    <link rel="stylesheet" href="style.css" media="print" onload="this.media='all'">
+</head>
+<body>
+
+    <!-- محتوى الصفحة هنا -->
+
+    <!-- تحميل مكتبة الأيقونات والسكربتات بعد اكتمال الصفحة -->
+    <script>
+        window.addEventListener('load', () => {
+            const s = document.createElement('script');
+            s.src = "https://unpkg.com/lucide@0.487.0/dist/umd/lucide.min.js";
+            s.onload = () => lucide.createIcons();
+            document.body.appendChild(s);
+        });
+    </script>
 <!-- TikTok Pixel Code - Final Solution -->
 <script>
     let ttqLoaded = false;
