@@ -11,7 +11,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet" />
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://unpkg.com/lucide@0.487.0/dist/umd/lucide.min.js" defer></script>
-<!-- TikTok Pixel Code - Optimized -->
+<!-- TikTok Pixel Code - Final Solution -->
 <script>
     let ttqLoaded = false;
     function initTikTok() {
@@ -23,25 +23,26 @@
         var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n]);return e},ttq.load=function(e,n){var r="https://analytics.tiktok.com/i18n/pixel/events.js",o=n&&n.partner;ttq._i=ttq._i||{},ttq._i[e]=[],ttq._i[e]._u=r,ttq._t=ttq._t||{},ttq._t[e]=+new Date,ttq._o=ttq._o||{},ttq._o[e]=n||{};n=document.createElement("script")
         ;n.type="text/javascript",n.async=!0,n.src=r+"?sdkid="+e+"&lib="+t;e=document.getElementsByTagName("script")[0];e.parentNode.insertBefore(n,e)};
         
-        // هنا تم وضع الـ ID الخاص بك الجديد
+        // معرف البيكسل الخاص بك
         ttq.load('D8S80IJC77U96NJPHOCG');
         ttq.page();
       }(window, document, 'ttq');
       
-      // إرسال البيانات بشكل منظم كما كنت تفعل سابقاً
+      // إرسال البيانات الكاملة يدوياً لمنع التحذيرات الصفراء
       setTimeout(function() {
         if (typeof ttq !== 'undefined') {
           ttq.track('ViewContent', {
             content_id: 'Zenko-Shiatsu-001',
             content_type: 'product',
             content_name: 'Zenko Shiatsu Massager',
-            value: 0, 
+            value: 299, 
             currency: 'QAR'
           });
         }
-      }, 500); // تأخير بسيط لضمان اكتمال التحميل
+      }, 500);
     }
 
+    // تفعيل التحميل عند أول تفاعل من الزائر
     ['scroll', 'mousemove', 'touchstart'].forEach(function(e) {
       window.addEventListener(e, initTikTok, { once: true });
     });
