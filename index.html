@@ -823,268 +823,151 @@
 
   </main>
 
-  <!-- Sticky CTA -->
-  <div class="pointer-events-none fixed inset-x-0 bottom-0 z-40 pb-[env(safe-area-inset-bottom,0)]">
+<div class="pointer-events-none fixed inset-x-0 bottom-0 z-40 pb-[env(safe-area-inset-bottom,0)]">
     <div class="pointer-events-auto mx-auto max-w-xl px-3 pb-4">
       <a href="#offer" class="block w-full rounded-2xl bg-zen px-5 py-4 text-center text-base font-extrabold text-white shadow-glow animate-pulse-zen">
         الحق العرض لا تخليه يفوتك
       </a>
     </div>
- </div>
+  </div>
 
   <footer class="border-t border-sanddeep/60 bg-white pb-28 pt-10 text-center text-xs text-inksoft">
     <p class="font-brand font-bold tracking-widest text-ink">ZENKO™</p>
     <p class="mt-1">Original Japanese Shiatsu Technology — Qatar 🇶🇦</p>
     <p class="mt-4 px-4 leading-relaxed opacity-70">هذه الصفحة لأغراض تسويق إلكتروني. الجهاز والمزايا تخضع لتوضيحات الصانع وقت التأكيد.</p>
   </footer>
+
   <script>
-
     function bootIcons() {
-
-      if (typeof lucide !== 'undefined' && lucide.createIcons) lucide.createIcons();
-
+      if (typeof lucide !== 'undefined' && lucide.createIcons) {
+        lucide.createIcons();
+      }
     }
-
-
 
     function selectOffer(packageValue, scrollToForm) {
-
-      var cards = document.querySelectorAll('.offer-card');
-
-      var pkgInput = document.getElementById('packageInput');
-
+      const cards = document.querySelectorAll('.offer-card');
+      const pkgInput = document.getElementById('packageInput');
       
-
-      cards.forEach(function (card) {
-
-        var match = card.getAttribute('data-package') === packageValue;
-
+      cards.forEach(card => {
+        const match = card.getAttribute('data-package') === packageValue;
         card.classList.toggle('offer-card-selected', match);
-
       });
-
       
-
       if (pkgInput) {
-
-        for (var i = 0; i < pkgInput.options.length; i++) {
-
+        for (let i = 0; i < pkgInput.options.length; i++) {
           if (pkgInput.options[i].value === packageValue) {
-
             pkgInput.selectedIndex = i;
-
             break;
-
           }
-
         }
-
       }
-
       
-
       if (scrollToForm) {
-
-        var orderEl = document.getElementById('order');
-
-        if (orderEl) orderEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
-
+        const orderEl = document.getElementById('order');
+        if (orderEl) {
+          orderEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
       }
-
     }
 
-
-
-    document.addEventListener('DOMContentLoaded', function () {
-
+    document.addEventListener('DOMContentLoaded', () => {
       bootIcons();
-
       selectOffer('629 — 3 اجهزة + 3 هدايا EMS', false);
-
-      var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
+      
+      const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
       if (!reduced && 'IntersectionObserver' in window) {
-
-        var obs = new IntersectionObserver(function (entries, o) {
-
-          entries.forEach(function (e) {
-
-            if (e.isIntersecting) { e.target.classList.add('is-visible'); o.unobserve(e.target); }
-
+        const obs = new IntersectionObserver((entries, o) => {
+          entries.forEach(e => {
+            if (e.isIntersecting) {
+              e.target.classList.add('is-visible');
+              o.unobserve(e.target);
+            }
           });
-
         }, { threshold: 0.1 });
-
-        document.querySelectorAll('.observe').forEach(function (el) { obs.observe(el); });
-
+        
+        document.querySelectorAll('.observe').forEach(el => obs.observe(el));
       } else {
-
-        document.querySelectorAll('.observe').forEach(function (el) { el.classList.add('is-visible'); });
-
+        document.querySelectorAll('.observe').forEach(el => el.classList.add('is-visible'));
       }
-
     });
 
-
-
     function sendOrder(event) {
-
       event.preventDefault();
-
       
-
       // جلب البيانات من الفورم
-
-      var name = document.getElementById('nameInput').value;
-
-      var phone = document.getElementById('phoneInput').value;
-
+      const name = document.getElementById('nameInput').value.trim();
+      const phone = document.getElementById('phoneInput').value.trim();
+      const addressEl = document.getElementById('addressInput');
+      const address = addressEl ? addressEl.value.trim() : "";
+      const pkg = document.getElementById('packageInput').value; 
+      const btn = document.getElementById('submitBtn');
       
-
-      // جلب العنوان (استعملنا كود آمن في حال ماكانش input تاع العنوان في الـ HTML)
-
-      var addressEl = document.getElementById('addressInput');
-
-      var address = addressEl ? addressEl.value : "";
-
-      
-
-      // جلب العرض المختار
-
-      var pkg = document.getElementById('packageInput').value; 
-
-      var btn = document.getElementById('submitBtn');
-
-      var scriptURL = 'https://script.google.com/macros/s/AKfycbxeg5xp7ZRXC-r-L5NrTDicOgXJiwNoZ4J70IH3V8XPiCAKwhvjmd-lQQIvTOMYR64/exec';
-
-
+      const scriptURL = 'https://script.google.com/macros/s/AKfycbxeg5xp7ZRXC-r-L5NrTDicOgXJiwNoZ4J70IH3V8XPiCAKwhvjmd-lQQIvTOMYR64/exec';
 
       if (!name || !phone) { 
-
           alert('يرجى ملء البيانات (الاسم ورقم الهاتف)'); 
-
           return; 
-
       }
-
       
-
       if (btn) { 
-
           btn.innerText = 'جاري التأكيد...'; 
-
           btn.disabled = true; 
-
       }
-
-
 
       // تحليل العرض المختار لاستخراج الكمية، السعر، والملاحظات
-
-      var quantity = "1";
-
-      var price = "299";
-
-      var notes = "جهاز واحد + هدية مساج القدم";
-
-
+      let quantity = "1";
+      let price = "299";
+      let notes = "جهاز واحد + هدية مساج القدم";
 
       if (pkg.includes("499") || pkg.includes("جهازين")) {
-
           quantity = "2";
-
           price = "499";
-
           notes = "عرض جهازين + هديتين مجانا";
-
       } else if (pkg.includes("629") || pkg.includes("3")) {
-
           quantity = "3";
-
           price = "629";
-
           notes = "عرض العائلة (3 اجهزة + 3 هدايا)";
-
       }
-
-
 
       // المتغيرات الثابتة الخاصة بالشيت
+      const country = "Qatar";
+      const url = window.location.href;
+      const sku = "اكتب_السكيو_هنا"; // ⚠️ لا تنسى تغيير الـ SKU الخاص بالمنتج
+      const Product = "اكتب_اسم_المنتج_هنا"; // ⚠️ لا تنسى تغيير اسم المنتج
+      const currency = "ريال قطري";
 
-      var country = "Qatar";
-
-      var url = window.location.href;
-
-      var sku = "اكتب_السكيو_هنا"; // ⚠️ لا تنسى تغيير الـ SKU
-
-      var Product = "اكتب_اسم_المنتج_هنا"; // ⚠️ لا تنسى تغيير اسم المنتج
-
-      var currency = "ريال قطري";
-
-
-
-      // دمج كل المتغيرات في الرابط باش تروح مباشرة لأعمدة الشيت
-
-      var params = '?country=' + encodeURIComponent(country) + 
-
-                   '&name=' + encodeURIComponent(name) + 
-
-                   '&phone=' + encodeURIComponent(phone) + 
-
-                   '&address=' + encodeURIComponent(address) + 
-
-                   '&url=' + encodeURIComponent(url) + 
-
-                   '&sku=' + encodeURIComponent(sku) + 
-
-                   '&Product=' + encodeURIComponent(Product) + 
-
-                   '&quantity=' + encodeURIComponent(quantity) + 
-
-                   '&price=' + encodeURIComponent(price) + 
-
-                   '&currency=' + encodeURIComponent(currency) + 
-
-                   '&notes=' + encodeURIComponent(notes);
-
-
+      // بناء المعطيات بشكل آمن باستخدام URLSearchParams
+      const params = new URLSearchParams({
+        country: country,
+        name: name,
+        phone: phone,
+        address: address,
+        url: url,
+        sku: sku,
+        Product: Product,
+        quantity: quantity,
+        price: price,
+        currency: currency,
+        notes: notes
+      });
 
       // إرسال البيانات
-
-      fetch(scriptURL + params, { mode: 'no-cors', method: 'GET' });
-
-
+      fetch(`${scriptURL}?${params.toString()}`, { mode: 'no-cors', method: 'GET' });
 
       // بيكسل تيك توك (يشتغل إذا كان مركب في الصفحة)
-
       if (typeof ttq !== 'undefined') {
-
           ttq.track('CompletePayment', {
-
               content_name: Product,
-
               value: Number(price),
-
               currency: 'QAR'
-
           });
-
       }
 
-
-
       // التحويل لصفحة الشكر
-
-      setTimeout(function () { 
-
+      setTimeout(() => { 
           window.location.href = 'thank-you.html'; 
-
       }, 1500);
-
     }
-
-</script>  
-
-
+  </script>  
 </body>
 </html>
