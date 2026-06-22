@@ -334,7 +334,8 @@
         <h2 class="observe mb-10 text-center text-2xl font-black text-ink sm:text-3xl">وش يقولون عملاؤنا في قطر؟</h2>
         <div class="observe grid gap-6 sm:grid-cols-3">
           <article class="flex flex-col rounded-3xl border border-sanddeep/70 bg-sand/30 p-6 shadow-card">
-            <div class="mb-4 flex gap-0.5 text-zen" aria-label="5 نجوم">
+            <!-- تم إضافة role="img" هنا -->
+            <div class="mb-4 flex gap-0.5 text-zen" role="img" aria-label="5 نجوم">
               <i data-lucide="star" class="h-4 w-4 fill-zen stroke-zen"></i>
               <i data-lucide="star" class="h-4 w-4 fill-zen stroke-zen"></i>
               <i data-lucide="star" class="h-4 w-4 fill-zen stroke-zen"></i>
@@ -348,7 +349,8 @@
             </div>
           </article>
           <article class="flex flex-col rounded-3xl border border-sanddeep/70 bg-sand/30 p-6 shadow-card">
-            <div class="mb-4 flex gap-0.5 text-zen" aria-label="5 نجوم">
+            <!-- تم إضافة role="img" هنا -->
+            <div class="mb-4 flex gap-0.5 text-zen" role="img" aria-label="5 نجوم">
               <i data-lucide="star" class="h-4 w-4 fill-zen stroke-zen"></i>
               <i data-lucide="star" class="h-4 w-4 fill-zen stroke-zen"></i>
               <i data-lucide="star" class="h-4 w-4 fill-zen stroke-zen"></i>
@@ -362,7 +364,8 @@
             </div>
           </article>
           <article class="flex flex-col rounded-3xl border border-sanddeep/70 bg-sand/30 p-6 shadow-card">
-            <div class="mb-4 flex gap-0.5 text-zen" aria-label="5 نجوم">
+            <!-- تم إضافة role="img" هنا -->
+            <div class="mb-4 flex gap-0.5 text-zen" role="img" aria-label="5 نجوم">
               <i data-lucide="star" class="h-4 w-4 fill-zen stroke-zen"></i>
               <i data-lucide="star" class="h-4 w-4 fill-zen stroke-zen"></i>
               <i data-lucide="star" class="h-4 w-4 fill-zen stroke-zen"></i>
@@ -525,7 +528,6 @@
         </div>
       </div>
     </section>
-
     <section class="bg-white py-14 sm:py-20">
       <div class="observe mx-auto max-w-3xl px-4 sm:px-6">
         <h2 class="mb-8 text-center text-xl font-black text-ink sm:text-2xl">توصيات وإرشادات الاستعمال</h2>
@@ -586,7 +588,7 @@
             </div>
             <blockquote class="text-center">
               <p class="text-[1.1rem] font-bold leading-[2.1] text-white/95 sm:text-xl lg:text-[1.35rem]">
-                "خذ ثانية واحدة وفكر.. أليست صحتك وراحتك اليومية أهم من أي شيء آخر؟ إذا كنت مستعداً اليوم للتوقف عن تجرع المسكنات المؤقتة، وتبحث عن حل حقيقي مستدام يعيد لجسدك عافيته ويجنبك التعقيدات.. فنحن نلتزم بالوقوف معك وتقديم النتيجة والضمان الكامل."
+                "خذ ثانية واحدة وفكر.. أليست صحتك وراحتك اليومية أهم من أي شيء آخر؟ إذا كنت مستعداً اليوم للتوقف عن تجرع المس المسكنات المؤقتة، وتبحث عن حل حقيقي مستدام يعيد لجسدك عافيته ويجنبك التعقيدات.. فنحن نلتزم بالوقوف معك وتقديم النتيجة والضمان الكامل."
               </p>
             </blockquote>
             <div class="mt-8 flex justify-center">
@@ -759,7 +761,7 @@
             <p class="mt-2 text-sm text-white/60">توصيل سريع ومجاني في كافة مناطق قطر — الدفع عند الاستلام</p>
           </div>
 
-          <form id="orderForm" class="space-y-5">
+          <form id="orderForm" onsubmit="sendOrder(event)" class="space-y-5">
             <div>
               <label class="mb-2 block text-xs font-bold text-white/70">الباقة المختارة</label>
               <select id="packageInput" required class="w-full rounded-xl border-0 bg-white px-4 py-4 text-sm font-bold text-ink outline-none ring-2 ring-transparent focus:ring-zen">
@@ -779,7 +781,11 @@
                 <span class="absolute left-4 top-1/2 -translate-y-1/2 border-r border-ink/10 pr-3 font-black text-ink" dir="ltr">+974</span>
               </div>
             </div>
-            <button type="button" id="submitBtn" onclick="sendOrder(event)" class="mt-2 w-full rounded-2xl bg-zen py-5 text-lg font-black text-white shadow-glow transition duration-300 hover:bg-zenhover active:scale-[0.98]">
+            <div>
+              <label class="mb-2 block text-xs font-bold text-white/70">العنوان / المنطقة</label>
+              <input type="text" id="addressInput" required class="w-full rounded-xl border-0 bg-white px-4 py-4 text-right font-bold text-ink outline-none ring-2 ring-transparent focus:ring-zen" placeholder="اكتب المنطقة أو المدينة لضمان سرعة الشحن" />
+            </div>
+            <button type="submit" id="submitBtn" class="mt-2 w-full rounded-2xl bg-zen py-5 text-lg font-black text-white shadow-glow transition duration-300 hover:bg-zenhover active:scale-[0.98]">
               تأكيد الطلب وشحن الحزمة الآن
             </button>
           </form>
@@ -861,12 +867,7 @@
       });
       
       if (pkgInput) {
-        for (let i = 0; i < pkgInput.options.length; i++) {
-          if (pkgInput.options[i].value === packageValue) {
-            pkgInput.selectedIndex = i;
-            break;
-          }
-        }
+        pkgInput.value = packageValue; // تبسيط عملية اختيار الباقة المنسدلة بدون حلقة تكرار
       }
       
       if (scrollToForm) {
@@ -899,29 +900,21 @@
     });
 
     function sendOrder(event) {
-      event.preventDefault();
+      event.preventDefault(); // منع الفورم من التحديث الافتراضي بعد التعديل
       
-      // جلب البيانات من الفورم
       const name = document.getElementById('nameInput').value.trim();
       const phone = document.getElementById('phoneInput').value.trim();
-      const addressEl = document.getElementById('addressInput');
-      const address = addressEl ? addressEl.value.trim() : "";
+      const address = document.getElementById('addressInput').value.trim();
       const pkg = document.getElementById('packageInput').value; 
       const btn = document.getElementById('submitBtn');
       
       const scriptURL = 'https://script.google.com/macros/s/AKfycbxeg5xp7ZRXC-r-L5NrTDicOgXJiwNoZ4J70IH3V8XPiCAKwhvjmd-lQQIvTOMYR64/exec';
-
-      if (!name || !phone) { 
-          alert('يرجى ملء البيانات (الاسم ورقم الهاتف)'); 
-          return; 
-      }
       
       if (btn) { 
           btn.innerText = 'جاري التأكيد...'; 
           btn.disabled = true; 
       }
 
-      // تحليل العرض المختار لاستخراج الكمية، السعر، والملاحظات
       let quantity = "1";
       let price = "299";
       let notes = "جهاز واحد + هدية مساج القدم";
@@ -936,14 +929,13 @@
           notes = "عرض العائلة (3 اجهزة + 3 هدايا)";
       }
 
-      // المتغيرات الثابتة الخاصة بالشيت
+      // المتغيرات الخاصة بالمنتج لقطر
       const country = "Qatar";
       const url = window.location.href;
-      const sku = "اكتب_السكيو_هنا"; // ⚠️ لا تنسى تغيير الـ SKU الخاص بالمنتج
-      const Product = "اكتب_اسم_المنتج_هنا"; // ⚠️ لا تنسى تغيير اسم المنتج
+      const sku = "NANO-BPRO-QATAR"; 
+      const Product = "Nano Banana Pro"; 
       const currency = "ريال قطري";
 
-      // بناء المعطيات بشكل آمن باستخدام URLSearchParams
       const params = new URLSearchParams({
         country: country,
         name: name,
@@ -961,7 +953,7 @@
       // إرسال البيانات
       fetch(`${scriptURL}?${params.toString()}`, { mode: 'no-cors', method: 'GET' });
 
-      // بيكسل تيك توك (يشتغل إذا كان مركب في الصفحة)
+      // بيكسل تيك توك
       if (typeof ttq !== 'undefined') {
           ttq.track('CompletePayment', {
               content_name: Product,
@@ -970,7 +962,7 @@
           });
       }
 
-      // التحويل لصفحة الشكر
+      // التحويل لصفحة الشكر بعد انتهاء الإرسال
       setTimeout(() => { 
           window.location.href = 'thank-you.html'; 
       }, 1500);
