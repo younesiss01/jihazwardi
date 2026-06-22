@@ -7,16 +7,17 @@
   <title>ZENKO زِنكو — مساج شياتسو ياباني أصلي | قطر</title>
   <meta name="description" content="اكتشف التقنية اليابانية المبتكرة لتخلص من تشنج الرقبة والظهر. توصيل سريع في قطر — ضمان كامل." />
   
-  <!-- تحسينات الأداء والسرعة (LCP & Preconnect) -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="preload" as="image" href="hero.webp" />
-  
-  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet" />
-  
-<link rel="stylesheet" href="style.css"> 
-  <script src="https://unpkg.com/lucide@0.487.0/dist/umd/lucide.min.js" defer></script>
-
+<!-- تحميل الخطوط والستايل بعد تحميل الصفحة (Non-blocking) -->
+<link rel="preload" href="style.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="style.css"></noscript>
+<script>
+  window.addEventListener('load', () => {
+    const s = document.createElement('script');
+    s.src = "https://unpkg.com/lucide@0.487.0/dist/umd/lucide.min.js";
+    s.onload = () => lucide.createIcons();
+    document.body.appendChild(s);
+  });
+</script>
 <!-- TikTok Pixel Code - Final Solution -->
 <script>
     let ttqLoaded = false;
