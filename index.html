@@ -18,19 +18,9 @@
 var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n]);return e},ttq.load=function(e,n){var r="https://analytics.tiktok.com/i18n/pixel/events.js",o=n&&n.partner;ttq._i=ttq._i||{},ttq._i[e]=[],ttq._i[e]._u=r,ttq._t=ttq._t||{},ttq._t[e]=+new Date,ttq._o=ttq._o||{},ttq._o[e]=n||{};n=document.createElement("script")
 ;n.type="text/javascript",n.async=!0,n.src=r+"?sdkid="+e+"&lib="+t;e=document.getElementsByTagName("script")[0];e.parentNode.insertBefore(n,e)};
 
-  // 1. تحميل البيكسل
-  ttq.load('D8S80IJC77U96NJPHOCG');
-  
-  // 2. إطلاق حدث زيارة الصفحة الأساسي
+
+  ttq.load('D83Q0KRC77U9FQKB75PG');
   ttq.page();
-  
-  // 3. إطلاق حدث ViewContent بشكل يدوي ومنظم (بدلاً من التلقائي)
-  ttq.track('ViewContent', {
-    content_name: 'Zenko Shiatsu Massager',
-    value: 0,
-    currency: 'QAR'
-  });
-  
 }(window, document, 'ttq');
 </script>
 <!-- TikTok Pixel Code End -->
