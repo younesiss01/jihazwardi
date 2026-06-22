@@ -6,11 +6,19 @@
   <meta name="theme-color" content="#1C1C1E" />
   <title>ZENKO زِنكو — مساج شياتسو ياباني أصلي | قطر</title>
   <meta name="description" content="اكتشف التقنية اليابانية المبتكرة لتخلص من تشنج الرقبة والظهر. توصيل سريع في قطر — ضمان كامل." />
+  
+  <!-- تحسينات الأداء والسرعة (LCP & Preconnect) -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preload" as="image" href="hero.webp" />
+  
   <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet" />
-  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- ملف التصميم النهائي الخفيف جداً -->
+  <link href="./dist/output.css" rel="stylesheet" />
+  
   <script src="https://unpkg.com/lucide@0.487.0/dist/umd/lucide.min.js" defer></script>
+
 <!-- TikTok Pixel Code - Final Solution -->
 <script>
     let ttqLoaded = false;
@@ -47,47 +55,7 @@
       window.addEventListener(e, initTikTok, { once: true });
     });
 </script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            ink: '#1C1C1E',
-            inksoft: '#3A3A3C',
-            sand: '#F5F0E8',
-            sanddeep: '#E8DFD0',
-            zen: '#E8611A',
-            zenhover: '#D45412',
-            cream: '#FDFBF7',
-            leather: '#C4A882',
-          },
-          fontFamily: {
-            arabic: ['Tajawal', 'system-ui', 'sans-serif'],
-            brand: ['DM Sans', 'Tajawal', 'sans-serif'],
-          },
-          boxShadow: {
-            premium: '0 32px 64px -24px rgba(28,28,30,0.28)',
-            glow: '0 0 0 1px rgba(232,97,26,0.15), 0 20px 50px -20px rgba(232,97,26,0.35)',
-            card: '0 16px 48px -20px rgba(28,28,30,0.12)',
-          },
-          animation: {
-            'fade-up': 'fadeUp 0.9s cubic-bezier(.22,.9,.42,1) forwards',
-            'pulse-zen': 'pulseZen 2.8s cubic-bezier(.4,0,.6,1) infinite',
-          },
-          keyframes: {
-            fadeUp: {
-              '0%': { opacity: '0', transform: 'translateY(28px)' },
-              '100%': { opacity: '1', transform: 'translateY(0)' },
-            },
-            pulseZen: {
-              '0%, 100%': { boxShadow: '0 0 0 0 rgba(232,97,26,0.45)' },
-              '50%': { boxShadow: '0 0 0 14px rgba(232,97,26,0)' },
-            },
-          },
-        },
-      },
-    };
-  </script>
+
   <style>
     html { scroll-behavior: smooth; }
     body { font-family: Tajawal, system-ui, sans-serif; }
