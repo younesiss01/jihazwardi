@@ -2,7 +2,7 @@
 <html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <meta name="theme-color" content="#1C1C1E" />
   <title>تم استلام طلبك ✅ — ZENKO زِنكو</title>
   <meta name="description" content="تم استلام طلبك بنجاح. فريق ZENKO يجهز شحنتك والمندوب في طريقه إليك." />
@@ -26,54 +26,50 @@
     @font-face{font-family:'Tajawal';font-style:normal;font-weight:800;font-display:swap;src:url('fonts/tajawal-800.woff2') format('woff2')}
     @font-face{font-family:'Tajawal';font-style:normal;font-weight:900;font-display:swap;src:url('fonts/tajawal-900.woff2') format('woff2')}
 
-    html{scroll-behavior:smooth}
-    body{font-family:Tajawal,system-ui,sans-serif;background:#FDFBF7;color:#1C1C1E}
+    *,*::before,*::after{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+    html{scroll-behavior:smooth;overflow-x:hidden}
+    body{font-family:Tajawal,system-ui,sans-serif;background:#FDFBF7;color:#1C1C1E;overflow-x:hidden;width:100%}
+
     .dark-section{background:linear-gradient(165deg,#1C1C1E 0%,#2C2C2E 50%,#1C1C1E 100%)}
 
-    .observe{opacity:0;transform:translateY(20px);transition:opacity .75s cubic-bezier(.22,.9,.42,1),transform .75s cubic-bezier(.22,.9,.42,1)}
+    .observe{opacity:0;transform:translateY(16px);transition:opacity .7s cubic-bezier(.22,.9,.42,1),transform .7s cubic-bezier(.22,.9,.42,1)}
     .observe.is-visible{opacity:1;transform:translateY(0)}
 
-    /* Success ring animation */
-    @keyframes ringPulse{0%{transform:scale(1);opacity:.7}70%{transform:scale(1.5);opacity:0}100%{transform:scale(1.5);opacity:0}}
-    .ring-pulse::before{content:'';position:absolute;inset:0;border-radius:50%;border:2px solid #22c55e;animation:ringPulse 2s ease-out infinite}
+    /* Success ring */
+    @keyframes ringPulse{0%{transform:scale(1);opacity:.6}70%,100%{transform:scale(1.45);opacity:0}}
+    .ring-pulse::before{content:'';position:absolute;inset:0;border-radius:50%;border:2px solid #22c55e;animation:ringPulse 2.2s ease-out infinite;pointer-events:none}
 
-    /* Step number badge */
-    .step-num{display:flex;align-items:center;justify-content:center;width:2.5rem;height:2.5rem;border-radius:.75rem;background:#E8611A;color:#fff;font-weight:900;font-size:1.1rem;flex-shrink:0}
+    /* Check bounce */
+    @keyframes checkBounce{0%{transform:scale(0)}60%{transform:scale(1.12)}100%{transform:scale(1)}}
+    .check-bounce{animation:checkBounce .55s cubic-bezier(.34,1.56,.64,1) .15s both}
 
-    /* Timeline connector */
-    .timeline-item{position:relative;padding-right:1rem}
-    .timeline-item:not(:last-child)::after{content:'';position:absolute;right:1.25rem;bottom:-1.25rem;width:2px;height:1.25rem;background:linear-gradient(to bottom,#E8611A,transparent)}
+    /* Step badge */
+    .step-num{display:flex;align-items:center;justify-content:center;width:2.5rem;height:2.5rem;min-width:2.5rem;border-radius:.75rem;background:#E8611A;color:#fff;font-weight:900;font-size:1.05rem}
 
-    @keyframes countUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
-    .count-up{animation:countUp .5s ease-out forwards}
-
-    @keyframes checkBounce{0%{transform:scale(0)}60%{transform:scale(1.15)}100%{transform:scale(1)}}
-    .check-bounce{animation:checkBounce .6s cubic-bezier(.34,1.56,.64,1) .2s both}
-
-    /* Mobile fixes */
-    *{-webkit-tap-highlight-color:transparent;box-sizing:border-box}
-    img,svg{max-width:100%;height:auto}
-    p,h1,h2,h3{overflow-wrap:break-word;word-break:break-word}
-
-    /* Ping animation for live dot */
+    /* Ping / pulse */
     @keyframes ping{75%,100%{transform:scale(2);opacity:0}}
-    .animate-ping{animation:ping 1s cubic-bezier(0,0,.2,1) infinite}
-    .animate-pulse{animation:pulse 2s cubic-bezier(.4,0,.6,1) infinite}
-    @keyframes pulse{0%,100%{opacity:1}50%{opacity:.5}}
+    @keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+    .animate-ping{animation:ping 1.2s cubic-bezier(0,0,.2,1) infinite}
+    .animate-pulse{animation:pulse 2s ease-in-out infinite}
 
-    /* Mobile hero adjustments */
-    @media(max-width:480px){
-      .hero-gradient{padding-top:2.5rem;padding-bottom:2.5rem}
-      h1{font-size:1.35rem;line-height:1.4}
-    }
+    /* Shimmer on premium card */
+    @keyframes shimmer{0%{transform:translateX(100%)}100%{transform:translateX(-100%)}}
+    .shimmer::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,transparent 0%,rgba(255,255,255,.06) 50%,transparent 100%);animation:shimmer 3s ease-in-out infinite;pointer-events:none}
 
-    @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}.observe{opacity:1;transform:none}}
+    /* Progress bar fill animation */
+    @keyframes fillBar{from{width:0}to{width:42%}}
+    .progress-fill{animation:fillBar 1.2s cubic-bezier(.4,0,.2,1) .5s both}
+
+    p,h1,h2,h3{overflow-wrap:break-word;word-break:break-word}
+    img,svg{max-width:100%}
+
+    @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}.observe{opacity:1;transform:none}.progress-fill{width:42%!important}}
   </style>
 </head>
-<body class="antialiased overflow-x-hidden">
+<body class="antialiased">
 
-  <!-- Header — نفس style الرئيسية -->
-  <header style="position:sticky;top:0;z-index:50;background:rgba(255,255,255,0.92);border-bottom:1px solid #E8DFD0;backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px)" class="sticky top-0 z-50 border-b border-sanddeep/60 bg-white/90">
+  <!-- Header -->
+  <header style="position:sticky;top:0;z-index:50;background:rgba(255,255,255,0.93);border-bottom:1px solid #E8DFD0;backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px)">
     <div class="mx-auto flex max-w-6xl items-center justify-between gap-3 px-4 py-3 sm:px-6">
       <a href="index.html" class="flex items-center gap-3">
         <span class="flex h-10 w-10 items-center justify-center rounded-xl bg-ink font-brand text-sm font-bold tracking-widest text-white">ZK</span>
@@ -91,16 +87,16 @@
 
   <main>
     <!-- Hero التأكيد -->
-    <section style="background:linear-gradient(180deg,#FDFBF7 0%,#F5F0E8 100%)" class="hero-gradient py-14 sm:py-20">
+    <section style="background:linear-gradient(180deg,#FDFBF7 0%,#F0EBE0 100%);overflow:hidden" class="py-12 sm:py-20">
       <div class="mx-auto max-w-2xl px-4 text-center sm:px-6">
 
         <!-- أيقونة النجاح -->
         <div class="observe relative mx-auto mb-6 flex h-24 w-24 items-center justify-center sm:mb-8 sm:h-28 sm:w-28">
           <span class="ring-pulse absolute inset-0 rounded-full" aria-hidden="true"></span>
-          <span class="relative flex h-20 w-20 items-center justify-center rounded-full bg-emerald-500 shadow-[0_20px_50px_-15px_rgba(34,197,94,0.55)] sm:h-24 sm:w-24 check-bounce">
+          <span class="relative flex h-20 w-20 items-center justify-center rounded-full bg-emerald-500 shadow-[0_16px_40px_-10px_rgba(34,197,94,0.5)] sm:h-24 sm:w-24 check-bounce">
             <i data-lucide="check" class="h-10 w-10 stroke-[3] text-white sm:h-12 sm:w-12" aria-hidden="true"></i>
           </span>
-          <span class="absolute -left-1 -top-1 flex h-8 w-8 items-center justify-center rounded-xl bg-zen text-white shadow-glow" aria-hidden="true">
+          <span class="absolute -left-1 -top-1 flex h-8 w-8 items-center justify-center rounded-xl bg-zen text-white" aria-hidden="true">
             <i data-lucide="package" class="h-4 w-4"></i>
           </span>
         </div>
@@ -113,94 +109,115 @@
           <h1 class="text-xl font-black leading-snug text-ink sm:text-3xl">
             شكراً لك! 🎉 طلبك في طريقه إليك
           </h1>
-          <p class="text-sm leading-relaxed text-inksoft sm:text-base">
-            فريق ZENKO يجهز شحنتك الآن — المندوب سيتصل بك قريباً لتأكيد موعد التوصيل
-          </p>
         </div>
 
-        <!-- بطاقة حالة الشحن -->
-        <div class="observe mt-8 overflow-hidden rounded-3xl border border-sanddeep/80 bg-white shadow-premium">
-          <div class="flex items-center gap-2.5 bg-ink px-5 py-3.5">
-            <span class="relative flex h-2.5 w-2.5 shrink-0">
-              <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-zen opacity-75"></span>
-              <span class="relative inline-flex h-2.5 w-2.5 rounded-full bg-zen"></span>
-            </span>
-            <p class="text-sm font-bold tracking-wide text-white">جاري تجهيز الشحنة الآن</p>
-          </div>
-          <div class="p-5 sm:p-7">
-            <div class="flex items-start gap-4">
-              <span class="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-zen/10 text-zen">
-                <i data-lucide="truck" class="h-6 w-6"></i>
-              </span>
-              <div class="min-w-0">
-                <p class="text-base font-black leading-snug text-ink sm:text-lg">فريق ZENKO يجهز شحنتك الآن</p>
-                <p class="mt-1 text-sm leading-relaxed text-inksoft">المندوب سيتصل بك قريباً لتأكيد موعد التوصيل</p>
+        <!-- بطاقة الشحن الفاخرة -->
+        <div class="observe mt-8 overflow-hidden rounded-3xl shadow-[0_24px_60px_-12px_rgba(0,0,0,0.22)]">
+
+          <!-- رأس البطاقة الداكن -->
+          <div class="shimmer relative overflow-hidden px-5 py-4 sm:px-7 sm:py-5" style="background:linear-gradient(130deg,#1C1C1E 0%,#2a2018 55%,#1A1C1A 100%)">
+            <!-- هالات ضوئية -->
+            <div class="pointer-events-none absolute -right-8 -top-8 h-36 w-36 rounded-full" style="background:radial-gradient(circle,rgba(232,97,26,0.18),transparent 70%)"></div>
+            <div class="pointer-events-none absolute -bottom-6 -left-6 h-28 w-28 rounded-full" style="background:radial-gradient(circle,rgba(34,197,94,0.12),transparent 70%)"></div>
+
+            <!-- شارة الحالة المباشرة -->
+            <div class="relative mb-5 flex items-center justify-between">
+              <div class="flex items-center gap-2">
+                <span class="relative flex h-2.5 w-2.5 shrink-0">
+                  <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-zen opacity-70"></span>
+                  <span class="relative inline-flex h-2.5 w-2.5 rounded-full bg-zen"></span>
+                </span>
+                <span class="text-[11px] font-bold uppercase tracking-[0.12em] text-zen">مباشر · جاري التجهيز</span>
+              </div>
+              <span class="rounded-full border border-white/10 bg-white/5 px-2.5 py-1 text-[10px] font-bold text-white/40">طلبك #ZK</span>
+            </div>
+
+            <!-- النص والأيقونة -->
+            <div class="relative flex items-center gap-4 sm:gap-5">
+              <div class="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl sm:h-16 sm:w-16" style="background:linear-gradient(135deg,#E8611A 0%,#c94d0e 100%);box-shadow:0 8px 24px -6px rgba(232,97,26,0.45)">
+                <i data-lucide="package-check" class="h-7 w-7 text-white sm:h-8 sm:w-8"></i>
+              </div>
+              <div class="min-w-0 text-right">
+                <p class="text-base font-black text-white sm:text-xl">فريق ZENKO يجهز شحنتك الآن</p>
+                <p class="mt-0.5 text-xs leading-relaxed text-white/55 sm:text-sm">المندوب سيتصل بك قريباً لتأكيد موعد التوصيل</p>
               </div>
             </div>
-            <div class="mt-4 flex items-center gap-2.5 rounded-2xl border border-emerald-100 bg-emerald-50 px-4 py-3">
-              <i data-lucide="phone-call" class="h-4 w-4 shrink-0 text-emerald-600"></i>
-              <p class="text-sm font-bold text-emerald-700">توقع مكالمة من فريقنا خلال <strong class="text-emerald-900">أقل من ساعة</strong></p>
+
+            <!-- شريط التقدم -->
+            <div class="relative mt-5">
+              <div class="mb-2 flex justify-between">
+                <span class="text-[9px] font-bold text-white/35 sm:text-[10px]">استلمنا طلبك ✓</span>
+                <span class="text-[9px] font-bold text-zen sm:text-[10px]">قيد التجهيز</span>
+                <span class="text-[9px] font-bold text-white/30 sm:text-[10px]">في الطريق</span>
+                <span class="text-[9px] font-bold text-white/30 sm:text-[10px]">تم التوصيل</span>
+              </div>
+              <div class="relative h-1.5 overflow-hidden rounded-full bg-white/10">
+                <div class="progress-fill h-full rounded-full" style="background:linear-gradient(to left,#E8611A,#22c55e);width:42%"></div>
+              </div>
             </div>
-            <p class="mt-4 text-center text-xs font-medium text-inksoft/60">
-              توصيل مجاني لجميع مناطق قطر 🇶🇦 — الدفع عند الاستلام
-            </p>
+          </div>
+
+          <!-- قسم المكالمة -->
+          <div class="flex items-center gap-3.5 bg-white px-5 py-4 sm:px-7">
+            <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-emerald-50 text-emerald-500">
+              <i data-lucide="phone-call" class="h-5 w-5"></i>
+            </span>
+            <div class="min-w-0">
+              <p class="text-[11px] font-bold uppercase tracking-wide text-emerald-600">مكالمة قريبة</p>
+              <p class="text-sm font-black text-ink">توقع مكالمة خلال <span class="text-zen">أقل من ساعة</span></p>
+            </div>
+          </div>
+
+          <!-- شريط الفوتر -->
+          <div class="flex items-center justify-center gap-1.5 px-5 py-2.5" style="background:#E8611A">
+            <i data-lucide="map-pin" class="h-3.5 w-3.5 text-white/80"></i>
+            <p class="text-xs font-bold text-white">توصيل مجاني لجميع مناطق قطر 🇶🇦 — الدفع عند الاستلام</p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- خطوات ماذا يحدث الآن -->
+    <!-- ماذا يحدث الآن -->
     <section class="dark-section py-12 sm:py-20">
       <div class="mx-auto max-w-2xl px-4 sm:px-6">
         <h2 class="observe mb-8 text-center text-lg font-black text-sand sm:mb-10 sm:text-2xl">ماذا يحدث الآن؟</h2>
-        <ol class="observe space-y-4 sm:space-y-5">
-          <li class="timeline-item flex gap-4 rounded-2xl border border-white/10 bg-white/5 p-5">
+        <div class="observe">
+          <div class="flex gap-4 rounded-2xl border border-white/10 bg-white/5 p-5">
             <span class="step-num" aria-hidden="true">١</span>
             <div class="min-w-0">
-              <p class="font-bold text-white">مراجعة الطلب وتأكيد البيانات</p>
-              <p class="mt-1.5 text-sm leading-relaxed text-white/70">سيتصل بك أحد أفراد فريقنا خلال <strong class="text-zen">أقل من ساعة</strong> للتأكد من عنوانك وموعد التسليم المناسب لك.</p>
-            </div>
-          </li>
-          <li class="timeline-item flex gap-4 rounded-2xl border border-white/10 bg-white/5 p-5">
-            <span class="step-num" aria-hidden="true">٢</span>
-            <div class="min-w-0">
-              <p class="font-bold text-white">فحص الجهاز وتغليفه بعناية</p>
-              <p class="mt-1.5 text-sm leading-relaxed text-white/70">نفحص كل جهاز قبل الشحن ونغلفه بتعبئة احترافية لضمان وصوله <strong class="text-zen">بأفضل حالة ممكنة</strong>.</p>
-            </div>
-          </li>
-          <li class="timeline-item flex gap-4 rounded-2xl border border-white/10 bg-white/5 p-5">
-            <span class="step-num" aria-hidden="true">٣</span>
-            <div class="min-w-0">
               <p class="font-bold text-white">التوصيل لبابك مباشرةً</p>
-              <p class="mt-1.5 text-sm leading-relaxed text-white/70">المندوب يتصل بك قبل الوصول. <strong class="text-zen">الدفع عند الاستلام</strong> نقداً أو بطاقة — تفحص الطلب أولاً ثم تدفع.</p>
+              <p class="mt-1.5 text-sm leading-relaxed text-white/70"><strong class="text-zen">الدفع عند الاستلام</strong> نقداً أو بطاقة — تفحص الطلب أولاً ثم تدفع.</p>
             </div>
-          </li>
-          <li class="flex gap-4 rounded-2xl border border-emerald-500/30 bg-emerald-500/10 p-5">
-            <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-emerald-500/20 text-emerald-400">
+          </div>
+          <div class="mx-auto my-3 flex w-px justify-center">
+            <div class="h-5 w-0.5" style="background:linear-gradient(to bottom,#E8611A,transparent)"></div>
+          </div>
+          <div class="flex gap-4 rounded-2xl border border-emerald-500/30 bg-emerald-500/10 p-5">
+            <span class="flex h-10 w-10 min-w-[2.5rem] items-center justify-center rounded-xl bg-emerald-500/20 text-emerald-400">
               <i data-lucide="shield-check" class="h-5 w-5"></i>
             </span>
             <div class="min-w-0">
               <p class="font-bold text-white">ضمان كامل + استرجاع مضمون</p>
               <p class="mt-1.5 text-sm leading-relaxed text-white/70">إذا واجهت أي مشكلة — نسترجع الجهاز ونعيد أموالك <strong class="text-emerald-400">كاملةً بلا تعقيدات</strong>.</p>
-              <p class="mt-2 text-sm leading-relaxed text-white/60">إذا احتجت أي مساعدة بخصوص طلبك أو التوصيل، تواصل معنا مباشرة — <strong class="text-emerald-400">ردنا سريع وفريقنا متاح 7 أيام</strong>.</p>
+              <p class="mt-2 text-sm leading-relaxed text-white/55">إذا احتجت مساعدة بخصوص طلبك أو التوصيل، تواصل معنا مباشرة — <strong class="text-emerald-400">ردنا سريع وفريقنا متاح 7 أيام</strong>.</p>
             </div>
-          </li>
-        </ol>
+          </div>
+        </div>
       </div>
     </section>
 
-    <!-- تحذير الجهاز المقلد + المصدر الرسمي -->
+    <!-- ما يجب عليك معرفته -->
     <section class="border-y border-red-900/20 bg-red-950 py-10 sm:py-16">
       <div class="observe mx-auto max-w-2xl px-4 sm:px-6">
-        <div class="mb-5 flex flex-col items-center justify-center gap-2 text-center sm:flex-row sm:gap-3 sm:text-right">
-          <span class="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-red-500/20 text-red-400">
-            <i data-lucide="shield-alert" class="h-5 w-5"></i>
+        <div class="mb-5 flex flex-col items-center justify-center gap-2 text-center">
+          <span class="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-white/10 text-white/80">
+            <i data-lucide="info" class="h-5 w-5"></i>
           </span>
-          <h2 class="text-base font-black text-red-300 sm:text-xl">⚠️ تحذير هام — اقرأ قبل الاستخدام</h2>
+          <h2 class="text-base font-black text-white sm:text-xl">ما يجب عليك معرفته</h2>
         </div>
 
         <!-- بانر المصدر الرسمي -->
-        <div class="mb-5 flex items-center gap-3 rounded-2xl border border-zen/40 bg-zen/15 px-5 py-4">
+        <div class="mb-5 flex items-start gap-3 rounded-2xl border border-zen/40 bg-zen/15 px-4 py-4 sm:px-5">
           <span class="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-zen/30 text-zen">
             <i data-lucide="badge-check" class="h-5 w-5"></i>
           </span>
@@ -214,24 +231,24 @@
           <p class="mb-3 font-bold text-red-300">احذر من الأجهزة المقلّدة المنتشرة في السوق:</p>
           <ul class="space-y-2.5">
             <li class="flex items-start gap-2.5">
-              <i data-lucide="x-circle" class="mt-0.5 h-4 w-4 shrink-0 text-red-400" aria-hidden="true"></i>
+              <i data-lucide="x-circle" class="mt-0.5 h-4 w-4 min-w-[1rem] shrink-0 text-red-400" aria-hidden="true"></i>
               <p class="text-sm leading-relaxed text-red-200">تُباع بأسعار أقل لكنها <strong>مصنوعة من مواد رديئة</strong> قد تتلف بسرعة أو تسبب تهيجاً للجلد</p>
             </li>
             <li class="flex items-start gap-2.5">
-              <i data-lucide="x-circle" class="mt-0.5 h-4 w-4 shrink-0 text-red-400" aria-hidden="true"></i>
+              <i data-lucide="x-circle" class="mt-0.5 h-4 w-4 min-w-[1rem] shrink-0 text-red-400" aria-hidden="true"></i>
               <p class="text-sm leading-relaxed text-red-200"><strong>لا تحمل شهادة CE أو RoHS</strong> ولا تخضع لأي معايير أمان كهربائي</p>
             </li>
             <li class="flex items-start gap-2.5">
-              <i data-lucide="x-circle" class="mt-0.5 h-4 w-4 shrink-0 text-red-400" aria-hidden="true"></i>
+              <i data-lucide="x-circle" class="mt-0.5 h-4 w-4 min-w-[1rem] shrink-0 text-red-400" aria-hidden="true"></i>
               <p class="text-sm leading-relaxed text-red-200"><strong>لا ضمان ولا استرجاع</strong> — تدفع وتخسر بلا أي حق</p>
             </li>
             <li class="flex items-start gap-2.5">
-              <i data-lucide="x-circle" class="mt-0.5 h-4 w-4 shrink-0 text-red-400" aria-hidden="true"></i>
+              <i data-lucide="x-circle" class="mt-0.5 h-4 w-4 min-w-[1rem] shrink-0 text-red-400" aria-hidden="true"></i>
               <p class="text-sm leading-relaxed text-red-200">لا تعطي نتائج حقيقية لأن <strong>تقنية الشياتسو</strong> غير موجودة فيها أصلاً</p>
             </li>
           </ul>
           <div class="mt-5 flex items-center gap-3 rounded-xl bg-white/5 px-4 py-3">
-            <i data-lucide="check-circle" class="h-5 w-5 shrink-0 text-emerald-400" aria-hidden="true"></i>
+            <i data-lucide="check-circle" class="h-5 w-5 min-w-[1.25rem] shrink-0 text-emerald-400" aria-hidden="true"></i>
             <p class="text-sm font-bold text-emerald-300">
               جهازك من ZENKO أصلي 100% — معه الضمان الكامل وشهادتا CE و RoHS
             </p>
@@ -259,7 +276,7 @@
           entries.forEach(function(e) {
             if (e.isIntersecting) { e.target.classList.add('is-visible'); o.unobserve(e.target); }
           });
-        }, { threshold: 0.1 });
+        }, { threshold: 0.08 });
         document.querySelectorAll('.observe').forEach(function(el) { obs.observe(el); });
       } else {
         document.querySelectorAll('.observe').forEach(function(el) { el.classList.add('is-visible'); });
