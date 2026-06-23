@@ -27,21 +27,21 @@
     @font-face{font-family:'Tajawal';font-style:normal;font-weight:900;font-display:swap;src:url('fonts/tajawal-900.woff2') format('woff2')}
 
     *,*::before,*::after{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
-    html{scroll-behavior:smooth;overflow-x:hidden}
-    body{font-family:Tajawal,system-ui,sans-serif;background:#FDFBF7;color:#1C1C1E;overflow-x:hidden;width:100%}
+    html{scroll-behavior:smooth;overflow-x:hidden;-webkit-text-size-adjust:100%}
+    body{font-family:Tajawal,system-ui,sans-serif;background:#FDFBF7;color:#1C1C1E;overflow-x:hidden;width:100%;transform:translateZ(0)}
 
     .dark-section{background:linear-gradient(165deg,#1C1C1E 0%,#2C2C2E 50%,#1C1C1E 100%)}
 
     .observe{opacity:0;transform:translateY(16px);transition:opacity .7s cubic-bezier(.22,.9,.42,1),transform .7s cubic-bezier(.22,.9,.42,1)}
     .observe.is-visible{opacity:1;transform:translateY(0)}
 
-    /* Success ring */
-    @keyframes ringPulse{0%{transform:scale(1);opacity:.6}70%,100%{transform:scale(1.45);opacity:0}}
-    .ring-pulse::before{content:'';position:absolute;inset:0;border-radius:50%;border:2px solid #22c55e;animation:ringPulse 2.2s ease-out infinite;pointer-events:none}
+    /* Success ring — box-shadow only (no scale = no layout shift) */
+    @keyframes ringPulse{0%{opacity:.7;box-shadow:0 0 0 0 rgba(34,197,94,0.5)}70%,100%{opacity:0;box-shadow:0 0 0 18px rgba(34,197,94,0)}}
+    .ring-pulse::before{content:'';position:absolute;inset:0;border-radius:50%;animation:ringPulse 2.4s ease-out infinite;pointer-events:none}
 
     /* Check bounce */
-    @keyframes checkBounce{0%{transform:scale(0)}60%{transform:scale(1.12)}100%{transform:scale(1)}}
-    .check-bounce{animation:checkBounce .55s cubic-bezier(.34,1.56,.64,1) .15s both}
+    @keyframes checkBounce{0%{transform:scale(0)}60%{transform:scale(1.08)}100%{transform:scale(1)}}
+    .check-bounce{animation:checkBounce .55s cubic-bezier(.34,1.56,.64,1) .15s both;will-change:transform;contain:layout}
 
     /* Step badge */
     .step-num{display:flex;align-items:center;justify-content:center;width:2.5rem;height:2.5rem;min-width:2.5rem;border-radius:.75rem;background:#E8611A;color:#fff;font-weight:900;font-size:1.05rem}
@@ -49,12 +49,12 @@
     /* Ping / pulse */
     @keyframes ping{75%,100%{transform:scale(2);opacity:0}}
     @keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
-    .animate-ping{animation:ping 1.2s cubic-bezier(0,0,.2,1) infinite}
-    .animate-pulse{animation:pulse 2s ease-in-out infinite}
+    .animate-ping{animation:ping 1.2s cubic-bezier(0,0,.2,1) infinite;will-change:transform,opacity}
+    .animate-pulse{animation:pulse 2s ease-in-out infinite;will-change:opacity}
 
     /* Shimmer on premium card */
     @keyframes shimmer{0%{transform:translateX(100%)}100%{transform:translateX(-100%)}}
-    .shimmer::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,transparent 0%,rgba(255,255,255,.06) 50%,transparent 100%);animation:shimmer 3s ease-in-out infinite;pointer-events:none}
+    .shimmer::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,transparent 0%,rgba(255,255,255,.06) 50%,transparent 100%);animation:shimmer 3s ease-in-out infinite;pointer-events:none;will-change:transform}
 
     /* Progress bar fill animation */
     @keyframes fillBar{from{width:0}to{width:42%}}
@@ -91,7 +91,7 @@
       <div class="mx-auto max-w-2xl px-4 text-center sm:px-6">
 
         <!-- أيقونة النجاح -->
-        <div class="observe relative mx-auto mb-6 flex h-24 w-24 items-center justify-center sm:mb-8 sm:h-28 sm:w-28">
+        <div class="observe relative mx-auto mb-6 flex h-24 w-24 items-center justify-center sm:mb-8 sm:h-28 sm:w-28" style="isolation:isolate">
           <span class="ring-pulse absolute inset-0 rounded-full" aria-hidden="true"></span>
           <span class="relative flex h-20 w-20 items-center justify-center rounded-full bg-emerald-500 shadow-[0_16px_40px_-10px_rgba(34,197,94,0.5)] sm:h-24 sm:w-24 check-bounce">
             <i data-lucide="check" class="h-10 w-10 stroke-[3] text-white sm:h-12 sm:w-12" aria-hidden="true"></i>
@@ -139,7 +139,7 @@
               </div>
               <div class="min-w-0 text-right">
                 <p class="text-base font-black text-white sm:text-xl">فريق ZENKO يجهز شحنتك الآن</p>
-                <p class="mt-0.5 text-xs leading-relaxed text-white/55 sm:text-sm">المندوب سيتصل بك قريباً لتأكيد موعد التوصيل</p>
+                <p class="mt-0.5 text-xs leading-relaxed sm:text-sm" style="color:rgba(255,255,255,0.82)">المندوب سيتصل بك قريباً لتأكيد موعد التوصيل</p>
               </div>
             </div>
 
@@ -180,7 +180,7 @@
     <!-- ماذا يحدث الآن -->
     <section class="dark-section py-12 sm:py-20">
       <div class="mx-auto max-w-2xl px-4 sm:px-6">
-        <h2 class="observe mb-8 text-center text-lg font-black text-sand sm:mb-10 sm:text-2xl">ماذا يحدث الآن؟</h2>
+        <h2 class="observe mb-8 text-center text-lg font-black text-sand sm:mb-10 sm:text-2xl">ماذا يحدث بعد تأكيد الطلب؟</h2>
         <div class="observe">
           <div class="flex gap-4 rounded-2xl border border-white/10 bg-white/5 p-5">
             <span class="step-num" aria-hidden="true">١</span>
@@ -199,7 +199,7 @@
             <div class="min-w-0">
               <p class="font-bold text-white">ضمان كامل + استرجاع مضمون</p>
               <p class="mt-1.5 text-sm leading-relaxed text-white/70">إذا واجهت أي مشكلة — نسترجع الجهاز ونعيد أموالك <strong class="text-emerald-400">كاملةً بلا تعقيدات</strong>.</p>
-              <p class="mt-2 text-sm leading-relaxed text-white/55">إذا احتجت مساعدة بخصوص طلبك أو التوصيل، تواصل معنا مباشرة — <strong class="text-emerald-400">ردنا سريع وفريقنا متاح 7 أيام</strong>.</p>
+              <p class="mt-2 text-sm leading-relaxed" style="color:rgba(255,255,255,0.80)">إذا احتجت مساعدة بخصوص طلبك أو التوصيل، تواصل معنا مباشرة — <strong class="text-emerald-400">ردنا سريع وفريقنا متاح 7 أيام</strong>.</p>
             </div>
           </div>
         </div>
