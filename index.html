@@ -75,7 +75,7 @@
 <body class="bg-cream text-ink antialiased overflow-x-hidden">
 
   <!-- Header -->
-  <header class="sticky top-0 z-50 border-b border-sanddeep/60 bg-white/90 sticky-bar">
+  <header style="position:sticky;top:0;z-index:50;background:rgba(255,255,255,0.92);border-bottom:1px solid #E8DFD0" class="sticky top-0 z-50 border-b border-sanddeep/60 bg-white/90 sticky-bar">
     <div class="mx-auto flex max-w-6xl items-center justify-between gap-3 px-4 py-3 sm:px-6">
       <a href="#" class="flex items-center gap-3">
         <span class="flex h-10 w-10 items-center justify-center rounded-xl bg-ink font-brand text-sm font-bold tracking-widest text-white">ZK</span>
@@ -95,7 +95,7 @@
 
   <main>
     <!-- Hero -->
-    <section class="hero-gradient relative overflow-hidden border-b border-sanddeep/40 py-10 sm:py-16">
+    <section style="background:linear-gradient(180deg,#FDFBF7 0%,#F5F0E8 100%);overflow:hidden;position:relative" class="hero-gradient relative overflow-hidden border-b border-sanddeep/40 py-10 sm:py-16">
       <div class="mx-auto max-w-6xl px-4 sm:px-6">
         <div class="observe mx-auto mb-8 max-w-3xl space-y-5 text-center sm:mb-10 sm:text-right">
           <p class="inline-flex items-center gap-2 rounded-full border border-zen/25 bg-white/80 px-4 py-1.5 text-xs font-bold text-zen shadow-sm">
@@ -737,10 +737,12 @@
     </section>
   </main>
 
-  <!-- Sticky CTA -->
-  <div class="pointer-events-none fixed inset-x-0 bottom-0 z-40 pb-[env(safe-area-inset-bottom,0)]">
-    <div class="pointer-events-auto mx-auto max-w-xl px-3 pb-4">
-      <a href="#offer" class="block w-full rounded-2xl bg-zen px-5 py-4 text-center text-base font-extrabold text-white shadow-glow animate-pulse-zen">
+  <!-- Sticky CTA — inline styles لضمان الرسم الفوري قبل style.css (يحل مشكلة LCP) -->
+  <div style="position:fixed;bottom:0;left:0;right:0;z-index:40;pointer-events:none;padding-bottom:env(safe-area-inset-bottom,0px)" class="pointer-events-none fixed inset-x-0 bottom-0 z-40 pb-[env(safe-area-inset-bottom,0)]">
+    <div style="pointer-events:auto;max-width:36rem;margin:0 auto;padding:0 0.75rem 1rem" class="pointer-events-auto mx-auto max-w-xl px-3 pb-4">
+      <a href="#offer"
+         style="display:block;width:100%;background:#E8611A;color:#fff;text-align:center;font-size:1rem;font-weight:800;padding:1rem 1.25rem;border-radius:1rem;text-decoration:none;font-family:Tajawal,system-ui,sans-serif"
+         class="block w-full rounded-2xl bg-zen px-5 py-4 text-center text-base font-extrabold text-white shadow-glow animate-pulse-zen">
         الحق العرض لا تخليه يفوتك
       </a>
     </div>
@@ -774,8 +776,12 @@
     }
 
     document.addEventListener('DOMContentLoaded', function() {
-      bootIcons();
-      selectOffer('629 — 3 اجهزة + 3 هدايا EMS', false);
+      // تأجيل Lucide و selectOffer لمنع Forced Layout Reflow المتزامن
+      requestAnimationFrame(function() {
+        bootIcons();
+        selectOffer('629 — 3 اجهزة + 3 هدايا EMS', false);
+      });
+
       var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
       if (!reduced && 'IntersectionObserver' in window) {
         var obs = new IntersectionObserver(function(entries, o) {
