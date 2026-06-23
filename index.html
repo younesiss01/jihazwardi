@@ -10,17 +10,13 @@
   <!-- ① LCP image — preload مع fetchpriority=high -->
   <link rel="preload" as="image" href="hero.webp" fetchpriority="high" />
 
-  <!-- ② Preconnect للمصادر الخارجية -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <!-- ② dns-prefetch للمصادر الخارجية فقط (لا Google Fonts — self-hosted) -->
   <link rel="dns-prefetch" href="https://unpkg.com" />
   <link rel="dns-prefetch" href="https://analytics.tiktok.com" />
 
-  <!-- ③ Google Fonts — non-blocking (media=print trick) -->
-  <!-- مخفف: فقط Tajawal بـ 4 أوزان بدلاً من 9 variants -->
-  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700;800;900&display=swap" />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700;800;900&display=swap" media="print" onload="this.media='all'" />
-  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700;800;900&display=swap" /></noscript>
+  <!-- ③ Self-hosted Tajawal — preload أهم وزن (800) لتسريع LCP -->
+  <link rel="preload" as="font" type="font/woff2" href="fonts/tajawal-800.woff2" crossorigin />
+  <link rel="preload" as="font" type="font/woff2" href="fonts/tajawal-400.woff2" crossorigin />
 
   <!-- ④ style.css — preload للتسريع + blocking لمنع CLS -->
   <link rel="preload" as="style" href="style.css" fetchpriority="high" />
@@ -49,8 +45,14 @@
     ['scroll','mousemove','touchstart'].forEach(function(e){window.addEventListener(e,initTikTok,{once:true});});
   </script>
 
-  <!-- ⑦ Critical CSS inline — الحد الأدنى فقط -->
+  <!-- ⑦ Critical CSS inline + Self-hosted @font-face -->
   <style>
+    /* Tajawal self-hosted — لا Google Fonts، لا DNS خارجي */
+    @font-face{font-family:'Tajawal';font-style:normal;font-weight:400;font-display:swap;src:url('fonts/tajawal-400.woff2') format('woff2')}
+    @font-face{font-family:'Tajawal';font-style:normal;font-weight:700;font-display:swap;src:url('fonts/tajawal-700.woff2') format('woff2')}
+    @font-face{font-family:'Tajawal';font-style:normal;font-weight:800;font-display:swap;src:url('fonts/tajawal-800.woff2') format('woff2')}
+    @font-face{font-family:'Tajawal';font-style:normal;font-weight:900;font-display:swap;src:url('fonts/tajawal-900.woff2') format('woff2')}
+
     html{scroll-behavior:smooth}
     body{font-family:Tajawal,system-ui,sans-serif}
     .observe{opacity:0;transform:translateY(24px);transition:opacity .85s cubic-bezier(.22,.9,.42,1),transform .85s cubic-bezier(.22,.9,.42,1)}
