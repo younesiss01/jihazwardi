@@ -50,6 +50,23 @@
     @keyframes checkBounce{0%{transform:scale(0)}60%{transform:scale(1.15)}100%{transform:scale(1)}}
     .check-bounce{animation:checkBounce .6s cubic-bezier(.34,1.56,.64,1) .2s both}
 
+    /* Mobile fixes */
+    *{-webkit-tap-highlight-color:transparent;box-sizing:border-box}
+    img,svg{max-width:100%;height:auto}
+    p,h1,h2,h3{overflow-wrap:break-word;word-break:break-word}
+
+    /* Ping animation for live dot */
+    @keyframes ping{75%,100%{transform:scale(2);opacity:0}}
+    .animate-ping{animation:ping 1s cubic-bezier(0,0,.2,1) infinite}
+    .animate-pulse{animation:pulse 2s cubic-bezier(.4,0,.6,1) infinite}
+    @keyframes pulse{0%,100%{opacity:1}50%{opacity:.5}}
+
+    /* Mobile hero adjustments */
+    @media(max-width:480px){
+      .hero-gradient{padding-top:2.5rem;padding-bottom:2.5rem}
+      h1{font-size:1.35rem;line-height:1.4}
+    }
+
     @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}.observe{opacity:1;transform:none}}
   </style>
 </head>
@@ -78,55 +95,65 @@
       <div class="mx-auto max-w-2xl px-4 text-center sm:px-6">
 
         <!-- أيقونة النجاح -->
-        <div class="observe relative mx-auto mb-8 flex h-28 w-28 items-center justify-center sm:h-32 sm:w-32">
+        <div class="observe relative mx-auto mb-6 flex h-24 w-24 items-center justify-center sm:mb-8 sm:h-28 sm:w-28">
           <span class="ring-pulse absolute inset-0 rounded-full" aria-hidden="true"></span>
-          <span class="relative flex h-24 w-24 items-center justify-center rounded-full bg-emerald-500 shadow-[0_20px_50px_-15px_rgba(34,197,94,0.55)] sm:h-28 sm:w-28 check-bounce">
-            <i data-lucide="check" class="h-12 w-12 stroke-[3] text-white sm:h-14 sm:w-14" aria-hidden="true"></i>
+          <span class="relative flex h-20 w-20 items-center justify-center rounded-full bg-emerald-500 shadow-[0_20px_50px_-15px_rgba(34,197,94,0.55)] sm:h-24 sm:w-24 check-bounce">
+            <i data-lucide="check" class="h-10 w-10 stroke-[3] text-white sm:h-12 sm:w-12" aria-hidden="true"></i>
           </span>
-          <span class="absolute -left-1 -top-1 flex h-9 w-9 items-center justify-center rounded-xl bg-zen text-white shadow-glow" aria-hidden="true">
+          <span class="absolute -left-1 -top-1 flex h-8 w-8 items-center justify-center rounded-xl bg-zen text-white shadow-glow" aria-hidden="true">
             <i data-lucide="package" class="h-4 w-4"></i>
           </span>
         </div>
 
-        <div class="observe space-y-4">
-          <p class="inline-flex items-center gap-2 rounded-full border border-emerald-200 bg-emerald-50 px-4 py-1.5 text-sm font-bold text-emerald-700">
+        <div class="observe space-y-3 sm:space-y-4">
+          <p class="inline-flex items-center gap-2 rounded-full border border-emerald-200 bg-emerald-50 px-3 py-1.5 text-xs font-bold text-emerald-700 sm:px-4 sm:text-sm">
             <span class="h-2 w-2 rounded-full bg-emerald-500 animate-pulse"></span>
             تم استلام طلبك بنجاح
           </p>
-          <h1 class="text-2xl font-black leading-snug text-ink sm:text-3xl lg:text-4xl">
+          <h1 class="text-xl font-black leading-snug text-ink sm:text-3xl">
             شكراً لك! 🎉 طلبك في طريقه إليك
           </h1>
-          <p class="text-base leading-relaxed text-inksoft sm:text-lg">
+          <p class="text-sm leading-relaxed text-inksoft sm:text-base">
             فريق ZENKO يجهز شحنتك الآن — المندوب سيتصل بك قريباً لتأكيد موعد التوصيل
           </p>
         </div>
 
-        <!-- العد التنازلي للتوصيل -->
-        <div class="observe mt-8 overflow-hidden rounded-3xl border border-sanddeep/80 bg-white p-6 shadow-premium sm:p-8">
-          <p class="mb-5 text-sm font-bold uppercase tracking-widest text-inksoft/60">الوقت المتوقع للتوصيل</p>
-          <div class="flex items-center justify-center gap-4 sm:gap-6">
-            <div class="flex flex-col items-center gap-1">
-              <span class="flex h-16 w-16 items-center justify-center rounded-2xl bg-ink text-3xl font-black text-white tabular-nums sm:h-20 sm:w-20 sm:text-4xl count-up">24</span>
-              <span class="text-xs font-bold text-inksoft/60">ساعة</span>
-            </div>
-            <span class="mb-4 text-3xl font-black text-zen">—</span>
-            <div class="flex flex-col items-center gap-1">
-              <span class="flex h-16 w-16 items-center justify-center rounded-2xl bg-ink text-3xl font-black text-white tabular-nums sm:h-20 sm:w-20 sm:text-4xl count-up">48</span>
-              <span class="text-xs font-bold text-inksoft/60">ساعة</span>
-            </div>
+        <!-- بطاقة حالة الشحن -->
+        <div class="observe mt-8 overflow-hidden rounded-3xl border border-sanddeep/80 bg-white shadow-premium">
+          <div class="flex items-center gap-2.5 bg-ink px-5 py-3.5">
+            <span class="relative flex h-2.5 w-2.5 shrink-0">
+              <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-zen opacity-75"></span>
+              <span class="relative inline-flex h-2.5 w-2.5 rounded-full bg-zen"></span>
+            </span>
+            <p class="text-sm font-bold tracking-wide text-white">جاري تجهيز الشحنة الآن</p>
           </div>
-          <p class="mt-5 text-sm font-medium text-inksoft/70">
-            توصيل مجاني لجميع مناطق قطر 🇶🇦 — الدفع عند الاستلام
-          </p>
+          <div class="p-5 sm:p-7">
+            <div class="flex items-start gap-4">
+              <span class="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-zen/10 text-zen">
+                <i data-lucide="truck" class="h-6 w-6"></i>
+              </span>
+              <div class="min-w-0">
+                <p class="text-base font-black leading-snug text-ink sm:text-lg">فريق ZENKO يجهز شحنتك الآن</p>
+                <p class="mt-1 text-sm leading-relaxed text-inksoft">المندوب سيتصل بك قريباً لتأكيد موعد التوصيل</p>
+              </div>
+            </div>
+            <div class="mt-4 flex items-center gap-2.5 rounded-2xl border border-emerald-100 bg-emerald-50 px-4 py-3">
+              <i data-lucide="phone-call" class="h-4 w-4 shrink-0 text-emerald-600"></i>
+              <p class="text-sm font-bold text-emerald-700">توقع مكالمة من فريقنا خلال <strong class="text-emerald-900">أقل من ساعة</strong></p>
+            </div>
+            <p class="mt-4 text-center text-xs font-medium text-inksoft/60">
+              توصيل مجاني لجميع مناطق قطر 🇶🇦 — الدفع عند الاستلام
+            </p>
+          </div>
         </div>
       </div>
     </section>
 
     <!-- خطوات ماذا يحدث الآن -->
-    <section class="dark-section py-14 sm:py-20">
+    <section class="dark-section py-12 sm:py-20">
       <div class="mx-auto max-w-2xl px-4 sm:px-6">
-        <h2 class="observe mb-10 text-center text-xl font-black text-sand sm:text-2xl">ماذا يحدث الآن؟</h2>
-        <ol class="observe space-y-5">
+        <h2 class="observe mb-8 text-center text-lg font-black text-sand sm:mb-10 sm:text-2xl">ماذا يحدث الآن؟</h2>
+        <ol class="observe space-y-4 sm:space-y-5">
           <li class="timeline-item flex gap-4 rounded-2xl border border-white/10 bg-white/5 p-5">
             <span class="step-num" aria-hidden="true">١</span>
             <div class="min-w-0">
@@ -163,13 +190,13 @@
     </section>
 
     <!-- تحذير الجهاز المقلد + المصدر الرسمي -->
-    <section class="border-y border-red-900/20 bg-red-950 py-12 sm:py-16">
+    <section class="border-y border-red-900/20 bg-red-950 py-10 sm:py-16">
       <div class="observe mx-auto max-w-2xl px-4 sm:px-6">
-        <div class="mb-6 flex items-center justify-center gap-3">
-          <span class="flex h-12 w-12 items-center justify-center rounded-2xl bg-red-500/20 text-red-400">
-            <i data-lucide="shield-alert" class="h-6 w-6"></i>
+        <div class="mb-5 flex flex-col items-center justify-center gap-2 text-center sm:flex-row sm:gap-3 sm:text-right">
+          <span class="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-red-500/20 text-red-400">
+            <i data-lucide="shield-alert" class="h-5 w-5"></i>
           </span>
-          <h2 class="text-lg font-black text-red-300 sm:text-xl">⚠️ تحذير هام — اقرأ قبل الاستخدام</h2>
+          <h2 class="text-base font-black text-red-300 sm:text-xl">⚠️ تحذير هام — اقرأ قبل الاستخدام</h2>
         </div>
 
         <!-- بانر المصدر الرسمي -->
