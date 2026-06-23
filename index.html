@@ -1,62 +1,41 @@
-!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#1C1C1E" />
-    <title>ZENKO زِنكو — مساج شياتسو ياباني أصلي | قطر</title>
-    <meta name="description" content="اكتشف التقنية اليابانية المبتكرة لتخلص من تشنج الرقبة والظهر. توصيل سريع في قطر - ضمان كامل" />
- 
-    <!-- 1. تحميل صورة الـ Hero فوراً (أهم عنصر في الصفحة) -->
-    <link rel="preload" href="hero.webp" as="image" fetchpriority="high">
- 
-    <!-- ⚠️ مهم لتقليل CLS الناتج عن تبديل الخط: إذا كان خط Tajawal محمّل من ملف خط (woff2)،
-         ضيف هنا preload للملف الفعلي + font-display: optional في تعريف @font-face داخل style.css.
-         مثال إذا كان الخط من Google Fonts:
-         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-         <link rel="preload" as="font" type="font/woff2" href="رابط-ملف-الخط.woff2" crossorigin>
-    -->
- 
-    <!-- 2. دمج الـ CSS الأساسي (Critical CSS) هنا مباشرة -->
-    <style>
-        body { font-family: Tajawal, system-ui, sans-serif; margin: 0; background: #FDFBF7; color: #1C1C1E; }
-        .sticky-order { backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
-        /* أضف هنا أي تنسيق تحتاجه للعناصر الموجودة في أول شاشة فقط */
-    </style>
- 
-    <!-- 3. تحميل باقي الـ CSS في الخلفية (لتخفيف الحمل) -->
-    <link rel="stylesheet" href="style.css" media="print" onload="this.media='all'">
-</head>
-<body>
- 
-    <!-- محتوى الصفحة هنا -->
- 
-    <!-- تحميل مكتبة الأيقونات والسكربتات بعد اكتمال الصفحة -->
-    <script>
-        window.addEventListener('load', () => {
-            const s = document.createElement('script');
-            s.src = "https://unpkg.com/lucide@0.487.0/dist/umd/lucide.min.js";
-            s.onload = () => lucide.createIcons();
-            document.body.appendChild(s);
-        });
-    </script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#1C1C1E" />
+  <title>ZENKO زِنكو — مساج شياتسو ياباني أصلي | قطر</title>
+  <meta name="description" content="اكتشف التقنية اليابانية المبتكرة لتخلص من تشنج الرقبة والظهر. توصيل سريع في قطر — ضمان كامل." />
+  
+  <!-- تحسينات الأداء والسرعة (LCP & Preconnect) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preload" as="image" href="hero.webp" />
+  
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet" />
+  
+  <!-- ملف التصميم النهائي الخفيف جداً -->
+  <link href="./dist/output.css" rel="stylesheet" />
+  
+  <script src="https://unpkg.com/lucide@0.487.0/dist/umd/lucide.min.js" defer></script>
+
 <!-- TikTok Pixel Code - Final Solution -->
 <script>
     let ttqLoaded = false;
     function initTikTok() {
       if (ttqLoaded) return;
       ttqLoaded = true;
- 
+      
       !function (w, d, t) {
         w.TiktokAnalyticsObject=t;var ttq=w[t]=w[t]||[];ttq.methods=["page","track","identify","instances","debug","on","off","once","ready","alias","group","enableCookie","disableCookie","holdConsent","revokeConsent","grantConsent"],ttq.setAndDefer=function(t,e){t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}};for(var i=0;i<ttq.methods.length;i++)ttq.setAndDefer(ttq,ttq.methods[i]);ttq.instance=function(t){for(
         var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n]);return e},ttq.load=function(e,n){var r="https://analytics.tiktok.com/i18n/pixel/events.js",o=n&&n.partner;ttq._i=ttq._i||{},ttq._i[e]=[],ttq._i[e]._u=r,ttq._t=ttq._t||{},ttq._t[e]=+new Date,ttq._o=ttq._o||{},ttq._o[e]=n||{};n=document.createElement("script")
         ;n.type="text/javascript",n.async=!0,n.src=r+"?sdkid="+e+"&lib="+t;e=document.getElementsByTagName("script")[0];e.parentNode.insertBefore(n,e)};
- 
+        
         // معرف البيكسل الخاص بك
         ttq.load('D8S80IJC77U96NJPHOCG');
         ttq.page();
       }(window, document, 'ttq');
- 
+      
       // إرسال البيانات الكاملة يدوياً لمنع التحذيرات الصفراء
       setTimeout(function() {
         if (typeof ttq !== 'undefined') {
@@ -64,28 +43,24 @@
             content_id: 'Zenko-Shiatsu-001',
             content_type: 'product',
             content_name: 'Zenko Shiatsu Massager',
-            value: 299,
+            value: 299, 
             currency: 'QAR'
           });
         }
       }, 500);
     }
- 
+
     // تفعيل التحميل عند أول تفاعل من الزائر
     ['scroll', 'mousemove', 'touchstart'].forEach(function(e) {
       window.addEventListener(e, initTikTok, { once: true });
     });
 </script>
- 
+
   <style>
     html { scroll-behavior: smooth; }
     body { font-family: Tajawal, system-ui, sans-serif; }
- 
-    /* ✅ FIX CLS #1 : on retire le transform (translateY) qui causait un vrai layout shift
-       sur des dizaines de sections. Seule l'opacité change désormais. */
-    .observe { opacity: 0; transition: opacity 0.6s ease; }
-    .observe.is-visible { opacity: 1; }
- 
+    .observe { opacity: 0; transform: translateY(24px); transition: opacity 0.85s cubic-bezier(.22,.9,.42,1), transform 0.85s cubic-bezier(.22,.9,.42,1); }
+    .observe.is-visible { opacity: 1; transform: translateY(0); }
     .sticky-bar { backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); }
     .hero-gradient {
       background:
@@ -138,9 +113,6 @@
       white-space: nowrap;
       background: linear-gradient(135deg, #E8611A 0%, #FF8C42 100%);
       box-shadow: 0 4px 20px rgba(232,97,26,0.55), 0 0 0 2px rgba(255,255,255,0.15);
-      /* ✅ FIX CLS #2 : transform de base identique au premier frame de l'animation,
-         évite le saut de position au premier rendu avant le démarrage du keyframe */
-      transform: translateX(-50%) scale(1);
       animation: badgePulse 2.4s ease-in-out infinite;
     }
     @keyframes badgePulse {
@@ -153,12 +125,12 @@
     }
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
-      .observe { opacity: 1; }
+      .observe { opacity: 1; transform: none; }
     }
   </style>
 </head>
 <body class="bg-cream text-ink antialiased overflow-x-hidden">
- 
+
   <!-- Header -->
   <header class="sticky top-0 z-50 border-b border-sanddeep/60 bg-white/90 sticky-bar">
     <div class="mx-auto flex max-w-6xl items-center justify-between gap-3 px-4 py-3 sm:px-6">
@@ -177,57 +149,61 @@
       </div>
     </div>
   </header>
- 
+
   <main>
- 
-  <!-- Hero -->
-   <section class="hero-gradient relative overflow-hidden border-b border-sanddeep/40 py-10 sm:py-16">
-  <div class="mx-auto max-w-6xl px-4 sm:px-6">
- 
-    <div class="observe mx-auto mb-8 max-w-3xl space-y-5 text-center sm:mb-10 sm:text-right">
-      <p class="inline-flex items-center gap-2 rounded-full border border-zen/25 bg-white/80 px-4 py-1.5 text-xs font-bold text-zen shadow-sm">
-        <span class="h-1.5 w-1.5 rounded-full bg-zen"></span>
-        انضم لأكثر من 5,000 عميل في قطر تخلصوا من آلام الرقبة والظهر...
-      </p>
-      <h1 class="text-[1.15rem] min-[380px]:text-[1.25rem] font-black leading-relaxed text-ink text-center sm:text-3xl lg:text-[2.15rem]">
-        اكتشف التقنية اليابانية المبتكرة التي تخلص أعصاب رقبتك وظهرك من التشنج المزمن..
-      </h1>
-      <p class="text-base font-medium leading-relaxed text-inksoft sm:text-xl">
-        اينما كنت بدون مسكنات بدون عيادات بدون مواعيد
-      </p>
-    </div>
- 
-    <div class="observe mx-auto max-w-2xl lg:max-w-3xl px-2 sm:px-0">
-      <div class="img-frame relative overflow-hidden rounded-2xl sm:rounded-3xl p-1.5 sm:p-3 shadow-premium ring-1 ring-sanddeep/80 min-h-[350px] sm:min-h-[500px]">
- 
-        <img
-          src="hero.webp"
-          alt="جهاز مساج شياتسو ياباني أصلي"
-          width="616"
-          height="616"
-          fetchpriority="high"
-          class="w-full h-auto rounded-xl sm:rounded-2xl object-contain block aspect-square"
-        />
- 
-        <div class="absolute bottom-2 left-2 right-2 sm:bottom-5 sm:left-5 sm:right-5 h-12 sm:h-16 rounded-xl sm:rounded-2xl bg-ink/90 px-4 py-2 sm:py-3 text-center backdrop-blur-sm flex items-center justify-center gap-2">
-          <p class="font-brand text-[9px] sm:text-xs font-bold uppercase tracking-widest text-sand">Premium Grade</p>
-          <span class="text-sand/40">•</span>
-          <p class="text-[11px] sm:text-sm font-bold !text-sand">تكنولوجيا شياتسو يابانية أصلية</p>
+
+    <!-- Hero -->
+    <section class="hero-gradient relative overflow-hidden border-b border-sanddeep/40 py-10 sm:py-16">
+      <div class="mx-auto max-w-6xl px-4 sm:px-6">
+        <!-- النصوص فوق الصورة دائماً -->
+        <div class="observe mx-auto mb-8 max-w-3xl space-y-5 text-center sm:mb-10 sm:text-right">
+          <p class="inline-flex items-center gap-2 rounded-full border border-zen/25 bg-white/80 px-4 py-1.5 text-xs font-bold text-zen shadow-sm">
+            <span class="h-1.5 w-1.5 rounded-full bg-zen animate-pulse"></span>
+            انضم لأكثر من 5,000 عميل في قطر تخلصوا من آلام الرقبة والظهر...
+          </p>
+        <h1 class="text-[1.15rem] min-[380px]:text-[1.25rem] font-black leading-relaxed text-ink text-center sm:text-3xl lg:text-[2.15rem]">
+  اكتشف التقنية اليابانية المبتكرة التي تخلص أعصاب رقبتك وظهرك من التشنج المزمن..
+</h1>
+          <p class="text-base font-medium leading-relaxed text-inksoft sm:text-xl">
+            اينما كنت بدون مسكنات بدون عيادات بدون مواعيد
+          </p>
+        </div>
+        <!-- صورة المنتج -->
+       <div class="observe mx-auto max-w-2xl lg:max-w-3xl px-2 sm:px-0">
+  <div class="img-frame relative overflow-hidden rounded-2xl sm:rounded-3xl p-1.5 sm:p-3 shadow-premium ring-1 ring-sanddeep/80">
+    <img
+      src="hero.webp"
+      alt="ZENKO — جهاز مساج شياتسو ياباني أصلي"
+      width="1024"
+      height="1024"
+      fetchpriority="high"
+      decoding="async"
+      class="w-full h-auto rounded-xl sm:rounded-2xl object-contain block"
+    />
+    
+  <div class="absolute bottom-2 left-2 right-2 sm:bottom-5 sm:left-5 sm:right-5 rounded-xl sm:rounded-2xl bg-ink/90 px-2 py-1.5 sm:px-4 sm:py-3 text-center backdrop-blur-sm flex flex-row items-center justify-center gap-1.5 sm:block">
+      
+  <p class="font-brand text-[9px] sm:text-xs font-bold uppercase tracking-widest text-sand whitespace-nowrap shrink-0">Premium Grade</p>
+  
+  <span class="text-sand/40 text-xs sm:hidden block shrink-0">•</span>
+  
+  <p class="text-[11px] sm:text-sm font-bold !text-sand whitespace-nowrap shrink-0">تكنولوجيا شياتسو يابانية أصلية</p>
+  
+</div>
+</div>
+          <div class="mt-6 flex flex-col items-center gap-4 sm:mt-8">
+            <a href="#offer" class="inline-flex w-full max-w-sm items-center justify-center rounded-2xl bg-zen px-8 py-4 text-base font-extrabold text-white shadow-glow transition hover:bg-zenhover animate-pulse-zen">
+              اطلب الحين
+            </a>
+            <div class="flex items-center gap-2 text-sm font-bold text-inksoft">
+              <i data-lucide="shield-check" class="h-4 w-4 text-emerald-600"></i>
+              CE • RoHS • ضمان كامل
+            </div>
+          </div>
         </div>
       </div>
- 
-      <div class="mt-6 flex flex-col items-center gap-4 sm:mt-8">
-        <a href="#offer" class="inline-flex w-full max-w-sm items-center justify-center rounded-2xl bg-zen px-8 py-4 text-base font-extrabold text-white shadow-glow transition hover:bg-zenhover">
-          اطلب الحين
-        </a>
-        <div class="flex items-center gap-2 text-sm font-bold text-inksoft">
-          <i data-lucide="shield-check" class="h-4 w-4 text-emerald-600"></i>
-          CE • RoHS • ضمان كامل
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+    </section>
+
     <!-- Pain points -->
     <section class="dark-section py-14 text-white sm:py-20">
       <div class="mx-auto max-w-3xl px-4 sm:px-6">
@@ -254,24 +230,25 @@
         </div>
       </div>
     </section>
- 
+
     <!-- تبين هاد المعانات — صورة فقط -->
     <section class="bg-sand py-10 sm:py-14" aria-label="تبين هاد المعانات">
       <div class="observe mx-auto max-w-5xl px-4 sm:px-6">
         <div class="img-frame overflow-hidden rounded-3xl shadow-premium ring-1 ring-sanddeep/60">
-   <img
-  src="images1.webp"
-  alt="تبين هاد المعانات"
-  width="665"
-  height="891"
-  loading="lazy"
-  class="w-full object-cover aspect-[665/891]"
-  onerror="this.src='images/pain-life.jpg'; this.onerror=null;"
-/>
+          <img
+            src="images1.webp"
+            alt="تبين هاد المعانات"
+            width="1200"
+            height="896"
+            loading="lazy"
+            decoding="async"
+            class="w-full object-cover"
+            onerror="this.src='images/pain-life.jpg'; this.onerror=null;"
+          />
         </div>
       </div>
     </section>
- 
+
     <!-- Warning -->
     <section class="border-y border-red-900/20 bg-red-950 py-12 sm:py-16">
       <div class="observe mx-auto max-w-3xl px-4 text-center sm:px-6">
@@ -284,7 +261,7 @@
         </p>
       </div>
     </section>
- 
+
     <!-- Solution -->
     <section class="hero-gradient py-14 sm:py-20">
       <div class="observe mx-auto max-w-4xl space-y-8 px-4 text-center sm:px-6">
@@ -294,23 +271,24 @@
         </p>
       </div>
     </section>
- 
+
     <!-- Three experts photo -->
    <section class="bg-sand py-10 sm:py-14" aria-label="تبين هاد المعانات">
   <div class="observe mx-auto max-w-5xl px-4 sm:px-6">
     <div class="img-frame overflow-hidden rounded-3xl shadow-premium ring-1 ring-sanddeep/60">
-     <img
-  src="images2.webp"
-  alt="ثلاث خبراء مساج يابانيين ينصحون بالجهاز"
-  width="665"
-  height="891"
-  loading="lazy"
-  class="w-full h-auto object-contain block aspect-[665/891]"
-/>
+      <img
+        src="images2.webp"
+        alt="ثلاث خبراء مساج يابانيين ينصحون بالجهاز"
+        width="896"
+        height="1200"
+        loading="lazy"
+        class="w-full h-auto object-contain block"
+        onerror="this.src='images/product-hero.png'; this.classList.add('object-contain','p-10','bg-sand');"
+      />
     </div>
   </div>
 </section>
- 
+
     <!-- Benefits -->
     <section id="benefits" class="bg-ink py-14 text-white sm:py-20">
       <div class="mx-auto max-w-4xl px-4 sm:px-6">
@@ -325,30 +303,31 @@
         </ul>
       </div>
     </section>
- 
+
     <!-- Relaxed Gulf person -->
    <section class="bg-sand py-12 sm:py-16">
   <div class="observe mx-auto max-w-5xl px-4 sm:px-6">
     <div class="img-frame mx-auto max-w-2xl overflow-hidden rounded-3xl shadow-card">
-  <img
-  src="images3.webp"
-  alt="شخص خليجي مرتاح والجهاز ظاهر"
-  width="665"
-  height="891"
-  loading="lazy"
-  class="w-full h-auto object-contain block aspect-[665/891]"
-/>
+      <img
+        src="images3.webp"
+        alt="شخص خليجي مرتاح والجهاز ظاهر"
+        width="896"
+        height="1200"
+        loading="lazy"
+        class="w-full h-auto object-contain block"
+        onerror="this.src='images/product-hero.png'; this.classList.add('object-contain','p-12');"
+      />
     </div>
   </div>
 </section>
- 
+
     <!-- Reviews -->
     <section id="reviews" class="bg-white py-14 sm:py-20">
       <div class="mx-auto max-w-5xl px-4 sm:px-6">
         <h2 class="observe mb-10 text-center text-2xl font-black text-ink sm:text-3xl">وش يقولون عملاؤنا في قطر؟</h2>
         <div class="observe grid gap-6 sm:grid-cols-3">
           <article class="flex flex-col rounded-3xl border border-sanddeep/70 bg-sand/30 p-6 shadow-card">
-            <div class="mb-4 flex gap-0.5 text-zen" role="img" aria-label="5 نجوم">
+            <div class="mb-4 flex gap-0.5 text-zen" aria-label="5 نجوم">
               <i data-lucide="star" class="h-4 w-4 fill-zen stroke-zen"></i>
               <i data-lucide="star" class="h-4 w-4 fill-zen stroke-zen"></i>
               <i data-lucide="star" class="h-4 w-4 fill-zen stroke-zen"></i>
@@ -362,7 +341,7 @@
             </div>
           </article>
           <article class="flex flex-col rounded-3xl border border-sanddeep/70 bg-sand/30 p-6 shadow-card">
-            <div class="mb-4 flex gap-0.5 text-zen" role="img" aria-label="5 نجوم">
+            <div class="mb-4 flex gap-0.5 text-zen" aria-label="5 نجوم">
               <i data-lucide="star" class="h-4 w-4 fill-zen stroke-zen"></i>
               <i data-lucide="star" class="h-4 w-4 fill-zen stroke-zen"></i>
               <i data-lucide="star" class="h-4 w-4 fill-zen stroke-zen"></i>
@@ -376,7 +355,7 @@
             </div>
           </article>
           <article class="flex flex-col rounded-3xl border border-sanddeep/70 bg-sand/30 p-6 shadow-card">
-            <div class="mb-4 flex gap-0.5 text-zen" role="img" aria-label="5 نجوم">
+            <div class="mb-4 flex gap-0.5 text-zen" aria-label="5 نجوم">
               <i data-lucide="star" class="h-4 w-4 fill-zen stroke-zen"></i>
               <i data-lucide="star" class="h-4 w-4 fill-zen stroke-zen"></i>
               <i data-lucide="star" class="h-4 w-4 fill-zen stroke-zen"></i>
@@ -397,16 +376,16 @@
         </div>
       </div>
     </section>
- 
+
     <!-- Features — zigzag mobile + desktop -->
     <section id="features" class="bg-sand py-14 sm:py-24">
       <div class="mx-auto max-w-6xl px-4 sm:px-6">
         <h2 class="observe mx-auto mb-14 max-w-3xl text-center text-xl font-black leading-relaxed text-ink sm:text-2xl lg:text-3xl">
           و هذا بفضل اهتمام الخبراء بالتفاصيل الكبيرة و الصغيرة و اخرجو تكنولوجيا متكاملة
         </h2>
- 
+
         <div class="space-y-12 sm:space-y-16 lg:space-y-20">
- 
+
           <div class="observe feature-row feature-row-a gap-6 lg:gap-14">
             <div class="img-frame overflow-hidden rounded-3xl shadow-premium ring-1 ring-sanddeep/60">
               <img src="feature-1.webp" alt="" width="640" height="480" loading="lazy" class="aspect-[4/3] w-full object-cover" onerror="this.src='images/product-hero.png'; this.classList.add('object-contain','p-6','bg-sand');" />
@@ -416,7 +395,7 @@
               <p class="text-[1.05rem] font-bold leading-relaxed text-ink sm:text-lg">6 رؤوس لتوفير تدليك يحاكي لمسة يد خبير المساج الحقيقي</p>
             </div>
           </div>
- 
+
           <div class="observe feature-row feature-row-b gap-6 lg:gap-14">
             <div class="img-frame overflow-hidden rounded-3xl shadow-premium ring-1 ring-sanddeep/60">
               <img src="imagesfeature-2.webp" alt="" width="640" height="480" loading="lazy" class="aspect-[4/3] w-full object-cover" onerror="this.src='images/product-hero.png'; this.classList.add('object-contain','p-6','bg-sand');" />
@@ -426,7 +405,7 @@
               <p class="text-[1.05rem] font-bold leading-relaxed text-ink sm:text-lg">محرك قوي تصله بالكهرباء ليعطيك تدليك مكثف و كباقي الاجهزة الاخرى</p>
             </div>
           </div>
- 
+
           <div class="observe feature-row feature-row-a gap-6 lg:gap-14">
             <div class="img-frame overflow-hidden rounded-3xl shadow-premium ring-1 ring-sanddeep/60">
               <img src="feature-3.webp" alt="" width="640" height="480" loading="lazy" class="aspect-[4/3] w-full object-cover" onerror="this.src='images/product-hero.png'; this.classList.add('object-contain','p-6','bg-sand');" />
@@ -436,7 +415,7 @@
               <p class="text-[1.05rem] font-bold leading-relaxed text-ink sm:text-lg">تقنية ذكية تخليه ينطفئ كل 15 دقيقة حفاظا على سلامتك و يمكنك اعادة تشغيله</p>
             </div>
           </div>
- 
+
           <div class="observe feature-row feature-row-b gap-6 lg:gap-14">
             <div class="img-frame overflow-hidden rounded-3xl shadow-premium ring-1 ring-sanddeep/60">
               <img src="feature-4.webp" alt="" width="640" height="480" loading="lazy" class="aspect-[4/3] w-full object-cover" onerror="this.src='images/product-hero.png'; this.classList.add('object-contain','p-6','bg-sand');" />
@@ -446,7 +425,7 @@
               <p class="text-[1.05rem] font-bold leading-relaxed text-ink sm:text-lg">خفيف الوزن تقدر تاخذه معك اينتما تريد و تستمتع بالمساج</p>
             </div>
           </div>
- 
+
           <div class="observe feature-row feature-row-a gap-6 lg:gap-14">
             <div class="img-frame overflow-hidden rounded-3xl shadow-premium ring-1 ring-sanddeep/60">
               <img src="feature-5.webp" alt="" width="640" height="480" loading="lazy" class="aspect-[4/3] w-full object-cover" onerror="this.src='images/product-hero.png'; this.classList.add('object-contain','p-6','bg-sand');" />
@@ -456,7 +435,7 @@
               <p class="text-[1.05rem] font-bold leading-relaxed text-ink sm:text-lg">فيه منفذ كهرباء منزلي و فيه منفذ كهبرائي للسيارة عن طريق ولاعة السجائر</p>
             </div>
           </div>
- 
+
           <div class="observe feature-row feature-row-b gap-6 lg:gap-14">
             <div class="img-frame overflow-hidden rounded-3xl shadow-premium ring-1 ring-sanddeep/60">
               <img src="feature-6.webp" alt="" width="640" height="480" loading="lazy" class="aspect-[4/3] w-full object-cover" onerror="this.src='images/product-hero.png'; this.classList.add('object-contain','p-6','bg-sand');" />
@@ -466,7 +445,7 @@
               <p class="text-[1.05rem] font-bold leading-relaxed text-ink sm:text-lg">مصمم ليعطيك راحة و مرونة في الاستخدام</p>
             </div>
           </div>
- 
+
           <div class="observe feature-row feature-row-a gap-6 lg:gap-14">
             <div class="img-frame overflow-hidden rounded-3xl shadow-premium ring-1 ring-sanddeep/60">
               <img src="feature-7.webp" alt="" width="640" height="480" loading="lazy" class="aspect-[4/3] w-full object-cover" onerror="this.src='images/product-hero.png'; this.classList.add('object-contain','p-6','bg-sand');" />
@@ -476,7 +455,7 @@
               <p class="text-[1.05rem] font-bold leading-relaxed text-ink sm:text-lg">3 مستويات للسرعة تتحكم فيها بسهولة حسب حاجتك</p>
             </div>
           </div>
- 
+
           <div class="observe feature-row feature-row-b gap-6 lg:gap-14">
             <div class="img-frame overflow-hidden rounded-3xl shadow-premium ring-1 ring-sanddeep/60">
               <img src="feature-8.webp" alt="" width="640" height="480" loading="lazy" class="aspect-[4/3] w-full object-cover" onerror="this.src='images/product-hero.png'; this.classList.add('object-contain','p-6','bg-sand');" />
@@ -486,7 +465,7 @@
               <p class="text-[1.05rem] font-bold leading-relaxed text-ink sm:text-lg">عالي الجودة لييعطيك مساج ناعم بدون ازعاج او الم</p>
             </div>
           </div>
- 
+
           <div class="observe feature-row feature-row-a gap-6 lg:gap-14">
             <div class="img-frame overflow-hidden rounded-3xl shadow-premium ring-1 ring-sanddeep/60">
               <img src="feature-9.webp" alt="" width="640" height="480" loading="lazy" class="aspect-[4/3] w-full object-cover" onerror="this.src='images/product-hero.png'; this.classList.add('object-contain','p-6','bg-sand');" />
@@ -496,16 +475,16 @@
               <p class="text-[1.05rem] font-bold leading-relaxed text-ink sm:text-lg">سهل الاستخدام — تحكم كامل ب 4 أزرار فقط بدون تعقيد أو قوائم طويلة</p>
             </div>
           </div>
- 
+
         </div>
       </div>
     </section>
- 
-    <section class="border-y border-sanddeep/60 bg-sand py-14 sm:py-20">
+
+      <section class="border-y border-sanddeep/60 bg-sand py-14 sm:py-20">
       <div class="observe mx-auto max-w-4xl px-4 sm:px-6">
         <h2 class="mb-10 text-center text-xl font-black text-ink sm:text-2xl">شهادات الجودة والأمان العالمية</h2>
         <div class="grid gap-6 sm:grid-cols-2">
- 
+          
           <div class="rounded-3xl border border-emerald-200/80 bg-white p-6 shadow-card transition-all duration-300 hover:shadow-md sm:p-8">
             <div class="mb-4 flex items-center gap-3">
               <span class="flex h-12 w-12 items-center justify-center rounded-2xl bg-emerald-50 text-emerald-600 ring-1 ring-emerald-200">
@@ -520,7 +499,7 @@
               شهادة معترف بها عالمياً تثبت أن الجهاز آمن تماماً من الناحية الكهربائية والصحية للاستخدام اليومي — تم تطبيق معايير سلامة صارمة لضمان حمايتك قبل وصوله إلى يدك.
             </p>
           </div>
- 
+
           <div class="rounded-3xl border border-emerald-200/80 bg-white p-6 shadow-card transition-all duration-300 hover:shadow-md sm:p-8">
             <div class="mb-4 flex items-center gap-3">
               <span class="flex h-12 w-12 items-center justify-center rounded-2xl bg-emerald-50 text-emerald-600 ring-1 ring-emerald-200">
@@ -535,11 +514,11 @@
               تضمن هذه الشهادة أن جميع مكونات الجهاز الداخلية والخارجية خالية تماماً من المواد الكيميائية أو العناصر الضارة — لراحة بال مطلقة أثناء استخدامه المباشر على جسمك يومياً.
             </p>
           </div>
- 
+
         </div>
       </div>
     </section>
- 
+
     <section class="bg-white py-14 sm:py-20">
       <div class="observe mx-auto max-w-3xl px-4 sm:px-6">
         <h2 class="mb-8 text-center text-xl font-black text-ink sm:text-2xl">توصيات وإرشادات الاستعمال</h2>
@@ -555,7 +534,7 @@
         </ul>
       </div>
     </section>
- 
+
     <section class="relative overflow-hidden bg-ink py-16 sm:py-24">
       <div class="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_70%_60%_at_50%_0%,rgba(232,97,26,0.12),transparent)]"></div>
       <div class="observe relative mx-auto max-w-4xl px-4 sm:px-6">
@@ -587,7 +566,7 @@
         </div>
       </div>
     </section>
- 
+
     <section class="relative overflow-hidden bg-ink py-16 sm:py-24">
       <div class="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(232,97,26,0.08),transparent_65%)]"></div>
       <div class="observe relative mx-auto max-w-3xl px-4 sm:px-6">
@@ -613,11 +592,11 @@
         </div>
       </div>
     </section>
- 
+
     <section id="offer" class="relative overflow-hidden bg-ink py-16 text-white sm:py-24">
       <div class="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_50%_-20%,rgba(232,97,26,0.18),transparent)]"></div>
       <div class="relative mx-auto max-w-6xl px-4 sm:px-6">
- 
+
         <div class="observe mx-auto mb-12 max-w-3xl text-center sm:mb-16">
           <p class="offer-limited-text mb-4 inline-block rounded-full bg-zen/20 px-5 py-2 text-base font-black text-zen sm:text-lg animate-pulse">عرض محدود ينتهي اليوم</p>
           <h2 class="text-2xl font-black leading-snug text-white sm:text-3xl lg:text-4xl">
@@ -627,10 +606,10 @@
             نحن لا نبيعك مجرد جهاز مساج تقليدي، بل نوفر لك تجربة استرخاء يابانية متكاملة في منزلك أو سيارتك دون الحاجة لإنفاق مبالغ طائلة وهدر وقتك في مراكز المساج الأسبوعية. هنا أنت تستثمر في راحتك لسنوات طويلة وبأفضل قيمة.
           </p>
         </div>
- 
+
         <div class="observe grid gap-6 lg:grid-cols-3 lg:gap-5 lg:items-end" id="offerCards">
- 
-          <div
+
+          <article
             class="offer-card flex flex-col rounded-3xl bg-white/5 p-6 backdrop-blur-sm transition-all duration-300 hover:bg-white/10 sm:p-7 lg:order-1"
             data-package="299 — جهاز واحد + هدية EMS"
             role="button"
@@ -668,9 +647,9 @@
               <li class="flex items-center gap-2"><i data-lucide="check" class="h-3.5 w-3.5 text-zen"></i>هدية جهاز مساج القدم EMS (مجاناً)</li>
             </ul>
             <a href="#order" onclick="event.stopPropagation(); selectOffer('299 — جهاز واحد + هدية EMS', true);" class="mt-auto block rounded-2xl bg-zen py-4 text-center text-sm font-black text-white transition hover:bg-zenhover">اختر هذا العرض</a>
-          </div>
- 
-          <div
+          </article>
+
+          <article
             class="offer-card offer-card-selected relative flex flex-col overflow-hidden rounded-3xl bg-gradient-to-b from-white/15 to-white/5 p-6 ring-2 ring-zen/50 sm:p-7 lg:order-2"
             data-package="629 — 3 اجهزة + 3 هدايا EMS"
             role="button"
@@ -712,9 +691,9 @@
               <li class="flex items-center gap-2"><i data-lucide="check" class="h-3.5 w-3.5 text-zen"></i>جهاز مساج قدم EMS × 3 (مجاناً)</li>
             </ul>
             <a href="#order" onclick="event.stopPropagation(); selectOffer('629 — 3 اجهزة + 3 هدايا EMS', true);" class="mt-auto block rounded-2xl bg-zen py-4 text-center text-sm font-black text-white shadow-glow transition hover:bg-zenhover">اختر عرض العائلة الآن</a>
-          </div>
- 
-          <div
+          </article>
+
+          <article
             class="offer-card flex flex-col rounded-3xl bg-white/5 p-6 backdrop-blur-sm transition-all duration-300 hover:bg-white/10 sm:p-7 lg:order-3"
             data-package="499 — جهازين + هديتين EMS"
             role="button"
@@ -752,9 +731,9 @@
               <li class="flex items-center gap-2"><i data-lucide="check" class="h-3.5 w-3.5 text-zen"></i>جهاز مساج قدم EMS × 2 (مجاناً)</li>
             </ul>
             <a href="#order" onclick="event.stopPropagation(); selectOffer('499 — جهازين + هديتين EMS', true);" class="mt-auto block rounded-2xl bg-zen py-4 text-center text-sm font-black text-white transition hover:bg-zenhover">اختر هذا العرض</a>
-          </div>
+          </article>
         </div>
- 
+
         <div class="observe mt-10 flex items-start gap-4 rounded-2xl border border-red-500/40 bg-red-500/10 px-5 py-5 sm:mt-12 sm:px-6">
           <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-red-500/20 text-lg">🚨</span>
           <p class="text-sm font-bold leading-relaxed text-red-200 sm:text-base">
@@ -763,7 +742,7 @@
         </div>
       </div>
     </section>
- 
+
     <section id="order" class="bg-sand py-16 sm:py-24">
       <div class="mx-auto max-w-lg px-4 sm:px-6">
         <div class="observe overflow-hidden rounded-[2rem] bg-ink p-8 shadow-premium sm:p-10">
@@ -772,10 +751,10 @@
             <h2 class="mt-2 text-2xl font-black text-white sm:text-3xl">ثبّت طلبك الآن — والباقي علينا 🇶🇦</h2>
             <p class="mt-2 text-sm text-white/60">توصيل سريع ومجاني في كافة مناطق قطر — الدفع عند الاستلام</p>
           </div>
- 
+
           <form id="orderForm" class="space-y-5">
             <div>
-              <label for="packageInput" class="mb-2 block text-xs font-bold text-white/70">الباقة المختارة</label>
+              <label class="mb-2 block text-xs font-bold text-white/70">الباقة المختارة</label>
               <select id="packageInput" required class="w-full rounded-xl border-0 bg-white px-4 py-4 text-sm font-bold text-ink outline-none ring-2 ring-transparent focus:ring-zen">
                 <option value="299 — جهاز واحد + هدية EMS">299 ريال — جهاز شياتسو واحد + هدية مساج القدم</option>
                 <option value="499 — جهازين + هديتين EMS">499 ريال — جهازين شياتسو + هديتين مساج قدم مجاناً</option>
@@ -783,11 +762,11 @@
               </select>
             </div>
             <div>
-              <label for="nameInput" class="mb-2 block text-xs font-bold text-white/70">الاسم بالكامل</label>
+              <label class="mb-2 block text-xs font-bold text-white/70">الاسم بالكامل</label>
               <input type="text" id="nameInput" required class="w-full rounded-xl border-0 bg-white px-4 py-4 text-right font-bold text-ink outline-none ring-2 ring-transparent focus:ring-zen" placeholder="اكتب اسمك الثلاثي لضمان دقة التوصيل" />
             </div>
             <div>
-              <label for="phoneInput" class="mb-2 block text-xs font-bold text-white/70">رقم الهاتف الجوال</label>
+              <label class="mb-2 block text-xs font-bold text-white/70">رقم الهاتف الجوال</label>
               <div class="relative">
                 <input type="tel" id="phoneInput" required dir="ltr" class="w-full rounded-xl border-0 bg-white py-4 pl-20 pr-4 font-bold text-ink outline-none ring-2 ring-transparent focus:ring-zen" placeholder="3xxxxxxx" />
                 <span class="absolute left-4 top-1/2 -translate-y-1/2 border-r border-ink/10 pr-3 font-black text-ink" dir="ltr">+974</span>
@@ -800,12 +779,12 @@
         </div>
       </div>
     </section>
- 
+
     <section id="faq" class="bg-white py-14 sm:py-20">
       <div class="mx-auto max-w-3xl px-4 sm:px-6">
         <h2 class="observe mb-8 text-center text-2xl font-black text-ink sm:text-3xl">الأسئلة الشائعة</h2>
         <div class="observe divide-y divide-sanddeep/80 rounded-3xl border border-sanddeep/70 bg-sand/20 shadow-card">
- 
+          
           <details class="group px-6 py-5 open:bg-white transition-colors duration-200">
             <summary class="flex cursor-pointer list-none items-start justify-between gap-3 text-[0.95rem] font-bold text-ink">
               <span>هل الجهاز آمن تماماً للاستخدام اليومي؟</span>
@@ -813,7 +792,7 @@
             </summary>
             <p class="mt-3 pb-1 text-sm leading-relaxed text-inksoft">نعم، الجهاز حاصل على شهادات الجودة العالمية CE و RoHS ومزود بنظام ذكي للإغلاق التلقائي كل 15 دقيقة لمنع الإفراط في التدليك وتأمين سلامتك العضلية والكهربائية.</p>
           </details>
- 
+
           <details class="group px-6 py-5 open:bg-white transition-colors duration-200">
             <summary class="flex cursor-pointer list-none items-start justify-between gap-3 text-[0.95rem] font-bold text-ink">
               <span>هل يمكنني استخدامه داخل السيارة أثناء التنقل؟</span>
@@ -821,7 +800,7 @@
             </summary>
             <p class="mt-3 pb-1 text-sm leading-relaxed text-inksoft">بالتأكيد، تأتي علبة الجهاز مجهزة بمحول طاقة منزلي تقليدي بالإضافة إلى محول طاقة خاص بالسيارة يعمل عبر ولاعة السجائر، مما يجعله رفيقاً مثالياً للتخلص من تعب القيادة والدوام الطويل.</p>
           </details>
- 
+
           <details class="group px-6 py-5 open:bg-white transition-colors duration-200">
             <summary class="flex cursor-pointer list-none items-start justify-between gap-3 text-[0.95rem] font-bold text-ink">
               <span>آلية التوصيل وطريقة الدفع المتوفرة في قطر؟</span>
@@ -829,7 +808,7 @@
             </summary>
             <p class="mt-3 pb-1 text-sm leading-relaxed text-inksoft">التوصيل سريع جداً ومجاني لكافة مناطق دولة قطر. نظام الدفع لدينا يعتمد بالكامل على "الدفع عند الاستلام" — يمكنك الفحص والمعاينة أولاً ثم الدفع للمندوب سواءً نقداً أو ببطاقتك البنكية بكل أمان.</p>
           </details>
- 
+
           <details class="group px-6 py-5 open:bg-white rounded-b-[1.05rem] transition-colors duration-200">
             <summary class="flex cursor-pointer list-none items-start justify-between gap-3 text-[0.95rem] font-bold text-ink">
               <span>ما هي شروط تفعيل الضمان إذا لم يناسبني المنتج؟</span>
@@ -837,43 +816,40 @@
             </summary>
             <p class="mt-3 pb-1 text-sm leading-relaxed text-inksoft">نحن نثق بمنتجات ZENKO، وإذا لم تجد الفائدة الفورية أو واجهتك أي مشكلة خلال فترة الضمان، فقط تواصل مع فريق الدعم في قطر، وسنقوم فوراً بجدولة استرجاع الجهاز وإعادة أموالك كاملة دون أي شروط معقدة.</p>
           </details>
- 
+
         </div>
       </div>
     </section>
- 
-  </main>
- 
-<div class="pointer-events-none fixed inset-x-0 bottom-0 z-40 pb-[env(safe-area-inset-bottom,0)]">
+    <div class="pointer-events-none fixed inset-x-0 bottom-0 z-40 pb-[env(safe-area-inset-bottom,0)]">
     <div class="pointer-events-auto mx-auto max-w-xl px-3 pb-4">
       <a href="#offer" class="block w-full rounded-2xl bg-zen px-5 py-4 text-center text-base font-extrabold text-white shadow-glow animate-pulse-zen">
         الحق العرض لا تخليه يفوتك
       </a>
     </div>
   </div>
- 
+
   <footer class="border-t border-sanddeep/60 bg-white pb-28 pt-10 text-center text-xs text-inksoft">
     <p class="font-brand font-bold tracking-widest text-ink">ZENKO™</p>
     <p class="mt-1">Original Japanese Shiatsu Technology — Qatar 🇶🇦</p>
     <p class="mt-4 px-4 leading-relaxed opacity-70">هذه الصفحة لأغراض تسويق إلكتروني. الجهاز والمزايا تخضع لتوضيحات الصانع وقت التأكيد.</p>
   </footer>
- 
+
   <script>
     function bootIcons() {
       if (typeof lucide !== 'undefined' && lucide.createIcons) {
         lucide.createIcons();
       }
     }
- 
+
     function selectOffer(packageValue, scrollToForm) {
       const cards = document.querySelectorAll('.offer-card');
       const pkgInput = document.getElementById('packageInput');
- 
+      
       cards.forEach(card => {
         const match = card.getAttribute('data-package') === packageValue;
         card.classList.toggle('offer-card-selected', match);
       });
- 
+      
       if (pkgInput) {
         for (let i = 0; i < pkgInput.options.length; i++) {
           if (pkgInput.options[i].value === packageValue) {
@@ -882,7 +858,7 @@
           }
         }
       }
- 
+      
       if (scrollToForm) {
         const orderEl = document.getElementById('order');
         if (orderEl) {
@@ -890,11 +866,11 @@
         }
       }
     }
- 
+
     document.addEventListener('DOMContentLoaded', () => {
       bootIcons();
       selectOffer('629 — 3 اجهزة + 3 هدايا EMS', false);
- 
+      
       const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
       if (!reduced && 'IntersectionObserver' in window) {
         const obs = new IntersectionObserver((entries, o) => {
@@ -905,41 +881,41 @@
             }
           });
         }, { threshold: 0.1 });
- 
+        
         document.querySelectorAll('.observe').forEach(el => obs.observe(el));
       } else {
         document.querySelectorAll('.observe').forEach(el => el.classList.add('is-visible'));
       }
     });
- 
+
     function sendOrder(event) {
       event.preventDefault();
- 
+      
       // جلب البيانات من الفورم
       const name = document.getElementById('nameInput').value.trim();
       const phone = document.getElementById('phoneInput').value.trim();
       const addressEl = document.getElementById('addressInput');
       const address = addressEl ? addressEl.value.trim() : "";
-      const pkg = document.getElementById('packageInput').value;
+      const pkg = document.getElementById('packageInput').value; 
       const btn = document.getElementById('submitBtn');
- 
+      
       const scriptURL = 'https://script.google.com/macros/s/AKfycbxeg5xp7ZRXC-r-L5NrTDicOgXJiwNoZ4J70IH3V8XPiCAKwhvjmd-lQQIvTOMYR64/exec';
- 
-      if (!name || !phone) {
-          alert('يرجى ملء البيانات (الاسم ورقم الهاتف)');
-          return;
+
+      if (!name || !phone) { 
+          alert('يرجى ملء البيانات (الاسم ورقم الهاتف)'); 
+          return; 
       }
- 
-      if (btn) {
-          btn.innerText = 'جاري التأكيد...';
-          btn.disabled = true;
+      
+      if (btn) { 
+          btn.innerText = 'جاري التأكيد...'; 
+          btn.disabled = true; 
       }
- 
+
       // تحليل العرض المختار لاستخراج الكمية، السعر، والملاحظات
       let quantity = "1";
       let price = "299";
       let notes = "جهاز واحد + هدية مساج القدم";
- 
+
       if (pkg.includes("499") || pkg.includes("جهازين")) {
           quantity = "2";
           price = "499";
@@ -949,14 +925,14 @@
           price = "629";
           notes = "عرض العائلة (3 اجهزة + 3 هدايا)";
       }
- 
+
       // المتغيرات الثابتة الخاصة بالشيت
       const country = "Qatar";
       const url = window.location.href;
       const sku = "اكتب_السكيو_هنا"; // ⚠️ لا تنسى تغيير الـ SKU الخاص بالمنتج
       const Product = "اكتب_اسم_المنتج_هنا"; // ⚠️ لا تنسى تغيير اسم المنتج
       const currency = "ريال قطري";
- 
+
       // بناء المعطيات بشكل آمن باستخدام URLSearchParams
       const params = new URLSearchParams({
         country: country,
@@ -971,10 +947,10 @@
         currency: currency,
         notes: notes
       });
- 
+
       // إرسال البيانات
       fetch(`${scriptURL}?${params.toString()}`, { mode: 'no-cors', method: 'GET' });
- 
+
       // بيكسل تيك توك (يشتغل إذا كان مركب في الصفحة)
       if (typeof ttq !== 'undefined') {
           ttq.track('CompletePayment', {
@@ -983,12 +959,12 @@
               currency: 'QAR'
           });
       }
- 
+
       // التحويل لصفحة الشكر
-      setTimeout(() => {
-          window.location.href = 'thank-you.html';
+      setTimeout(() => { 
+          window.location.href = 'thank-you.html'; 
       }, 1500);
     }
-  </script>
+  </script>  
 </body>
 </html>
