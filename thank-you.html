@@ -154,6 +154,7 @@
             <div class="min-w-0">
               <p class="font-bold text-white">ضمان كامل + استرجاع مضمون</p>
               <p class="mt-1.5 text-sm leading-relaxed text-white/70">إذا واجهت أي مشكلة — نسترجع الجهاز ونعيد أموالك <strong class="text-emerald-400">كاملةً بلا تعقيدات</strong>.</p>
+              <p class="mt-2 text-sm leading-relaxed text-white/60">إذا احتجت أي مساعدة بخصوص طلبك أو التوصيل، تواصل معنا مباشرة — <strong class="text-emerald-400">ردنا سريع وفريقنا متاح 7 أيام</strong>.</p>
             </div>
           </li>
         </ol>
@@ -197,33 +198,70 @@
       </div>
     </section>
 
-    <!-- تواصل معنا -->
-    <section class="bg-white py-14 sm:py-20">
+    <!-- زر العودة -->
+    <section class="bg-white py-10 sm:py-14">
       <div class="mx-auto max-w-2xl px-4 sm:px-6">
-        <div class="observe overflow-hidden rounded-3xl border border-sanddeep/80 bg-sand/40 p-6 shadow-card sm:p-8">
-          <div class="mb-6 flex items-center gap-3">
-            <span class="flex h-12 w-12 items-center justify-center rounded-2xl bg-zen/10 text-zen">
-              <i data-lucide="message-circle" class="h-6 w-6"></i>
-            </span>
-            <div>
-              <p class="font-bold text-ink">هل لديك سؤال؟</p>
-              <p class="text-sm text-inksoft/70">فريقنا متاح 7 أيام</p>
-            </div>
-          </div>
-          <p class="mb-6 text-sm leading-relaxed text-inksoft">
-            إذا احتجت أي مساعدة بخصوص طلبك أو التوصيل، تواصل معنا مباشرة — ردنا سريع.
+        <div class="observe flex flex-col gap-3 sm:flex-row">
+          <a href="https://wa.me/97430000000" target="_blank" rel="noopener"
+             class="flex flex-1 items-center justify-center gap-2 rounded-2xl bg-[#25D366] py-4 text-sm font-black text-white shadow-sm transition hover:opacity-90">
+            <svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.096.541 4.122 1.562 5.894L.057 23.882a.5.5 0 0 0 .61.61l6.045-1.497A11.944 11.944 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.849a9.844 9.844 0 0 1-5.031-1.378l-.36-.214-3.736.925.951-3.677-.234-.374A9.869 9.869 0 0 1 2.151 12c0-5.44 4.409-9.849 9.849-9.849 5.44 0 9.849 4.409 9.849 9.849 0 5.44-4.409 9.849-9.849 9.849z"/></svg>
+            تواصل معنا عبر واتساب
+          </a>
+          <a href="index.html"
+             class="flex flex-1 items-center justify-center gap-2 rounded-2xl border border-sanddeep bg-white py-4 text-sm font-bold text-inksoft transition hover:bg-sand">
+            <i data-lucide="arrow-right" class="h-4 w-4"></i>
+            العودة للرئيسية
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- تحذير الجهاز المقلد + المصدر الرسمي -->
+    <section class="border-y border-red-900/20 bg-red-950 py-12 sm:py-16">
+      <div class="observe mx-auto max-w-2xl px-4 sm:px-6">
+        <div class="mb-6 flex items-center justify-center gap-3">
+          <span class="flex h-12 w-12 items-center justify-center rounded-2xl bg-red-500/20 text-red-400">
+            <i data-lucide="shield-alert" class="h-6 w-6"></i>
+          </span>
+          <h2 class="text-lg font-black text-red-300 sm:text-xl">⚠️ تحذير هام — اقرأ قبل الاستخدام</h2>
+        </div>
+
+        <!-- بانر المصدر الرسمي -->
+        <div class="mb-5 flex items-center gap-3 rounded-2xl border border-zen/40 bg-zen/15 px-5 py-4">
+          <span class="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-zen/30 text-zen">
+            <i data-lucide="badge-check" class="h-5 w-5"></i>
+          </span>
+          <p class="text-sm font-bold leading-relaxed text-white">
+            ZENKO هو <span class="text-zen">الموزّع الرسمي الوحيد</span> لهذا الجهاز في دولة قطر 🇶🇦 — أنت طلبت من المصدر الأصلي المعتمد.
           </p>
-          <div class="flex flex-col gap-3 sm:flex-row">
-            <a href="https://wa.me/97430000000" target="_blank" rel="noopener"
-               class="flex flex-1 items-center justify-center gap-2 rounded-2xl bg-[#25D366] py-3.5 text-sm font-black text-white shadow-sm transition hover:opacity-90">
-              <svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.096.541 4.122 1.562 5.894L.057 23.882a.5.5 0 0 0 .61.61l6.045-1.497A11.944 11.944 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.849a9.844 9.844 0 0 1-5.031-1.378l-.36-.214-3.736.925.951-3.677-.234-.374A9.869 9.869 0 0 1 2.151 12c0-5.44 4.409-9.849 9.849-9.849 5.44 0 9.849 4.409 9.849 9.849 0 5.44-4.409 9.849-9.849 9.849z"/></svg>
-              واتساب — تواصل الآن
-            </a>
-            <a href="index.html"
-               class="flex flex-1 items-center justify-center gap-2 rounded-2xl border border-sanddeep bg-white py-3.5 text-sm font-bold text-inksoft transition hover:bg-sand">
-              <i data-lucide="arrow-right" class="h-4 w-4"></i>
-              العودة للرئيسية
-            </a>
+        </div>
+
+        <!-- التحذير من التقليد -->
+        <div class="rounded-2xl border border-red-500/30 bg-red-500/10 p-5">
+          <p class="mb-3 font-bold text-red-300">احذر من الأجهزة المقلّدة المنتشرة في السوق:</p>
+          <ul class="space-y-2.5">
+            <li class="flex items-start gap-2.5">
+              <i data-lucide="x-circle" class="mt-0.5 h-4 w-4 shrink-0 text-red-400" aria-hidden="true"></i>
+              <p class="text-sm leading-relaxed text-red-200">تُباع بأسعار أقل لكنها <strong>مصنوعة من مواد رديئة</strong> قد تتلف بسرعة أو تسبب تهيجاً للجلد</p>
+            </li>
+            <li class="flex items-start gap-2.5">
+              <i data-lucide="x-circle" class="mt-0.5 h-4 w-4 shrink-0 text-red-400" aria-hidden="true"></i>
+              <p class="text-sm leading-relaxed text-red-200"><strong>لا تحمل شهادة CE أو RoHS</strong> ولا تخضع لأي معايير أمان كهربائي</p>
+            </li>
+            <li class="flex items-start gap-2.5">
+              <i data-lucide="x-circle" class="mt-0.5 h-4 w-4 shrink-0 text-red-400" aria-hidden="true"></i>
+              <p class="text-sm leading-relaxed text-red-200"><strong>لا ضمان ولا استرجاع</strong> — تدفع وتخسر بلا أي حق</p>
+            </li>
+            <li class="flex items-start gap-2.5">
+              <i data-lucide="x-circle" class="mt-0.5 h-4 w-4 shrink-0 text-red-400" aria-hidden="true"></i>
+              <p class="text-sm leading-relaxed text-red-200">لا تعطي نتائج حقيقية لأن <strong>تقنية الشياتسو</strong> غير موجودة فيها أصلاً</p>
+            </li>
+          </ul>
+          <div class="mt-5 flex items-center gap-3 rounded-xl bg-white/5 px-4 py-3">
+            <i data-lucide="check-circle" class="h-5 w-5 shrink-0 text-emerald-400" aria-hidden="true"></i>
+            <p class="text-sm font-bold text-emerald-300">
+              جهازك من ZENKO أصلي 100% — معه الضمان الكامل وشهادتا CE و RoHS
+            </p>
           </div>
         </div>
       </div>
