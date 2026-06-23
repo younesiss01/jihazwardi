@@ -114,8 +114,8 @@
             <img
               src="hero.webp"
               alt="ZENKO — جهاز مساج شياتسو ياباني أصلي"
-              width="1024"
-              height="1024"
+              width="616"
+              height="616"
               fetchpriority="high"
               decoding="async"
               sizes="(max-width:640px) calc(100vw - 2rem), (max-width:1024px) calc(80vw - 2rem), 672px"
@@ -174,8 +174,8 @@
           <img
             src="images1.webp"
             alt="تبين هاد المعانات"
-            width="1200"
-            height="896"
+            width="665"
+            height="891"
             loading="lazy"
             decoding="async"
             sizes="(max-width:640px) 100vw, (max-width:1280px) 90vw, 1024px"
@@ -216,8 +216,8 @@
           <img
             src="images2.webp"
             alt="ثلاث خبراء مساج يابانيين ينصحون بالجهاز"
-            width="896"
-            height="1200"
+            width="665"
+            height="891"
             loading="lazy"
             decoding="async"
             sizes="(max-width:640px) 100vw, (max-width:1280px) 90vw, 1024px"
@@ -250,8 +250,8 @@
           <img
             src="images3.webp"
             alt="شخص خليجي مرتاح والجهاز ظاهر"
-            width="896"
-            height="1200"
+            width="665"
+            height="891"
             loading="lazy"
             decoding="async"
             sizes="(max-width:640px) 100vw, (max-width:1024px) 80vw, 672px"
@@ -535,10 +535,11 @@
         </div>
         <div class="observe grid gap-6 lg:grid-cols-3 lg:gap-5 lg:items-end" id="offerCards">
           <!-- Card 1 -->
-          <article
+          <div
             class="offer-card flex flex-col rounded-3xl bg-white/5 p-6 backdrop-blur-sm transition-all duration-300 hover:bg-white/10 sm:p-7 lg:order-1"
             data-package="299 — جهاز واحد + هدية EMS"
             role="button" tabindex="0"
+            aria-label="عرض 299 ريال — جهاز واحد + هدية EMS"
             onclick="selectOffer('299 — جهاز واحد + هدية EMS', false)"
             onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();selectOffer('299 — جهاز واحد + هدية EMS',false);}"
           >
@@ -570,12 +571,13 @@
               <li class="flex items-center gap-2"><i data-lucide="check" class="h-3.5 w-3.5 text-zen"></i>هدية جهاز مساج القدم EMS (مجاناً)</li>
             </ul>
             <a href="#order" onclick="event.stopPropagation();selectOffer('299 — جهاز واحد + هدية EMS',true);" class="mt-auto block rounded-2xl bg-zen py-4 text-center text-sm font-black text-white transition hover:bg-zenhover">اختر هذا العرض</a>
-          </article>
+          </div>
           <!-- Card 2 — Most popular -->
-          <article
+          <div
             class="offer-card offer-card-selected relative flex flex-col overflow-hidden rounded-3xl bg-gradient-to-b from-white/15 to-white/5 p-6 ring-2 ring-zen/50 sm:p-7 lg:order-2"
             data-package="629 — 3 اجهزة + 3 هدايا EMS"
             role="button" tabindex="0"
+            aria-label="عرض 629 ريال — عرض العائلة الكبير (الأكثر طلباً)"
             onclick="selectOffer('629 — 3 اجهزة + 3 هدايا EMS', false)"
             onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();selectOffer('629 — 3 اجهزة + 3 هدايا EMS',false);}"
           >
@@ -611,12 +613,13 @@
               <li class="flex items-center gap-2"><i data-lucide="check" class="h-3.5 w-3.5 text-zen"></i>جهاز مساج قدم EMS × 3 (مجاناً)</li>
             </ul>
             <a href="#order" onclick="event.stopPropagation();selectOffer('629 — 3 اجهزة + 3 هدايا EMS',true);" class="mt-auto block rounded-2xl bg-zen py-4 text-center text-sm font-black text-white shadow-glow transition hover:bg-zenhover">اختر عرض العائلة الآن</a>
-          </article>
+          </div>
           <!-- Card 3 -->
-          <article
+          <div
             class="offer-card flex flex-col rounded-3xl bg-white/5 p-6 backdrop-blur-sm transition-all duration-300 hover:bg-white/10 sm:p-7 lg:order-3"
             data-package="499 — جهازين + هديتين EMS"
             role="button" tabindex="0"
+            aria-label="عرض 499 ريال — جهازين + هديتين EMS"
             onclick="selectOffer('499 — جهازين + هديتين EMS', false)"
             onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();selectOffer('499 — جهازين + هديتين EMS',false);}"
           >
@@ -648,7 +651,7 @@
               <li class="flex items-center gap-2"><i data-lucide="check" class="h-3.5 w-3.5 text-zen"></i>جهاز مساج قدم EMS × 2 (مجاناً)</li>
             </ul>
             <a href="#order" onclick="event.stopPropagation();selectOffer('499 — جهازين + هديتين EMS',true);" class="mt-auto block rounded-2xl bg-zen py-4 text-center text-sm font-black text-white transition hover:bg-zenhover">اختر هذا العرض</a>
-          </article>
+          </div>
         </div>
         <div class="observe mt-10 flex items-start gap-4 rounded-2xl border border-red-500/40 bg-red-500/10 px-5 py-5 sm:mt-12 sm:px-6">
           <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-red-500/20 text-lg">🚨</span>
