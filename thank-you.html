@@ -3,177 +3,287 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="theme-color" content="#FDF2F0" />
-  <title>شكراً — وردي Wardi</title>
-  <meta name="description" content="تم استلام طلبج بنجاح. فريق وردي يجهز الطلب الآن." />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800&family=El+Messiri:wght@500;600;700&display=swap" rel="stylesheet" />
-  <script src="https://cdn.tailwindcss.com"></script>
+  <meta name="theme-color" content="#1C1C1E" />
+  <title>تم استلام طلبك ✅ — ZENKO زِنكو</title>
+  <meta name="description" content="تم استلام طلبك بنجاح. فريق ZENKO يجهز شحنتك والمندوب في طريقه إليك." />
+  <meta name="robots" content="noindex" />
+
+  <!-- Self-hosted fonts -->
+  <link rel="preload" as="font" type="font/woff2" href="fonts/tajawal-800.woff2" crossorigin />
+  <link rel="preload" as="font" type="font/woff2" href="fonts/tajawal-400.woff2" crossorigin />
+
+  <!-- style.css -->
+  <link rel="preload" as="style" href="style.css" fetchpriority="high" />
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- Lucide -->
   <script src="https://unpkg.com/lucide@0.487.0/dist/umd/lucide.min.js" defer></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            rosegold: '#E7BCB1',
-            palepink: '#FDF2F0',
-            berry: '#3D1228',
-            berrysoft: '#5B2340',
-            cream: '#FFFCFB',
-          },
-          fontFamily: {
-            arabic: ['Tajawal', 'system-ui', 'sans-serif'],
-            display: ['El Messiri', 'Tajawal', 'serif'],
-          },
-          boxShadow: {
-            soft: '0 22px 50px -28px rgba(61,18,40,0.28)',
-            card: '0 16px 40px -24px rgba(231,188,177,0.45)',
-          },
-          borderRadius: {
-            '2xl': '1rem',
-            '3xl': '1.35rem',
-          },
-          animation: {
-            'pulse-elegant': 'pulseElegant 2.75s cubic-bezier(.4,0,.6,1) infinite',
-          },
-          keyframes: {
-            pulseElegant: {
-              '0%, 100%': { boxShadow: '0 0 0 0 rgba(34,160,114,0.45)' },
-              '50%': { boxShadow: '0 0 0 16px rgba(34,160,114,0)' },
-            },
-          },
-        },
-      },
-    };
-  </script>
+  <link rel="dns-prefetch" href="https://unpkg.com" />
+
   <style>
-    html { scroll-behavior: smooth; }
-    body { font-family: Tajawal, system-ui, sans-serif; }
-    .observe { opacity: 0; transform: translateY(20px); transition: opacity 0.75s cubic-bezier(.22,.9,.42,1), transform 0.75s cubic-bezier(.22,.9,.42,1); }
-    .observe.is-visible { opacity: 1; transform: translateY(0); }
-    .sticky-order { backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
-    .gradient-page {
-      background: radial-gradient(120% 80% at 50% -20%, rgba(231,188,177,.42) 0%, transparent 50%),
-                  linear-gradient(180deg, #FDF2F0 0%, #FFFCFB 45%, #fdf8fa 100%);
-    }
-    @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after {
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.01ms !important;
-      }
-      .observe { opacity: 1; transform: none; }
-    }
+    @font-face{font-family:'Tajawal';font-style:normal;font-weight:400;font-display:swap;src:url('fonts/tajawal-400.woff2') format('woff2')}
+    @font-face{font-family:'Tajawal';font-style:normal;font-weight:700;font-display:swap;src:url('fonts/tajawal-700.woff2') format('woff2')}
+    @font-face{font-family:'Tajawal';font-style:normal;font-weight:800;font-display:swap;src:url('fonts/tajawal-800.woff2') format('woff2')}
+    @font-face{font-family:'Tajawal';font-style:normal;font-weight:900;font-display:swap;src:url('fonts/tajawal-900.woff2') format('woff2')}
+
+    html{scroll-behavior:smooth}
+    body{font-family:Tajawal,system-ui,sans-serif;background:#FDFBF7;color:#1C1C1E}
+
+    .observe{opacity:0;transform:translateY(20px);transition:opacity .75s cubic-bezier(.22,.9,.42,1),transform .75s cubic-bezier(.22,.9,.42,1)}
+    .observe.is-visible{opacity:1;transform:translateY(0)}
+
+    /* Success ring animation */
+    @keyframes ringPulse{0%{transform:scale(1);opacity:.7}70%{transform:scale(1.5);opacity:0}100%{transform:scale(1.5);opacity:0}}
+    .ring-pulse::before{content:'';position:absolute;inset:0;border-radius:50%;border:2px solid #22c55e;animation:ringPulse 2s ease-out infinite}
+
+    /* Step number badge */
+    .step-num{display:flex;align-items:center;justify-content:center;width:2.5rem;height:2.5rem;border-radius:.75rem;background:#E8611A;color:#fff;font-weight:900;font-size:1.1rem;flex-shrink:0}
+
+    /* Timeline connector */
+    .timeline-item{position:relative;padding-right:1rem}
+    .timeline-item:not(:last-child)::after{content:'';position:absolute;right:1.25rem;bottom:-1.25rem;width:2px;height:1.25rem;background:linear-gradient(to bottom,#E8611A,transparent)}
+
+    @keyframes countUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+    .count-up{animation:countUp .5s ease-out forwards}
+
+    @keyframes checkBounce{0%{transform:scale(0)}60%{transform:scale(1.15)}100%{transform:scale(1)}}
+    .check-bounce{animation:checkBounce .6s cubic-bezier(.34,1.56,.64,1) .2s both}
+
+    @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}.observe{opacity:1;transform:none}}
   </style>
 </head>
-<body class="gradient-page min-h-screen text-berry antialiased">
-  <header class="sticky top-0 z-10 border-b border-rosegold/25 bg-white/85 sticky-order shadow-sm">
-    <div class="mx-auto flex max-w-3xl flex-wrap items-center justify-between gap-3 px-4 py-3 sm:px-6">
-      <a href="index.html" class="flex items-center gap-2 rounded-2xl focus:outline-none focus-visible:ring-2 focus-visible:ring-rosegold focus-visible:ring-offset-2">
-        <span class="inline-flex h-9 w-9 items-center justify-center rounded-2xl bg-palepink text-rosegold shadow-card ring-1 ring-rosegold/30">
-          <i data-lucide="heart-pulse" class="h-[1.125rem] w-[1.125rem] stroke-[2] text-berry"></i>
-        </span>
+<body class="antialiased overflow-x-hidden">
+
+  <!-- Header — نفس style الرئيسية -->
+  <header style="position:sticky;top:0;z-index:50;background:rgba(255,255,255,0.92);border-bottom:1px solid #E8DFD0;backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px)" class="sticky top-0 z-50 border-b border-sanddeep/60 bg-white/90">
+    <div class="mx-auto flex max-w-6xl items-center justify-between gap-3 px-4 py-3 sm:px-6">
+      <a href="index.html" class="flex items-center gap-3">
+        <span class="flex h-10 w-10 items-center justify-center rounded-xl bg-ink font-brand text-sm font-bold tracking-widest text-white">ZK</span>
         <div>
-          <p class="font-display text-sm font-bold leading-tight text-berry"><span lang="ar">وردي</span> <span class="font-semibold tracking-wide text-rosegold" lang="en">Wardi</span></p>
-          <p class="text-[11px] text-berrysoft/80">شكراً لثقتج</p>
+          <p class="font-brand text-lg font-bold tracking-tight text-ink">ZENKO <span class="text-base font-extrabold text-zen">زِنكو</span></p>
+          <p class="text-[10px] font-medium uppercase tracking-[0.18em] text-inksoft/70">Original Japanese Shiatsu™</p>
         </div>
       </a>
-      <a href="index.html" class="text-xs font-bold text-berrysoft underline decoration-rosegold/50 decoration-2 underline-offset-4 transition hover:text-berry">الرئيسية</a>
+      <a href="index.html" class="inline-flex items-center gap-1.5 rounded-xl border border-sanddeep px-4 py-2 text-sm font-bold text-inksoft transition hover:bg-sand">
+        <i data-lucide="arrow-right" class="h-4 w-4"></i>
+        الرئيسية
+      </a>
     </div>
   </header>
 
-  <main class="mx-auto max-w-3xl px-4 pb-16 pt-10 sm:px-6 sm:pb-20 sm:pt-14">
-    <div class="flex flex-col items-center text-center">
-      <!-- Success icon: green check + subtle heart pulse accent -->
-      <div class="observe relative flex h-28 w-28 items-center justify-center sm:h-32 sm:w-32">
-        <span class="absolute inset-0 rounded-full bg-emerald-500/20 animate-pulse-elegant" aria-hidden="true"></span>
-        <span class="absolute -right-1 -top-1 flex h-10 w-10 items-center justify-center rounded-2xl border-2 border-white bg-palepink text-rosegold shadow-card ring-1 ring-rosegold/30" aria-hidden="true">
-          <i data-lucide="heart-pulse" class="h-5 w-5 stroke-[2] text-berry"></i>
-        </span>
-        <span class="relative flex h-24 w-24 items-center justify-center rounded-full border-4 border-white bg-gradient-to-br from-emerald-400 to-emerald-700 shadow-[0_20px_50px_-20px_rgba(16,120,80,0.55)] sm:h-28 sm:w-28">
-          <i data-lucide="check" class="h-12 w-12 stroke-[3] text-white sm:h-14 sm:w-14" aria-hidden="true"></i>
-        </span>
-      </div>
+  <main>
+    <!-- Hero التأكيد -->
+    <section style="background:linear-gradient(180deg,#FDFBF7 0%,#F5F0E8 100%)" class="hero-gradient py-14 sm:py-20">
+      <div class="mx-auto max-w-2xl px-4 text-center sm:px-6">
 
-      <h1 class="observe mt-10 font-display text-2xl font-bold leading-snug text-berry sm:text-3xl">
-شكراً لثقتج غلاتي! 🎉 تم حجز عرضج [قطعة + قطعة مجاناً] بنجاح
-      </h1>
-    </div>
+        <!-- أيقونة النجاح -->
+        <div class="observe relative mx-auto mb-8 flex h-28 w-28 items-center justify-center sm:h-32 sm:w-32">
+          <span class="ring-pulse absolute inset-0 rounded-full" aria-hidden="true"></span>
+          <span class="relative flex h-24 w-24 items-center justify-center rounded-full bg-emerald-500 shadow-[0_20px_50px_-15px_rgba(34,197,94,0.55)] sm:h-28 sm:w-28 check-bounce">
+            <i data-lucide="check" class="h-12 w-12 stroke-[3] text-white sm:h-14 sm:w-14" aria-hidden="true"></i>
+          </span>
+          <span class="absolute -left-1 -top-1 flex h-9 w-9 items-center justify-center rounded-xl bg-zen text-white shadow-glow" aria-hidden="true">
+            <i data-lucide="package" class="h-4 w-4"></i>
+          </span>
+        </div>
 
-    <!-- Next steps -->
-    <section class="observe mt-12 sm:mt-14" aria-labelledby="steps-title">
-      <h2 id="steps-title" class="font-display text-lg font-bold text-berry sm:text-xl">الخطوات الجاية</h2>
-      <ol class="mt-6 space-y-4">
-        <li class="flex gap-4 rounded-3xl border border-white/80 bg-white/90 p-5 shadow-card backdrop-blur-sm">
-          <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl bg-rosegold/25 font-display text-base font-bold text-berry ring-1 ring-rosegold/35">١</span>
-          <p class="pt-0.5 text-[0.95rem] leading-relaxed text-berrysoft">
-            <span class="font-bold text-berry">تأكيد الطلب:</span>راح يتصل فيج فريق الدعم خلال الدقائق القادمة لتأكيد العنوان وتجهيز القطعتين (يرجى إبقاء الهاتف قريباً).
+        <div class="observe space-y-4">
+          <p class="inline-flex items-center gap-2 rounded-full border border-emerald-200 bg-emerald-50 px-4 py-1.5 text-sm font-bold text-emerald-700">
+            <span class="h-2 w-2 rounded-full bg-emerald-500 animate-pulse"></span>
+            تم استلام طلبك بنجاح
           </p>
-        </li>
-        <li class="flex gap-4 rounded-3xl border border-white/80 bg-white/90 p-5 shadow-card backdrop-blur-sm">
-          <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl bg-rosegold/25 font-display text-base font-bold text-berry ring-1 ring-rosegold/35">٢</span>
-          <p class="pt-0.5 text-[0.95rem] leading-relaxed text-berrysoft">
-            <span class="font-bold text-berry">التجهيز والشحن:</span> الشحن سريع ومجاني.. يوصلج وردي والقطعة المجانية لين باب البيت خلال 24 إلى 48 ساعة وبس.
+          <h1 class="text-2xl font-black leading-snug text-ink sm:text-3xl lg:text-4xl">
+            شكراً لك! 🎉 طلبك في طريقه إليك
+          </h1>
+          <p class="text-base leading-relaxed text-inksoft sm:text-lg">
+            فريق ZENKO يجهز شحنتك الآن — المندوب سيتصل بك قريباً لتأكيد موعد التوصيل
           </p>
-        </li>
-        <li class="flex gap-4 rounded-3xl border border-white/80 bg-white/90 p-5 shadow-card backdrop-blur-sm">
-          <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl bg-rosegold/25 font-display text-base font-bold text-berry ring-1 ring-rosegold/35">٣</span>
-          <p class="pt-0.5 text-[0.95rem] leading-relaxed text-berrysoft">
-            <span class="font-bold text-berry">الدفع</span> الدفع عند الاستلام.. يعني ما تدفعين ولا فلس حتى تفحصين جودة المنتج وتتأكدين منه بنفسج.
-          </p>
-        </li>
-      </ol>
-    </section>
+        </div>
 
-    <!-- Wardi tip -->
-    <div class="observe mt-10 rounded-3xl border border-rosegold/35 bg-gradient-to-br from-palepink via-white to-rosegold/15 p-6 shadow-soft sm:p-8">
-      <div class="flex flex-col gap-3 sm:flex-row-reverse sm:items-start sm:gap-4">
-        <span class="mx-auto flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-white text-rosegold shadow-sm ring-1 ring-rosegold/30 sm:mx-0">
-          <i data-lucide="sparkles" class="h-6 w-6 text-berry"></i>
-        </span>
-        <div class="text-center sm:text-right">
-          <p class="font-display text-base font-bold text-berry sm:text-lg">نصيحة وردي</p>
-          <p class="mt-2 text-[0.95rem] leading-relaxed text-berrysoft">
-            لأمانكِ، لا تستخدمي الجهاز أثناء النوم، وتأكدي من عدم ملامسته لأي قطع معدنية في الملابس.
+        <!-- العد التنازلي للتوصيل -->
+        <div class="observe mt-8 overflow-hidden rounded-3xl border border-sanddeep/80 bg-white p-6 shadow-premium sm:p-8">
+          <p class="mb-5 text-sm font-bold uppercase tracking-widest text-inksoft/60">الوقت المتوقع للتوصيل</p>
+          <div class="flex items-center justify-center gap-4 sm:gap-6">
+            <div class="flex flex-col items-center gap-1">
+              <span class="flex h-16 w-16 items-center justify-center rounded-2xl bg-ink text-3xl font-black text-white tabular-nums sm:h-20 sm:w-20 sm:text-4xl count-up">24</span>
+              <span class="text-xs font-bold text-inksoft/60">ساعة</span>
+            </div>
+            <span class="mb-4 text-3xl font-black text-zen">—</span>
+            <div class="flex flex-col items-center gap-1">
+              <span class="flex h-16 w-16 items-center justify-center rounded-2xl bg-ink text-3xl font-black text-white tabular-nums sm:h-20 sm:w-20 sm:text-4xl count-up">48</span>
+              <span class="text-xs font-bold text-inksoft/60">ساعة</span>
+            </div>
+          </div>
+          <p class="mt-5 text-sm font-medium text-inksoft/70">
+            توصيل مجاني لجميع مناطق قطر 🇶🇦 — الدفع عند الاستلام
           </p>
         </div>
       </div>
-    </div>
+    </section>
 
-    <div class="observe mt-10 flex justify-center">
-      <a href="index.html" class="inline-flex w-full max-w-sm items-center justify-center rounded-2xl bg-berry px-6 py-3.5 text-[0.95rem] font-bold text-white shadow-soft transition hover:bg-rose-950 focus:outline-none focus-visible:ring-2 focus-visible:ring-rosegold focus-visible:ring-offset-2 sm:w-auto animate-pulse-elegant">
-        العودة للرئيسية
-      </a>
-    </div>
+    <!-- خطوات ماذا يحدث الآن -->
+    <section class="dark-section py-14 sm:py-20">
+      <div class="mx-auto max-w-2xl px-4 sm:px-6">
+        <h2 class="observe mb-10 text-center text-xl font-black text-sand sm:text-2xl">ماذا يحدث الآن؟</h2>
+        <ol class="observe space-y-5">
+          <li class="timeline-item flex gap-4 rounded-2xl border border-white/10 bg-white/5 p-5">
+            <span class="step-num" aria-hidden="true">١</span>
+            <div class="min-w-0">
+              <p class="font-bold text-white">مراجعة الطلب وتأكيد البيانات</p>
+              <p class="mt-1.5 text-sm leading-relaxed text-white/70">سيتصل بك أحد أفراد فريقنا خلال <strong class="text-zen">24 ساعة</strong> للتأكد من عنوانك وموعد التسليم المناسب لك.</p>
+            </div>
+          </li>
+          <li class="timeline-item flex gap-4 rounded-2xl border border-white/10 bg-white/5 p-5">
+            <span class="step-num" aria-hidden="true">٢</span>
+            <div class="min-w-0">
+              <p class="font-bold text-white">فحص الجهاز وتغليفه بعناية</p>
+              <p class="mt-1.5 text-sm leading-relaxed text-white/70">نفحص كل جهاز قبل الشحن ونغلفه بتعبئة احترافية لضمان وصوله <strong class="text-zen">بأفضل حالة ممكنة</strong>.</p>
+            </div>
+          </li>
+          <li class="timeline-item flex gap-4 rounded-2xl border border-white/10 bg-white/5 p-5">
+            <span class="step-num" aria-hidden="true">٣</span>
+            <div class="min-w-0">
+              <p class="font-bold text-white">التوصيل لبابك مباشرةً</p>
+              <p class="mt-1.5 text-sm leading-relaxed text-white/70">المندوب يتصل بك قبل الوصول. <strong class="text-zen">الدفع عند الاستلام</strong> نقداً أو بطاقة — تفحص الطلب أولاً ثم تدفع.</p>
+            </div>
+          </li>
+          <li class="flex gap-4 rounded-2xl border border-emerald-500/30 bg-emerald-500/10 p-5">
+            <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-emerald-500/20 text-emerald-400">
+              <i data-lucide="shield-check" class="h-5 w-5"></i>
+            </span>
+            <div class="min-w-0">
+              <p class="font-bold text-white">ضمان كامل + استرجاع مضمون</p>
+              <p class="mt-1.5 text-sm leading-relaxed text-white/70">إذا واجهت أي مشكلة — نسترجع الجهاز ونعيد أموالك <strong class="text-emerald-400">كاملةً بلا تعقيدات</strong>.</p>
+            </div>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- بطاقات الثقة -->
+    <section class="bg-sand py-14 sm:py-20">
+      <div class="mx-auto max-w-2xl px-4 sm:px-6">
+        <h2 class="observe mb-8 text-center text-xl font-black text-ink sm:text-2xl">لماذا ZENKO موثوق؟</h2>
+        <div class="observe grid grid-cols-2 gap-4 sm:grid-cols-4">
+          <div class="flex flex-col items-center gap-2 rounded-2xl border border-sanddeep/80 bg-white p-4 text-center shadow-card">
+            <span class="flex h-11 w-11 items-center justify-center rounded-xl bg-zen/10 text-zen">
+              <i data-lucide="users" class="h-5 w-5"></i>
+            </span>
+            <p class="text-xl font-black text-ink">5000+</p>
+            <p class="text-[11px] font-bold text-inksoft/70 leading-tight">عميل سعيد في قطر</p>
+          </div>
+          <div class="flex flex-col items-center gap-2 rounded-2xl border border-sanddeep/80 bg-white p-4 text-center shadow-card">
+            <span class="flex h-11 w-11 items-center justify-center rounded-xl bg-zen/10 text-zen">
+              <i data-lucide="truck" class="h-5 w-5"></i>
+            </span>
+            <p class="text-xl font-black text-ink">مجاني</p>
+            <p class="text-[11px] font-bold text-inksoft/70 leading-tight">توصيل لكل قطر</p>
+          </div>
+          <div class="flex flex-col items-center gap-2 rounded-2xl border border-sanddeep/80 bg-white p-4 text-center shadow-card">
+            <span class="flex h-11 w-11 items-center justify-center rounded-xl bg-zen/10 text-zen">
+              <i data-lucide="credit-card" class="h-5 w-5"></i>
+            </span>
+            <p class="text-xl font-black text-ink">COD</p>
+            <p class="text-[11px] font-bold text-inksoft/70 leading-tight">دفع عند الاستلام</p>
+          </div>
+          <div class="flex flex-col items-center gap-2 rounded-2xl border border-sanddeep/80 bg-white p-4 text-center shadow-card">
+            <span class="flex h-11 w-11 items-center justify-center rounded-xl bg-zen/10 text-zen">
+              <i data-lucide="rotate-ccw" class="h-5 w-5"></i>
+            </span>
+            <p class="text-xl font-black text-ink">100%</p>
+            <p class="text-[11px] font-bold text-inksoft/70 leading-tight">ضمان استرجاع</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- تواصل معنا -->
+    <section class="bg-white py-14 sm:py-20">
+      <div class="mx-auto max-w-2xl px-4 sm:px-6">
+        <div class="observe overflow-hidden rounded-3xl border border-sanddeep/80 bg-sand/40 p-6 shadow-card sm:p-8">
+          <div class="mb-6 flex items-center gap-3">
+            <span class="flex h-12 w-12 items-center justify-center rounded-2xl bg-zen/10 text-zen">
+              <i data-lucide="message-circle" class="h-6 w-6"></i>
+            </span>
+            <div>
+              <p class="font-bold text-ink">هل لديك سؤال؟</p>
+              <p class="text-sm text-inksoft/70">فريقنا متاح 7 أيام</p>
+            </div>
+          </div>
+          <p class="mb-6 text-sm leading-relaxed text-inksoft">
+            إذا احتجت أي مساعدة بخصوص طلبك أو التوصيل، تواصل معنا مباشرة — ردنا سريع.
+          </p>
+          <div class="flex flex-col gap-3 sm:flex-row">
+            <a href="https://wa.me/97430000000" target="_blank" rel="noopener"
+               class="flex flex-1 items-center justify-center gap-2 rounded-2xl bg-[#25D366] py-3.5 text-sm font-black text-white shadow-sm transition hover:opacity-90">
+              <svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.096.541 4.122 1.562 5.894L.057 23.882a.5.5 0 0 0 .61.61l6.045-1.497A11.944 11.944 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.849a9.844 9.844 0 0 1-5.031-1.378l-.36-.214-3.736.925.951-3.677-.234-.374A9.869 9.869 0 0 1 2.151 12c0-5.44 4.409-9.849 9.849-9.849 5.44 0 9.849 4.409 9.849 9.849 0 5.44-4.409 9.849-9.849 9.849z"/></svg>
+              واتساب — تواصل الآن
+            </a>
+            <a href="index.html"
+               class="flex flex-1 items-center justify-center gap-2 rounded-2xl border border-sanddeep bg-white py-3.5 text-sm font-bold text-inksoft transition hover:bg-sand">
+              <i data-lucide="arrow-right" class="h-4 w-4"></i>
+              العودة للرئيسية
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- نصيحة الاستخدام -->
+    <section class="relative overflow-hidden bg-ink py-14 sm:py-20">
+      <div class="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_70%_60%_at_50%_0%,rgba(232,97,26,0.10),transparent)]"></div>
+      <div class="observe relative mx-auto max-w-2xl px-4 sm:px-6">
+        <div class="rounded-2xl border border-zen/25 bg-white/5 p-6 sm:p-8">
+          <div class="mb-5 flex items-center gap-3">
+            <span class="flex h-11 w-11 items-center justify-center rounded-xl bg-zen/20 text-zen">
+              <i data-lucide="sparkles" class="h-5 w-5"></i>
+            </span>
+            <p class="font-bold text-sand text-lg">نصيحة ZENKO لأفضل نتيجة</p>
+          </div>
+          <ul class="space-y-3">
+            <li class="flex items-start gap-3">
+              <i data-lucide="check-circle" class="mt-0.5 h-4 w-4 shrink-0 text-zen" aria-hidden="true"></i>
+              <p class="text-sm leading-relaxed text-white/80">ابدأ بالسرعة الأولى أول مرة وزِد تدريجياً حسب راحتك</p>
+            </li>
+            <li class="flex items-start gap-3">
+              <i data-lucide="check-circle" class="mt-0.5 h-4 w-4 shrink-0 text-zen" aria-hidden="true"></i>
+              <p class="text-sm leading-relaxed text-white/80">15 دقيقة يومياً كافية — الجهاز ينطفئ تلقائياً لحمايتك</p>
+            </li>
+            <li class="flex items-start gap-3">
+              <i data-lucide="check-circle" class="mt-0.5 h-4 w-4 shrink-0 text-zen" aria-hidden="true"></i>
+              <p class="text-sm leading-relaxed text-white/80">لا تستخدمه أثناء النوم أو على الجلد المجروح</p>
+            </li>
+            <li class="flex items-start gap-3">
+              <i data-lucide="check-circle" class="mt-0.5 h-4 w-4 shrink-0 text-zen" aria-hidden="true"></i>
+              <p class="text-sm leading-relaxed text-white/80">يعمل بمنفذ المنزل والسيارة — رفيقك في كل مكان</p>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
   </main>
 
-  <footer class="border-t border-rosegold/20 bg-white/80 py-8 text-center text-[11px] text-berrysoft">
-    <p>وردي Wardi — رعاية أنيقة لراحتج</p>
+  <footer class="border-t border-sanddeep/60 bg-white py-8 text-center text-xs text-inksoft">
+    <p class="font-brand font-bold tracking-widest text-ink">ZENKO™</p>
+    <p class="mt-1">Original Japanese Shiatsu Technology — Qatar 🇶🇦</p>
   </footer>
 
   <script>
-    function bootIcons() {
-      if (typeof lucide !== 'undefined' && typeof lucide.createIcons === 'function') {
-        lucide.createIcons();
-      }
-    }
-    document.addEventListener('DOMContentLoaded', function () {
-      bootIcons();
+    document.addEventListener('DOMContentLoaded', function() {
+      requestAnimationFrame(function() {
+        if (typeof lucide !== 'undefined' && lucide.createIcons) lucide.createIcons();
+      });
+
       var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
       if (!reduced && 'IntersectionObserver' in window) {
-        var els = document.querySelectorAll('.observe');
-        var obs = new IntersectionObserver(function (entries, o) {
-          entries.forEach(function (entry) {
-            if (entry.isIntersecting) {
-              entry.target.classList.add('is-visible');
-              o.unobserve(entry.target);
-            }
+        var obs = new IntersectionObserver(function(entries, o) {
+          entries.forEach(function(e) {
+            if (e.isIntersecting) { e.target.classList.add('is-visible'); o.unobserve(e.target); }
           });
-        }, { threshold: 0.12, rootMargin: '0px 0px -4% 0px' });
-        els.forEach(function (el) { obs.observe(el); });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.observe').forEach(function(el) { obs.observe(el); });
       } else {
-        document.querySelectorAll('.observe').forEach(function (el) { el.classList.add('is-visible'); });
+        document.querySelectorAll('.observe').forEach(function(el) { el.classList.add('is-visible'); });
       }
     });
   </script>
