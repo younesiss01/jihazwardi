@@ -170,15 +170,15 @@ src="https://www.facebook.com/tr?id=817849460487988&ev=PageView&noscript=1"
             </li>
             <li class="flex gap-4 rounded-2xl border border-white/10 bg-white/5 p-5 backdrop-blur-sm">
               <span class="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-zen/20 text-zen"><i data-lucide="banknote" class="h-4 w-4"></i></span>
-              <p class="text-[0.98rem] leading-relaxed text-white/90">كم مرة رحت لمركز مساج أو عيادة، تدفع 300 ريال فكل جلسة.. وتطلع بدون أي تحسّن!</p>
+              <p class="text-[0.98rem] leading-relaxed text-white/90">كم مرة رحت لمركز مساج أو عيادة، تدفع 300 ريال في كل جلسة.. وتطلع بدون أي تحسّن!</p>
             </li>
             <li class="flex gap-4 rounded-2xl border border-white/10 bg-white/5 p-5 backdrop-blur-sm">
               <span class="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-zen/20 text-zen"><i data-lucide="pill" class="h-4 w-4"></i></span>
-              <p class="text-[0.98rem] leading-relaxed text-white/90">كم حبة مسكن بلعت وللحين العوار يلاحقك ويعطل يومك؟</p>
+              <p class="text-[0.98rem] leading-relaxed text-white/90">كم حبة مسكن بلعت وللحين الالم يلاحقك ويعطل يومك؟</p>
             </li>
             <li class="flex gap-4 rounded-2xl border border-white/10 bg-white/5 p-5 backdrop-blur-sm">
               <span class="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-zen/20 text-zen"><i data-lucide="heart-crack" class="h-4 w-4"></i></span>
-              <p class="text-[0.98rem] leading-relaxed text-white/90">إلى متى تعاني في صمت وتوهم نفسك أن الألم راح يختفي لوحده؟</p>
+              <p class="text-[0.98rem] leading-relaxed text-white/90">إلى متى تعاني في صمت وتوهم نفسك أن الألم سيختفي لوحده؟</p>
             </li>
           </ul>
         </div>
@@ -576,12 +576,50 @@ src="https://www.facebook.com/tr?id=817849460487988&ev=PageView&noscript=1"
               <p class="text-sm font-medium leading-relaxed text-white/85">احصل على الجهاز الأصلي بـ 299 ريالاً فقط بدلاً من 598 ريالاً، وسنرسل لك جهاز تدليك القدمين الكهربائي بقيمة 120 ريالاً كهدية مجانية تماماً.</p>
             </div>
             <ul class="mb-6 space-y-2 text-xs text-white/60">
-              <li class="flex items-center gap-2"><i data-lucide="check" class="h-3.5 w-3.5 text-zen"></i>جهاز شياتسو الذكي × 1</li>
+              <li class="flex items-center gap-2"><i data-lucide="check" class="h-3.5 w-3.5 text-zen"></i>جهاز شياتسو الأصلي × 1</li>
               <li class="flex items-center gap-2"><i data-lucide="check" class="h-3.5 w-3.5 text-zen"></i> بهدية جهاز مساج القدم EMS (مجاناً) </li>
             </ul>
             <a href="#order" onclick="event.stopPropagation();selectOffer('299 — جهاز واحد + هدية EMS',true);" class="mt-auto block rounded-2xl bg-zen py-4 text-center text-sm font-black text-white transition hover:bg-zenhover">اختر هذا العرض</a>
           </div>
-          <!-- Card 2 — Most popular -->
+          <!-- Card 2 -->
+          <div
+            class="offer-card flex flex-col rounded-3xl bg-white/5 p-6 backdrop-blur-sm transition-all duration-300 hover:bg-white/10 sm:p-7 lg:order-3"
+            data-package="499 — جهازين + هديتين EMS"
+            role="button" tabindex="0"
+            aria-label="عرض 499 ريال — جهازين + هديتين EMS"
+            onclick="selectOffer('499 — جهازين + هديتين EMS', false)"
+            onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();selectOffer('499 — جهازين + هديتين EMS',false);}"
+          >
+            <div class="offer-card-visual mb-5 overflow-hidden rounded-2xl">
+              <img src="offer-pack-499.webp" alt="عرض الثنائي المتميز" width="400" height="280" loading="lazy" decoding="async" class="h-full min-h-[7rem] w-full object-cover" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
+              <div class="hidden min-h-[7rem] flex-col items-center justify-center gap-1 px-3 text-center text-white/35">
+                <i data-lucide="image-plus" class="h-6 w-6 text-zen/50"></i>
+                <p class="text-[10px] font-bold">offer-pack-499.webp</p>
+              </div>
+            </div>
+            <div class="mb-5 flex items-end justify-between gap-2 border-b border-white/10 pb-5">
+              <div>
+                <p class="font-brand text-[10px] font-bold uppercase tracking-widest text-white/50">Bundle 02</p>
+                <p class="mt-1 text-sm font-bold text-sand">لك ولشخص عزيز</p>
+              </div>
+              <span class="rounded-full bg-white/10 px-2.5 py-1 text-[10px] font-black text-white/70">وفر 501 ريال</span>
+            </div>
+            <div class="mb-1 flex items-baseline gap-2">
+              <span class="text-4xl font-black tabular-nums text-zen sm:text-5xl">499</span>
+              <span class="text-sm font-bold text-white/70">ريال قطري</span>
+            </div>
+            <p class="text-sm text-white/40 line-through">1000 ريال</p>
+            <div class="my-5 flex items-start gap-3 rounded-2xl border border-white/10 bg-white/5 p-4">
+              <span class="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-white/10 text-zen"><i data-lucide="users" class="h-4 w-4"></i></span>
+              <p class="text-sm font-medium leading-relaxed text-white/85">تشارك الراحة مع من تحب: خذ جهازاً لك وجهازاً ثانياً كهدية لشخص عزيز عليك بـ 499 ريالاً فقط بدلاً من 1000 ريال، مع جهازين لتدليك القدمين مجاناً.</p>
+            </div>
+            <ul class="mb-6 space-y-2 text-xs text-white/60">
+              <li class="flex items-center gap-2"><i data-lucide="check" class="h-3.5 w-3.5 text-zen"></i>جهاز شياتسو الأصلي × 2</li>
+              <li class="flex items-center gap-2"><i data-lucide="check" class="h-3.5 w-3.5 text-zen"></i>جهاز مساج قدم EMS × 2 (مجاناً)</li>
+            </ul>
+            <a href="#order" onclick="event.stopPropagation();selectOffer('499 — جهازين + هديتين EMS',true);" class="mt-auto block rounded-2xl bg-zen py-4 text-center text-sm font-black text-white transition hover:bg-zenhover">اختر هذا العرض</a>
+          </div>
+       <!-- Card 3 — Most popular -->
           <div
             class="offer-card offer-card-selected relative flex flex-col overflow-hidden rounded-3xl bg-gradient-to-b from-white/15 to-white/5 p-6 ring-2 ring-zen/50 sm:p-7 lg:order-2"
             data-package="629 — 3 اجهزة + 3 هدايا EMS"
@@ -618,48 +656,10 @@ src="https://www.facebook.com/tr?id=817849460487988&ev=PageView&noscript=1"
               <p class="text-sm font-medium leading-relaxed text-white/90">الحل المثالي لإدخال الراحة لكل بيت: احصل على 3 أجهزة شياتسو بـ 629 ريالاً فقط بدلاً من 1300 ريال، وسنمنحك 3 أجهزة تدليك قدمين EMS إضافية مجاناً!</p>
             </div>
             <ul class="mb-6 space-y-2 text-xs text-white/80">
-              <li class="flex items-center gap-2"><i data-lucide="check" class="h-3.5 w-3.5 text-zen"></i>جهاز شياتسو الاحترافي × 3</li>
+              <li class="flex items-center gap-2"><i data-lucide="check" class="h-3.5 w-3.5 text-zen"></i>جهاز شياتسو الأصلي × 3</li>
               <li class="flex items-center gap-2"><i data-lucide="check" class="h-3.5 w-3.5 text-zen"></i>جهاز مساج قدم EMS × 3 (مجاناً)</li>
             </ul>
             <a href="#order" onclick="event.stopPropagation();selectOffer('629 — 3 اجهزة + 3 هدايا EMS',true);" class="mt-auto block rounded-2xl bg-zen py-4 text-center text-sm font-black text-white shadow-glow transition hover:bg-zenhover">اختر عرض العائلة الآن</a>
-          </div>
-          <!-- Card 3 -->
-          <div
-            class="offer-card flex flex-col rounded-3xl bg-white/5 p-6 backdrop-blur-sm transition-all duration-300 hover:bg-white/10 sm:p-7 lg:order-3"
-            data-package="499 — جهازين + هديتين EMS"
-            role="button" tabindex="0"
-            aria-label="عرض 499 ريال — جهازين + هديتين EMS"
-            onclick="selectOffer('499 — جهازين + هديتين EMS', false)"
-            onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();selectOffer('499 — جهازين + هديتين EMS',false);}"
-          >
-            <div class="offer-card-visual mb-5 overflow-hidden rounded-2xl">
-              <img src="offer-pack-499.webp" alt="عرض الثنائي المتميز" width="400" height="280" loading="lazy" decoding="async" class="h-full min-h-[7rem] w-full object-cover" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
-              <div class="hidden min-h-[7rem] flex-col items-center justify-center gap-1 px-3 text-center text-white/35">
-                <i data-lucide="image-plus" class="h-6 w-6 text-zen/50"></i>
-                <p class="text-[10px] font-bold">offer-pack-499.webp</p>
-              </div>
-            </div>
-            <div class="mb-5 flex items-end justify-between gap-2 border-b border-white/10 pb-5">
-              <div>
-                <p class="font-brand text-[10px] font-bold uppercase tracking-widest text-white/50">Bundle 02</p>
-                <p class="mt-1 text-sm font-bold text-sand">لك ولشخص عزيز</p>
-              </div>
-              <span class="rounded-full bg-white/10 px-2.5 py-1 text-[10px] font-black text-white/70">وفر 501 ريال</span>
-            </div>
-            <div class="mb-1 flex items-baseline gap-2">
-              <span class="text-4xl font-black tabular-nums text-zen sm:text-5xl">499</span>
-              <span class="text-sm font-bold text-white/70">ريال قطري</span>
-            </div>
-            <p class="text-sm text-white/40 line-through">1000 ريال</p>
-            <div class="my-5 flex items-start gap-3 rounded-2xl border border-white/10 bg-white/5 p-4">
-              <span class="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-white/10 text-zen"><i data-lucide="users" class="h-4 w-4"></i></span>
-              <p class="text-sm font-medium leading-relaxed text-white/85">تشارك الراحة مع من تحب: خذ جهازاً لك وجهازاً ثانياً كهدية لشخص عزيز عليك بـ 499 ريالاً فقط بدلاً من 1000 ريال، مع جهازين لتدليك القدمين مجاناً.</p>
-            </div>
-            <ul class="mb-6 space-y-2 text-xs text-white/60">
-              <li class="flex items-center gap-2"><i data-lucide="check" class="h-3.5 w-3.5 text-zen"></i>جهاز شياتسو المطور × 2</li>
-              <li class="flex items-center gap-2"><i data-lucide="check" class="h-3.5 w-3.5 text-zen"></i>جهاز مساج قدم EMS × 2 (مجاناً)</li>
-            </ul>
-            <a href="#order" onclick="event.stopPropagation();selectOffer('499 — جهازين + هديتين EMS',true);" class="mt-auto block rounded-2xl bg-zen py-4 text-center text-sm font-black text-white transition hover:bg-zenhover">اختر هذا العرض</a>
           </div>
         </div>
         <div class="observe mt-10 flex items-start gap-4 rounded-2xl border border-red-500/40 bg-red-500/10 px-5 py-5 sm:mt-12 sm:px-6">
