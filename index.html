@@ -6,49 +6,72 @@
   <meta name="theme-color" content="#1C1C1E" />
   <title>ZENKO زِنكو — مساج شياتسو ياباني أصلي | قطر</title>
   <meta name="description" content="اكتشف التقنية اليابانية المبتكرة لتخلص من تشنج الرقبة والظهر. توصيل سريع في قطر — ضمان كامل." />
-
   <!-- ① LCP image — preload مع fetchpriority=high -->
   <link rel="preload" as="image" href="hero.webp" fetchpriority="high" />
-
   <!-- ② dns-prefetch للمصادر الخارجية فقط (لا Google Fonts — self-hosted) -->
   <link rel="dns-prefetch" href="https://unpkg.com" />
   <link rel="dns-prefetch" href="https://analytics.tiktok.com" />
-
+  <link rel="dns-prefetch" href="https://connect.facebook.net" />
   <!-- ③ Self-hosted Tajawal — preload أهم وزن (800) لتسريع LCP -->
   <link rel="preload" as="font" type="font/woff2" href="fonts/tajawal-800.woff2" crossorigin />
   <link rel="preload" as="font" type="font/woff2" href="fonts/tajawal-400.woff2" crossorigin />
-
   <!-- ④ style.css — preload للتسريع + blocking لمنع CLS -->
   <link rel="preload" as="style" href="style.css" fetchpriority="high" />
   <link rel="stylesheet" href="style.css" />
-
   <!-- ⑤ Lucide — defer -->
   <script src="https://unpkg.com/lucide@0.487.0/dist/umd/lucide.min.js" defer></script>
-<!-- Meta Pixel Code -->
-<script>
-!function(f,b,e,v,n,t,s)
-{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-n.queue=[];t=b.createElement(e);t.async=!0;
-t.src=v;s=b.getElementsByTagName(e)[0];
-s.parentNode.insertBefore(t,s)}(window, document,'script',
-'https://connect.facebook.net/en_US/fbevents.js');
-fbq('init', '817849460487988');
-fbq('track', 'PageView');
-</script>
-<noscript><img height="1" width="1" style="display:none"
-src="https://www.facebook.com/tr?id=817849460487988&ev=PageView&noscript=1"
-/></noscript>
-<!-- End Meta Pixel Code -->
-  <!-- ⑥ TikTok Pixel — lazy (أول تفاعل فقط) -->
+
+  <!-- ⑥ Meta Pixel — إطلاق PageView فوري + بقية الأحداث من JS -->
   <script>
-    let ttqLoaded = false;
+    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window,document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init','817849460487988');
+    fbq('track','PageView');
+
+    /* ViewContent — يُطلق مرة واحدة عند أول تفاعل حقيقي (scroll/click/touch) */
+    (function(){
+      var fired = false;
+      function fireVC(){
+        if(fired) return; fired = true;
+        fbq('track','ViewContent',{
+          content_name: 'Shiatsu Massager',
+          content_ids: ['shiatsu-001'],
+          content_type: 'product',
+          value: 299,
+          currency: 'QAR'
+        });
+      }
+      ['scroll','click','touchstart'].forEach(function(ev){
+        window.addEventListener(ev, fireVC, {once:true, passive:true});
+      });
+      /* احتياطي: يُطلق بعد 5 ثوانٍ حتى لو لم يتفاعل المستخدم */
+      setTimeout(fireVC, 5000);
+    })();
+  </script>
+  <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=817849460487988&ev=PageView&noscript=1" /></noscript>
+
+  <!-- ⑦ TikTok Pixel — lazy (أول تفاعل فقط) -->
+  <script>
+    var ttqLoaded = false;
     function initTikTok() {
       if (ttqLoaded) return;
       ttqLoaded = true;
       !function(w,d,t){
-        w.TiktokAnalyticsObject=t;var ttq=w[t]=w[t]||[];ttq.methods=["page","track","identify","instances","debug","on","off","once","ready","alias","group","enableCookie","disableCookie","holdConsent","revokeConsent","grantConsent"],ttq.setAndDefer=function(t,e){t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}};for(var i=0;i<ttq.methods.length;i++)ttq.setAndDefer(ttq,ttq.methods[i]);ttq.instance=function(t){for(var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n]);return e},ttq.load=function(e,n){var r="https://analytics.tiktok.com/i18n/pixel/events.js",o=n&&n.partner;ttq._i=ttq._i||{},ttq._i[e]=[],ttq._i[e]._u=r,ttq._t=ttq._t||{},ttq._t[e]=+new Date,ttq._o=ttq._o||{},ttq._o[e]=n||{};n=document.createElement("script");n.type="text/javascript",n.async=!0,n.src=r+"?sdkid="+e+"&lib="+t;e=document.getElementsByTagName("script")[0];e.parentNode.insertBefore(n,e)};
+        w.TiktokAnalyticsObject=t;var ttq=w[t]=w[t]||[];
+        ttq.methods=["page","track","identify","instances","debug","on","off","once","ready","alias","group","enableCookie","disableCookie","holdConsent","revokeConsent","grantConsent"];
+        ttq.setAndDefer=function(t,e){t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}};
+        for(var i=0;i<ttq.methods.length;i++)ttq.setAndDefer(ttq,ttq.methods[i]);
+        ttq.instance=function(t){for(var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n]);return e};
+        ttq.load=function(e,n){var r="https://analytics.tiktok.com/i18n/pixel/events.js",o=n&&n.partner;
+          ttq._i=ttq._i||{},ttq._i[e]=[],ttq._i[e]._u=r,ttq._t=ttq._t||{},ttq._t[e]=+new Date,ttq._o=ttq._o||{},ttq._o[e]=n||{};
+          n=document.createElement("script");n.type="text/javascript",n.async=!0,n.src=r+"?sdkid="+e+"&lib="+t;
+          e=document.getElementsByTagName("script")[0];e.parentNode.insertBefore(n,e)};
         ttq.load('D8S80IJC77U96NJPHOCG');
         ttq.page();
       }(window,document,'ttq');
@@ -61,14 +84,12 @@ src="https://www.facebook.com/tr?id=817849460487988&ev=PageView&noscript=1"
     ['scroll','mousemove','touchstart'].forEach(function(e){window.addEventListener(e,initTikTok,{once:true});});
   </script>
 
-  <!-- ⑦ Critical CSS inline + Self-hosted @font-face -->
+  <!-- ⑧ Critical CSS inline + Self-hosted @font-face -->
   <style>
-    /* Tajawal self-hosted — لا Google Fonts، لا DNS خارجي */
     @font-face{font-family:'Tajawal';font-style:normal;font-weight:400;font-display:swap;src:url('fonts/tajawal-400.woff2') format('woff2')}
     @font-face{font-family:'Tajawal';font-style:normal;font-weight:700;font-display:swap;src:url('fonts/tajawal-700.woff2') format('woff2')}
     @font-face{font-family:'Tajawal';font-style:normal;font-weight:800;font-display:swap;src:url('fonts/tajawal-800.woff2') format('woff2')}
     @font-face{font-family:'Tajawal';font-style:normal;font-weight:900;font-display:swap;src:url('fonts/tajawal-900.woff2') format('woff2')}
-
     html{scroll-behavior:smooth}
     body{font-family:Tajawal,system-ui,sans-serif}
     .observe{opacity:0;transform:translateY(24px);transition:opacity .85s cubic-bezier(.22,.9,.42,1),transform .85s cubic-bezier(.22,.9,.42,1)}
@@ -91,7 +112,6 @@ src="https://www.facebook.com/tr?id=817849460487988&ev=PageView&noscript=1"
   </style>
 </head>
 <body class="bg-cream text-ink antialiased overflow-x-hidden">
-
   <!-- Header -->
   <header style="position:sticky;top:0;z-index:50;background:rgba(255,255,255,0.92);border-bottom:1px solid #E8DFD0" class="sticky top-0 z-50 border-b border-sanddeep/60 bg-white/90 sticky-bar">
     <div class="mx-auto flex max-w-6xl items-center justify-between gap-3 px-4 py-3 sm:px-6">
@@ -110,7 +130,6 @@ src="https://www.facebook.com/tr?id=817849460487988&ev=PageView&noscript=1"
       </div>
     </div>
   </header>
-
   <main>
     <!-- Hero -->
     <section style="background:linear-gradient(180deg,#FDFBF7 0%,#F5F0E8 100%);overflow:hidden;position:relative" class="hero-gradient relative overflow-hidden border-b border-sanddeep/40 py-10 sm:py-16">
@@ -157,7 +176,6 @@ src="https://www.facebook.com/tr?id=817849460487988&ev=PageView&noscript=1"
         </div>
       </div>
     </section>
-
     <!-- Pain points -->
     <section class="dark-section py-14 text-white sm:py-20">
       <div class="mx-auto max-w-3xl px-4 sm:px-6">
@@ -184,7 +202,6 @@ src="https://www.facebook.com/tr?id=817849460487988&ev=PageView&noscript=1"
         </div>
       </div>
     </section>
-
     <!-- تبين هاد المعانات -->
     <section class="bg-sand py-10 sm:py-14" aria-label="تبين هاد المعانات">
       <div class="observe mx-auto max-w-5xl px-4 sm:px-6">
@@ -203,7 +220,6 @@ src="https://www.facebook.com/tr?id=817849460487988&ev=PageView&noscript=1"
         </div>
       </div>
     </section>
-
     <!-- Warning -->
     <section class="border-y border-red-900/20 bg-red-950 py-12 sm:py-16">
       <div class="observe mx-auto max-w-3xl px-4 text-center sm:px-6">
@@ -216,7 +232,6 @@ src="https://www.facebook.com/tr?id=817849460487988&ev=PageView&noscript=1"
         </p>
       </div>
     </section>
-
     <!-- Solution -->
     <section class="hero-gradient py-14 sm:py-20">
       <div class="observe mx-auto max-w-4xl space-y-8 px-4 text-center sm:px-6">
@@ -240,7 +255,6 @@ src="https://www.facebook.com/tr?id=817849460487988&ev=PageView&noscript=1"
         </p>
       </div>
     </section>
-
     <!-- Benefits -->
     <section id="benefits" class="bg-ink py-14 text-white sm:py-20">
       <div class="mx-auto max-w-4xl px-4 sm:px-6">
@@ -255,7 +269,6 @@ src="https://www.facebook.com/tr?id=817849460487988&ev=PageView&noscript=1"
         </ul>
       </div>
     </section>
-
     <!-- Relaxed Gulf person -->
     <section class="bg-sand py-12 sm:py-16">
       <div class="observe mx-auto max-w-5xl px-4 sm:px-6">
@@ -274,7 +287,6 @@ src="https://www.facebook.com/tr?id=817849460487988&ev=PageView&noscript=1"
         </div>
       </div>
     </section>
-
     <!-- Reviews -->
     <section id="reviews" class="bg-white py-14 sm:py-20">
       <div class="mx-auto max-w-5xl px-4 sm:px-6">
@@ -330,7 +342,6 @@ src="https://www.facebook.com/tr?id=817849460487988&ev=PageView&noscript=1"
         </div>
       </div>
     </section>
-
     <!-- Features — zigzag -->
     <section id="features" class="bg-sand py-14 sm:py-24">
       <div class="mx-auto max-w-6xl px-4 sm:px-6">
@@ -422,7 +433,6 @@ src="https://www.facebook.com/tr?id=817849460487988&ev=PageView&noscript=1"
         </div>
       </div>
     </section>
-
     <!-- Certifications -->
     <section class="border-y border-sanddeep/60 bg-sand py-14 sm:py-20">
       <div class="observe mx-auto max-w-4xl px-4 sm:px-6">
@@ -455,7 +465,6 @@ src="https://www.facebook.com/tr?id=817849460487988&ev=PageView&noscript=1"
         </div>
       </div>
     </section>
-
     <!-- Usage instructions -->
     <section class="bg-white py-14 sm:py-20">
       <div class="observe mx-auto max-w-3xl px-4 sm:px-6">
@@ -468,7 +477,6 @@ src="https://www.facebook.com/tr?id=817849460487988&ev=PageView&noscript=1"
         </ul>
       </div>
     </section>
-
     <!-- Guarantee -->
     <section class="relative overflow-hidden bg-ink py-16 sm:py-24">
       <div class="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_70%_60%_at_50%_0%,rgba(232,97,26,0.12),transparent)]"></div>
@@ -478,8 +486,7 @@ src="https://www.facebook.com/tr?id=817849460487988&ev=PageView&noscript=1"
             <span class="mb-4 flex h-16 w-16 items-center justify-center rounded-2xl bg-zen/20 text-zen ring-1 ring-zen/30">
               <i data-lucide="shield" class="h-8 w-8"></i>
             </span>
-            <h2 class="text-2xl font-black text-sand sm:text-3xl">الضمان الذهبي الحقيقي
-              (14 يوما)</h2>
+            <h2 class="text-2xl font-black text-sand sm:text-3xl">الضمان الذهبي الحقيقي (14 يوما)</h2>
             <p class="mt-2 font-brand text-xs font-bold uppercase tracking-[0.2em] text-zen">100% Money-Back Guarantee</p>
           </div>
           <p class="text-center text-[1.05rem] font-medium leading-[2] text-white/95 sm:text-lg">
@@ -502,7 +509,6 @@ src="https://www.facebook.com/tr?id=817849460487988&ev=PageView&noscript=1"
         </div>
       </div>
     </section>
-
     <!-- CTA quote -->
     <section class="relative overflow-hidden bg-ink py-16 sm:py-24">
       <div class="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(232,97,26,0.08),transparent_65%)]"></div>
@@ -529,7 +535,6 @@ src="https://www.facebook.com/tr?id=817849460487988&ev=PageView&noscript=1"
         </div>
       </div>
     </section>
-
     <!-- Offer section -->
     <section id="offer" class="relative overflow-hidden bg-ink py-16 text-white sm:py-24">
       <div class="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_50%_-20%,rgba(232,97,26,0.18),transparent)]"></div>
@@ -620,7 +625,7 @@ src="https://www.facebook.com/tr?id=817849460487988&ev=PageView&noscript=1"
             </ul>
             <a href="#order" onclick="event.stopPropagation();selectOffer('499 — جهازين + هديتين EMS',true);" class="mt-auto block rounded-2xl bg-zen py-4 text-center text-sm font-black text-white transition hover:bg-zenhover">اختر هذا العرض</a>
           </div>
-       <!-- Card 3 — Most popular -->
+          <!-- Card 3 — Most popular -->
           <div
             class="offer-card offer-card-selected relative flex flex-col overflow-hidden rounded-3xl bg-gradient-to-b from-white/15 to-white/5 p-6 ring-2 ring-zen/50 sm:p-7 lg:order-2"
             data-package="629 — 3 اجهزة + 3 هدايا EMS"
@@ -671,7 +676,6 @@ src="https://www.facebook.com/tr?id=817849460487988&ev=PageView&noscript=1"
         </div>
       </div>
     </section>
-
     <!-- Order form -->
     <section id="order" class="bg-sand py-16 sm:py-24">
       <div class="mx-auto max-w-lg px-4 sm:px-6">
@@ -708,7 +712,6 @@ src="https://www.facebook.com/tr?id=817849460487988&ev=PageView&noscript=1"
         </div>
       </div>
     </section>
-
     <!-- FAQ -->
     <section id="faq" class="bg-white py-14 sm:py-20">
       <div class="mx-auto max-w-3xl px-4 sm:px-6">
@@ -747,7 +750,7 @@ src="https://www.facebook.com/tr?id=817849460487988&ev=PageView&noscript=1"
     </section>
   </main>
 
-  <!-- Sticky CTA — inline styles لضمان الرسم الفوري قبل style.css (يحل مشكلة LCP) -->
+  <!-- Sticky CTA -->
   <div style="position:fixed;bottom:0;left:0;right:0;z-index:40;pointer-events:none;padding-bottom:env(safe-area-inset-bottom,0px)" class="pointer-events-none fixed inset-x-0 bottom-0 z-40 pb-[env(safe-area-inset-bottom,0)]">
     <div style="pointer-events:auto;max-width:36rem;margin:0 auto;padding:0 0.75rem 1rem" class="pointer-events-auto mx-auto max-w-xl px-3 pb-4">
       <a href="#offer"
@@ -770,15 +773,39 @@ src="https://www.facebook.com/tr?id=817849460487988&ev=PageView&noscript=1"
     }
 
     function selectOffer(packageValue, scrollToForm) {
+      /* تحديث بطاقات العروض */
       document.querySelectorAll('.offer-card').forEach(function(card) {
         card.classList.toggle('offer-card-selected', card.getAttribute('data-package') === packageValue);
       });
+
+      /* تحديث القائمة في الفورم */
       var pkgInput = document.getElementById('packageInput');
       if (pkgInput) {
         for (var i = 0; i < pkgInput.options.length; i++) {
           if (pkgInput.options[i].value === packageValue) { pkgInput.selectedIndex = i; break; }
         }
       }
+
+      /* ━━━ Meta Pixel — InitiateCheckout ━━━ */
+      if (typeof fbq !== 'undefined') {
+        var pkgPrice = packageValue.includes('629') ? 629 : (packageValue.includes('499') ? 499 : 299);
+        var pkgQty   = packageValue.includes('629') ? 3   : (packageValue.includes('499') ? 2   : 1);
+        fbq('track', 'InitiateCheckout', {
+          content_name: 'Shiatsu Massager',
+          content_ids:  ['shiatsu-001'],
+          content_type: 'product',
+          value:        pkgPrice,
+          currency:     'QAR',
+          num_items:    pkgQty
+        });
+      }
+
+      /* ━━━ TikTok — AddToCart ━━━ */
+      if (typeof ttq !== 'undefined') {
+        var tp = packageValue.includes('629') ? 629 : (packageValue.includes('499') ? 499 : 299);
+        ttq.track('AddToCart', { content_name: 'Shiatsu Massager', value: tp, currency: 'QAR' });
+      }
+
       if (scrollToForm) {
         var el = document.getElementById('order');
         if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -786,7 +813,6 @@ src="https://www.facebook.com/tr?id=817849460487988&ev=PageView&noscript=1"
     }
 
     document.addEventListener('DOMContentLoaded', function() {
-      // تأجيل Lucide و selectOffer لمنع Forced Layout Reflow المتزامن
       requestAnimationFrame(function() {
         bootIcons();
         selectOffer('629 — 3 اجهزة + 3 هدايا EMS', false);
@@ -807,12 +833,12 @@ src="https://www.facebook.com/tr?id=817849460487988&ev=PageView&noscript=1"
 
     function sendOrder(event) {
       event.preventDefault();
-      var name = document.getElementById('nameInput').value.trim();
-      var phone = document.getElementById('phoneInput').value.trim();
+      var name    = document.getElementById('nameInput').value.trim();
+      var phone   = document.getElementById('phoneInput').value.trim();
       var addressEl = document.getElementById('addressInput');
       var address = addressEl ? addressEl.value.trim() : '';
-      var pkg = document.getElementById('packageInput').value;
-      var btn = document.getElementById('submitBtn');
+      var pkg     = document.getElementById('packageInput').value;
+      var btn     = document.getElementById('submitBtn');
       var scriptURL = 'https://script.google.com/macros/s/AKfycbxeg5xp7ZRXC-r-L5NrTDicOgXJiwNoZ4J70IH3V8XPiCAKwhvjmd-lQQIvTOMYR64/exec';
 
       if (!name || !phone) { alert('يرجى ملء البيانات (الاسم ورقم الهاتف)'); return; }
@@ -820,19 +846,30 @@ src="https://www.facebook.com/tr?id=817849460487988&ev=PageView&noscript=1"
 
       var quantity = '1', price = '299', notes = 'جهاز واحد + هدية مساج القدم';
       if (pkg.includes('499') || pkg.includes('جهازين')) { quantity = '2'; price = '499'; notes = 'عرض جهازين + هديتين مجانا'; }
-      else if (pkg.includes('629') || pkg.includes('3')) { quantity = '3'; price = '629'; notes = 'عرض العائلة (3 اجهزة + 3 هدايا)'; }
+      else if (pkg.includes('629') || pkg.includes('3'))  { quantity = '3'; price = '629'; notes = 'عرض العائلة (3 اجهزة + 3 هدايا)'; }
+
+      /* ━━━ Meta Pixel — Lead (طلب COD مؤكد) ━━━ */
+      if (typeof fbq !== 'undefined') {
+        fbq('track', 'Lead', {
+          content_name: 'Shiatsu Massager',
+          content_ids:  ['shiatsu-001'],
+          value:        Number(price),
+          currency:     'QAR'
+        });
+      }
+
+      /* ━━━ TikTok — CompletePayment ━━━ */
+      if (typeof ttq !== 'undefined') {
+        ttq.track('CompletePayment', { content_name: 'Shiatsu Massager', value: Number(price), currency: 'QAR' });
+      }
 
       var params = new URLSearchParams({
         country: 'Qatar', name: name, phone: phone, address: address,
         url: window.location.href, sku: 'اكتب_السكيو_هنا', Product: 'اكتب_اسم_المنتج_هنا',
         quantity: quantity, price: price, currency: 'ريال قطري', notes: notes
       });
-
       fetch(scriptURL + '?' + params.toString(), { mode: 'no-cors', method: 'GET' });
 
-      if (typeof ttq !== 'undefined') {
-        ttq.track('CompletePayment', { content_name: 'Zenko Shiatsu', value: Number(price), currency: 'QAR' });
-      }
       setTimeout(function() { window.location.href = 'thank-you.html'; }, 1500);
     }
   </script>
