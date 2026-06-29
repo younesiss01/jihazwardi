@@ -21,7 +21,7 @@
   <!-- ⑤ Lucide — defer -->
   <script src="https://unpkg.com/lucide@0.487.0/dist/umd/lucide.min.js" defer></script>
 
-  <!-- ⑥ Meta Pixel — إطلاق PageView فوري + بقية الأحداث من JS -->
+  <!-- ⑥ Meta Pixel -->
   <script>
     !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
     n.callMethod.apply(n,arguments):n.queue.push(arguments)};
@@ -30,27 +30,29 @@
     t.src=v;s=b.getElementsByTagName(e)[0];
     s.parentNode.insertBefore(t,s)}(window,document,'script',
     'https://connect.facebook.net/en_US/fbevents.js');
+
+    /* تعطيل الأحداث التلقائية (Subscribe وغيرها) */
+    fbq('set','autoConfig',false,'817849460487988');
     fbq('init','817849460487988');
     fbq('track','PageView');
 
-    /* ViewContent — يُطلق مرة واحدة عند أول تفاعل حقيقي (scroll/click/touch) */
+    /* ViewContent — عند سكرول 300px حقيقي (مرة واحدة فقط) */
     (function(){
       var fired = false;
       function fireVC(){
         if(fired) return; fired = true;
         fbq('track','ViewContent',{
           content_name: 'Shiatsu Massager',
-          content_ids: ['shiatsu-001'],
+          content_ids:  ['shiatsu-001'],
           content_type: 'product',
-          value: 299,
-          currency: 'QAR'
+          value:        299,
+          currency:     'QAR'
         });
       }
-      ['scroll','click','touchstart'].forEach(function(ev){
-        window.addEventListener(ev, fireVC, {once:true, passive:true});
-      });
-      /* احتياطي: يُطلق بعد 5 ثوانٍ حتى لو لم يتفاعل المستخدم */
-      setTimeout(fireVC, 5000);
+      window.addEventListener('scroll', function onScroll(){
+        if(window.scrollY > 300){ fireVC(); window.removeEventListener('scroll', onScroll); }
+      }, {passive:true});
+      setTimeout(fireVC, 10000); /* احتياطي بعد 10 ثوانٍ */
     })();
   </script>
   <noscript><img height="1" width="1" style="display:none"
@@ -848,11 +850,12 @@
       if (pkg.includes('499') || pkg.includes('جهازين')) { quantity = '2'; price = '499'; notes = 'عرض جهازين + هديتين مجانا'; }
       else if (pkg.includes('629') || pkg.includes('3'))  { quantity = '3'; price = '629'; notes = 'عرض العائلة (3 اجهزة + 3 هدايا)'; }
 
-      /* ━━━ Meta Pixel — Lead (طلب COD مؤكد) ━━━ */
+      /* ━━━ Meta Pixel — Purchase (طلب COD مؤكد) ━━━ */
       if (typeof fbq !== 'undefined') {
-        fbq('track', 'Lead', {
+        fbq('track', 'Purchase', {
           content_name: 'Shiatsu Massager',
           content_ids:  ['shiatsu-001'],
+          content_type: 'product',
           value:        Number(price),
           currency:     'QAR'
         });
