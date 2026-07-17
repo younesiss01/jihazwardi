@@ -86,7 +86,18 @@
     ['scroll','mousemove','touchstart'].forEach(function(e){window.addEventListener(e,initTikTok,{once:true});});
   </script>
 
-  <!-- ⑧ Critical CSS inline + Self-hosted @font-face -->
+  <!-- ⑧ Microsoft Clarity — defer بعد تحميل الصفحة لحماية الأداء -->
+  <script>
+    window.addEventListener('load', function(){
+      (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+      })(window,document,"clarity","script","xnwj46ksro");
+    });
+  </script>
+
+  <!-- ⑨ Critical CSS inline + Self-hosted @font-face -->
   <style>
     @font-face{font-family:'Tajawal';font-style:normal;font-weight:400;font-display:swap;src:url('fonts/tajawal-400.woff2') format('woff2')}
     @font-face{font-family:'Tajawal';font-style:normal;font-weight:700;font-display:swap;src:url('fonts/tajawal-700.woff2') format('woff2')}
@@ -142,10 +153,10 @@
             إنضم لأكثر من 5,000 عميل في قطر تخلصوا من آلام الرقبة والظهر...
           </p>
           <h1 class="text-[1.15rem] min-[380px]:text-[1.25rem] font-black leading-relaxed text-ink text-center sm:text-3xl lg:text-[2.15rem]">
-           كيف تخلص من آلام الظهر,الرقبة والكتف في 7 أيام و من منزلك فقط
+          تخلص من آلام الظهر,الرقبة,والكتف في 15 دقيقة فقط و من منزلك
           </h1>
           <p class="text-base font-medium leading-relaxed text-inksoft sm:text-xl">
-           مع التقنية اليابانية الحديثة الأكثر مبيعًا في العالم 
+           إكتشف التقنية اليابانية الذكية للتدليك الأكثر مبيعًا عالميا 
           </p>
         </div>
       </div>
