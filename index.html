@@ -145,7 +145,7 @@
   </header>
   <main>
     <!-- Hero -->
-    <section style="background:linear-gradient(180deg,#FDFBF7 0%,#F5F0E8 100%);overflow:hidden;position:relative" class="hero-gradient relative overflow-hidden border-b border-sanddeep/40 py-10 sm:py-16">
+    <section id="hero" style="background:linear-gradient(180deg,#FDFBF7 0%,#F5F0E8 100%);overflow:hidden;position:relative" class="hero-gradient relative overflow-hidden border-b border-sanddeep/40 py-10 sm:py-16">
       <div class="mx-auto max-w-6xl px-4 sm:px-6">
         <div class="observe mx-auto mb-8 max-w-3xl space-y-5 text-center sm:mb-10 sm:text-right">
           <p class="inline-flex items-center gap-2 rounded-full border border-zen/25 bg-white/80 px-4 py-1.5 text-xs font-bold text-zen shadow-sm">
@@ -766,7 +766,7 @@
   </main>
 
   <!-- Sticky CTA -->
-  <div style="position:fixed;bottom:0;left:0;right:0;z-index:40;pointer-events:none;padding-bottom:env(safe-area-inset-bottom,0px)" class="pointer-events-none fixed inset-x-0 bottom-0 z-40 pb-[env(safe-area-inset-bottom,0)]">
+  <div id="stickyBar" style="position:fixed;bottom:0;left:0;right:0;z-index:40;pointer-events:none;padding-bottom:env(safe-area-inset-bottom,0px);transition:opacity .3s,transform .3s" class="pointer-events-none fixed inset-x-0 bottom-0 z-40 pb-[env(safe-area-inset-bottom,0)]">
     <div style="pointer-events:auto;max-width:36rem;margin:0 auto;padding:0 0.75rem 1rem" class="pointer-events-auto mx-auto max-w-xl px-3 pb-4">
       <a href="#offer"
          style="display:block;width:100%;background:#E8611A;color:#fff;text-align:center;font-size:1rem;font-weight:800;padding:1rem 1.25rem;border-radius:1rem;text-decoration:none;font-family:Tajawal,system-ui,sans-serif"
@@ -832,6 +832,34 @@
         bootIcons();
         selectOffer('629 — 3 اجهزة + 3 هدايا EMS', false);
       });
+
+      /* ━━━ Sticky bar — إخفاء في الهيرو وفي قسم العرض وما بعده ━━━ */
+      var stickyBar = document.getElementById('stickyBar');
+      var heroSec   = document.getElementById('hero');
+      var offerSec  = document.getElementById('offer');
+      var heroVisible  = true;
+      var offerVisible = false;
+
+      function updateStickyBar() {
+        var hide = heroVisible || offerVisible;
+        stickyBar.style.opacity   = hide ? '0' : '1';
+        stickyBar.style.transform = hide ? 'translateY(16px)' : 'translateY(0)';
+        stickyBar.style.pointerEvents = hide ? 'none' : 'auto';
+      }
+
+      if ('IntersectionObserver' in window && stickyBar) {
+        new IntersectionObserver(function(entries) {
+          heroVisible = entries[0].isIntersecting;
+          updateStickyBar();
+        }, { threshold: 0.05 }).observe(heroSec);
+
+        new IntersectionObserver(function(entries) {
+          /* نخفيه عندما يصبح قسم العرض مرئياً أو عندما يمر المستخدم أمامه */
+          offerVisible = entries[0].isIntersecting ||
+                         entries[0].boundingClientRect.top < 0;
+          updateStickyBar();
+        }, { threshold: 0 }).observe(offerSec);
+      }
 
       var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
       if (!reduced && 'IntersectionObserver' in window) {
